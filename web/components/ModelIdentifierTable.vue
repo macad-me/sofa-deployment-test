@@ -153,10 +153,10 @@ export default {
     },
     getOSDetailsLink(osVersion) {
       const osLinks = {
-        'Sequoia 15': '/sofa-extended/macOS_Sequoia.html',
-        'Sonoma 14': '/sofa-extended/macOS_Sonoma.html',
-        'Ventura 13': '/sofa-extended/macOS_Ventura.html',
-        'Monterey 12': '/sofa-extended/macOS_Monterey.html',
+        'Sequoia 15': '/macOS_Sequoia.html',
+        'Sonoma 14': '/macOS_Sonoma.html',
+        'Ventura 13': '/macOS_Ventura.html',
+        'Monterey 12': '/macOS_Monterey.html',
       };
       return osLinks[osVersion] || '#';
     },
