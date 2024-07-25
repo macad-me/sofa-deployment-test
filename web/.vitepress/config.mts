@@ -5,7 +5,7 @@ import { extractHeadings } from './plugins/extractHeadings';
 export default defineConfig({
   base: '/',
   title: 'SOFA - by MAOS',
-  description: 'A MacAdmins open source project',
+  description: 'A MacAdmins Open Source project',
   themeConfig: {
     logo: '/custom_logo.png',
     head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
