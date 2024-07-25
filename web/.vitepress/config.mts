@@ -8,6 +8,7 @@ export default defineConfig({
   description: 'A MacAdmins open source project',
   themeConfig: {
     logo: '/custom_logo.png',
+    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
     search: {
       provider: 'local',  // Default search provider
       options: {

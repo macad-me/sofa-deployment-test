@@ -173,19 +173,23 @@ export default {
 .cve-search {
   margin: 20px 0;
 }
+
 .cve-search input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Remove margin-bottom to align with the buttons */
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 16px; /* Increased font size to match */
 }
+
 .button-container {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-top: 20px; /* Add margin-top to create space between input and buttons */
 }
+
 .cve-search button {
   display: inline-block;
   padding: 10px 20px;
@@ -195,53 +199,70 @@ export default {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  font-size: 16px; /* Increased font size to match */
 }
+
 .cve-search .reset-button {
   background-color: #888;
   color: white;
+  border: 1px solid #888; /* Grey border for the grey button */
   margin-left: auto; /* Move the reset button to the right */
 }
+
 .cve-search button:hover {
   background-color: #455bb2; /* Slightly darker blue for hover */
 }
+
 .cve-search .reset-button:hover {
   background-color: #666;
 }
+
 .cve-search ul {
   list-style-type: none;
   padding: 0;
 }
+
 .cve-search li {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
 .cve-search h3 {
   margin-top: 0;
+  font-size: 16px; /* Adjusted font size for the heading */
+  margin: 10px; /* Added margin-bottom for spacing */
 }
+
 .cve-search li p {
   margin: 5px 0;
 }
+
 .cve-result ul {
   list-style: none;
   padding-left: 20px;
 }
+
 .cve-result .security-notes-list,
 .cve-result .external-links-list {
   padding-left: 0;
 }
+
 .cve-result .security-notes-list li,
 .cve-result .external-links-list li {
   margin-bottom: 5px;
   border: none; /* Remove border from these items */
 }
+
 .cve-search a {
   color: #1e90ff;
   text-decoration: none;
 }
+
 .cve-search a:hover {
   text-decoration: underline;
   color: #0056b3;
 }
+
 </style>

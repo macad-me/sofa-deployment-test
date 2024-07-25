@@ -184,7 +184,7 @@ export default {
 </script>
 
 <style scoped>
-model-identifier-table {
+.model-identifier-table {
   margin: 20px 0; /* Match cve-search component margin */
 }
 
@@ -201,6 +201,7 @@ model-identifier-table {
   border: 1px solid #ccc;
   border-radius: 5px; /* Match cve-search component border-radius */
   color: #5672cd;
+  font-size: 16px; /* Increased font size */
 }
 
 .export-button {
@@ -213,6 +214,7 @@ model-identifier-table {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   margin-left: 10px; /* Add margin to create space between input and button */
+  font-size: 16px; /* Increased font size */
 }
 
 .export-button:hover {
@@ -256,5 +258,6 @@ model-identifier-table {
 [data-theme="dark"] {
   --card-background: #333;
 }
+
 
 </style>
