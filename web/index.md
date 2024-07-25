@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "SOFA - Simple Organized Feed for Apple Software Updates" 
   image:
-    src: ./images/custom_logo.png
+    src: /custom_logo.png
     alt: Sofa Icon
   tagline: SOFA supports MacAdmins by efficiently tracking and surfacing information on updates for macOS and iOS.
   actions:
