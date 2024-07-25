@@ -184,36 +184,41 @@ export default {
 </script>
 
 <style scoped>
-.model-identifier-table {
-  margin: 20px;
+model-identifier-table {
+  margin: 20px 0; /* Match cve-search component margin */
 }
+
 .controls {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
+
 .search-input {
   flex-grow: 1;
-  padding: 8px;
-  font-size: 16px;
+  padding: 10px; /* Match cve-search component padding */
+  margin-bottom: 0; /* Remove margin-bottom to align with the button */
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px; /* Match cve-search component border-radius */
   color: #5672cd;
-  margin-right: 10px;
 }
+
 .export-button {
-  padding: 8px 16px;
-  font-size: 16px;
+  display: inline-block;
+  padding: 10px 20px; /* Match cve-search component padding */
   border: 1px solid #5672cd;
-  border-radius: 4px;
+  border-radius: 5px; /* Match cve-search component border-radius */
   background-color: #5672cd;
   color: white;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-left: 10px; /* Add margin to create space between input and button */
 }
+
 .export-button:hover {
-  background-color: #405aad;
-  border-color: #405aad;
+  background-color: #455bb2; /* Match cve-search component hover background-color */
 }
+
 .os-version-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -221,20 +226,25 @@ export default {
   margin-bottom: 20px;
   background-color: var(--card-background);
 }
+
 .os-version-card h3 {
   margin-top: 0;
 }
+
 .os-version-card ul {
   list-style-type: none;
   padding: 0;
 }
+
 .os-version-card ul li {
   padding: 8px 0;
 }
+
 .os-version-card ul li a {
   color: #5672cd;
   text-decoration: none;
 }
+
 .os-version-card ul li a:hover {
   text-decoration: underline;
 }
@@ -246,4 +256,5 @@ export default {
 [data-theme="dark"] {
   --card-background: #333;
 }
+
 </style>
