@@ -43,11 +43,8 @@ const coreMembers = [
     name: 'Nate Walck', 
     title: 'Core Contributor', 
     links: [{ icon: 'github', link: 'https://github.com/natewalck' }] 
-  }
-]
-
-const communityMembers = [
-   { 
+  },
+  { 
     avatar: 'https://github.com/johnnyramos.png',
     name: 'Johnny Ramos', 
     title: 'Community Contributor', 
@@ -58,7 +55,10 @@ const communityMembers = [
     name: 'Samuel Keeley', 
     title: 'Community Contributor', 
     links: [{ icon: 'github', link: 'https://github.com/keeleysam' }] 
-  },
+  }
+]
+
+const communityMembers = [
     { 
     avatar: 'https://github.com/homebysix.png',
     name: 'Elliot Jordan', 
