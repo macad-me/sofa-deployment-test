@@ -28,8 +28,8 @@ export default defineConfig({
     ],
     sidebar: [
       { text: 'Home', link: '/getting-started' },
-      { text: 'Search CVE info', link: '/cve-search' },
-      { text: 'Search Model info', link: '/model-identifier' },
+      { text: 'Search CVE Info', link: '/cve-search' },
+      { text: 'Search Model Info', link: '/model-identifier' },
       {
         text: 'macOS',
         items: [
@@ -46,7 +46,7 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Beta versions',
+        text: 'Beta Versions',
         items: [
           { text: 'macOS Sequoia', link: '/macOS_Sequoia' }
         ],
@@ -54,7 +54,7 @@ export default defineConfig({
       {
         text: 'Info',
         items: [
-          { text: 'Getting started', link: '/getting-started' },
+          { text: 'Getting Started', link: '/getting-started' },
           { text: 'Contributors', link: '/team' },
           { text: 'Commmunity', link: '/community' },
         ],
