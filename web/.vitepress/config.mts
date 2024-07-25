@@ -7,7 +7,7 @@ export default defineConfig({
   title: 'SOFA - by MAOS',
   description: 'A MacAdmins open source project',
   themeConfig: {
-    logo: '../../images/custom_logo.png',
+    logo: 'images/custom_logo.png',
     search: {
       provider: 'local',  // Default search provider
       options: {
