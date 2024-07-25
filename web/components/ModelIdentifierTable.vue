@@ -219,7 +219,7 @@ export default {
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 20px;
-  background-color: #f9f9f9;
+  background-color: var(--card-background);
 }
 .os-version-card h3 {
   margin-top: 0;
@@ -237,5 +237,13 @@ export default {
 }
 .os-version-card ul li a:hover {
   text-decoration: underline;
+}
+
+:root {
+  --card-background: #fff;
+}
+
+[data-theme="dark"] {
+  --card-background: #333;
 }
 </style>
