@@ -16,13 +16,13 @@
         <p>
           Actively Exploited Vulnerabilities (KEV): 
           <span v-for="(cve, idx) in info.ActivelyExploitedCVEs" :key="idx">
-            🔥 <a :href="`/sofa-extended/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < info.ActivelyExploitedCVEs.length - 1 ? ', ' : '' }}
+            🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < info.ActivelyExploitedCVEs.length - 1 ? ', ' : '' }}
           </span>
         </p>
         <p>
           CVEs: 
           <span v-for="(cve, idx) in Object.keys(info.CVEs)" :key="idx">
-            <a :href="`/sofa-extended/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < Object.keys(info.CVEs).length - 1 ? ', ' : '' }}
+            <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < Object.keys(info.CVEs).length - 1 ? ', ' : '' }}
           </span>
         </p>
         <p>Days to Prev. Release: {{ info.DaysSincePreviousRelease }}</p>
