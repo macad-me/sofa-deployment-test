@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { extractHeadings } from './plugins/extractHeadings';
 
 export default defineConfig({
-  base: '/sofa-extended/',
+  base: '/',
   title: 'SOFA - by MAOS',
   description: 'A MacAdmins open source project',
   themeConfig: {
