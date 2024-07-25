@@ -24,7 +24,7 @@ export default defineConfig({
       { text: 'Monterey', link: '/macOS_Monterey' },
       { text: '✨ iOS 17', link: '/iOS_17' },
       { text: 'iOS 16', link: '/iOS_16' },
-      { text: 'Use cases', link: '/use-cases' },
+      { text: 'Use Cases', link: '/use-cases' },
     ],
     sidebar: [
       { text: 'Home', link: '/getting-started' },
