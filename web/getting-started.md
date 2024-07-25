@@ -46,7 +46,16 @@ The RSS feed is generated using [feedgen](https://feedgen.kiesow.be/) by leverag
 1. **Creating RSS Entries**: `SecurityReleases` from the data feed are used to create RSS entries, including handling specific data like `XProtect` configurations and payloads.
 1. **Writing RSS Feed**: The sorted and updated entries are written to an RSS feed file (`v1/rss_feed.xml`) using `feedgen`.
 
+## JSON Feed Data
 
-### Use the Feed Data
+Access the JSON feed directly for integration with automated tools or scripts. The current JSON feed URLs for macOS and iOS respectively are as follows:
 
-Access the feed directly for integration with automated tools or scripts. For production use, we strongly recommend self-hosting the feed to enhance reliability and security. For guidance on how to utilize and implement the feed, explore examples in the [Tools](https://github.com/macadmins/sofa/tree/main/tool-scripts) section. For details on self-hosting, please refer to the section below.
+- https://sofafeed.macadmins.io/v1/macos_data_feed.json
+- https://sofafeed.macadmins.io/v1/icos_data_feed.json
+
+For guidance on how to utilize and implement the feed in scripts, explore examples in the [Tools section](https://github.com/macadmins/sofa/tree/main/tool-scripts), and read [this blog post](https://grahamrpugh.com/2024/07/22/sofa-new-feed.html).
+
+## Self-hosting
+
+For production use, we strongly recommend self-hosting the feed to enhance reliability and security. You can do this by forking this repo and setting up a GitHub Action to set up a webhost and publish the feed.
+
