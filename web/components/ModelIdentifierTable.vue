@@ -16,11 +16,11 @@
       <div v-if="filteredGroupedData.length">
         <div v-for="(osData, index) in filteredGroupedData" :key="index" class="os-version-card">
           <h3>
-            <a :href="osData.url" target="_blank">macOS {{ osData.osVersion }}</a>
+            <a :href="getOSDetailsLink(osData.osVersion)" target="_blank">macOS {{ osData.osVersion }}</a>
           </h3>
           <ul>
             <li v-for="entry in osData.entries" :key="entry.identifier">
-              <strong>{{ entry.model }}</strong> - {{ entry.identifier }} - {{ entry.description }} - <a :href="entry.url" target="_blank">{{ entry.url }}</a>
+              <strong>{{ entry.model }}</strong> - {{ entry.identifier }} - {{ entry.description }} - <a :href="entry.url || getOSDetailsLink(entry.osVersion)" target="_blank">{{ entry.url || getOSDetailsLink(entry.osVersion) }}</a>
             </li>
           </ul>
         </div>
@@ -109,8 +109,7 @@ export default {
           identifier: device,
           description: 'Supported Device',
           url: '',
-          osVersion: item.OSVersion,
-          osUrl: item.url
+          osVersion: item.OSVersion
         }));
         console.log(`Extracted ${entries.length} entries for OS version ${item.OSVersion}`);
         return entries;
@@ -122,7 +121,7 @@ export default {
         if (found) {
           found.entries.push(entry);
         } else {
-          acc.push({ osVersion: entry.osVersion, entries: [entry], url: entry.osUrl });
+          acc.push({ osVersion: entry.osVersion, entries: [entry] });
         }
         return acc;
       }, []);
@@ -158,7 +157,12 @@ export default {
         'Ventura 13': '/macOS_Ventura.html',
         'Monterey 12': '/macOS_Monterey.html',
       };
-      return osLinks[osVersion] || '#';
+      if (osLinks[osVersion]) {
+        return osLinks[osVersion];
+      } else {
+        console.warn(`OS version ${osVersion} not found in osLinks`);
+        return '#';
+      }
     },
     exportAsCSV() {
       const csvContent = this.convertToCSV(this.filteredGroupedData);
@@ -187,13 +191,11 @@ export default {
 .model-identifier-table {
   margin: 20px 0; /* Match cve-search component margin */
 }
-
 .controls {
   display: flex;
-  align-items: center;
+  align-items: center; /* Ensure items are vertically aligned */
   margin-bottom: 20px;
 }
-
 .search-input {
   flex-grow: 1;
   padding: 10px; /* Match cve-search component padding */
@@ -203,7 +205,6 @@ export default {
   color: #5672cd;
   font-size: 16px; /* Increased font size */
 }
-
 .export-button {
   display: inline-block;
   padding: 10px 20px; /* Match cve-search component padding */
@@ -216,11 +217,9 @@ export default {
   margin-left: 10px; /* Add margin to create space between input and button */
   font-size: 16px; /* Increased font size */
 }
-
 .export-button:hover {
   background-color: #455bb2; /* Match cve-search component hover background-color */
 }
-
 .os-version-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -228,25 +227,22 @@ export default {
   margin-bottom: 20px;
   background-color: var(--card-background);
 }
-
 .os-version-card h3 {
-  margin-top: 0;
+  margin-top: 20px; /* Add margin-top to h3 */
+  font-size: 18px; /* Adjusted font size for the heading */
+  margin-bottom: 10px; /* Added margin-bottom for spacing */
 }
-
 .os-version-card ul {
   list-style-type: none;
   padding: 0;
 }
-
 .os-version-card ul li {
   padding: 8px 0;
 }
-
 .os-version-card ul li a {
   color: #5672cd;
   text-decoration: none;
 }
-
 .os-version-card ul li a:hover {
   text-decoration: underline;
 }
@@ -258,6 +254,4 @@ export default {
 [data-theme="dark"] {
   --card-background: #333;
 }
-
-
 </style>
