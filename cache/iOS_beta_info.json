@@ -1,0 +1,38 @@
+{
+    "OSVersions": [
+      {
+        "OSVersion": "15.0",
+        "BetaVersions": [
+          {
+            "Build": "24A5289h",
+            "App": "Beta 3 Public 1",
+            "InstallerPackage": "InstallAssistant.pkg",
+            "Available": "YES",
+            "ReleaseDate": "2023-07-15"
+          },
+          {
+            "Build": "24A5289g",
+            "App": "Beta 3",
+            "InstallerPackage": "InstallAssistant.pkg",
+            "Available": "YES",
+            "ReleaseDate": "2023-07-10"
+          },
+          {
+            "Build": "24A5279h",
+            "App": "Beta 2",
+            "InstallerPackage": "InstallAssistant.pkg",
+            "Available": "YES",
+            "ReleaseDate": "2023-06-24"
+          },
+          {
+            "Build": "24A5264n",
+            "App": "Beta 1",
+            "InstallerPackage": "InstallAssistant.pkg",
+            "Available": "NO",
+            "ReleaseDate": "2023-06-10"
+          }
+        ]
+      }
+    ]
+  }
+  
