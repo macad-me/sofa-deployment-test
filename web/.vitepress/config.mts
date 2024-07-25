@@ -55,15 +55,15 @@ export default defineConfig({
         text: 'Info',
         items: [
           { text: 'Getting started', link: '/getting-started' },
-          { text: 'Contibutors', link: '/team' },
+          { text: 'Contributors', link: '/team' },
           { text: 'Commmunity', link: '/community' },
         ],
       },
       {
-        text: 'Examples',
+        text: 'Examples & Use Cases',
         items: [
           { text: 'Examples', link: 'https://github.com/macadmins/sofa/tree/main/tool-scripts#examples' },
-          { text: 'Use Cases / Examples', link: '/use-cases' },
+          { text: 'Use Cases', link: '/use-cases' },
         ],
       },
     ],
