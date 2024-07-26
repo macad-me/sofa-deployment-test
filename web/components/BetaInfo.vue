@@ -116,6 +116,6 @@ th, td {
   text-align: left;
 }
 th {
-  background-color: #f4f4f4;
+
 }
 </style>
