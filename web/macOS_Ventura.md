@@ -8,6 +8,7 @@ layout: doc
 
 ::: tip STABLE RELEASE WITH MOST SECURITY UPDATES
 This version of macOS may not contain the newest security features contained in the latest macOS version. To maintain your computer's security, stability, and compatibility, Apple recommends using the latest macOS that is compatible with your Mac. macOS updates and upgrades also include the latest features and built-in apps such as Safari.:::
+::: 
 
 <script setup>
 import LatestFeatures from './components/LatestFeatures.vue';
