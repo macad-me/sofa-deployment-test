@@ -24,7 +24,7 @@
 
         <div v-if="platform === 'macOS'" class="feature-column">
           <img :src="getAssetPath('images/SWUpdate.png')" alt="XProtect Image" class="os-image" />
-          <h3>Latest Xprotect</h3>
+          <h3>Latest XProtect</h3>
           <p><strong>XProtect Framework:</strong> {{ xProtectData?.XProtectFramework || 'N/A' }}</p>
           <p><strong>Plugin Service:</strong> {{ xProtectData?.PluginService || 'N/A' }}</p>
           <p><strong>Release Date:</strong> {{ xProtectData ? formatDate(xProtectData.ReleaseDate) : 'N/A' }}</p>

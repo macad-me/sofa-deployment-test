@@ -5,8 +5,8 @@ platform: iOS
 
 # iOS 16 <Badge type="tip" text="Previous Version (N-1)" />
 
-::: tip STABLE RELEASE WITH SECURITY UPDATES
-This version of macOS receives regular security patches and updates, ensuring a stable and secure environment for your devices. While not as cutting-edge as the latest release, it remains a reliable choice for your devices.
+::: tip STABLE RELEASE WITH MOST SECURITY UPDATES 
+This version of iOS and iPadOS may not contain the newest security features contained in the latest version. To maintain your device's security, stability, and compatibility, Apple recommends using the latest iOS and iPadOS that is compatible with your device. 
 :::
 
 <script setup>

@@ -5,7 +5,7 @@ import { extractHeadings } from './plugins/extractHeadings';
 export default defineConfig({
   base: '/',
   title: 'SOFA - by MAOS',
-  description: 'A MacAdmins open source project',
+  description: 'A MacAdmins Open Source project',
   themeConfig: {
     logo: '/custom_logo.png',
     head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
@@ -24,12 +24,12 @@ export default defineConfig({
       { text: 'Monterey', link: '/macOS_Monterey' },
       { text: '✨ iOS 17', link: '/iOS_17' },
       { text: 'iOS 16', link: '/iOS_16' },
-      { text: 'Use cases', link: '/use-cases' },
+      { text: 'Use Cases', link: '/use-cases' },
     ],
     sidebar: [
       { text: 'Home', link: '/getting-started' },
-      { text: 'Search CVE info', link: '/cve-search' },
-      { text: 'Search Model info', link: '/model-identifier' },
+      { text: 'Search CVE Info', link: '/cve-search' },
+      { text: 'Search Model Info', link: '/model-identifier' },
       {
         text: 'macOS',
         items: [
@@ -46,7 +46,7 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Beta versions',
+        text: 'Beta Versions',
         items: [
           { text: 'macOS Sequoia', link: '/macOS_Sequoia' }
         ],
@@ -54,16 +54,16 @@ export default defineConfig({
       {
         text: 'Info',
         items: [
-          { text: 'Getting started', link: '/getting-started' },
-          { text: 'Contibutors', link: '/team' },
+          { text: 'Getting Started', link: '/getting-started' },
+          { text: 'Contributors', link: '/team' },
           { text: 'Commmunity', link: '/community' },
         ],
       },
       {
-        text: 'Examples',
+        text: 'Examples & Use Cases',
         items: [
           { text: 'Examples', link: 'https://github.com/macadmins/sofa/tree/main/tool-scripts#examples' },
-          { text: 'Use Cases / Examples', link: '/use-cases' },
+          { text: 'Use Cases', link: '/use-cases' },
         ],
       },
     ],
