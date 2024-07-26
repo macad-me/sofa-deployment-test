@@ -1,0 +1,36 @@
+name: Fetch CVE Details
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  fetch_cve_details:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Specify the version of Python you need
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run CVE fetcher script
+        env:
+          API_KEY: ${{ secrets.VULNCHECK_API_KEY }} # Ensure your API key is stored in GitHub secrets
+        run: python cve_fetcher.py
+
+      - name: Upload CVE details
+        uses: actions/upload-artifact@v2
+        with:
+          name: cve-details
+          path: cve_details.json
