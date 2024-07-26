@@ -27,7 +27,7 @@ jobs:
       - name: Run CVE fetcher script
         env:
           API_KEY: ${{ secrets.VULNCHECK_API_KEY }} # Ensure your API key is stored in GitHub secrets
-        run: python cve_fetcher.py
+        run: python build-cve-cached.py
       
       - name: List contents of current directory
         run: ls -la
