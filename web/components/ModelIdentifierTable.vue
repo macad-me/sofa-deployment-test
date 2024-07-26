@@ -240,7 +240,6 @@ export default {
   padding: 8px 0;
 }
 .os-version-card ul li a {
-  color: #5672cd;
   text-decoration: none;
 }
 .os-version-card ul li a:hover {

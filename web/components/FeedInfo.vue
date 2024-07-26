@@ -83,13 +83,6 @@ h2 {
   margin-bottom: 6px;
 }
 
-a {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 0.8em;
-  color: #1e90ff;
-}
-
 h3 {
   font-size: 1.0em;
   margin-top: 10px;

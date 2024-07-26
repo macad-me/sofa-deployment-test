@@ -256,13 +256,12 @@ export default {
 }
 
 .cve-search a {
-  color: #1e90ff;
   text-decoration: none;
 }
 
 .cve-search a:hover {
   text-decoration: underline;
-  color: #0056b3;
+
 }
 
 </style>

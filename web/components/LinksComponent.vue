@@ -80,11 +80,4 @@ ul {
 li {
   margin: 0;
 }
-a {
-  color: #007acc;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
 </style>
