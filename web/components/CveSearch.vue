@@ -27,7 +27,6 @@
             <ul class="external-links-list">
               <li><a :href="`https://www.cve.org/CVERecord?id=${result.cveId}`" target="_blank">View {{ result.cveId }} on CVE.org</a></li>
               <li><a :href="`https://nvd.nist.gov/vuln/detail/${result.cveId}`" target="_blank">View {{ result.cveId }} on NVD (NIST)</a></li>
-              <li><a :href="`https://www.opencve.io/cve/${result.cveId}`" target="_blank">View {{ result.cveId }} on OpenCVE</a></li>
               <li v-if="result.isKev"><a :href="`https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=${result.cveId}`" target="_blank">View {{ result.cveId }} on CISA KEV</a></li>
             </ul>
           </div>
@@ -263,5 +262,7 @@ export default {
 
 .cve-search a:hover {
   text-decoration: underline;
+
 }
+
 </style>
