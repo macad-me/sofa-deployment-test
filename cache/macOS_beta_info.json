@@ -4,6 +4,13 @@
         "OSVersion": "15.0",
         "BetaVersions": [
           {
+            "Build": "24A5298h",
+            "App": "Beta 4 ",
+            "InstallerPackage": "https://swcdn.apple.com/content/downloads/48/45/062-39268-A_36NTYE5BPL/0cd85jhjwcbnmk5fqvu4yp323wcmzr9jmu/InstallAssistant.pkg",
+            "Available": "YES",
+            "ReleaseDate": "2023-07-24"
+          },
+          {
             "Build": "24A5289h",
             "App": "Beta 3 Public 1",
             "InstallerPackage": "https://swcdn.apple.com/content/downloads/00/55/062-36085-A_SVM8I0RSF8/xqj8j50pwf49z53toqmdsej6od5u2s0kmw/InstallAssistant.pkg",
