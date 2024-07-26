@@ -35,7 +35,6 @@
       <p>Base Score: {{ cveDetails.baseScore }}</p>
       <p>Exploitability Score: {{ cveDetails.exploitabilityScore }}</p>
       <p>Impact Score: {{ cveDetails.impactScore }}</p>
-      <p>NVD++ Data: {{ cveDetails.nvdPlusPlusData }}</p>
       <p>
         <a href="https://vulncheck.com/nvd2" target="_blank" rel="noopener noreferrer" class="link-color">
           Based on NVD++ CVE data - a VulnCheck Community resource
@@ -106,8 +105,7 @@ export default {
                 id: details.id,
                 baseScore: 'No CVSS metric found',
                 exploitabilityScore: 'No CVSS metric found',
-                impactScore: 'No CVSS metric found',
-                nvdPlusPlusData: details.nvdPlusPlusData || 'N/A'
+                impactScore: 'No CVSS metric found'
               };
             } else {
               this.cveDetails = details;
@@ -128,8 +126,7 @@ export default {
             id: this.cveId,
             baseScore: 'N/A',
             exploitabilityScore: 'N/A',
-            impactScore: 'N/A',
-            nvdPlusPlusData: 'N/A'
+            impactScore: 'N/A'
           };
         }
       } catch (error) {
@@ -139,8 +136,7 @@ export default {
           id: this.cveId,
           baseScore: 'Error loading data',
           exploitabilityScore: 'Error loading data',
-          impactScore: 'Error loading data',
-          nvdPlusPlusData: 'Error loading data'
+          impactScore: 'Error loading data'
         };
       } finally {
         this.progress = 100; // Ensure progress bar is full when done
