@@ -1,27 +1,46 @@
 <template>
   <div class="cve-details content">
-    <h1>CVE Details</h1>
     <div v-if="cveId" class="external-links">
-      <h2>External Links:</h2>
+      <h3>Lookup Resources:</h3>
       <ul>
         <li>
-          <a :href="cveOrgUrl" target="_blank" rel="noopener noreferrer">View {{ cveId }} on CVE.org</a>
+          For general CVE summary and references, inspect 
+          <a :href="cveOrgUrl" target="_blank" rel="noopener noreferrer" class="link-color">
+            "{{ cveId }}" on CVE.org
+          </a>
         </li>
         <li>
-          <a :href="kevUrl" target="_blank" rel="noopener noreferrer">View {{ cveId }} on KEV (CISA)</a>
+          Check severity scores, impact analysis, and details for 
+          <a :href="nvdUrl" target="_blank" rel="noopener noreferrer" class="link-color">
+            "{{ cveId }}" on NVD (NIST) 
+          </a>
         </li>
         <li>
-          <a :href="nvdUrl" target="_blank" rel="noopener noreferrer">View {{ cveId }} on NVD (NIST)</a>
+          Discover community insights and discussions for 
+          <a :href="openCveUrl" target="_blank" rel="noopener noreferrer" class="link-color">
+           "{{ cveId }}" on OpenCVE  
+          </a>
+        </li>
+        <li>
+          Find known exploits and mitigation details for 
+          <a :href="kevUrl" target="_blank" rel="noopener noreferrer" class="link-color">
+            "{{ cveId }}" on KEV (CISA) 
+          </a>
         </li>
       </ul>
     </div>
     <div v-if="cveDetails" class="cve-details-context">
-      <h2>CVE Details Context Info</h2>
+      <h3>CVE Details Context Info</h3>
       <p>CVE ID: {{ cveDetails.id }}</p>
       <p>Base Score: {{ cveDetails.baseScore }}</p>
       <p>Exploitability Score: {{ cveDetails.exploitabilityScore }}</p>
       <p>Impact Score: {{ cveDetails.impactScore }}</p>
-      <p>Hash: {{ cveDetails.hash }}</p>
+      <p>NVD++ Data: {{ cveDetails.nvdPlusPlusData }}</p>
+      <p>
+        <a href="https://vulncheck.com/nvd2" target="_blank" rel="noopener noreferrer" class="link-color">
+          Based on NVD++ CVE data - a VulnCheck Community resource
+        </a>
+      </p>
     </div>
     <div v-else>
       <p v-if="error">{{ error }}</p>
@@ -57,6 +76,12 @@ export default {
     },
     nvdUrl() {
       return `https://nvd.nist.gov/vuln/detail/${this.cveId}`;
+    },
+    openCveUrl() {
+      return `https://www.opencve.io/cve/${this.cveId}`;
+    },
+    linkColor() {
+      return getComputedStyle(document.documentElement).getPropertyValue('--vp-c-text-link');
     }
   },
   mounted() {
@@ -67,7 +92,7 @@ export default {
       try {
         this.error = null;
         const CHUNK_SIZE = 1000; // Number of entries to load at once
-        const data = await import('@cache/cve_details_vulncheck.json');
+        const data = await import('@cache/cve_details.json');
         const totalEntries = data.default.CVE_Details.length;
         let found = false;
 
@@ -82,7 +107,7 @@ export default {
                 baseScore: 'No CVSS metric found',
                 exploitabilityScore: 'No CVSS metric found',
                 impactScore: 'No CVSS metric found',
-                hash: details.hash || 'N/A'
+                nvdPlusPlusData: details.nvdPlusPlusData || 'N/A'
               };
             } else {
               this.cveDetails = details;
@@ -104,7 +129,7 @@ export default {
             baseScore: 'N/A',
             exploitabilityScore: 'N/A',
             impactScore: 'N/A',
-            hash: 'N/A'
+            nvdPlusPlusData: 'N/A'
           };
         }
       } catch (error) {
@@ -115,7 +140,7 @@ export default {
           baseScore: 'Error loading data',
           exploitabilityScore: 'Error loading data',
           impactScore: 'Error loading data',
-          hash: 'Error loading data'
+          nvdPlusPlusData: 'Error loading data'
         };
       } finally {
         this.progress = 100; // Ensure progress bar is full when done
@@ -139,14 +164,12 @@ export default {
   margin: 10px 0;
 }
 
-.external-links a {
+.link-color {
   text-decoration: none;
-  color: var(--vp-c-text-link);
 }
 
-.external-links a:hover {
+.link-color:hover {
   text-decoration: underline;
-  color: var(--vp-c-text-link-hover);
 }
 
 .cve-details-context {
