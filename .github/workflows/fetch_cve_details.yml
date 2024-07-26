@@ -40,7 +40,7 @@ jobs:
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           # Stage the modified cve_details.json file for commit
-          git add cve_details.json
+          git add cache/cve_details.json
           # Commit changes with a timestamp, exit if no changes to commit
           git commit -m "Update CVE details - $timestamp" -a || exit 0
           # Push the changes to the remote repository
