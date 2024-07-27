@@ -4,6 +4,11 @@
       <div class="image-container">
         <img :src="osImage" alt="OS Image" class="os-image" />
       </div>
+      <div class="release-url">
+        <a :href="releaseUrl" target="_blank" rel="noopener noreferrer">
+          Apple Developer News and Updates
+        </a>
+      </div>
       <table>
         <thead>
           <tr>
@@ -48,6 +53,7 @@ export default {
     return {
       betaData: null,
       osImage: '', // Image URL for the OS
+      releaseUrl: '', // URL for the release
     };
   },
   mounted() {
@@ -61,6 +67,7 @@ export default {
           : await import('@cache/iOS_beta_info.json');
         this.betaData = data.default;
         this.osImage = this.getOsImage(this.platform, this.title);
+        this.releaseUrl = this.betaData.OSVersions[0].url; // Set the release URL
       } catch (error) {
         console.error('Error loading beta data:', error);
       }
@@ -105,6 +112,10 @@ export default {
   width: 200px;
   height: auto;
 }
+.release-url {
+  text-align: center;
+  margin-bottom: 20px;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -114,8 +125,5 @@ th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-}
-th {
-
 }
 </style>
