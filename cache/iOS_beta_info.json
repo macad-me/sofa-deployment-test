@@ -1,35 +1,32 @@
 {
     "OSVersions": [
       {
-        "OSVersion": "15.0",
+        "OSVersion": "18",
+        "url": "https://developer.apple.com/news/releases/?id=07232024h",
         "BetaVersions": [
           {
-            "Build": "24A5289h",
-            "App": "Beta 3 Public 1",
-            "InstallerPackage": "InstallAssistant.pkg",
+            "Build": "22A5316k",
+            "App": "Beta 4",
             "Available": "YES",
-            "ReleaseDate": "2023-07-15"
+            "ReleaseDate": "2023-07-25"
           },
           {
-            "Build": "24A5289g",
+            "Build": "n/a",
             "App": "Beta 3",
-            "InstallerPackage": "InstallAssistant.pkg",
             "Available": "YES",
-            "ReleaseDate": "2023-07-10"
+            "ReleaseDate": "n/a"
           },
           {
-            "Build": "24A5279h",
+            "Build": "n/a",
             "App": "Beta 2",
-            "InstallerPackage": "InstallAssistant.pkg",
             "Available": "YES",
-            "ReleaseDate": "2023-06-24"
+            "ReleaseDate": "n/a"
           },
           {
-            "Build": "24A5264n",
+            "Build": "n/a",
             "App": "Beta 1",
-            "InstallerPackage": "InstallAssistant.pkg",
             "Available": "NO",
-            "ReleaseDate": "2023-06-10"
+            "ReleaseDate": "n/a"
           }
         ]
       }

@@ -2,6 +2,7 @@
     "OSVersions": [
       {
         "OSVersion": "15.0",
+        "url": "https://developer.apple.com/news/releases/?id=07232024h",
         "BetaVersions": [
           {
             "Build": "24A5298h",
