@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress';
 import { resolve } from 'path';
-import { extractHeadings } from './plugins/extractHeadings';
 
 export default defineConfig({
   base: '/',
@@ -30,6 +29,7 @@ export default defineConfig({
       { text: 'Home', link: '/getting-started' },
       { text: 'Search CVE Info', link: '/cve-search' },
       { text: 'Search Model Info', link: '/model-identifier' },
+      { text: 'Release Overview', link: '/release-chart' },
       {
         text: 'macOS',
         items: [
@@ -49,6 +49,12 @@ export default defineConfig({
         text: 'Beta Versions',
         items: [
           { text: 'macOS Sequoia', link: '/macOS_Sequoia' }
+        ],
+      },
+      {
+        text: 'Apple & Community',
+        items: [
+          { text: 'Essentail Links', link: '/essential-info' }
         ],
       },
       {
