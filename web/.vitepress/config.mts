@@ -48,7 +48,8 @@ export default defineConfig({
       {
         text: 'Beta Versions',
         items: [
-          { text: 'macOS Sequoia', link: '/macOS_Sequoia' }
+          { text: 'macOS Sequoia', link: '/macOS_Sequoia' },
+          { text: 'GitHub', link: '/github' },
         ],
       },
       {
