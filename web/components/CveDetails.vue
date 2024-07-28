@@ -36,7 +36,7 @@
       <p>Exploitability Score: {{ cveDetails.exploitabilityScore }}</p>
       <p>Impact Score: {{ cveDetails.impactScore }}</p>
       <p>Severity: {{ cveDetails.severity }}</p>
-      <div :class="['severity-box', severityClass]">
+      <div v-if="cveDetails.severity !== 'No CVSS metric found'" :class="['severity-box', severityClass]">
         SEVERITY: {{ cveDetails.severity }}
       </div>
       <p>
@@ -155,7 +155,8 @@ export default {
           id: this.cveId,
           baseScore: 'Error loading data',
           exploitabilityScore: 'Error loading data',
-          impactScore: 'Error loading data'
+          impactScore: 'Error loading data',
+          severity: 'Error loading data'
         };
       } finally {
         this.progress = 100; // Ensure progress bar is full when done
