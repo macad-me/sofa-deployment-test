@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 import { resolve } from 'path';
+import { extractHeadings } from './plugins/extractHeadings';
 
 export default defineConfig({
   base: '/',
@@ -7,17 +8,19 @@ export default defineConfig({
   description: 'A MacAdmins Open Source project',
   themeConfig: {
     logo: '/custom_logo.png',
-    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
-    search: {
-      provider: 'local',  // Default search provider
-      options: {
-        // Search options can be configured here
-      }
-    },
-
+    head: [
+      ['link', { rel: 'icon', href: '/favicon.ico' }],
+      // Preload the main CSS file
+      ['link', { rel: 'preload', href: '/theme/style.css', as: 'style' }],
+      // Preload the index HTML
+      ['link', { rel: 'preload', href: '/', as: 'document' }],
+      // Optionally, prefetch other important resources
+      ['link', { rel: 'prefetch', href: '/getting-started.html' }],
+      ['link', { rel: 'prefetch', href: '/images/custom_logo.png', as: 'image' }]
+    ],
     nav: [
       { text: 'Home', link: '/getting-started' },
-      { text: '⚡️ Sequoia', link: '/macOS_Sequoia' }, 
+      { text: '💫 Sequoia', link: '/macOS_Sequoia' }, 
       { text: '✨ Sonoma', link: '/macOS_Sonoma' },
       { text: 'Ventura', link: '/macOS_Ventura' },
       { text: 'Monterey', link: '/macOS_Monterey' },
@@ -29,7 +32,6 @@ export default defineConfig({
       { text: 'Home', link: '/getting-started' },
       { text: 'Search CVE Info', link: '/cve-search' },
       { text: 'Search Model Info', link: '/model-identifier' },
-      { text: 'Release Overview', link: '/release-chart' },
       {
         text: 'macOS',
         items: [
@@ -48,8 +50,7 @@ export default defineConfig({
       {
         text: 'Beta Versions',
         items: [
-          { text: 'macOS Sequoia', link: '/macOS_Sequoia' },
-          { text: 'GitHub', link: '/github' },
+          { text: 'macOS Sequoia', link: '/macOS_Sequoia' }
         ],
       },
       {
