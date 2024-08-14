@@ -10,15 +10,15 @@
       />
       <button @click="searchCve" class="action-button" :disabled="quickSearch">Search</button>
       <button @click="resetSearch" class="action-button reset-button">Reset</button>
-      <label class="quick-search-container">
-        <input type="checkbox" v-model="quickSearch" class="quick-search-checkbox" />
-        Quick Search
-      </label>
     </div>
     <div class="button-container">
       <button @click="sortResultsByKev" class="action-button">KEV on Top</button>
       <button @click="exportToCsv" class="action-button">Export as CSV</button>
     </div>
+    <label class="quick-search-container">
+        <input type="checkbox" v-model="quickSearch" class="quick-search-checkbox" />
+        Quick Search
+      </label>
     <div v-if="searchResults.length">
       <h3>Search Results for "{{ searchTerm }}"</h3>
       <ul>
