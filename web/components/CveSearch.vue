@@ -5,6 +5,7 @@
       <input
         v-model="searchTerm"
         @input="quickSearch ? searchCve() : null"
+        @keyup.enter="quickSearch ? null : searchCve"
         placeholder="Enter CVE ID (e.g., CVE-2023-12345 or part of it)"
       />
       <button @click="searchCve" class="action-button" :disabled="quickSearch">Search</button>
@@ -23,7 +24,7 @@
       <ul>
         <li v-for="(result, index) in searchResults" :key="index" class="cve-result">
           <p><strong>CVE ID:</strong> {{ result.cveId }}</p>
-          <p><strong>OS Version(s):</strong> {{ formatOsVersions(result.osVersions) }}</p>
+          <p><strong>OS Version(s):</strong> {{ formatOsVersionsWithFixes(result.osVersionDetails) }}</p>
           <p><strong>KEV:</strong> {{ result.isKev ? '🔥 Yes' : 'No' }}</p>
           <div v-if="result.urls.length">
             <p><strong>Apple security content notes:</strong></p>
@@ -60,7 +61,7 @@ export default {
     return {
       searchTerm: '',
       searchResults: [],
-      quickSearch: false,  // Add a new property for Quick Search to keep feature but avoid issues on mobile devices
+      quickSearch: false,
     };
   },
   methods: {
@@ -104,7 +105,7 @@ export default {
               const url = release.SecurityInfo ? [release.SecurityInfo] : [];
               results.push({
                 cveId: cveId,
-                osVersions: [os.OSVersion],
+                osVersionDetail: `${release.ProductName} ${release.ProductVersion})`, 
                 isKev: release.ActivelyExploitedCVEs.includes(cveId),
                 platform: platform,
                 urls: url,
@@ -121,13 +122,13 @@ export default {
 
       results.forEach((result) => {
         if (mergedResults[result.cveId]) {
-          mergedResults[result.cveId].osVersions.push(...result.osVersions);
+          mergedResults[result.cveId].osVersionDetails.push(result.osVersionDetail); 
           mergedResults[result.cveId].isKev = mergedResults[result.cveId].isKev || result.isKev;
           mergedResults[result.cveId].urls.push(...result.urls);
         } else {
           mergedResults[result.cveId] = {
             cveId: result.cveId,
-            osVersions: result.osVersions,
+            osVersionDetails: [result.osVersionDetail], 
             isKev: result.isKev,
             urls: result.urls,
           };
@@ -136,7 +137,7 @@ export default {
 
       Object.values(mergedResults).forEach(result => {
         result.urls = [...new Set(result.urls)];
-        result.osVersions = [...new Set(result.osVersions)];
+        result.osVersionDetails = [...new Set(result.osVersionDetails)]; 
       });
 
       return Object.values(mergedResults);
@@ -152,7 +153,7 @@ export default {
       const headers = ['CVE ID', 'OS Versions', 'KEV', 'Apple security content notes'];
       const rows = this.searchResults.map(result => [
         `"${result.cveId}"`,
-        `"${this.formatOsVersions(result.osVersions)}"`,
+        `"${this.formatOsVersionsWithFixes(result.osVersionDetails)}"`,
         result.isKev ? '"Yes"' : '"No"',
         `"${result.urls.join(', ')}"`
       ]);
@@ -170,13 +171,8 @@ export default {
       link.click();
       document.body.removeChild(link);
     },
-    formatOsVersions(osVersions) {
-      return osVersions.map(osVersion => {
-        if (/^\d+$/.test(osVersion)) {
-          return `iOS/iPadOS ${osVersion}`;
-        }
-        return osVersion;
-      }).join(', ');
+    formatOsVersionsWithFixes(osVersionDetails) {
+      return osVersionDetails.join(', ');
     }
   },
 };
@@ -232,13 +228,13 @@ export default {
 .quick-search-container {
   display: inline-flex;
   align-items: center;
-  margin-left: 10px;
+  margin-left: auto;
   gap: 5px;
+  margin-top: 10px;
 }
 
 .quick-search-container input {
   width: auto;
-  margin-right: 5px;
 }
 
 .button-container {
