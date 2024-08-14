@@ -10,7 +10,7 @@
       <button @click="searchCve" class="action-button" :disabled="quickSearch">Search</button>
       <button @click="resetSearch" class="action-button reset-button">Reset</button>
       <label class="quick-search-container">
-        <input type="checkbox" v-model="quickSearch" />
+        <input type="checkbox" v-model="quickSearch" class="quick-search-checkbox" />
         Quick Search
       </label>
     </div>
@@ -33,7 +33,6 @@
               </li>
             </ul>
           </div>
-          
           <div>
             <p><strong>External Links:</strong></p>
             <ul class="external-links-list">
@@ -61,7 +60,7 @@ export default {
     return {
       searchTerm: '',
       searchResults: [],
-      quickSearch: false,  // Quick search toggle
+      quickSearch: false,  // Add a new property for Quick Search to keep feature but avoid issues on mobile devices
     };
   },
   methods: {
@@ -230,18 +229,24 @@ export default {
   background-color: #666;
 }
 
+.quick-search-container {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 10px;
+  gap: 5px;
+}
+
+.quick-search-container input {
+  width: auto;
+  margin-right: 5px;
+}
+
 .button-container {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
   margin-top: 20px;
   align-items: center;
-}
-
-.quick-search-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
 }
 
 .cve-search ul {
@@ -289,30 +294,5 @@ export default {
 
 .cve-search a:hover {
   text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-  .input-container {
-    flex-wrap: wrap;
-  }
-
-  .cve-search input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .action-button,
-  .reset-button,
-  .quick-search-container {
-    flex: 1 1 auto;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .button-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
 }
 </style>
