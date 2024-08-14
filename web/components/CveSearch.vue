@@ -1,11 +1,22 @@
 <template>
   <div class="cve-search">
     <h2>Search CVE</h2>
-    <input v-model="searchTerm" @input="searchCve" placeholder="Enter CVE ID (e.g., CVE-2023-12345 or part of it)" />
+    <div class="input-container">
+      <input
+        v-model="searchTerm"
+        @input="quickSearch ? searchCve() : null"
+        placeholder="Enter CVE ID (e.g., CVE-2023-12345 or part of it)"
+      />
+      <button @click="searchCve" class="action-button" :disabled="quickSearch">Search</button>
+      <button @click="resetSearch" class="action-button reset-button">Reset</button>
+      <label class="quick-search-container">
+        <input type="checkbox" v-model="quickSearch" />
+        Quick Search
+      </label>
+    </div>
     <div class="button-container">
-      <button @click="sortResultsByKev">KEV on Top</button>
-      <button @click="exportToCsv">Export as CSV</button>
-      <button @click="resetSearch" class="reset-button">Reset</button>
+      <button @click="sortResultsByKev" class="action-button">KEV on Top</button>
+      <button @click="exportToCsv" class="action-button">Export as CSV</button>
     </div>
     <div v-if="searchResults.length">
       <h3>Search Results for "{{ searchTerm }}"</h3>
@@ -22,11 +33,13 @@
               </li>
             </ul>
           </div>
+          
           <div>
             <p><strong>External Links:</strong></p>
             <ul class="external-links-list">
               <li><a :href="`https://www.cve.org/CVERecord?id=${result.cveId}`" target="_blank">View {{ result.cveId }} on CVE.org</a></li>
               <li><a :href="`https://nvd.nist.gov/vuln/detail/${result.cveId}`" target="_blank">View {{ result.cveId }} on NVD (NIST)</a></li>
+              <li><a :href="`https://www.opencve.io/cve/${result.cveId}`" target="_blank">View {{ result.cveId }} on OpenCVE</a></li>
               <li v-if="result.isKev"><a :href="`https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=${result.cveId}`" target="_blank">View {{ result.cveId }} on CISA KEV</a></li>
             </ul>
           </div>
@@ -39,6 +52,9 @@
   </div>
 </template>
 
+
+
+
 <script>
 import macOSData from '@v1/macos_data_feed.json';
 import iOSData from '@v1/ios_data_feed.json';
@@ -48,6 +64,7 @@ export default {
     return {
       searchTerm: '',
       searchResults: [],
+      quickSearch: false,  // Add a new property for Quick Search to keep feature but avoid issues on mobile devices
     };
   },
   methods: {
@@ -169,29 +186,29 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
 .cve-search {
   margin: 20px 0;
 }
 
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .cve-search input {
-  width: 100%;
+  flex: 1;
   padding: 10px;
-  margin-bottom: 0; /* Remove margin-bottom to align with the buttons */
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px; /* Increased font size to match */
+  font-size: 16px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-top: 20px; /* Add margin-top to create space between input and buttons */
-}
-
-.cve-search button {
-  display: inline-block;
+.action-button,
+.reset-button {
   padding: 10px 20px;
   border: 1px solid #5672cd;
   border-radius: 5px;
@@ -199,22 +216,31 @@ export default {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  font-size: 16px; /* Increased font size to match */
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
-.cve-search .reset-button {
+.reset-button {
   background-color: #888;
-  color: white;
-  border: 1px solid #888; /* Grey border for the grey button */
-  margin-left: auto; /* Move the reset button to the right */
+  border-color: #888;
 }
 
-.cve-search button:hover {
-  background-color: #455bb2; /* Slightly darker blue for hover */
+.action-button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
 }
 
-.cve-search .reset-button:hover {
+.reset-button:hover {
   background-color: #666;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
 }
 
 .cve-search ul {
@@ -231,8 +257,8 @@ export default {
 
 .cve-search h3 {
   margin-top: 0;
-  font-size: 16px; /* Adjusted font size for the heading */
-  margin: 10px; /* Added margin-bottom for spacing */
+  font-size: 16px;
+  margin: 10px;
 }
 
 .cve-search li p {
@@ -252,7 +278,7 @@ export default {
 .cve-result .security-notes-list li,
 .cve-result .external-links-list li {
   margin-bottom: 5px;
-  border: none; /* Remove border from these items */
+  border: none;
 }
 
 .cve-search a {
@@ -262,7 +288,6 @@ export default {
 
 .cve-search a:hover {
   text-decoration: underline;
-
 }
-
 </style>
+
