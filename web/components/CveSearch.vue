@@ -1,6 +1,10 @@
 <template>
   <div class="cve-search">
     <h2>Search CVE</h2>
+    <label class="quick-search-container">
+        <input type="checkbox" v-model="quickSearch" class="quick-search-checkbox" />
+        Quick Search
+      </label>
     <div class="input-container">
       <input
         v-model="searchTerm"
@@ -15,10 +19,6 @@
       <button @click="sortResultsByKev" class="action-button">KEV on Top</button>
       <button @click="exportToCsv" class="action-button">Export as CSV</button>
     </div>
-    <label class="quick-search-container">
-        <input type="checkbox" v-model="quickSearch" class="quick-search-checkbox" />
-        Quick Search
-      </label>
     <div v-if="searchResults.length">
       <h3>Search Results for "{{ searchTerm }}"</h3>
       <ul>
@@ -230,7 +230,7 @@ export default {
   align-items: center;
   margin-left: auto;
   gap: 5px;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .quick-search-container input {
