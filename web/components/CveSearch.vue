@@ -52,9 +52,6 @@
   </div>
 </template>
 
-
-
-
 <script>
 import macOSData from '@v1/macos_data_feed.json';
 import iOSData from '@v1/ios_data_feed.json';
@@ -64,7 +61,7 @@ export default {
     return {
       searchTerm: '',
       searchResults: [],
-      quickSearch: false,  // Add a new property for Quick Search to keep feature but avoid issues on mobile devices
+      quickSearch: false,  // Quick search toggle
     };
   },
   methods: {
@@ -186,8 +183,6 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
 .cve-search {
   margin: 20px 0;
@@ -243,6 +238,12 @@ export default {
   align-items: center;
 }
 
+.quick-search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
 .cve-search ul {
   list-style-type: none;
   padding: 0;
@@ -289,5 +290,29 @@ export default {
 .cve-search a:hover {
   text-decoration: underline;
 }
-</style>
 
+@media (max-width: 600px) {
+  .input-container {
+    flex-wrap: wrap;
+  }
+
+  .cve-search input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .action-button,
+  .reset-button,
+  .quick-search-container {
+    flex: 1 1 auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+</style>
