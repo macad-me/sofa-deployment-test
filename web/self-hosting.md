@@ -3,9 +3,11 @@ title: Self-hosting SOFA
 layout: doc
 ---
 
-# Quick Start Guides: Self-Hosted SOFA
+# Quick Start Guide: Self-Hosted SOFA
 
-This guide helps you set up a self-hosted SOFA feed and website on GitHub Pages. You can use the web interface or  clone the repository, make the necessary changes, and trigger the deployment workflows. Follow these steps to get it up and running.
+This guide helps you set up a self-hosted SOFA feed and website, starting with hosting on GitHub Pages. You have the option to use the GitHub web interface or clone the repository locally, make the necessary changes, and trigger the deployment workflows. Follow these steps to get everything up and running.
+
+Guides for other platforms like GitLab will be added in the future.
 
 ## SOFA on GitHub (Web UI Only)
 
