@@ -55,7 +55,9 @@ Access the JSON feed directly for integration with automated tools or scripts. T
 
 For guidance on how to utilize and implement the feed in scripts, explore examples in the [Tools section](https://github.com/macadmins/sofa/tree/main/tool-scripts), and read [this blog post](https://grahamrpugh.com/2024/07/22/sofa-new-feed.html).
 
+
 ## Self-hosting
 
-For production use, we strongly recommend self-hosting the feed to enhance reliability and security. You can do this by forking this repo and setting up a GitHub Action to set up a webhost and publish the feed.
+For production use, we highly recommend self-hosting the feed to improve reliability and security. This can be easily done by forking this repository and setting up a GitHub Action to deploy the feed on your own webhost.
 
+For detailed instructions, check out our [Quick Start Guide to Self-Hosting SOFA](self-hosting.md).
