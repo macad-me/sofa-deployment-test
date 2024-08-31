@@ -27,8 +27,8 @@
         <p>
           CVEs: 
           <span v-if="Object.keys(info.CVEs).length">
-            <span v-for="(cve, idx) in Object.keys(info.CVEs)" :key="idx">
-              <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < Object.keys(info.CVEs).length - 1 ? ', ' : '' }}
+            <span v-for="(cve, idx) in sortedCVEs(info.CVEs)" :key="idx">
+              <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedCVEs(info.CVEs).length - 1 ? ', ' : '' }}
             </span>
           </span>
           <span v-else>0</span>
@@ -101,7 +101,14 @@ export default {
     isCritical(url) {
       return url && url.startsWith('http');
     },
-  },
+    sortedCVEs(CVEs) {
+      return Object.keys(CVEs).sort((a, b) => {
+        const numA = parseInt(a.split('-').pop());
+        const numB = parseInt(b.split('-').pop());
+        return numB - numA;
+      });
+    }
+  }
 };
 </script>
 
