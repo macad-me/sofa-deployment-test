@@ -18,8 +18,8 @@
         <p>
           Actively Exploited Vulnerabilities (KEV): 
           <span v-if="info.ActivelyExploitedCVEs.length">
-            <span v-for="(cve, idx) in info.ActivelyExploitedCVEs" :key="idx">
-              🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < info.ActivelyExploitedCVEs.length - 1 ? ', ' : '' }}
+            <span v-for="(cve, idx) in sortedKEVs(info.ActivelyExploitedCVEs)" :key="idx">
+              🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedKEVs(info.ActivelyExploitedCVEs).length - 1 ? ', ' : '' }}
             </span>
           </span>
           <span v-else>0</span>
@@ -103,9 +103,26 @@ export default {
     },
     sortedCVEs(CVEs) {
       return Object.keys(CVEs).sort((a, b) => {
-        const numA = parseInt(a.split('-').pop());
-        const numB = parseInt(b.split('-').pop());
-        return numB - numA;
+        const yearA = parseInt(a.split('-')[1]);
+        const yearB = parseInt(b.split('-')[1]);
+        if (yearA === yearB) {
+          const numA = parseInt(a.split('-').pop());
+          const numB = parseInt(b.split('-').pop());
+          return numB - numA;
+        }
+        return yearB - yearA;
+      });
+    },
+    sortedKEVs(KEVs) {
+      return KEVs.sort((a, b) => {
+        const yearA = parseInt(a.split('-')[1]);
+        const yearB = parseInt(b.split('-')[1]);
+        if (yearA === yearB) {
+          const numA = parseInt(a.split('-').pop());
+          const numB = parseInt(b.split('-').pop());
+          return numB - numA;
+        }
+        return yearB - yearA;
       });
     }
   }
