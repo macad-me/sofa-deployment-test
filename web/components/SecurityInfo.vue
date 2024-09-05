@@ -1,46 +1,51 @@
 <template>
   <div>
-    <div v-if="securityData && securityData.length">
-      <div v-for="(info, index) in securityData" :key="index" class="security-info-item">
-        <h3>{{ info.UpdateName }}</h3>
-        <p>
-          Release Date: {{ formatDate(info.ReleaseDate) }} 
-          <span v-if="isCritical(info.SecurityInfo)" title="Critical security updates included in this release. Please review for impact.">⚠️</span>
-        </p>
-        <p>{{ info.UpdateName }}</p>
-        <p>
-          Security Info: 
-          <a :href="createSafeLink(info.SecurityInfo)" target="_blank">
-            {{ info.SecurityInfo && info.SecurityInfo !== 'This update has no published CVE entries.' ? info.SecurityInfo : 'This update has no published CVE entries.' }}
-          </a>
-        </p>
-        <p>Vulnerabilities Addressed: {{ Object.keys(info.CVEs).length || 0 }}</p>
-        <p>
-          Actively Exploited Vulnerabilities (KEV): 
-          <span v-if="info.ActivelyExploitedCVEs.length">
-            <span v-for="(cve, idx) in sortedKEVs(info.ActivelyExploitedCVEs)" :key="idx">
-              🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedKEVs(info.ActivelyExploitedCVEs).length - 1 ? ', ' : '' }}
-            </span>
-          </span>
-          <span v-else>0</span>
-        </p>
-        <p>
-          CVEs: 
-          <span v-if="Object.keys(info.CVEs).length">
-            <span v-for="(cve, idx) in sortedCVEs(info.CVEs)" :key="idx">
-              <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedCVEs(info.CVEs).length - 1 ? ', ' : '' }}
-            </span>
-          </span>
-          <span v-else>0</span>
-        </p>
-        <p>Days to Prev. Release: {{ info.DaysSincePreviousRelease }}</p>
-      </div>
+    <div v-if="stage === 'beta'">
+      <p>Security information will be available when no longer in beta.</p>
     </div>
     <div v-else>
-      Loading...
-    </div>
-    <div v-if="error">
-      {{ error }}
+      <div v-if="securityData && securityData.length">
+        <div v-for="(info, index) in securityData" :key="index" class="security-info-item">
+          <h3>{{ info.UpdateName }}</h3>
+          <p>
+            Release Date: {{ formatDate(info.ReleaseDate) }}
+            <span v-if="isCritical(info.SecurityInfo)" title="Critical security updates included in this release. Please review for impact.">⚠️</span>
+          </p>
+          <p>{{ info.UpdateName }}</p>
+          <p>
+            Security Info:
+            <a :href="createSafeLink(info.SecurityInfo)" target="_blank">
+              {{ info.SecurityInfo && info.SecurityInfo !== 'This update has no published CVE entries.' ? info.SecurityInfo : 'This update has no published CVE entries.' }}
+            </a>
+          </p>
+          <p>Vulnerabilities Addressed: {{ Object.keys(info.CVEs).length || 0 }}</p>
+          <p>
+            Actively Exploited Vulnerabilities (KEV):
+            <span v-if="info.ActivelyExploitedCVEs.length">
+              <span v-for="(cve, idx) in sortedKEVs(info.ActivelyExploitedCVEs)" :key="idx">
+                🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedKEVs(info.ActivelyExploitedCVEs).length - 1 ? ', ' : '' }}
+              </span>
+            </span>
+            <span v-else>0</span>
+          </p>
+          <p>
+            CVEs:
+            <span v-if="Object.keys(info.CVEs).length">
+              <span v-for="(cve, idx) in sortedCVEs(info.CVEs)" :key="idx">
+                <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedCVEs(info.CVEs).length - 1 ? ', ' : '' }}
+              </span>
+            </span>
+            <span v-else>0</span>
+          </p>
+          <p>Days to Prev. Release: {{ info.DaysSincePreviousRelease }}</p>
+        </div>
+      </div>
+      <div v-else>
+        Loading...
+      </div>
+      <div v-if="error">
+        {{ error }}
+      </div>
     </div>
   </div>
 </template>
@@ -59,6 +64,10 @@ export default {
       type: String,
       required: true,
     },
+    stage: {
+      type: String,
+      default: 'release', // Default to 'release'
+    },
   },
   data() {
     return {
@@ -67,7 +76,9 @@ export default {
     };
   },
   mounted() {
-    this.loadSecurityData();
+    if (this.stage !== 'beta') {
+      this.loadSecurityData();
+    }
   },
   methods: {
     loadSecurityData() {
@@ -92,7 +103,6 @@ export default {
     createSafeLink(url) {
       const tempAnchorElement = document.createElement('a');
       tempAnchorElement.href = url;
-      // Replace specific text with a generic link
       if (url === 'This update has no published CVE entries.') {
         return 'https://support.apple.com/en-ca/100100';
       }
