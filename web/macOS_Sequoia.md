@@ -16,6 +16,7 @@ This is preliminary information about the latest macOS beta releases.
 
 
 <script setup>
+import BetaInfo from './components/BetaInfo.vue';
 import LatestFeatures from './components/LatestFeatures.vue';
 import SecurityInfo from './components/SecurityInfo.vue';
 
@@ -25,13 +26,15 @@ const frontmatter = {
 };
 </script>
 
+
+## Beta Information for Sequoia 15
+<BetaInfo :title="frontmatter.title" :platform="frontmatter.platform" />
+
 ## Latest Release Info
 <LatestFeatures :title="frontmatter.title" :platform="frontmatter.platform" />
 
 ## Essential Apple Resources
 <LinksComponent :title="frontmatter.title" :platform="frontmatter.platform" />
-
-
 
 ## Security Information
 <SecurityInfo :title="frontmatter.title" :platform="frontmatter.platform" />
