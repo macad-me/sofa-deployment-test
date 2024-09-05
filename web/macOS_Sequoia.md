@@ -14,28 +14,27 @@ This is preliminary information about the latest macOS beta releases.
 
 - Apple Sequoia Preview https://www.apple.com/macos/macos-sequoia-preview/
 
-
 <script setup>
 import BetaInfo from './components/BetaInfo.vue';
 import LatestFeatures from './components/LatestFeatures.vue';
 import SecurityInfo from './components/SecurityInfo.vue';
+import LinksComponent from './components/LinksComponent.vue'; <!-- Assuming this is a valid component -->
 
 const frontmatter = {
   title: 'Sequoia 15',
   platform: 'macOS',
-  stage: 'beta',
+  stage: 'beta',  // The stage is beta for this example
 };
 </script>
 
-
 ## Beta Information for Sequoia 15
-<BetaInfo :title="frontmatter.title" :platform="frontmatter.platform" />
+<BetaInfo :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
 ## Latest Release Info
-<LatestFeatures :title="frontmatter.title" :platform="frontmatter.platform" />
+<LatestFeatures :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
 ## Essential Apple Resources
-<LinksComponent :title="frontmatter.title" :platform="frontmatter.platform" />
+<LinksComponent :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
 ## Security Information
-<SecurityInfo :title="frontmatter.title" :platform="frontmatter.platform" />
+<SecurityInfo :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
