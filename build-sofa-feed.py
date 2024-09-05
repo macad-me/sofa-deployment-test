@@ -556,7 +556,7 @@ def format_iso_date(date_str: str) -> str:
 def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> list:
     """Fetch security releases for the given OS type and version, sourced from HT201222 page"""
     url = (
-        "https://support.apple.com/en-us/HT201222"  # TODO: refactor to fetch once, only
+        "https://support.apple.com/en-us/100100"  # TODO: refactor to fetch once, only
     )
     response = requests.get(url)
     security_releases = []
@@ -581,6 +581,9 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                     link = cells[0].find("a", href=True)
                     if link:
                         link_info = link["href"]
+                        # Ensure the link has a full URL
+                        if not link_info.startswith("http"):
+                            link_info = "https://support.apple.com" + link_info
                         cves_exploitation_status = fetch_cves(link_info)
                     else:
                         link_info = None
@@ -654,6 +657,7 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
     else:
         print("Failed to retrieve security releases.")
         return []
+
 
 
 def process_os_version(os_type: str, os_version: str, name_info: str) -> str:
