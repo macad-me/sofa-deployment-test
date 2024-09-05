@@ -35,7 +35,7 @@ export default defineConfig({
       {
         text: 'macOS',
         items: [
-          { text: 'Sequioa 15', link: '/macOS_Sequoia' },
+          { text: 'Sequoia 15', link: '/macOS_Sequoia' },
           { text: 'Sonoma 14', link: '/macOS_Sonoma' },
           { text: 'Ventura 13', link: '/macOS_Ventura' },
           { text: 'Monterey 12', link: '/macOS_Monterey' },

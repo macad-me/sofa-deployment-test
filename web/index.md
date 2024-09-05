@@ -10,7 +10,7 @@ hero:
   tagline: SOFA supports MacAdmins by efficiently tracking and surfacing information on updates for macOS and iOS.
   actions:
     - theme: brand
-      text: Sequioa 15
+      text: Sequoia 15
       link: /macOS_Sequoia
     - theme: brand
       text: Sonoma 14
