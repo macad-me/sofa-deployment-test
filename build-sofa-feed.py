@@ -12,6 +12,7 @@ import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from urllib.request import urlopen
+from urllib.parse import urljoin
 
 import certifi  # included in requests, as provided in requirements.txt
 import requests
@@ -580,10 +581,7 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                 ):  # Filter based on the targeted OS version
                     link = cells[0].find("a", href=True)
                     if link:
-                        link_info = link["href"]
-                        # Ensure the link has a full URL
-                        if not link_info.startswith("http"):
-                            link_info = "https://support.apple.com" + link_info
+                        link_info = urljoin("https://support.apple.com", link["href"])
                         cves_exploitation_status = fetch_cves(link_info)
                     else:
                         link_info = None
@@ -657,8 +655,6 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
     else:
         print("Failed to retrieve security releases.")
         return []
-
-
 
 def process_os_version(os_type: str, os_version: str, name_info: str) -> str:
     """Process the OS version information from the given name_info.
