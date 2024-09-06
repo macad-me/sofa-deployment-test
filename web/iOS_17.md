@@ -21,10 +21,10 @@ const frontmatter = {
 </script>
 
 ## Latest Release Info
-<LatestFeatures :title="frontmatter.title" :platform="frontmatter.platform" />
+<LatestFeatures :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
 ## Essential Apple Resources
-<LinksComponent :title="frontmatter.title" :platform="frontmatter.platform" />
+<LinksComponent :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
 ## Security Information
-<SecurityInfo :title="frontmatter.title" :platform="frontmatter.platform" />
+<SecurityInfo :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />

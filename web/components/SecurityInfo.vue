@@ -1,51 +1,50 @@
 <template>
   <div>
-    <div v-if="stage === 'beta'">
+    <!-- Show beta message only when there's no security data -->
+    <div v-if="!securityData && stage === 'beta'">
       <p>Security information will be available when no longer in beta.</p>
     </div>
+    <div v-else-if="securityData && securityData.length">
+      <div v-for="(info, index) in securityData" :key="index" class="security-info-item">
+        <h3>{{ info.UpdateName }}</h3>
+        <p>
+          Release Date: {{ formatDate(info.ReleaseDate) }}
+          <span v-if="isCritical(info.SecurityInfo)" title="Critical security updates included in this release. Please review for impact.">⚠️</span>
+        </p>
+        <p>{{ info.UpdateName }}</p>
+        <p>
+          Security Info:
+          <a :href="createSafeLink(info.SecurityInfo)" target="_blank">
+            {{ info.SecurityInfo && info.SecurityInfo !== 'This update has no published CVE entries.' ? info.SecurityInfo : 'This update has no published CVE entries.' }}
+          </a>
+        </p>
+        <p>Vulnerabilities Addressed: {{ Object.keys(info.CVEs).length || 0 }}</p>
+        <p>
+          Actively Exploited Vulnerabilities (KEV):
+          <span v-if="info.ActivelyExploitedCVEs.length">
+            <span v-for="(cve, idx) in sortedKEVs(info.ActivelyExploitedCVEs)" :key="idx">
+              🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedKEVs(info.ActivelyExploitedCVEs).length - 1 ? ', ' : '' }}
+            </span>
+          </span>
+          <span v-else>0</span>
+        </p>
+        <p>
+          CVEs:
+          <span v-if="Object.keys(info.CVEs).length">
+            <span v-for="(cve, idx) in sortedCVEs(info.CVEs)" :key="idx">
+              <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedCVEs(info.CVEs).length - 1 ? ', ' : '' }}
+            </span>
+          </span>
+          <span v-else>0</span>
+        </p>
+        <p>Days to Prev. Release: {{ info.DaysSincePreviousRelease }}</p>
+      </div>
+    </div>
     <div v-else>
-      <div v-if="securityData && securityData.length">
-        <div v-for="(info, index) in securityData" :key="index" class="security-info-item">
-          <h3>{{ info.UpdateName }}</h3>
-          <p>
-            Release Date: {{ formatDate(info.ReleaseDate) }}
-            <span v-if="isCritical(info.SecurityInfo)" title="Critical security updates included in this release. Please review for impact.">⚠️</span>
-          </p>
-          <p>{{ info.UpdateName }}</p>
-          <p>
-            Security Info:
-            <a :href="createSafeLink(info.SecurityInfo)" target="_blank">
-              {{ info.SecurityInfo && info.SecurityInfo !== 'This update has no published CVE entries.' ? info.SecurityInfo : 'This update has no published CVE entries.' }}
-            </a>
-          </p>
-          <p>Vulnerabilities Addressed: {{ Object.keys(info.CVEs).length || 0 }}</p>
-          <p>
-            Actively Exploited Vulnerabilities (KEV):
-            <span v-if="info.ActivelyExploitedCVEs.length">
-              <span v-for="(cve, idx) in sortedKEVs(info.ActivelyExploitedCVEs)" :key="idx">
-                🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedKEVs(info.ActivelyExploitedCVEs).length - 1 ? ', ' : '' }}
-              </span>
-            </span>
-            <span v-else>0</span>
-          </p>
-          <p>
-            CVEs:
-            <span v-if="Object.keys(info.CVEs).length">
-              <span v-for="(cve, idx) in sortedCVEs(info.CVEs)" :key="idx">
-                <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedCVEs(info.CVEs).length - 1 ? ', ' : '' }}
-              </span>
-            </span>
-            <span v-else>0</span>
-          </p>
-          <p>Days to Prev. Release: {{ info.DaysSincePreviousRelease }}</p>
-        </div>
-      </div>
-      <div v-else>
-        Loading...
-      </div>
-      <div v-if="error">
-        {{ error }}
-      </div>
+      Loading...
+    </div>
+    <div v-if="error">
+      {{ error }}
     </div>
   </div>
 </template>
@@ -76,9 +75,7 @@ export default {
     };
   },
   mounted() {
-    if (this.stage !== 'beta') {
-      this.loadSecurityData();
-    }
+    this.loadSecurityData();
   },
   methods: {
     loadSecurityData() {
@@ -117,7 +114,7 @@ export default {
         const yearB = parseInt(b.split('-')[1]);
         if (yearA === yearB) {
           const numA = parseInt(a.split('-').pop());
-          const numB = parseInt(b.split('-').pop());
+          const numB = parseInt(a.split('-').pop());
           return numB - numA;
         }
         return yearB - yearA;
@@ -129,7 +126,7 @@ export default {
         const yearB = parseInt(b.split('-')[1]);
         if (yearA === yearB) {
           const numA = parseInt(a.split('-').pop());
-          const numB = parseInt(b.split('-').pop());
+          const numB = parseInt(a.split('-').pop());
           return numB - numA;
         }
         return yearB - yearA;
