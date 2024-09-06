@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- Show beta message only when there's no security data and stage is beta -->
-    <div v-if="!securityData && !error && stage === 'beta'">
-      <p>Security information will be available when no longer in beta.</p>
+    <!-- Show beta message if stage is beta and no security data is available -->
+    <div v-if="!securityData && stage === 'beta'">
+      <p>Feature information will be available when no longer in beta.</p>
     </div>
 
     <!-- Show security data when available -->
@@ -43,13 +43,13 @@
       </div>
     </div>
 
-    <!-- Show loading if no data yet -->
+    <!-- Show loading if no data yet and no error -->
     <div v-else-if="!error">
       Loading...
     </div>
 
-    <!-- Show error message if data fails to load -->
-    <div v-if="error">
+    <!-- Show error message if data fails to load and stage is not beta -->
+    <div v-if="error && stage !== 'beta'">
       {{ error }}
     </div>
   </div>

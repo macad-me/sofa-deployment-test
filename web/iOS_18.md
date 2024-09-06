@@ -3,10 +3,10 @@ title: 18
 platform: iOS
 ---
 
-# iOS/iPadOS 18 <Badge type="tip" text="Current Version (N-0)" />
+# iOS/iPadOS 18 <Badge type="tip" text="beta version" />
 
-::: tip RECOMMENDED RELEASE FOR MOST UP-TO-DATE SECURITY
-This is the latest version of iOS/iPadOS that receives the most up-to-date security patches and updates, making it the recommended choice to protect your devices.
+::: warning BETA VERSION 
+This is preliminary information about the latest iOS/iPadOS beta releases.
 :::
 
 
