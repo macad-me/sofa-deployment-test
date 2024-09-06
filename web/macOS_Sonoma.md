@@ -18,6 +18,7 @@ import SecurityInfo from './components/SecurityInfo.vue';
 const frontmatter = {
   title: 'Sonoma 14',
   platform: 'macOS',
+  stage: 'beta',
 };
 </script>
 

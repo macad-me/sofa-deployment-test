@@ -1,48 +1,46 @@
 <template>
   <div>
-    <div v-if="stage === 'beta'">
+    <div v-if="!osData && stage === 'beta'">
       <p>Feature information will be available when no longer in beta.</p>
     </div>
-    <div v-else>
-      <div v-if="osData">
-        <div class="row-container">
-          <div class="feature-column">
-            <img :src="osImage" alt="OS Image" class="os-image" />
-            <h3>Latest {{ platform }} {{ title }}</h3>
-            <p><strong>OS Version:</strong> {{ osData.OSVersion }}</p>
-            <p><strong>Product Version:</strong> {{ osData.Latest.ProductVersion }}</p>
-            <p><strong>Build:</strong> {{ osData.Latest.Build }}</p>
-            <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
-            <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
-            <div v-if="osData.OSVersion === 'Sonoma 14'">
-              <p v-if="installationApps?.LatestUMA?.url">
-                <strong>Installer Package: </strong>
-                <a :href="installationApps.LatestUMA.url" target="_blank">Download</a>
-              </p>
-              <p v-if="installationApps?.LatestMacIPSW?.macos_ipsw_url">
-                <strong>Current IPSW file: </strong>
-                <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
-              </p>
-            </div>
-          </div>
-
-          <div v-if="platform === 'macOS'" class="feature-column">
-            <img :src="getAssetPath('images/SWUpdate.png')" alt="XProtect Image" class="os-image" />
-            <h3>Latest XProtect</h3>
-            <p><strong>XProtect Framework:</strong> {{ xProtectData?.XProtectFramework || 'N/A' }}</p>
-            <p><strong>Plugin Service:</strong> {{ xProtectData?.PluginService || 'N/A' }}</p>
-            <p><strong>Release Date:</strong> {{ xProtectData ? formatDate(xProtectData.ReleaseDate) : 'N/A' }}</p>
-            <p><strong>Time Since Release:</strong> {{ xProtectData ? timeSinceRelease(xProtectData.ReleaseDate) : 'N/A' }}</p>
-            <p v-if="xProtectData?.Remediator"><strong>XProtect Remediator:</strong> {{ xProtectData.Remediator }}</p>
-            <p v-if="xProtectData?.ConfigData"><strong>XProtect Config Data:</strong> {{ xProtectData.ConfigData }}</p>
-            <p v-if="xProtectData?.PlistReleaseDate"><strong>Plist Release Date:</strong> {{ formatDate(xProtectData.PlistReleaseDate) }}</p>
-            <p v-if="xProtectData?.PlistReleaseDate"><strong>Time Since Plist Release:</strong> {{ timeSinceRelease(xProtectData.PlistReleaseDate) }}</p>
+    <div v-else-if="osData">
+      <div class="row-container">
+        <div class="feature-column">
+          <img :src="osImage" alt="OS Image" class="os-image" />
+          <h3>Latest {{ platform }} {{ title }}</h3>
+          <p><strong>OS Version:</strong> {{ osData.OSVersion }}</p>
+          <p><strong>Product Version:</strong> {{ osData.Latest.ProductVersion }}</p>
+          <p><strong>Build:</strong> {{ osData.Latest.Build }}</p>
+          <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
+          <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
+          <div v-if="osData.OSVersion === 'Sonoma 14'">
+            <p v-if="installationApps?.LatestUMA?.url">
+              <strong>Installer Package: </strong>
+              <a :href="installationApps.LatestUMA.url" target="_blank">Download</a>
+            </p>
+            <p v-if="installationApps?.LatestMacIPSW?.macos_ipsw_url">
+              <strong>Current IPSW file: </strong>
+              <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
+            </p>
           </div>
         </div>
+
+        <div v-if="platform === 'macOS'" class="feature-column">
+          <img :src="getAssetPath('images/SWUpdate.png')" alt="XProtect Image" class="os-image" />
+          <h3>Latest XProtect</h3>
+          <p><strong>XProtect Framework:</strong> {{ xProtectData?.XProtectFramework || 'N/A' }}</p>
+          <p><strong>Plugin Service:</strong> {{ xProtectData?.PluginService || 'N/A' }}</p>
+          <p><strong>Release Date:</strong> {{ xProtectData ? formatDate(xProtectData.ReleaseDate) : 'N/A' }}</p>
+          <p><strong>Time Since Release:</strong> {{ xProtectData ? timeSinceRelease(xProtectData.ReleaseDate) : 'N/A' }}</p>
+          <p v-if="xProtectData?.Remediator"><strong>XProtect Remediator:</strong> {{ xProtectData.Remediator }}</p>
+          <p v-if="xProtectData?.ConfigData"><strong>XProtect Config Data:</strong> {{ xProtectData.ConfigData }}</p>
+          <p v-if="xProtectData?.PlistReleaseDate"><strong>Plist Release Date:</strong> {{ formatDate(xProtectData.PlistReleaseDate) }}</p>
+          <p v-if="xProtectData?.PlistReleaseDate"><strong>Time Since Plist Release:</strong> {{ timeSinceRelease(xProtectData.PlistReleaseDate) }}</p>
+        </div>
       </div>
-      <div v-else>
-        Loading data...
-      </div>
+    </div>
+    <div v-else>
+      Loading data...
     </div>
   </div>
 </template>
@@ -71,13 +69,11 @@ export default {
       osData: null,
       installationApps: null,
       xProtectData: null,
-      osImage: '',
+      osImage: '', 
     };
   },
   mounted() {
-    if (this.stage !== 'beta') {
-      this.loadData();
-    }
+    this.loadData();
   },
   methods: {
     loadData() {
@@ -87,9 +83,17 @@ export default {
         this.osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
 
         if (this.osData) {
+          console.log('Loaded OS Data:', this.osData);
+
           if (this.osData.OSVersion === 'Sonoma 14') {
             this.installationApps = data.InstallationApps;
+            if (this.installationApps) {
+              console.log('Loaded InstallationApps Data:', this.installationApps);
+            } else {
+              console.warn('InstallationApps not found in data');
+            }
           }
+
           this.osImage = this.getOsImage(this.platform, this.title);
 
           if (this.platform === 'macOS') {
@@ -101,6 +105,7 @@ export default {
               ConfigData: data.XProtectPlistConfigData['com.apple.XProtect'],
               PlistReleaseDate: data.XProtectPlistConfigData.ReleaseDate,
             };
+            console.log('Loaded XProtect Data:', this.xProtectData);
           }
         } else {
           console.error('No data found for the specified OS version.');
@@ -130,7 +135,7 @@ export default {
           return this.getAssetPath('images/ios_16.png');
         }
       }
-      return this.getAssetPath('images/default.png');
+      return this.getAssetPath('images/default.png'); // Fallback image
     },
     getAssetPath(relativePath) {
       return new URL(`/${relativePath}`, import.meta.url).href;
