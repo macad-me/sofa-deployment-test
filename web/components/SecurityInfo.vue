@@ -1,9 +1,11 @@
 <template>
   <div>
-    <!-- Show beta message only when there's no security data -->
-    <div v-if="!securityData && stage === 'beta'">
+    <!-- Show beta message only when there's no security data and stage is beta -->
+    <div v-if="!securityData && !error && stage === 'beta'">
       <p>Security information will be available when no longer in beta.</p>
     </div>
+
+    <!-- Show security data when available -->
     <div v-else-if="securityData && securityData.length">
       <div v-for="(info, index) in securityData" :key="index" class="security-info-item">
         <h3>{{ info.UpdateName }}</h3>
@@ -40,9 +42,13 @@
         <p>Days to Prev. Release: {{ info.DaysSincePreviousRelease }}</p>
       </div>
     </div>
-    <div v-else>
+
+    <!-- Show loading if no data yet -->
+    <div v-else-if="!error">
       Loading...
     </div>
+
+    <!-- Show error message if data fails to load -->
     <div v-if="error">
       {{ error }}
     </div>
@@ -126,7 +132,7 @@ export default {
         const yearB = parseInt(b.split('-')[1]);
         if (yearA === yearB) {
           const numA = parseInt(a.split('-').pop());
-          const numB = parseInt(a.split('-').pop());
+          const numB = parseInt(b.split('-').pop());
           return numB - numA;
         }
         return yearB - yearA;
