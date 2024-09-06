@@ -553,12 +553,6 @@ def format_iso_date(date_str: str) -> str:
             pass
     return date_str
 
-
-import requests
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
-import re
-
 def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> list:
     """Fetch security releases for the given OS type and version from multiple sources."""
     urls = [
