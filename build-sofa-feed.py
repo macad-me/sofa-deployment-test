@@ -212,32 +212,29 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         for release in config["softwareReleases"]
         if release["osType"] == os_type
     ]
-    print(
-        f"Software releases for {os_type}: {software_releases}"
-    )  # TODO: as per below, this is weird, revisit  noqa: E501 pylint: disable=line-too-long
+    print(f"Software releases for {os_type}: {software_releases}")
+    
     feed_structure: dict = {
         "OSVersions": [],
     }
+
     if os_type == "macOS":
         catalog_url: str = (
-            "https://swscan.apple.com/content/catalogs/others/index-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"  # noqa: E501 pylint: disable=line-too-long
+            "https://swscan.apple.com/content/catalogs/others/index-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
         )
         catalog_content = fetch_content(catalog_url)
-        config_match = re.search(
-            r"https.*XProtectPlistConfigData.*?\.pkm", catalog_content
-        )
+        config_match = re.search(r"https.*XProtectPlistConfigData.*?\.pkm", catalog_content)
         if config_match:
             plist_url = config_match.group(0)
         payload_match = re.search(r"https.*XProtectPayloads.*?\.pkm", catalog_content)
         if payload_match:
             payloads_url = payload_match.group(0)
         plist_info = extract_xprotect_versions_and_post_date(catalog_content, plist_url)
-        payloads_info = extract_xprotect_versions_and_post_date(
-            catalog_content, payloads_url
-        )
+        payloads_info = extract_xprotect_versions_and_post_date(catalog_content, payloads_url)
         feed_structure["XProtectPayloads"] = payloads_info
         feed_structure["XProtectPlistConfigData"] = plist_info
         model_files = [
+            ("model_identifier_sequoia.json", "macOS Sequoia 15"),
             ("model_identifier_sonoma.json", "macOS Sonoma 14"),
             ("model_identifier_ventura.json", "macOS Ventura 13"),
             ("model_identifier_monterey.json", "macOS Monterey 12"),
@@ -251,9 +248,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         ctx.load_verify_locations(cafile=certifi.where())
         filtered_dict = {}
         for slug, prod_dict in unrefined_products.items():
-            title, build, version = process_uma.get_metadata(
-                ctx, prod_dict.get("dist_url")
-            )
+            title, build, version = process_uma.get_metadata(ctx, prod_dict.get("dist_url"))
             if title:
                 filtered_dict[slug] = {
                     "title": title,
@@ -266,112 +261,95 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         uma_list = {
             "LatestUMA": latest,
             "AllPreviousUMA": rest,
-        }  # TODO: flatten all this down into the one call and subsequent assignment  # noqa: E501 pylint: disable=line-too-long
+        }
         feed_structure["InstallationApps"] = uma_list
-        # ipsw (latest/'most prevalent' in mesu only as of v1) parsing
-        mesu_url: str = (
-            "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"  # noqa: E501 pylint: disable=line-too-long
-        )
+
+        # IPSW parsing
+        mesu_url: str = "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"
         try:
             with urlopen(mesu_url, context=ctx) as response:
                 mesu_cat = response.read()
-        except (Exception, OSError) as erroir:  # pylint: disable=broad-exception-caught
+        except (Exception, OSError) as erroir:
             print(f"Error fetching mesu assets, {erroir}")
             raise
         mesu_catalog: dict = plistlib.loads(mesu_cat)
         restore_datas = process_ipsw.extract_ipsw_raw(mesu_catalog)
-        prevalent_url, prevalent_build, prevalent_version = (
-            process_ipsw.process_ipsw_data(restore_datas)
-        )
+        prevalent_url, prevalent_build, prevalent_version = process_ipsw.process_ipsw_data(restore_datas)
         apple_slug = process_ipsw.process_slug(prevalent_url)
         print(f"Extracted IPSW\n{prevalent_url}")
-        feed_structure["InstallationApps"]["LatestMacIPSW"] = (
-            {  # TODO: flatten all this down into the one call and subsequent assignment, too  # noqa: E501 pylint: disable=line-too-long
-                "macos_ipsw_url": prevalent_url,
-                "macos_ipsw_build": prevalent_build,
-                "macos_ipsw_version": prevalent_version,
-                "macos_ipsw_apple_slug": apple_slug,
-            }
-        )
+        feed_structure["InstallationApps"]["LatestMacIPSW"] = {
+            "macos_ipsw_url": prevalent_url,
+            "macos_ipsw_build": prevalent_build,
+            "macos_ipsw_version": prevalent_version,
+            "macos_ipsw_apple_slug": apple_slug,
+        }
+
     elif os_type == "iOS":
         # Initialize os_versions dynamically for iOS
-        os_versions = [
-            ("iOS", release["name"], None) for release in software_releases
-        ]  # Populates "iOS 18" when config only has "18" # noqa: E501 pylint: disable=line-too-long
+        os_versions = [("iOS", release["name"], None) for release in software_releases]
         print(f"OS versions for {os_type}: {os_versions}")
         print(f"Skipping fetching XProtect and 'Models' data for {os_type}.")
     else:
-        print(
-            "Invalid OS type specified."
-        )  # TODO: should probably raise/exit if this happens
+        print("Invalid OS type specified.")
+
     latest_versions: dict = {}
     latest_version_info: dict = {}
+
     for release in software_releases:
         os_version_name = release["name"]
-        latest_version_info = fetch_latest_os_version_info(
-            os_type, os_version_name, gdmf_data
-        )
+        latest_version_info = fetch_latest_os_version_info(os_type, os_version_name, gdmf_data)
         if latest_version_info:
             latest_versions[os_version_name] = latest_version_info
+
     print("Fetching OS version information...")
+
     for release in software_releases:
         os_version_name = release["name"]
         latest_version_info = latest_versions.get(os_version_name, {})
+
         if latest_version_info is not None:
             # Format dates, handle missing 'ReleaseDate'
             if "ReleaseDate" in latest_version_info:
-                latest_version_info["ReleaseDate"] = format_iso_date(
-                    latest_version_info["ReleaseDate"]
-                )
+                latest_version_info["ReleaseDate"] = format_iso_date(latest_version_info["ReleaseDate"])
             else:
                 print(f"Warning: 'ReleaseDate' missing for {os_version_name}")
                 latest_version_info["ReleaseDate"] = "Unknown"
-                
+
             if "ExpirationDate" in latest_version_info:
-                latest_version_info["ExpirationDate"] = format_iso_date(
-                    latest_version_info["ExpirationDate"]
-                )
+                latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info["ExpirationDate"])
+
+            # Handle missing 'ProductVersion'
+            if "ProductVersion" in latest_version_info:
+                product_version = latest_version_info["ProductVersion"]
+            else:
+                print(f"Warning: 'ProductVersion' missing for {os_version_name}")
+                product_version = "Unknown"  # Set a default value or handle accordingly
+
             if os_type == "macOS":
-                latest_security_info = fetch_security_releases(
-                    os_type, latest_version_info["ProductVersion"], gdmf_data
-                )
+                latest_security_info = fetch_security_releases(os_type, product_version, gdmf_data)
                 if latest_security_info:
-                    latest_version_info["SecurityInfo"] = latest_security_info[0][
-                        "SecurityInfo"
-                    ]
+                    latest_version_info["SecurityInfo"] = latest_security_info[0]["SecurityInfo"]
                     latest_version_info["CVEs"] = latest_security_info[0]["CVEs"]
-                    latest_version_info["ActivelyExploitedCVEs"] = latest_security_info[
-                        0
-                    ]["ActivelyExploitedCVEs"]
-                    latest_version_info["UniqueCVEsCount"] = latest_security_info[0][
-                        "UniqueCVEsCount"
-                    ]
+                    latest_version_info["ActivelyExploitedCVEs"] = latest_security_info[0]["ActivelyExploitedCVEs"]
+                    latest_version_info["UniqueCVEsCount"] = latest_security_info[0]["UniqueCVEsCount"]
                 compatible_machines = add_compatible_machines(os_version_name)
-                feed_structure["OSVersions"].append(
-                    {
-                        "OSVersion": os_version_name,
-                        "Latest": latest_version_info,
-                        "SecurityReleases": fetch_security_releases(  # TODO: second instance of fetching HT201222 # noqa: E501 pylint: disable=line-too-long
-                            os_type, os_version_name, gdmf_data
-                        ),
-                        "SupportedModels": compatible_machines,  # Add compatible machines here
-                    }
-                )
+                feed_structure["OSVersions"].append({
+                    "OSVersion": os_version_name,
+                    "Latest": latest_version_info,
+                    "SecurityReleases": fetch_security_releases(os_type, os_version_name, gdmf_data),
+                    "SupportedModels": compatible_machines,
+                })
             elif os_type == "iOS":
-                # For iOS, append without compatible machines
-                feed_structure["OSVersions"].append(
-                    {
-                        "OSVersion": os_version_name,
-                        "Latest": latest_version_info,
-                        "SecurityReleases": fetch_security_releases(  # TODO: potentially 3rd instance of fetching HT201222 # noqa: E501 pylint: disable=line-too-long
-                            os_type, os_version_name, gdmf_data
-                        ),  # Note: 'SupportedModels' is not included for iOS
-                    }
-                )
+                feed_structure["OSVersions"].append({
+                    "OSVersion": os_version_name,
+                    "Latest": latest_version_info,
+                    "SecurityReleases": fetch_security_releases(os_type, os_version_name, gdmf_data),
+                })
+
     hash_value = compute_hash(feed_structure)
     feed_structure = {
-        "UpdateHash": hash_value,  # Insert hash first
-        **feed_structure,  # Unpack other content after the hash
+        "UpdateHash": hash_value,
+        **feed_structure,
     }
     data_feed_filename = f"{os_type.lower()}_data_feed.json"
     write_data_to_json(feed_structure, data_feed_filename)
