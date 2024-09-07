@@ -318,14 +318,15 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         os_version_name = release["name"]
         latest_version_info = latest_versions.get(os_version_name, {})
         if latest_version_info is not None:
-            # Format dates
+            # Format dates, handle missing 'ReleaseDate'
             if "ReleaseDate" in latest_version_info:
                 latest_version_info["ReleaseDate"] = format_iso_date(
                     latest_version_info["ReleaseDate"]
-                    )
-                else:
-                print(f"Warning: 'ReleaseDate' missing for {latest_version_info}")
+                )
+            else:
+                print(f"Warning: 'ReleaseDate' missing for {os_version_name}")
                 latest_version_info["ReleaseDate"] = "Unknown"
+                
             if "ExpirationDate" in latest_version_info:
                 latest_version_info["ExpirationDate"] = format_iso_date(
                     latest_version_info["ExpirationDate"]
@@ -378,7 +379,6 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     write_timestamp_and_hash(os_type, hash_value)
     read_and_validate_json(data_feed_filename)
     return data_feed
-
 
 def fetch_content(url: str) -> str:
     """Fetch content from the given URL, basic checking for errors"""
