@@ -1,8 +1,8 @@
 {
-    "UpdateHash": "7156b0ebe6c2314f3bdb131a78ce7997d5b5e2e27ce403512c0dd3f4b83f24ca",
+    "UpdateHash": "1236b0ebe6c2314f3bdb131a78ce7997d5b5e2e27ce403512c0dd3f4b83f24ca",
     "OSVersions": [
         {
-            "OSVersion": "Sequoia 14",
+            "OSVersion": "Sonoma 14",
             "Latest": {
                 "ProductVersion": "14.6.1",
                 "Build": "23G93",
