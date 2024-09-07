@@ -1,6 +1,13 @@
 {
-    "UpdateHash": "16ff9a1ce7cd39d5324711a4c23b9cff3a53eca9a6d9709d601eec866e15ce01",
+    "UpdateHash": "36c6eb5e949864e3a1c0d655b7f75ea3606bb21f8d5d27019acf97454c9f06ff",
     "OSVersions": [
+        {
+            "OSVersion": "18",
+            "Latest": {
+                "ReleaseDate": "Unknown"
+            },
+            "SecurityReleases": []
+        },
         {
             "OSVersion": "17",
             "Latest": {
