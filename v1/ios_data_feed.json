@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "36c6eb5e949864e3a1c0d655b7f75ea3606bb21f8d5d27019acf97454c9f06ff",
+    "UpdateHash": "7d74b9a0399279b1710ed57ad5d0ab51a53c41aa0f9aed5663b778260e6baf3d",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -14,7 +14,7 @@
                 "ProductVersion": "17.6.1",
                 "Build": "21G93",
                 "ReleaseDate": "2024-08-26T00:00:00Z",
-                "ExpirationDate": "2024-12-06T00:00:00Z",
+                "ExpirationDate": "2024-12-07T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -889,7 +889,7 @@
                 "ProductVersion": "16.7.10",
                 "Build": "20H6350",
                 "ReleaseDate": "2024-08-26T00:00:00Z",
-                "ExpirationDate": "2024-12-06T00:00:00Z",
+                "ExpirationDate": "2024-12-07T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
                     "iPad6,12",
