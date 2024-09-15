@@ -3,6 +3,7 @@
 import argparse
 import glob
 import hashlib
+import io
 import json
 import gzip
 import os
