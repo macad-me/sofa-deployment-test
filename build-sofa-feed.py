@@ -217,11 +217,9 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     print(
         f"Software releases for {os_type}: {software_releases}"
     )  # TODO: as per below, this is weird, revisit  noqa: E501 pylint: disable=line-too-long
-    
     feed_structure: dict = {
         "OSVersions": [],
     }
-
     if os_type == "macOS":
         catalog_url: str = (
             "https://swscan.apple.com/content/catalogs/others/index-15seed-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog.gz" 
@@ -274,7 +272,6 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
             "AllPreviousUMA": rest,
         }  # TODO: flatten all this down into the one call and subsequent assignment  # noqa: E501 pylint: disable=line-too-long
         feed_structure["InstallationApps"] = uma_list
-
         # ipsw (latest/'most prevalent' in mesu only as of v1) parsing
         mesu_url: str = (
             "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"  # noqa: E501 pylint: disable=line-too-long
@@ -300,7 +297,6 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                 "macos_ipsw_apple_slug": apple_slug,
             }
         )
-
     elif os_type == "iOS":
         # Initialize os_versions dynamically for iOS
         os_versions = [
@@ -312,10 +308,8 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         print(
             "Invalid OS type specified."
         )  # TODO: should probably raise/exit if this happens
-
     latest_versions: dict = {}
     latest_version_info: dict = {}
-
     for release in software_releases:
         os_version_name = release["name"]
         latest_version_info = fetch_latest_os_version_info(
@@ -323,13 +317,10 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         )
         if latest_version_info:
             latest_versions[os_version_name] = latest_version_info
-
     print("Fetching OS version information...")
-
     for release in software_releases:
         os_version_name = release["name"]
         latest_version_info = latest_versions.get(os_version_name, {})
-
         if latest_version_info is not None:
             # Format dates, handle missing 'ReleaseDate'
             if "ReleaseDate" in latest_version_info:
@@ -349,19 +340,31 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                 product_version = "Unknown"  # Set a default value or handle accordingly
 
             if os_type == "macOS":
-                latest_security_info = fetch_security_releases(os_type, product_version, gdmf_data)
+                latest_security_info = fetch_security_releases(
+                    os_type, product_version, gdmf_data
+                )
                 if latest_security_info:
-                    latest_version_info["SecurityInfo"] = latest_security_info[0]["SecurityInfo"]
+                    latest_version_info["SecurityInfo"] = latest_security_info[0][
+                        "SecurityInfo"
+                    ]
                     latest_version_info["CVEs"] = latest_security_info[0]["CVEs"]
-                    latest_version_info["ActivelyExploitedCVEs"] = latest_security_info[0]["ActivelyExploitedCVEs"]
-                    latest_version_info["UniqueCVEsCount"] = latest_security_info[0]["UniqueCVEsCount"]
+                    latest_version_info["ActivelyExploitedCVEs"] = latest_security_info[
+                        0
+                    ]["ActivelyExploitedCVEs"]
+                    latest_version_info["UniqueCVEsCount"] = latest_security_info[0][
+                        "UniqueCVEsCount"
+                    ]
                 compatible_machines = add_compatible_machines(os_version_name)
-                feed_structure["OSVersions"].append({
-                    "OSVersion": os_version_name,
-                    "Latest": latest_version_info,
-                    "SecurityReleases": fetch_security_releases(os_type, os_version_name, gdmf_data),
-                    "SupportedModels": compatible_machines,
-                })
+                feed_structure["OSVersions"].append(
+                    {
+                        "OSVersion": os_version_name,
+                        "Latest": latest_version_info,
+                        "SecurityReleases": fetch_security_releases(  # TODO: second instance of fetching HT201222 # noqa: E501 pylint: disable=line-too-long
+                            os_type, os_version_name, gdmf_data
+                        ),
+                        "SupportedModels": compatible_machines,  # Add compatible machines here
+                    }
+                )
             elif os_type == "iOS":
                 # For iOS, append without compatible machines
                 feed_structure["OSVersions"].append(
@@ -373,7 +376,6 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                         ),  # Note: 'SupportedModels' is not included for iOS
                     }
                 )
-
     hash_value = compute_hash(feed_structure)
     feed_structure = {
         "UpdateHash": hash_value,  # Insert hash first
@@ -1074,11 +1076,7 @@ if __name__ == "__main__":
         "osTypes",
         nargs="+",
         type=str,
-        help=
-        
-        
-        
-        "The types of OS to process (e.g., macOS iOS)",
+        help="The types of OS to process (e.g., macOS iOS)",
     )
     args = parser.parse_args()
     main(args.osTypes)
