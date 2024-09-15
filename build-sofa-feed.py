@@ -361,15 +361,15 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     return data_feed
 
 def fetch_content(url: str) -> str:
-    """Fetch content from the given URL, basic checking for errors"""
+    """Fetch content from the given URL, handling gzipped and plain text."""
     response = requests.get(url)
     if response.ok:
-        if url.endswith('.gz'):
+        if response.headers.get('Content-Encoding') == 'gzip' or url.endswith('.gz'):
             try:
                 with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
                     return gz_file.read().decode('utf-8')
             except gzip.BadGzipFile:
-                raise Exception(f"Error: The file at {url} is not a valid gzip file.")
+                return response.text
         else:
             return response.text
     else:
