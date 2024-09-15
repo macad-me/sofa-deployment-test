@@ -329,7 +329,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                 latest_version_info["ReleaseDate"] = "Unknown"
 
             if "ExpirationDate" in latest_version_info:
-                latest_version_info["ExpirationDate"] = format_iso_date(
+                latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info["ExpirationDate"])
 
             # Handle missing 'ProductVersion'
             if "ProductVersion" in latest_version_info:
