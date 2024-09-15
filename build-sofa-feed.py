@@ -1048,10 +1048,7 @@ def write_data_to_rss(sorted_feed: list, filename: str):
             )
             feed_entry.title(release["UpdateName"])
             feed_entry.link(link={"href": "https://sofa.macadmins.io/"})
-            description = 
-            
-            
-            ""
+            description = ""
             if "UniqueCVEsCount" in release:
                 description += (
                     f"Vulnerabilities Addressed: {release['UniqueCVEsCount']}<br>"
