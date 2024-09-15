@@ -220,7 +220,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
 
     if os_type == "macOS":
         catalog_url: str = (
-            "https://swscan.apple.com/content/catalogs/others/index-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
+            "https://swscan.apple.com/content/catalogs/others/index-15seed-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog.gz"
         )
         catalog_content = fetch_content(catalog_url)
         config_match = re.search(r"https.*XProtectPlistConfigData.*?\.pkm", catalog_content)
@@ -362,10 +362,12 @@ def fetch_content(url: str) -> str:
     """Fetch content from the given URL, basic checking for errors"""
     response = requests.get(url)
     if response.ok:
+        if url.endswith('.gz'):
+            with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
+                return gz_file.read().decode('utf-8')
         return response.text
     else:
         raise Exception(f"Error fetching data from {url}: HTTP {response.status_code}")
-
 
 def extract_xprotect_versions_and_post_date(catalog_content: str, pkm_url: str) -> dict:
     """Extract XProtect versions and post date from the catalog content"""
