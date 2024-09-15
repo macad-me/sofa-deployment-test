@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "395de67fa161d6ed25ff698f41f38201ba898a2b8867160ba8cb05dcc2df4e2d",
+    "UpdateHash": "0387f3729f6e24e01afc426f24875e82a60e3e48ac4c1d7c073d7732ecd0f9a2",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -102,7 +102,7 @@
                 "ProductVersion": "14.6.1",
                 "Build": "23G93",
                 "ReleaseDate": "2024-08-14T00:00:00Z",
-                "ExpirationDate": "2024-12-11T00:00:00Z",
+                "ExpirationDate": "2024-12-14T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -1646,7 +1646,7 @@
                 "ProductVersion": "13.6.9",
                 "Build": "22G830",
                 "ReleaseDate": "2024-08-14T00:00:00Z",
-                "ExpirationDate": "2024-12-11T00:00:00Z",
+                "ExpirationDate": "2024-12-14T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -4093,7 +4093,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-08-14T00:00:00Z",
-                "ExpirationDate": "2024-12-11T00:00:00Z",
+                "ExpirationDate": "2024-12-14T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -7055,8 +7055,8 @@
         "ReleaseDate": "2024-09-03T18:18:18Z"
     },
     "XProtectPlistConfigData": {
-        "com.apple.XProtect": "5272",
-        "ReleaseDate": "2024-08-28T17:03:35Z"
+        "com.apple.XProtect": "5273",
+        "ReleaseDate": "2024-09-12T23:58:11Z"
     },
     "Models": {
         "Mac15,13": {
@@ -8000,13 +8000,20 @@
     },
     "InstallationApps": {
         "LatestUMA": {
-            "title": "macOS Sonoma",
-            "version": "14.6.1",
-            "build": "23G93",
-            "apple_slug": "062-58676",
-            "url": "https://swcdn.apple.com/content/downloads/30/63/062-58676-A_ECWQ492BNE/hrlydsxfk837el7k95venauqmn8ruizw3e/InstallAssistant.pkg"
+            "title": "macOS Sequoia Beta",
+            "version": "15.0",
+            "build": "24A5331b",
+            "apple_slug": "062-71934",
+            "url": "https://swcdn.apple.com/content/downloads/04/37/062-71934-A_Y67KUXTZ8E/amset7a4ghxkssqwhia6mi2ztb0ptglwh6/InstallAssistant.pkg"
         },
         "AllPreviousUMA": [
+            {
+                "title": "macOS Sonoma",
+                "version": "14.6.1",
+                "build": "23G93",
+                "apple_slug": "062-58676",
+                "url": "https://swcdn.apple.com/content/downloads/30/63/062-58676-A_ECWQ492BNE/hrlydsxfk837el7k95venauqmn8ruizw3e/InstallAssistant.pkg"
+            },
             {
                 "title": "macOS Sonoma",
                 "version": "14.6",
