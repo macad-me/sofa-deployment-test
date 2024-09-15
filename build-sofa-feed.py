@@ -365,9 +365,13 @@ def fetch_content(url: str) -> str:
     response = requests.get(url)
     if response.ok:
         if url.endswith('.gz'):
-            with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
-                return gz_file.read().decode('utf-8')
-        return response.text
+            try:
+                with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
+                    return gz_file.read().decode('utf-8')
+            except gzip.BadGzipFile:
+                raise Exception(f"Error: The file at {url} is not a valid gzip file.")
+        else:
+            return response.text
     else:
         raise Exception(f"Error fetching data from {url}: HTTP {response.status_code}")
 
