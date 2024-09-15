@@ -340,30 +340,18 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
 
             if os_type == "macOS":
                 latest_security_info = fetch_security_releases(os_type, product_version, gdmf_data)
-                    os_type, latest_version_info["ProductVersion"], gdmf_data
-                )
                 if latest_security_info:
-                    latest_version_info["SecurityInfo"] = latest_security_info[0][
-                        "SecurityInfo"
-                    ]
+                    latest_version_info["SecurityInfo"] = latest_security_info[0]["SecurityInfo"]
                     latest_version_info["CVEs"] = latest_security_info[0]["CVEs"]
-                    latest_version_info["ActivelyExploitedCVEs"] = latest_security_info[
-                        0
-                    ]["ActivelyExploitedCVEs"]
-                    latest_version_info["UniqueCVEsCount"] = latest_security_info[0][
-                        "UniqueCVEsCount"
-                    ]
+                    latest_version_info["ActivelyExploitedCVEs"] = latest_security_info[0]["ActivelyExploitedCVEs"]
+                    latest_version_info["UniqueCVEsCount"] = latest_security_info[0]["UniqueCVEsCount"]
                 compatible_machines = add_compatible_machines(os_version_name)
-                feed_structure["OSVersions"].append(
-                    {
-                        "OSVersion": os_version_name,
-                        "Latest": latest_version_info,
-                        "SecurityReleases": fetch_security_releases(  # TODO: second instance of fetching HT201222 # noqa: E501 pylint: disable=line-too-long
-                            os_type, os_version_name, gdmf_data
-                        ),
-                        "SupportedModels": compatible_machines,  # Add compatible machines here
-                    }
-                )
+                feed_structure["OSVersions"].append({
+                    "OSVersion": os_version_name,
+                    "Latest": latest_version_info,
+                    "SecurityReleases": fetch_security_releases(os_type, os_version_name, gdmf_data),
+                    "SupportedModels": compatible_machines,
+                })
             elif os_type == "iOS":
                 # For iOS, append without compatible machines
                 feed_structure["OSVersions"].append(
