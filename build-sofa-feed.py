@@ -217,12 +217,15 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     print(
         f"Software releases for {os_type}: {software_releases}"
     )  # TODO: as per below, this is weird, revisit  noqa: E501 pylint: disable=line-too-long
+    
     feed_structure: dict = {
         "OSVersions": [],
     }
+
     if os_type == "macOS":
         catalog_url: str = (
-            "https://swscan.apple.com/content/catalogs/others/index-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"  # noqa: E501 pylint: disable=line-too-long
+            "https://swscan.apple.com/content/catalogs/others/index-15seed-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog.gz" 
+    # noqa: E501 pylint: disable=line-too-long
         )
         catalog_content = fetch_content(catalog_url)
         config_match = re.search(
@@ -271,6 +274,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
             "AllPreviousUMA": rest,
         }  # TODO: flatten all this down into the one call and subsequent assignment  # noqa: E501 pylint: disable=line-too-long
         feed_structure["InstallationApps"] = uma_list
+
         # ipsw (latest/'most prevalent' in mesu only as of v1) parsing
         mesu_url: str = (
             "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"  # noqa: E501 pylint: disable=line-too-long
@@ -278,8 +282,8 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         try:
             with urlopen(mesu_url, context=ctx) as response:
                 mesu_cat = response.read()
-        except (Exception, OSError) as erroir:  # pylint: disable=broad-exception-caught
-            print(f"Error fetching mesu assets, {erroir}")
+        except (Exception, OSError) as error:  # pylint: disable=broad-exception-caught
+            print(f"Error fetching mesu assets, {error}")
             raise
         mesu_catalog: dict = plistlib.loads(mesu_cat)
         restore_datas = process_ipsw.extract_ipsw_raw(mesu_catalog)
@@ -296,6 +300,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                 "macos_ipsw_apple_slug": apple_slug,
             }
         )
+
     elif os_type == "iOS":
         # Initialize os_versions dynamically for iOS
         os_versions = [
@@ -307,8 +312,10 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         print(
             "Invalid OS type specified."
         )  # TODO: should probably raise/exit if this happens
+
     latest_versions: dict = {}
     latest_version_info: dict = {}
+
     for release in software_releases:
         os_version_name = release["name"]
         latest_version_info = fetch_latest_os_version_info(
@@ -316,10 +323,13 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         )
         if latest_version_info:
             latest_versions[os_version_name] = latest_version_info
+
     print("Fetching OS version information...")
+
     for release in software_releases:
         os_version_name = release["name"]
         latest_version_info = latest_versions.get(os_version_name, {})
+
         if latest_version_info is not None:
             # Format dates, handle missing 'ReleaseDate'
             if "ReleaseDate" in latest_version_info:
@@ -363,6 +373,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                         ),  # Note: 'SupportedModels' is not included for iOS
                     }
                 )
+
     hash_value = compute_hash(feed_structure)
     feed_structure = {
         "UpdateHash": hash_value,  # Insert hash first
