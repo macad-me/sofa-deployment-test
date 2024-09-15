@@ -4,6 +4,7 @@ import argparse
 import glob
 import hashlib
 import json
+import gzip
 import os
 import plistlib
 import re
