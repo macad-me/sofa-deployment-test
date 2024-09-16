@@ -16,7 +16,7 @@ import LatestFeatures from './components/LatestFeatures.vue';
 import SecurityInfo from './components/SecurityInfo.vue';
 
 const frontmatter = {
-  title: 'Sequoia',
+  title: 'Sequoia 15',
   platform: 'macOS',
   stage: 'release',
 };
