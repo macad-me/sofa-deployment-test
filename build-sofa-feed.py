@@ -658,37 +658,42 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
 def process_os_version(os_type: str, os_version: str, name_info: str) -> str:
     """Process the OS version information from the given name_info.
     Needed to scrape CVE/rapid response info"""
-    print(f"Processing data - {os_type}: {os_version}, Searching in: {name_info} ")
+    print(f"Processing data - {os_type}: {os_version}, Searching in: {name_info}")
     rapid_response_prefix = "Rapid Security Response"
     pattern = rf"({rapid_response_prefix})?\s*"  # Cool f-string, brosif
-    pattern += r"(macOS\s+\w+\s*\d+(?:\.\d+)*(?:\.\d+)*(?:\s*\([a-z]\))?)?\s*"
-    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?(?:\.\d+)?)(?:\s*\([a-z]\))?)?"
+    pattern += r"(macOS\s+(\w+)\s*(\d+(?:\.\d+)*)(?:\s*\([a-z]\))?)?\s*"
+    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?)(?:\s*\([a-z]\))?)?"
     pattern += r"(\s+and\s+)?"  # TODO: What's this one for?
-    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?(?:\.\d+)?)(?:\s*\([a-z]\))?)?"  # TODO: Duplicate-looking, but needed, yes?  # noqa: E501 pylint: disable=line-too-long
+    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?)(?:\s*\([a-z]\))?)?"  # TODO: Duplicate-looking, but needed, yes?  # noqa: E501 pylint: disable=line-too-long
     match = re.search(pattern, name_info, re.IGNORECASE)
     if match:
         rapid_response = match.group(1) or ""
         macos_part = match.group(2) or ""
-        first_os_part = match.group(3) or ""
-        second_os_connector = match.group(6) or ""
-        second_os_part = match.group(7) or ""
+        macos_name = match.group(3) or ""
+        macos_version = match.group(4) or ""
+        first_os_part = match.group(5) or ""
+        first_os_type = match.group(6) or ""
+        first_os_version = match.group(7) or ""
+        second_os_connector = match.group(8) or ""
+        second_os_part = match.group(9) or ""
+        second_os_type = match.group(10) or ""
+        second_os_version = match.group(11) or ""
 
         # Determine if the matched OS type and version correspond to the input os_type and os_version
         matched = False
-        if os_type == 'macOS' and macos_part:
-            if os_version in macos_part:
+        if os_type == 'macOS' and macos_version:
+            if os_version in macos_version or os_version in f"{macos_name} {macos_version}":
                 matched = True
-        elif os_type in ['iOS', 'iPadOS'] and (first_os_part or second_os_part):
-            if first_os_part and os_type in first_os_part and os_version in first_os_part:
+        elif os_type in ['iOS', 'iPadOS']:
+            if (first_os_type == os_type and os_version in first_os_version):
                 matched = True
-            elif second_os_part and os_type in second_os_part and os_version in second_os_part:
+            elif (second_os_type == os_type and os_version in second_os_version):
                 matched = True
         if not matched:
             return ""
 
         # Ensure proper spacing after "Rapid Security Response" if it's present
         version_str = f"{rapid_response} " if rapid_response else ""
-        # Concatenating OS parts with appropriate spacing
         if macos_part:
             version_str += f"{macos_part} "
         if first_os_part:
@@ -697,7 +702,6 @@ def process_os_version(os_type: str, os_version: str, name_info: str) -> str:
             version_str += f"and {second_os_part}"
         return version_str.strip()
     return ""
-
 
 def fetch_cves(url: str) -> dict:
     """Fetch CVEs from the security release URL, as sourced from HT201222 page"""
