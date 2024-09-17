@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "4d4e38e38bb0275f6450a4c6086809c212ec23a42aec54964bd94c6ed8e6cf0c",
+    "UpdateHash": "6e1ad891c06134d6d6aa1afd90a636fa5b8df66808db7da3a06a47e5f9c9aa69",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -79,7 +79,7 @@
                 {
                     "UpdateName": "macOS Sequoia 15",
                     "ProductName": "macOS",
-                    "ProductVersion": "15",
+                    "ProductVersion": "15.0",
                     "ReleaseDate": "2024-09-16T00:00:00Z",
                     "ReleaseType": "OS",
                     "SecurityInfo": "https://support.apple.com/en-ca/121238",
@@ -1738,7 +1738,7 @@
                 {
                     "UpdateName": "macOS Sonoma 14",
                     "ProductName": "macOS",
-                    "ProductVersion": "14",
+                    "ProductVersion": "14.0",
                     "ReleaseDate": "2023-09-26T00:00:00Z",
                     "ReleaseType": "OS",
                     "SecurityInfo": "https://support.apple.com/kb/HT213940",
@@ -4254,7 +4254,7 @@
                 {
                     "UpdateName": "macOS Ventura 13",
                     "ProductName": "macOS",
-                    "ProductVersion": "13",
+                    "ProductVersion": "13.0",
                     "ReleaseDate": "2022-10-24T00:00:00Z",
                     "ReleaseType": "OS",
                     "SecurityInfo": "https://support.apple.com/kb/HT213488",
@@ -8494,20 +8494,13 @@
     },
     "InstallationApps": {
         "LatestUMA": {
-            "title": "macOS Sequoia Beta",
+            "title": "macOS Sequoia",
             "version": "15.0",
-            "build": "24A5331b",
-            "apple_slug": "062-71934",
-            "url": "https://swcdn.apple.com/content/downloads/04/37/062-71934-A_Y67KUXTZ8E/amset7a4ghxkssqwhia6mi2ztb0ptglwh6/InstallAssistant.pkg"
+            "build": "24A335",
+            "apple_slug": "062-78429",
+            "url": "https://swcdn.apple.com/content/downloads/11/43/062-78429-A_DAI7Y9IP98/qxbabjzemiel7guag7q09xxe0631iie45p/InstallAssistant.pkg"
         },
         "AllPreviousUMA": [
-            {
-                "title": "macOS Sequoia",
-                "version": "15.0",
-                "build": "24A335",
-                "apple_slug": "062-78429",
-                "url": "https://swcdn.apple.com/content/downloads/11/43/062-78429-A_DAI7Y9IP98/qxbabjzemiel7guag7q09xxe0631iie45p/InstallAssistant.pkg"
-            },
             {
                 "title": "macOS Sonoma",
                 "version": "14.7",
