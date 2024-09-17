@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Sep 2024 05:57:35 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Sep 2024 06:04:43 +0000</lastBuildDate>
     <item>
       <title>iOS 17.7 and iPadOS 17.7</title>
       <link>https://sofa.macadmins.io/</link>
@@ -68,14 +68,14 @@
       <pubDate>Tue, 03 Sep 2024 18:18:18 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.10 and iPadOS 16.7.10</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.10</guid>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.6.1 and iPadOS 17.6.1</title>
+      <title>iOS 17.6</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.6.1</guid>
@@ -96,7 +96,7 @@
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.9 and iPadOS 16.7.9</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 26&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.9</guid>
@@ -131,14 +131,14 @@
       <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.5.1 and iPadOS 17.5.1</title>
+      <title>iOS 17.5</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.5.1</guid>
       <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.8 and iPadOS 16.7.8</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 22&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.8</guid>
@@ -187,14 +187,14 @@
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.7 and iPadOS 16.7.7</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.7</guid>
       <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.4.1 and iPadOS 17.4.1</title>
+      <title>iOS 17.4</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.4.1</guid>
@@ -222,7 +222,7 @@
       <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.6 and iPadOS 16.7.6</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 19&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.6</guid>
@@ -236,7 +236,7 @@
       <pubDate>Tue, 05 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.3.1 and iPadOS 17.3.1</title>
+      <title>iOS 17.3</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.3.1</guid>
@@ -250,7 +250,7 @@
       <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.5 and iPadOS 16.7.5</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 9&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.5</guid>
@@ -285,14 +285,14 @@
       <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.4 and iPadOS 16.7.4</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.4</guid>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.2.1</title>
+      <title>iOS 17.2</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.2.1</guid>
@@ -306,7 +306,7 @@
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.3 and iPadOS 16.7.3</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 12&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.3</guid>
@@ -341,7 +341,7 @@
       <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.1.2 and iPadOS 17.1.2</title>
+      <title>iOS 17.1</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.1.2</guid>
@@ -355,7 +355,7 @@
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.1.1 and iPadOS 17.1.1</title>
+      <title>iOS 17.1</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.1.1</guid>
@@ -376,7 +376,7 @@
       <pubDate>Tue, 07 Nov 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.2 and iPadOS 16.7.2</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 23&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.2</guid>
@@ -411,21 +411,21 @@
       <pubDate>Wed, 25 Oct 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.7.1 and iPadOS 16.7.1</title>
+      <title>iOS 16.7</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.7.1</guid>
       <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.0.3 and iPadOS 17.0.3</title>
+      <title>iOS 17.0</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.0.3</guid>
       <pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.0.2 and iPadOS 17.0.2</title>
+      <title>iOS 17.0</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.0.2</guid>
@@ -446,14 +446,14 @@
       <pubDate>Thu, 21 Sep 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.0.1 and iPadOS 17.0.1</title>
+      <title>iOS 17.0</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 3&lt;br&gt;Exploited CVE(s): 3&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.0.1</guid>
       <pubDate>Thu, 21 Sep 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 17.0.2</title>
+      <title>iOS 17.0</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_17.0.2</guid>
@@ -488,7 +488,7 @@
       <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.6.1 and iPadOS 16.6.1</title>
+      <title>iOS 16.6</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.6.1</guid>
@@ -530,10 +530,10 @@
       <pubDate>Mon, 24 Jul 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Rapid Security Response iOS 16.5.1 (c)</title>
+      <title>Rapid Security Response iOS 16.5</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
-      <guid isPermaLink="false">iOS_RSR_c_16.5.1</guid>
+      <guid isPermaLink="false">iOS_OS_16.5.1</guid>
       <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -544,10 +544,10 @@
       <pubDate>Wed, 12 Jul 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Rapid Security Response iOS 16.5.1 (a)</title>
+      <title>Rapid Security Response iOS 16.5</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
-      <guid isPermaLink="false">iOS_RSR_a_16.5.1</guid>
+      <guid isPermaLink="false">iOS_OS_16.5.1</guid>
       <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -558,7 +558,7 @@
       <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.5.1 and iPadOS 16.5.1</title>
+      <title>iOS 16.5</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.5.1</guid>
@@ -607,7 +607,7 @@
       <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.4.1 and iPadOS 16.4.1</title>
+      <title>iOS 16.4</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.4.1</guid>
@@ -642,7 +642,7 @@
       <pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.3.1 and iPadOS 16.3.1</title>
+      <title>iOS 16.3</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 3&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.3.1</guid>
@@ -691,14 +691,14 @@
       <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.1.2</title>
+      <title>iOS 16.1</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.1.2</guid>
       <pubDate>Wed, 30 Nov 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.1.1 and iPadOS 16.1.1</title>
+      <title>iOS 16.1</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.1.1</guid>
@@ -733,21 +733,21 @@
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.0.3</title>
+      <title>iOS 16.0</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.0.3</guid>
       <pubDate>Mon, 10 Oct 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.0.2</title>
+      <title>iOS 16.0</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.0.2</guid>
       <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>iOS 16.0.1</title>
+      <title>iOS 16.0</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
       <guid isPermaLink="false">iOS_OS_16.0.1</guid>
