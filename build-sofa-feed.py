@@ -3,9 +3,7 @@
 import argparse
 import glob
 import hashlib
-import io
 import json
-import gzip
 import os
 import plistlib
 import re
@@ -222,8 +220,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     }
     if os_type == "macOS":
         catalog_url: str = (
-            "https://swscan.apple.com/content/catalogs/others/index-15seed-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog.gz" 
-    # noqa: E501 pylint: disable=line-too-long
+            "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"  # noqa: E501 pylint: disable=line-too-long
         )
         catalog_content = fetch_content(catalog_url)
         config_match = re.search(
@@ -322,26 +319,17 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         os_version_name = release["name"]
         latest_version_info = latest_versions.get(os_version_name, {})
         if latest_version_info is not None:
-            # Format dates, handle missing 'ReleaseDate'
-            if "ReleaseDate" in latest_version_info:
-                latest_version_info["ReleaseDate"] = format_iso_date(latest_version_info["ReleaseDate"])
-            else:
-                print(f"Warning: 'ReleaseDate' missing for {os_version_name}")
-                latest_version_info["ReleaseDate"] = "Unknown"
-
+            # Format dates
+            latest_version_info["ReleaseDate"] = format_iso_date(
+                latest_version_info["ReleaseDate"]
+            )
             if "ExpirationDate" in latest_version_info:
-                latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info["ExpirationDate"])
-
-            # Handle missing 'ProductVersion'
-            if "ProductVersion" in latest_version_info:
-                product_version = latest_version_info["ProductVersion"]
-            else:
-                print(f"Warning: 'ProductVersion' missing for {os_version_name}")
-                product_version = "Unknown"  # Set a default value or handle accordingly
-
+                latest_version_info["ExpirationDate"] = format_iso_date(
+                    latest_version_info["ExpirationDate"]
+                )
             if os_type == "macOS":
                 latest_security_info = fetch_security_releases(
-                    os_type, product_version, gdmf_data
+                    os_type, latest_version_info["ProductVersion"], gdmf_data
                 )
                 if latest_security_info:
                     latest_version_info["SecurityInfo"] = latest_security_info[0][
@@ -393,14 +381,7 @@ def fetch_content(url: str) -> str:
     """Fetch content from the given URL, basic checking for errors"""
     response = requests.get(url)
     if response.ok:
-        if response.headers.get('Content-Encoding') == 'gzip' or url.endswith('.gz'):
-            try:
-                with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
-                    return gz_file.read().decode('utf-8')
-            except gzip.BadGzipFile:
-                return response.text
-        else:
-            return response.text
+        return response.text
     else:
         raise Exception(f"Error fetching data from {url}: HTTP {response.status_code}")
 
