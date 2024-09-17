@@ -672,6 +672,20 @@ def process_os_version(os_type: str, os_version: str, name_info: str) -> str:
         first_os_part = match.group(3) or ""
         second_os_connector = match.group(6) or ""
         second_os_part = match.group(7) or ""
+
+        # Determine if the matched OS type and version correspond to the input os_type and os_version
+        matched = False
+        if os_type == 'macOS' and macos_part:
+            if os_version in macos_part:
+                matched = True
+        elif os_type in ['iOS', 'iPadOS'] and (first_os_part or second_os_part):
+            if first_os_part and os_type in first_os_part and os_version in first_os_part:
+                matched = True
+            elif second_os_part and os_type in second_os_part and os_version in second_os_part:
+                matched = True
+        if not matched:
+            return ""
+
         # Ensure proper spacing after "Rapid Security Response" if it's present
         version_str = f"{rapid_response} " if rapid_response else ""
         # Concatenating OS parts with appropriate spacing
