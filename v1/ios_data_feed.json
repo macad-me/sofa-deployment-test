@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "5c51fda710a9ce5eb7b5cdaaf60ffb36f1bea95a3d58dfa491ba17ebac035375",
+    "UpdateHash": "03effbed2701ae933a6b1a4575beb8b1cb7e6f45fcb4197b1e5851020966d2f4",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -41,10 +41,6 @@
                     "iPad14,6",
                     "iPad14,8",
                     "iPad14,9",
-                    "iPad16,3",
-                    "iPad16,4",
-                    "iPad16,5",
-                    "iPad16,6",
                     "iPad7,11",
                     "iPad7,12",
                     "iPad8,1",
@@ -131,10 +127,6 @@
                         "iPad14,6",
                         "iPad14,8",
                         "iPad14,9",
-                        "iPad16,3",
-                        "iPad16,4",
-                        "iPad16,5",
-                        "iPad16,6",
                         "iPad7,11",
                         "iPad7,12",
                         "iPad8,1",
