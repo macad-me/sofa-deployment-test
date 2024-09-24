@@ -51,9 +51,9 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Beta Versions',
+        text: 'Deployment planning',
         items: [
-          { text: 'macOS Sequoia', link: '/macOS_Sequoia' }
+          { text: 'macOS Deferrals', link: '/release_deferrals' }
         ],
       },
       {
