@@ -29,10 +29,10 @@
         </tbody>
       </table>
   
-      <div class="ipsw-info">
+      <div class="links-info">
         <h4>Info Links</h4>
-        <a href="https://support.apple.com/en-us/HT201222">macOS Security Updates</a>
-        <a href="https://support.apple.com/en-gb/guide/deployment/depafd2fad80/web">Time-based Deferral Details</a>
+        <a href="https://support.apple.com/en-us/100100">Apple Security Updates</a>
+        <a href="https://support.apple.com/en-gb/guide/deployment/depafd2fad80/web">Deploy software updates to Apple devices</a>
       </div>
     </div>
   </template>
@@ -90,19 +90,11 @@
   </script>
   
   <style scoped>
-  .image-container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .os-image {
-    width: 200px;
-    height: auto;
-  }
-  .ipsw-info {
+  .links-info {
     text-align: left;
     margin-bottom: 10px;
   }
-  .ipsw-info a {
+  .links-info a {
     display: block;
     margin-bottom: 5px;
   }
