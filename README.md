@@ -1,13 +1,6 @@
 # SOFA 
 **S**imple **O**rganized **F**eed for **A**pple Software Updates
 
-
-ifdef::status[]
-image:https://badgen.net/badge/icon/apple?icon=apple&label[link="https://www.apple.com/"]
-image:https://badgen.net/badge/icon/15.0?icon=apple&label[link="https://www.apple.com/macos"]
-image:https://badgen.net/badge/icon/14.0?icon=apple&label[link="https://www.apple.com/macos"]
-endif::[]
-
 ![Sofa logo](./images/custom_logo.png "Optional title")
 
 Hello 👋,
