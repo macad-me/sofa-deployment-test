@@ -89,16 +89,24 @@ export default {
         const data = this.platform === 'macOS' ? macOSData : iOSData;
         const osVersion = this.title.split(' ')[1];
         const osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
-        if (osData) {
-          // Check if SecurityReleases is an array and is not empty
-          this.securityData = osData.SecurityReleases && osData.SecurityReleases.length ? osData.SecurityReleases : [];
+        if (osData && osData.SecurityReleases) {
+          this.securityData = osData.SecurityReleases.map((release, index, array) => {
+            const currentReleaseDate = new Date(release.ReleaseDate);
+            const previousReleaseDate = index < array.length - 1 ? new Date(array[index + 1].ReleaseDate) : null;
+            const daysSincePrev = previousReleaseDate ? this.calculateDaysDifference(currentReleaseDate, previousReleaseDate) : 'N/A';
+            return { ...release, DaysSincePreviousRelease: daysSincePrev };
+          });
         } else {
-          throw new Error(`No data found for ${this.platform} ${osVersion}`);
+          this.securityData = [];
         }
       } catch (error) {
         console.error('Error loading security data:', error);
         this.error = 'Failed to load security data. Please check the console for more details.';
       }
+    },
+    calculateDaysDifference(currentDate, previousDate) {
+      const timeDiff = Math.abs(currentDate - previousDate);
+      return Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
     },
     formatDate(dateString) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
