@@ -737,14 +737,25 @@ def fetch_cves(url: str) -> dict:
 def calculate_days_since_previous_release(release_dates: list) -> dict:
     """Calculate the days between each release date and the previous sequentially"""
     days_between_releases = {}
+    
+    # Ensure release dates are sorted chronologically
+    release_dates.sort(key=lambda date: parse_flexible_date(date))
+    
     for i in range(len(release_dates) - 1):
         try:
             next_release_date = parse_flexible_date(release_dates[i])
             current_release_date = parse_flexible_date(release_dates[i + 1])
             days_difference = abs((next_release_date - current_release_date).days)
-            days_between_releases[release_dates[i]] = days_difference
+            # Assign days difference only if it is more than 0
+            if days_difference > 0:
+                days_between_releases[release_dates[i]] = days_difference
+            else:
+                # Handle the case where difference might be 0
+                days_between_releases[release_dates[i]] = 'N/A'
         except ValueError as e:
             print(f"Error parsing date: {e}")
+            days_between_releases[release_dates[i]] = 'Error'
+    
     return days_between_releases
 
 
