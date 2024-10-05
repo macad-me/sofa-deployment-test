@@ -160,12 +160,11 @@ export default {
       const releaseDate = new Date(dateString);
       const currentDate = new Date();
       const timeDiff = currentDate - releaseDate;
-      const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
-      return daysDiff;
+      return Math.floor(timeDiff / (1000 * 3600 * 24));
     },
     timeSinceRelease(dateString) {
       if (dateString === 'Unknown') {
-        return 'Unknown'; // Handle the case for unknown date
+        return 'Unknown';
       }
       const releaseDate = new Date(dateString);
       const currentDate = new Date();
@@ -173,7 +172,7 @@ export default {
 
       const days = Math.floor(timeDiff / (1000 * 3600 * 24));
       const hours = Math.floor((timeDiff % (1000 * 3600 * 24)) / (1000 * 3600));
-      
+
       return `${days} days, ${hours} hours`;
     },
   },
