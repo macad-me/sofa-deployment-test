@@ -735,27 +735,22 @@ def fetch_cves(url: str) -> dict:
 
 
 def calculate_days_since_previous_release(release_dates: list) -> dict:
-    """Calculate the days between each release date and the previous sequentially."""
-    # Ensure the release dates are sorted in reverse chronological order (latest first)
-    release_dates = sorted(release_dates, key=lambda date: parse_flexible_date(date), reverse=True)
-    
+    """Calculate the days between each release date and the previous sequentially"""
     days_between_releases = {}
     for i in range(len(release_dates) - 1):
         try:
-            current_release_date = parse_flexible_date(release_dates[i])
-            previous_release_date = parse_flexible_date(release_dates[i + 1])
-            days_difference = (current_release_date - previous_release_date).days
+            next_release_date = parse_flexible_date(release_dates[i])
+            current_release_date = parse_flexible_date(release_dates[i + 1])
+            days_difference = abs((next_release_date - current_release_date).days)
             days_between_releases[release_dates[i]] = days_difference
         except ValueError as e:
             print(f"Error parsing date: {e}")
-            days_between_releases[release_dates[i]] = 0  # Fix to handle parse error with 0
-    
     return days_between_releases
 
 
 def parse_flexible_date(date_str: str) -> datetime:
-    """Parse a date string with flexible formats to sanitize data scraped from the webpage."""
-    formats = ["%Y-%m-%d", "%d %b %Y", "%B %d, %Y"]  # Add any formats used in your dates
+    """Parse a date string with flexible formats to sanitize data scraped from the webpage"""
+    formats = ["%Y-%m-%d", "%d %b %Y"]
     for fmt in formats:
         try:
             return datetime.strptime(date_str, fmt)
@@ -794,53 +789,42 @@ def write_data_to_json(feed_structure: dict, filename: str):
     
     for os_version in feed_structure["OSVersions"]:
         if "Latest" in os_version:
-            latest_dict = os_version["Latest"]
-            
-            # Ensure all required keys are present with default values
-            latest_dict["ProductVersion"] = latest_dict.get("ProductVersion", "")
-            latest_dict["ReleaseDate"] = latest_dict.get("ReleaseDate", "")
-            latest_dict["ExpirationDate"] = latest_dict.get("ExpirationDate", "")
-            latest_dict["Build"] = latest_dict.get("Build", "")
-            latest_dict["SecurityInfo"] = latest_dict.get("SecurityInfo", "")
-            latest_dict["UniqueCVEsCount"] = latest_dict.get("UniqueCVEsCount", 0)
-            latest_dict["ActivelyExploitedCVEs"] = latest_dict.get("ActivelyExploitedCVEs", [])
-            latest_dict["CVEs"] = latest_dict.get("CVEs", {})
-            latest_dict["SupportedDevices"] = latest_dict.get("SupportedDevices", [])
-            
-            # Convert dates to ISO format
-            latest_dict["ReleaseDate"] = format_iso_date(latest_dict.get("ReleaseDate", ""))
-            latest_dict["ExpirationDate"] = format_iso_date(latest_dict.get("ExpirationDate", ""))
-            
-            product_version = latest_dict["ProductVersion"]
+            product_version = os_version["Latest"].get("ProductVersion", "")
+            latest_date = format_iso_date(
+                os_version["Latest"].get("ReleaseDate", "")
+            )
+            os_version["Latest"]["ReleaseDate"] = latest_date
 
+            if "ExpirationDate" in os_version["Latest"]:
+                os_version["Latest"]["ExpirationDate"] = format_iso_date(
+                    os_version["Latest"].get("ExpirationDate", "")
+                )
+            
             # Store the latest version info for comparison
             latest_versions[product_version] = {
-                "latest_date": latest_dict["ReleaseDate"],
+                "latest_date": latest_date,
                 "os_version_dict": os_version
             }
         
-        # Handle SecurityReleases similarly if present
         if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
             for release in os_version["SecurityReleases"]:
-                release["ProductVersion"] = release.get("ProductVersion", "")
-                release["ReleaseDate"] = release.get("ReleaseDate", "")
-                release["ReleaseDate"] = format_iso_date(release.get("ReleaseDate", ""))
+                potential_date = format_iso_date(release.get("ReleaseDate", ""))
+                product_version = release.get("ProductVersion", "")
 
-                product_version = release["ProductVersion"]
                 if product_version in latest_versions:
                     # Update security date if the product version matches
-                    latest_versions[product_version]["security_date"] = release["ReleaseDate"]
-
+                    latest_versions[product_version]["security_date"] = potential_date
+                release["ReleaseDate"] = potential_date
+    
     # Update all relevant Latest entries with their respective security dates
     for product_version, version_info in latest_versions.items():
         if "security_date" in version_info:
             latest_dict = version_info["os_version_dict"]["Latest"]
-            original_date = latest_dict.get("ReleaseDate", "")
-            new_date = version_info["security_date"]
-            latest_dict["ReleaseDate"] = new_date
-            print(f"Updated {product_version} ReleaseDate from {original_date} to {new_date}")
-    
-    # Write the updated feed structure back to a file
+            from_date = version_info["latest_date"]
+            to_date = version_info["security_date"]
+            latest_dict["ReleaseDate"] = to_date
+            print(f"Updated {product_version} ReleaseDate from {from_date} to {to_date}")
+        
     with open(filename, "w", encoding="utf-8") as json_file:
         json.dump(
             feed_structure, json_file, indent=4, ensure_ascii=False
