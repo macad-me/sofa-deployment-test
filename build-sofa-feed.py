@@ -3,7 +3,9 @@
 import argparse
 import glob
 import hashlib
+import io
 import json
+import gzip
 import os
 import plistlib
 import re
@@ -220,7 +222,8 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     }
     if os_type == "macOS":
         catalog_url: str = (
-            "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"  # noqa: E501 pylint: disable=line-too-long
+            "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog" 
+    # noqa: E501 pylint: disable=line-too-long
         )
         catalog_content = fetch_content(catalog_url)
         config_match = re.search(
@@ -319,17 +322,26 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         os_version_name = release["name"]
         latest_version_info = latest_versions.get(os_version_name, {})
         if latest_version_info is not None:
-            # Format dates
-            latest_version_info["ReleaseDate"] = format_iso_date(
-                latest_version_info["ReleaseDate"]
-            )
+            # Format dates, handle missing 'ReleaseDate'
+            if "ReleaseDate" in latest_version_info:
+                latest_version_info["ReleaseDate"] = format_iso_date(latest_version_info["ReleaseDate"])
+            else:
+                print(f"Warning: 'ReleaseDate' missing for {os_version_name}")
+                latest_version_info["ReleaseDate"] = "Unknown"
+
             if "ExpirationDate" in latest_version_info:
-                latest_version_info["ExpirationDate"] = format_iso_date(
-                    latest_version_info["ExpirationDate"]
-                )
+                latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info["ExpirationDate"])
+
+            # Handle missing 'ProductVersion'
+            if "ProductVersion" in latest_version_info:
+                product_version = latest_version_info["ProductVersion"]
+            else:
+                print(f"Warning: 'ProductVersion' missing for {os_version_name}")
+                product_version = "Unknown"  # Set a default value or handle accordingly
+
             if os_type == "macOS":
                 latest_security_info = fetch_security_releases(
-                    os_type, latest_version_info["ProductVersion"], gdmf_data
+                    os_type, product_version, gdmf_data
                 )
                 if latest_security_info:
                     latest_version_info["SecurityInfo"] = latest_security_info[0][
@@ -381,7 +393,14 @@ def fetch_content(url: str) -> str:
     """Fetch content from the given URL, basic checking for errors"""
     response = requests.get(url)
     if response.ok:
-        return response.text
+        if response.headers.get('Content-Encoding') == 'gzip' or url.endswith('.gz'):
+            try:
+                with gzip.GzipFile(fileobj=io.BytesIO(response.content)) as gz_file:
+                    return gz_file.read().decode('utf-8')
+            except gzip.BadGzipFile:
+                return response.text
+        else:
+            return response.text
     else:
         raise Exception(f"Error fetching data from {url}: HTTP {response.status_code}")
 
@@ -561,8 +580,8 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
     urls = [
         "https://support.apple.com/en-ca/100100",  # Current info
         "https://support.apple.com/en-ca/121012",  # 2022 to 2023
-        "https://support.apple.com/en-ca/120989",  # 2020 to 2021
-        "https://support.apple.com/en-ca/103179",  # 2018 to 2019
+        #"https://support.apple.com/en-ca/120989",  # 2020 to 2021
+        #"https://support.apple.com/en-ca/103179",  # 2018 to 2019
     ]
     
     security_releases = []
@@ -598,7 +617,7 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                         # extract ProductVersion from the name_info, any digit(s), dot, any digit(s)
                         version_match = re.search(r"\d+(\.\d+)*", name_info)
                         product_version = version_match.group() if version_match else "Unknown"
-                        # Ensure that product_version includes the minor version
+                        # Ensure that product_version includes the minor version or add .0 see GH issue #174
                         if '.' not in product_version:
                             product_version += '.0'
                         print(f"Processing security release {product_version}, source {name_info}")
@@ -658,42 +677,23 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
 def process_os_version(os_type: str, os_version: str, name_info: str) -> str:
     """Process the OS version information from the given name_info.
     Needed to scrape CVE/rapid response info"""
-    print(f"Processing data - {os_type}: {os_version}, Searching in: {name_info}")
+    print(f"Processing data - {os_type}: {os_version}, Searching in: {name_info} ")
     rapid_response_prefix = "Rapid Security Response"
     pattern = rf"({rapid_response_prefix})?\s*"  # Cool f-string, brosif
-    pattern += r"(macOS\s+(\w+)\s*(\d+(?:\.\d+)*)(?:\s*\([a-z]\))?)?\s*"
-    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?)(?:\s*\([a-z]\))?)?"
+    pattern += r"(macOS\s+\w+\s*\d+(?:\.\d+)*(?:\.\d+)*(?:\s*\([a-z]\))?)?\s*"
+    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?(?:\.\d+)?)(?:\s*\([a-z]\))?)?"
     pattern += r"(\s+and\s+)?"  # TODO: What's this one for?
-    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?)(?:\s*\([a-z]\))?)?"  # TODO: Duplicate-looking, but needed, yes?  # noqa: E501 pylint: disable=line-too-long
+    pattern += r"((iOS|iPadOS)\s+(\d+(?:\.\d+)?(?:\.\d+)?)(?:\s*\([a-z]\))?)?"  # TODO: Duplicate-looking, but needed, yes?  # noqa: E501 pylint: disable=line-too-long
     match = re.search(pattern, name_info, re.IGNORECASE)
     if match:
         rapid_response = match.group(1) or ""
         macos_part = match.group(2) or ""
-        macos_name = match.group(3) or ""
-        macos_version = match.group(4) or ""
-        first_os_part = match.group(5) or ""
-        first_os_type = match.group(6) or ""
-        first_os_version = match.group(7) or ""
-        second_os_connector = match.group(8) or ""
-        second_os_part = match.group(9) or ""
-        second_os_type = match.group(10) or ""
-        second_os_version = match.group(11) or ""
-
-        # Determine if the matched OS type and version correspond to the input os_type and os_version
-        matched = False
-        if os_type == 'macOS' and macos_version:
-            if os_version in macos_version or os_version in f"{macos_name} {macos_version}":
-                matched = True
-        elif os_type in ['iOS', 'iPadOS']:
-            if (first_os_type == os_type and os_version in first_os_version):
-                matched = True
-            elif (second_os_type == os_type and os_version in second_os_version):
-                matched = True
-        if not matched:
-            return ""
-
+        first_os_part = match.group(3) or ""
+        second_os_connector = match.group(6) or ""
+        second_os_part = match.group(7) or ""
         # Ensure proper spacing after "Rapid Security Response" if it's present
         version_str = f"{rapid_response} " if rapid_response else ""
+        # Concatenating OS parts with appropriate spacing
         if macos_part:
             version_str += f"{macos_part} "
         if first_os_part:
@@ -702,6 +702,7 @@ def process_os_version(os_type: str, os_version: str, name_info: str) -> str:
             version_str += f"and {second_os_part}"
         return version_str.strip()
     return ""
+
 
 def fetch_cves(url: str) -> dict:
     """Fetch CVEs from the security release URL, as sourced from HT201222 page"""
