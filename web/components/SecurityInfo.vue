@@ -84,74 +84,38 @@ export default {
     this.loadSecurityData();
   },
   methods: {
-    loadSecurityData() {
-      try {
-        const data = this.platform === 'macOS' ? macOSData : iOSData;
-        const osVersion = this.title.split(' ')[1];
-        const osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
-        
-        if (osData && osData.SecurityReleases) {
-          osData.SecurityReleases.forEach((release, index) => {
-            const previousRelease = osData.SecurityReleases[index + 1]; // Get previous release
-            if (previousRelease) {
-              const currentDate = new Date(release.ReleaseDate);
-              const prevDate = new Date(previousRelease.ReleaseDate);
-              const timeDiff = Math.abs(currentDate - prevDate);
-              release.DaysSincePreviousRelease = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Calculate days difference
-            } else {
-              release.DaysSincePreviousRelease = 'N/A'; // No previous release
-            }
-          });
-          this.securityData = osData.SecurityReleases;
-        } else {
-          this.securityData = [];
-        }
-      } catch (error) {
-        console.error('Error loading security data:', error);
-        this.error = 'Failed to load security data. Please check the console for more details.';
+  loadSecurityData() {
+    try {
+      const data = this.platform === 'macOS' ? macOSData : iOSData;
+      const osVersion = this.title.split(' ')[1];
+      const osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
+      
+      if (osData && osData.SecurityReleases) {
+        osData.SecurityReleases.forEach((release, index) => {
+          const previousRelease = osData.SecurityReleases[index + 1]; // Get the previous release
+          if (previousRelease) {
+            const currentDate = new Date(release.ReleaseDate);
+            const prevDate = new Date(previousRelease.ReleaseDate);
+            const timeDiff = Math.abs(currentDate - prevDate);
+            release.DaysSincePreviousRelease = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Days difference
+          } else {
+            release.DaysSincePreviousRelease = 'N/A'; // No previous release
+          }
+        });
+        this.securityData = osData.SecurityReleases;
+      } else {
+        this.securityData = [];
       }
-    },
-    formatDate(dateString) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      return new Date(dateString).toLocaleDateString(undefined, options);
-    },
-    createSafeLink(url) {
-      const tempAnchorElement = document.createElement('a');
-      tempAnchorElement.href = url;
-      // Replace specific text with a generic link
-      if (url === 'This update has no published CVE entries.') {
-        return 'https://support.apple.com/en-ca/100100';
-      }
-      return tempAnchorElement.href;
-    },
-    isCritical(url) {
-      return url && url.startsWith('http');
-    },
-    sortedCVEs(CVEs) {
-      return Object.keys(CVEs).sort((a, b) => {
-        const yearA = parseInt(a.split('-')[1]);
-        const yearB = parseInt(b.split('-')[1]);
-        if (yearA === yearB) {
-          const numA = parseInt(a.split('-').pop());
-          const numB = parseInt(b.split('-').pop());
-          return numB - numA;
-        }
-        return yearB - yearA;
-      });
-    },
-    sortedKEVs(KEVs) {
-      return KEVs.sort((a, b) => {
-        const yearA = parseInt(a.split('-')[1]);
-        const yearB = parseInt(b.split('-')[1]);
-        if (yearA === yearB) {
-          const numA = parseInt(a.split('-').pop());
-          const numB = parseInt(a.split('-').pop());
-          return numB - numA;
-        }
-        return yearB - yearA;
-      });
-    },
+    } catch (error) {
+      console.error('Error loading security data:', error);
+      this.error = 'Failed to load security data. Please check the console for more details.';
+    }
   },
+  formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+}
 };
 </script>
 
