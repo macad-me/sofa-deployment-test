@@ -71,7 +71,7 @@ export default {
     },
     stage: {
       type: String,
-      default: 'release', // Default to 'release'
+      default: 'release',
     },
   },
   data() {
@@ -89,13 +89,20 @@ export default {
         const data = this.platform === 'macOS' ? macOSData : iOSData;
         const osVersion = this.title.split(' ')[1];
         const osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
+        
         if (osData && osData.SecurityReleases) {
-          this.securityData = osData.SecurityReleases.map((release, index, array) => {
-            const currentReleaseDate = new Date(release.ReleaseDate);
-            const previousReleaseDate = index < array.length - 1 ? new Date(array[index + 1].ReleaseDate) : null;
-            const daysSincePrev = previousReleaseDate ? this.calculateDaysDifference(currentReleaseDate, previousReleaseDate) : 'N/A';
-            return { ...release, DaysSincePreviousRelease: daysSincePrev };
+          osData.SecurityReleases.forEach((release, index) => {
+            const previousRelease = osData.SecurityReleases[index + 1]; // Get previous release
+            if (previousRelease) {
+              const currentDate = new Date(release.ReleaseDate);
+              const prevDate = new Date(previousRelease.ReleaseDate);
+              const timeDiff = Math.abs(currentDate - prevDate);
+              release.DaysSincePreviousRelease = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Calculate days difference
+            } else {
+              release.DaysSincePreviousRelease = 'N/A'; // No previous release
+            }
           });
+          this.securityData = osData.SecurityReleases;
         } else {
           this.securityData = [];
         }
@@ -104,10 +111,6 @@ export default {
         this.error = 'Failed to load security data. Please check the console for more details.';
       }
     },
-    calculateDaysDifference(currentDate, previousDate) {
-      const timeDiff = Math.abs(currentDate - previousDate);
-      return Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
-    },
     formatDate(dateString) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(dateString).toLocaleDateString(undefined, options);
@@ -115,6 +118,7 @@ export default {
     createSafeLink(url) {
       const tempAnchorElement = document.createElement('a');
       tempAnchorElement.href = url;
+      // Replace specific text with a generic link
       if (url === 'This update has no published CVE entries.') {
         return 'https://support.apple.com/en-ca/100100';
       }
@@ -129,7 +133,7 @@ export default {
         const yearB = parseInt(b.split('-')[1]);
         if (yearA === yearB) {
           const numA = parseInt(a.split('-').pop());
-          const numB = parseInt(a.split('-').pop());
+          const numB = parseInt(b.split('-').pop());
           return numB - numA;
         }
         return yearB - yearA;
@@ -146,8 +150,8 @@ export default {
         }
         return yearB - yearA;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -163,12 +167,5 @@ export default {
 }
 .security-info-item p {
   margin: 5px 0;
-}
-.cve-link {
-  color: #007bff;
-  text-decoration: underline;
-}
-.cve-link:hover {
-  color: #0056b3;
 }
 </style>
