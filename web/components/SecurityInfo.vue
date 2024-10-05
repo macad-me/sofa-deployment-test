@@ -1,56 +1,53 @@
 <template>
   <div>
-    <!-- Show beta message if stage is beta and no security data is available -->
-    <div v-if="(securityData === null || securityData.length === 0) && stage === 'beta'">
+    <div v-if="(!osData || osData.Latest.ReleaseDate === 'Unknown') && stage === 'beta'">
       <p>Feature information will be available when no longer in beta.</p>
     </div>
+    <div v-else-if="osData">
+      <div class="row-container">
+        <div class="feature-column">
+          <img :src="osImage" alt="OS Image" class="os-image" />
+          <h3>Latest {{ platform }} {{ title }}</h3>
+          <p><strong>OS Version:</strong> {{ osData.OSVersion }}</p>
+          <p><strong>Product Version:</strong> {{ osData.Latest.ProductVersion }}</p>
+          <p><strong>Build:</strong> {{ osData.Latest.Build }}</p>
+          <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
+          <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
+          
+          <!-- Display installer info for Sequoia 15 -->
+          <div v-if="osData.OSVersion === 'Sequoia 15'">
+            <p v-if="installationApps?.LatestUMA?.url">
+              <strong>Installer Package: </strong>
+              <a :href="installationApps.LatestUMA.url" target="_blank">Download</a>
+            </p>
+            <p v-if="installationApps?.LatestMacIPSW?.macos_ipsw_url">
+              <strong>Current IPSW file: </strong>
+              <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
+            </p>
+          </div>
+          <!-- Or we show link to UMA when not Sequoia 15 -->
+          <div v-else>
+            <strong>Installer Package (UMA): </strong>
+            <a href="/macos_installer_info.html#release-information-table">Download links</a>
+          </div>
+        </div>
 
-    <!-- Show security data when available -->
-    <div v-else-if="securityData && securityData.length">
-      <div v-for="(info, index) in securityData" :key="index" class="security-info-item">
-        <h3>{{ info.UpdateName }}</h3>
-        <p>
-          Release Date: {{ formatDate(info.ReleaseDate) }}
-          <span v-if="isCritical(info.SecurityInfo)" title="Critical security updates included in this release. Please review for impact.">⚠️</span>
-        </p>
-        <p>{{ info.UpdateName }}</p>
-        <p>
-          Security Info:
-          <a :href="createSafeLink(info.SecurityInfo)" target="_blank">
-            {{ info.SecurityInfo && info.SecurityInfo !== 'This update has no published CVE entries.' ? info.SecurityInfo : 'This update has no published CVE entries.' }}
-          </a>
-        </p>
-        <p>Vulnerabilities Addressed: {{ Object.keys(info.CVEs).length || 0 }}</p>
-        <p>
-          Actively Exploited Vulnerabilities (KEV):
-          <span v-if="info.ActivelyExploitedCVEs.length">
-            <span v-for="(cve, idx) in sortedKEVs(info.ActivelyExploitedCVEs)" :key="idx">
-              🔥 <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedKEVs(info.ActivelyExploitedCVEs).length - 1 ? ', ' : '' }}
-            </span>
-          </span>
-          <span v-else>0</span>
-        </p>
-        <p>
-          CVEs:
-          <span v-if="Object.keys(info.CVEs).length">
-            <span v-for="(cve, idx) in sortedCVEs(info.CVEs)" :key="idx">
-              <a :href="`/cve-details.html?cveId=${cve}`" target="_blank">{{ cve }}</a>{{ idx < sortedCVEs(info.CVEs).length - 1 ? ', ' : '' }}
-            </span>
-          </span>
-          <span v-else>0</span>
-        </p>
-        <p>Days to Prev. Release: {{ info.DaysSincePreviousRelease }}</p>
+        <div v-if="platform === 'macOS'" class="feature-column">
+          <img :src="getAssetPath('images/SWUpdate.png')" alt="XProtect Image" class="os-image" />
+          <h3>Latest XProtect</h3>
+          <p><strong>XProtect Framework:</strong> {{ xProtectData?.XProtectFramework || 'N/A' }}</p>
+          <p><strong>Plugin Service:</strong> {{ xProtectData?.PluginService || 'N/A' }}</p>
+          <p><strong>Release Date:</strong> {{ xProtectData ? formatDate(xProtectData.ReleaseDate) : 'N/A' }}</p>
+          <p><strong>Time Since Release:</strong> {{ xProtectData ? timeSinceRelease(xProtectData.ReleaseDate) : 'N/A' }}</p>
+          <p v-if="xProtectData?.Remediator"><strong>XProtect Remediator:</strong> {{ xProtectData.Remediator }}</p>
+          <p v-if="xProtectData?.ConfigData"><strong>XProtect Config Data:</strong> {{ xProtectData.ConfigData }}</p>
+          <p v-if="xProtectData?.PlistReleaseDate"><strong>Plist Release Date:</strong> {{ formatDate(xProtectData.PlistReleaseDate) }}</p>
+          <p v-if="xProtectData?.PlistReleaseDate"><strong>Time Since Plist Release:</strong> {{ timeSinceRelease(xProtectData.PlistReleaseDate) }}</p>
+        </div>
       </div>
     </div>
-
-    <!-- Show loading if no data yet and no error -->
-    <div v-else-if="!error">
-      Loading...
-    </div>
-
-    <!-- Show error message if data fails to load and stage is not beta -->
-    <div v-if="error && stage !== 'beta'">
-      {{ error }}
+    <div v-else>
+      Loading data...
     </div>
   </div>
 </template>
@@ -71,65 +68,147 @@ export default {
     },
     stage: {
       type: String,
-      default: 'release',
+      default: 'release', // Default to 'release'
     },
   },
   data() {
     return {
-      securityData: null,
-      error: null,
+      osData: null,
+      installationApps: null,
+      xProtectData: null,
+      osImage: '', 
     };
   },
   mounted() {
-    this.loadSecurityData();
+    this.loadData();
   },
   methods: {
-  loadSecurityData() {
-    try {
-      const data = this.platform === 'macOS' ? macOSData : iOSData;
-      const osVersion = this.title.split(' ')[1];
-      const osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
-      
-      if (osData && osData.SecurityReleases) {
-        osData.SecurityReleases.forEach((release, index) => {
-          const previousRelease = osData.SecurityReleases[index + 1]; // Get the previous release
-          if (previousRelease) {
-            const currentDate = new Date(release.ReleaseDate);
-            const prevDate = new Date(previousRelease.ReleaseDate);
-            const timeDiff = Math.abs(currentDate - prevDate);
-            release.DaysSincePreviousRelease = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Days difference
-          } else {
-            release.DaysSincePreviousRelease = 'N/A'; // No previous release
+    loadData() {
+      try {
+        const data = this.platform === 'macOS' ? macOSData : iOSData;
+        const osVersion = this.title.split(' ')[1];
+        this.osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
+
+        if (this.osData) {
+          console.log('Loaded OS Data:', this.osData); // Log the data for debugging
+
+          if (!this.osData.Latest.ReleaseDate || this.osData.Latest.ReleaseDate === '') {
+            this.osData.Latest.ReleaseDate = 'Unknown'; // Set ReleaseDate to 'Unknown' if it's missing
           }
-        });
-        this.securityData = osData.SecurityReleases;
-      } else {
-        this.securityData = [];
+
+          if (this.osData.OSVersion === 'Sequoia 15') {
+            this.installationApps = data.InstallationApps;
+            if (this.installationApps) {
+              console.log('Loaded InstallationApps Data:', this.installationApps); // Log the InstallationApps data for debugging
+            } else {
+              console.warn('InstallationApps not found in data');
+            }
+          }
+          else {
+            console.warn('OS version is not Sequoia 15. Redirecting to installer info page...');
+            this.$router.push('/macos_installer_info.html#release-information-table');
+          }
+
+          this.osImage = this.getOsImage(this.platform, this.title);
+
+          if (this.platform === 'macOS') {
+            this.xProtectData = {
+              XProtectFramework: data.XProtectPayloads['com.apple.XProtectFramework.XProtect'],
+              PluginService: data.XProtectPayloads['com.apple.XprotectFramework.PluginService'],
+              ReleaseDate: data.XProtectPayloads.ReleaseDate,
+              Remediator: data.XProtectPayloads['com.apple.XProtectFramework.XProtectRemediator'],
+              ConfigData: data.XProtectPlistConfigData['com.apple.XProtect'],
+              PlistReleaseDate: data.XProtectPlistConfigData.ReleaseDate,
+            };
+            console.log('Loaded XProtect Data:', this.xProtectData); // Log the data for debugging
+          }
+        } else {
+          console.error('No data found for the specified OS version.');
+        }
+      } catch (error) {
+        console.error('Error loading data:', error);
       }
-    } catch (error) {
-      console.error('Error loading security data:', error);
-      this.error = 'Failed to load security data. Please check the console for more details.';
-    }
+    },
+
+    getOsImage(platform, title) {
+      if (platform === 'macOS') {
+        if (title.includes('Sonoma')) {
+          return this.getAssetPath('images/Sonoma.png');
+        } else if (title.includes('Sequoia')) {
+          return this.getAssetPath('images/Sequoia.png');
+        } else if (title.includes('Ventura')) {
+          return this.getAssetPath('images/Ventura.png');
+        } else if (title.includes('Monterey')) {
+          return this.getAssetPath('images/Monterey.png');
+        }
+      } else if (platform === 'iOS') {
+        if (title.includes('iOS 18')) {
+          return this.getAssetPath('images/ios_18.png');
+        } else if (title.includes('iOS 17')) {
+          return this.getAssetPath('images/ios_17.png');
+        } else if (title.includes('iOS 16')) {
+          return this.getAssetPath('images/ios_16.png');
+        }
+      }
+      return this.getAssetPath('images/default.png'); // Fallback image
+    },
+    getAssetPath(relativePath) {
+      return new URL(`/${relativePath}`, import.meta.url).href;
+    },
+    formatDate(dateString) {
+      if (dateString === 'Unknown') {
+        return 'Unknown'; // Handle the case for unknown date
+      }
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    },
+    daysSinceRelease(dateString) {
+      if (dateString === 'Unknown') {
+        return 'Unknown'; // Handle the case for unknown date
+      }
+      const releaseDate = new Date(dateString);
+      const currentDate = new Date();
+      const timeDiff = currentDate - releaseDate;
+      const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+      return daysDiff;
+    },
+    timeSinceRelease(dateString) {
+      if (dateString === 'Unknown') {
+        return 'Unknown'; // Handle the case for unknown date
+      }
+      const releaseDate = new Date(dateString);
+      const currentDate = new Date();
+      const timeDiff = currentDate - releaseDate;
+
+      const days = Math.floor(timeDiff / (1000 * 3600 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 3600 * 24)) / (1000 * 3600));
+      
+      return `${days} days, ${hours} hours`;
+    },
   },
-  formatDate(dateString) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  }
-}
 };
 </script>
 
 <style scoped>
-.security-info-item {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.security-info-item h3 {
-  margin-top: 0;
+.feature-column {
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
-.security-info-item p {
+.feature-column h3 {
+  margin-bottom: 10px;
+}
+.feature-column p {
   margin: 5px 0;
+}
+.os-image {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
 }
 </style>
