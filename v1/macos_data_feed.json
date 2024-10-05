@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "0dc13fe2a6e6d70a5ce4523e7977e60ff09923460c03d5464f1d24fa1443e427",
+    "UpdateHash": "f7c5d4a9e3091821834c27d48a4a7e46f9a8d5d6729e9d3b7e4984afc6f8812e",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -1378,7 +1378,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 8
+                    "DaysSincePreviousRelease": 0
                 },
                 {
                     "UpdateName": "macOS Sonoma 14.2",
@@ -1508,7 +1508,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 59,
-                    "DaysSincePreviousRelease": 11
+                    "DaysSincePreviousRelease": 8
                 },
                 {
                     "UpdateName": "macOS Sonoma 14.1.2",
@@ -1584,7 +1584,7 @@
                         "CVE-2023-42917"
                     ],
                     "UniqueCVEsCount": 2,
-                    "DaysSincePreviousRelease": 23
+                    "DaysSincePreviousRelease": 11
                 },
                 {
                     "UpdateName": "macOS Sonoma 14.1.1",
@@ -1654,7 +1654,7 @@
                     "CVEs": {},
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 0,
-                    "DaysSincePreviousRelease": 13
+                    "DaysSincePreviousRelease": 23
                 },
                 {
                     "UpdateName": "macOS Sonoma 14.1",
@@ -1795,7 +1795,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 70,
-                    "DaysSincePreviousRelease": 29
+                    "DaysSincePreviousRelease": 13
                 },
                 {
                     "UpdateName": "macOS Sonoma 14",
@@ -1964,7 +1964,7 @@
                         "CVE-2023-41993"
                     ],
                     "UniqueCVEsCount": 96,
-                    "DaysSincePreviousRelease": 0
+                    "DaysSincePreviousRelease": 29
                 }
             ],
             "SupportedModels": [
@@ -2895,7 +2895,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 31,
-                    "DaysSincePreviousRelease": 34
+                    "DaysSincePreviousRelease": 0
                 },
                 {
                     "UpdateName": "macOS Ventura 13.6.2",
@@ -2964,7 +2964,7 @@
                     "CVEs": {},
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 0,
-                    "DaysSincePreviousRelease": 13
+                    "DaysSincePreviousRelease": 34
                 },
                 {
                     "UpdateName": "macOS Ventura 13.6.1",
@@ -3062,7 +3062,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 28,
-                    "DaysSincePreviousRelease": 34
+                    "DaysSincePreviousRelease": 13
                 },
                 {
                     "UpdateName": "macOS Ventura 13.6",
@@ -3156,7 +3156,7 @@
                         "CVE-2023-41991"
                     ],
                     "UniqueCVEsCount": 21,
-                    "DaysSincePreviousRelease": 14
+                    "DaysSincePreviousRelease": 34
                 },
                 {
                     "UpdateName": "macOS Ventura 13.5.2",
@@ -3229,7 +3229,7 @@
                         "CVE-2023-41064"
                     ],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 21
+                    "DaysSincePreviousRelease": 14
                 },
                 {
                     "UpdateName": "macOS Ventura 13.5.1",
@@ -3298,7 +3298,7 @@
                     "CVEs": {},
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 0,
-                    "DaysSincePreviousRelease": 24
+                    "DaysSincePreviousRelease": 21
                 },
                 {
                     "UpdateName": "macOS Ventura 13.5",
@@ -3448,7 +3448,7 @@
                         "CVE-2023-37450"
                     ],
                     "UniqueCVEsCount": 77,
-                    "DaysSincePreviousRelease": 12
+                    "DaysSincePreviousRelease": 24
                 },
                 {
                     "UpdateName": "Rapid Security Response macOS Ventura 13.4.1 (c)",
@@ -3521,7 +3521,7 @@
                         "CVE-2023-37450"
                     ],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 2
+                    "DaysSincePreviousRelease": 12
                 },
                 {
                     "UpdateName": "Rapid Security Response macOS Ventura 13.4.1 (a)",
@@ -3594,7 +3594,7 @@
                         "CVE-2023-37450"
                     ],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 19
+                    "DaysSincePreviousRelease": 2
                 },
                 {
                     "UpdateName": "macOS Ventura 13.4.1",
@@ -3669,7 +3669,7 @@
                         "CVE-2023-32439"
                     ],
                     "UniqueCVEsCount": 2,
-                    "DaysSincePreviousRelease": 34
+                    "DaysSincePreviousRelease": 19
                 },
                 {
                     "UpdateName": "macOS Ventura 13.4",
@@ -3806,7 +3806,7 @@
                         "CVE-2023-32373"
                     ],
                     "UniqueCVEsCount": 63,
-                    "DaysSincePreviousRelease": 41
+                    "DaysSincePreviousRelease": 34
                 },
                 {
                     "UpdateName": "macOS Ventura 13.3.1",
@@ -3881,7 +3881,7 @@
                         "CVE-2023-28205"
                     ],
                     "UniqueCVEsCount": 2,
-                    "DaysSincePreviousRelease": 11
+                    "DaysSincePreviousRelease": 41
                 },
                 {
                     "UpdateName": "macOS Ventura 13.3",
@@ -4048,7 +4048,7 @@
                         "CVE-2023-32435"
                     ],
                     "UniqueCVEsCount": 95,
-                    "DaysSincePreviousRelease": 42
+                    "DaysSincePreviousRelease": 11
                 },
                 {
                     "UpdateName": "macOS Ventura 13.2.1",
@@ -4124,7 +4124,7 @@
                         "CVE-2023-23529"
                     ],
                     "UniqueCVEsCount": 4,
-                    "DaysSincePreviousRelease": 21
+                    "DaysSincePreviousRelease": 42
                 },
                 {
                     "UpdateName": "macOS Ventura 13.2",
@@ -4232,7 +4232,7 @@
                         "CVE-2023-41990"
                     ],
                     "UniqueCVEsCount": 36,
-                    "DaysSincePreviousRelease": 75
+                    "DaysSincePreviousRelease": 21
                 },
                 {
                     "UpdateName": "macOS Ventura 13.0.1",
@@ -4304,7 +4304,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 2,
-                    "DaysSincePreviousRelease": 16
+                    "DaysSincePreviousRelease": 75
                 },
                 {
                     "UpdateName": "macOS Ventura 13",
@@ -4531,7 +4531,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 157,
-                    "DaysSincePreviousRelease": 0
+                    "DaysSincePreviousRelease": 16
                 }
             ],
             "SupportedModels": [
@@ -5246,7 +5246,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 28,
-                    "DaysSincePreviousRelease": 47
+                    "DaysSincePreviousRelease": 0
                 },
                 {
                     "UpdateName": "macOS Monterey 12.7.1",
@@ -5342,7 +5342,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 23,
-                    "DaysSincePreviousRelease": 34
+                    "DaysSincePreviousRelease": 47
                 },
                 {
                     "UpdateName": "macOS Monterey 12.7",
@@ -5433,7 +5433,7 @@
                         "CVE-2023-41992"
                     ],
                     "UniqueCVEsCount": 16,
-                    "DaysSincePreviousRelease": 10
+                    "DaysSincePreviousRelease": 34
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.9",
@@ -5509,7 +5509,7 @@
                         "CVE-2023-41064"
                     ],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 49
+                    "DaysSincePreviousRelease": 10
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.8",
@@ -5635,7 +5635,7 @@
                         "CVE-2023-38606"
                     ],
                     "UniqueCVEsCount": 50,
-                    "DaysSincePreviousRelease": 33
+                    "DaysSincePreviousRelease": 49
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.7",
@@ -5711,7 +5711,7 @@
                         "CVE-2023-32434"
                     ],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 34
+                    "DaysSincePreviousRelease": 33
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.6",
@@ -5816,7 +5816,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 32,
-                    "DaysSincePreviousRelease": 38
+                    "DaysSincePreviousRelease": 34
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.5",
@@ -5892,7 +5892,7 @@
                         "CVE-2023-28206"
                     ],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 14
+                    "DaysSincePreviousRelease": 38
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.4",
@@ -6005,7 +6005,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 40,
-                    "DaysSincePreviousRelease": 63
+                    "DaysSincePreviousRelease": 14
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.3",
@@ -6099,7 +6099,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 21,
-                    "DaysSincePreviousRelease": 41
+                    "DaysSincePreviousRelease": 63
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.2",
@@ -6189,7 +6189,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 17,
-                    "DaysSincePreviousRelease": 50
+                    "DaysSincePreviousRelease": 41
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6.1",
@@ -6276,7 +6276,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 14,
-                    "DaysSincePreviousRelease": 42
+                    "DaysSincePreviousRelease": 50
                 },
                 {
                     "UpdateName": "macOS Monterey 12.6",
@@ -6391,7 +6391,7 @@
                         "CVE-2022-32917"
                     ],
                     "UniqueCVEsCount": 40,
-                    "DaysSincePreviousRelease": 26
+                    "DaysSincePreviousRelease": 42
                 },
                 {
                     "UpdateName": "macOS Monterey 12.5.1",
@@ -6469,7 +6469,7 @@
                         "CVE-2022-32893"
                     ],
                     "UniqueCVEsCount": 2,
-                    "DaysSincePreviousRelease": 28
+                    "DaysSincePreviousRelease": 26
                 },
                 {
                     "UpdateName": "macOS Monterey 12.5",
@@ -6613,7 +6613,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 71,
-                    "DaysSincePreviousRelease": 65
+                    "DaysSincePreviousRelease": 28
                 },
                 {
                     "UpdateName": "macOS Monterey 12.4",
@@ -6770,7 +6770,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 84,
-                    "DaysSincePreviousRelease": 46
+                    "DaysSincePreviousRelease": 65
                 },
                 {
                     "UpdateName": "macOS Monterey 12.3.1",
@@ -6848,7 +6848,7 @@
                         "CVE-2022-22674"
                     ],
                     "UniqueCVEsCount": 2,
-                    "DaysSincePreviousRelease": 17
+                    "DaysSincePreviousRelease": 46
                 },
                 {
                     "UpdateName": "macOS Monterey 12.3",
@@ -6990,7 +6990,7 @@
                     },
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 69,
-                    "DaysSincePreviousRelease": 32
+                    "DaysSincePreviousRelease": 17
                 },
                 {
                     "UpdateName": "macOS Monterey 12.2.1",
@@ -7066,7 +7066,7 @@
                         "CVE-2022-22620"
                     ],
                     "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 15
+                    "DaysSincePreviousRelease": 32
                 },
                 {
                     "UpdateName": "macOS Monterey 12.2",
@@ -7156,7 +7156,7 @@
                         "CVE-2022-22587"
                     ],
                     "UniqueCVEsCount": 15,
-                    "DaysSincePreviousRelease": 0
+                    "DaysSincePreviousRelease": 15
                 }
             ],
             "SupportedModels": [
