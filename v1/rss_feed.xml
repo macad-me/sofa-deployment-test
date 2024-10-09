@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Oct 2024 09:08:25 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Oct 2024 07:04:21 +0000</lastBuildDate>
     <item>
       <title>iOS 18.0.1 and iPadOS 18.0.1</title>
       <link>https://sofa.macadmins.io/</link>
@@ -37,35 +37,35 @@
     <item>
       <title>iOS 17.7 and iPadOS 17.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 16&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 16&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.7</guid>
       <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 18 and iPadOS 18</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 33&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 33&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_18.0</guid>
       <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Ventura 13.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 30&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 30&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.7</guid>
       <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 37&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 37&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.7</guid>
       <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sequoia 15</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 78&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 78&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_15.0</guid>
       <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
     </item>
@@ -84,217 +84,217 @@
     <item>
       <title>iOS 16.7.10 and iPadOS 16.7.10</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_16.7.10</guid>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.6.1 and iPadOS 17.6.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.6.1</guid>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Ventura 13.6.9</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.6.9</guid>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.6.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.6.1</guid>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 16.7.9 and iPadOS 16.7.9</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 26&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 26&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_16.7.9</guid>
       <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.6 and iPadOS 17.6</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 35&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 35&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.6</guid>
       <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Monterey 12.7.6</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 41&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 41&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_12.7.6</guid>
       <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Ventura 13.6.8</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 45&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 45&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.6.8</guid>
       <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.6</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 69&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 69&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.6</guid>
       <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.5.1 and iPadOS 17.5.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.5.1</guid>
       <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 16.7.8 and iPadOS 16.7.8</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 22&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 22&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_16.7.8</guid>
       <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.5 and iPadOS 17.5</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 45&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 45&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.5</guid>
       <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Monterey 12.7.5</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 18&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 18&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_12.7.5</guid>
       <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Ventura 13.6.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 21&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 21&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.6.7</guid>
       <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.5</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 49&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 49&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.5</guid>
       <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Ventura 13.6.6</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.6.6</guid>
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.4.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.4.1</guid>
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 16.7.7 and iPadOS 16.7.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_16.7.7</guid>
       <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.4.1 and iPadOS 17.4.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.4.1</guid>
       <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Monterey 12.7.4</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 28&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 28&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_12.7.4</guid>
       <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Ventura 13.6.5</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 32&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 32&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.6.5</guid>
       <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.4</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 77&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 77&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.4</guid>
       <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 16.7.6 and iPadOS 16.7.6</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 19&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 19&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_16.7.6</guid>
       <pubDate>Tue, 05 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.4 and iPadOS 17.4</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 39&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 39&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.4</guid>
       <pubDate>Tue, 05 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.3.1 and iPadOS 17.3.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.3.1</guid>
       <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.3.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.3.1</guid>
       <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 16.7.5 and iPadOS 16.7.5</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 9&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 9&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_16.7.5</guid>
       <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>iOS 17.3 and iPadOS 17.3</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 20&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 20&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.3</guid>
       <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Monterey 12.7.3</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 9&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 9&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_12.7.3</guid>
       <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Ventura 13.6.4</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 13&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 13&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.6.4</guid>
       <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sonoma 14.3</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 20&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 20&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.3</guid>
       <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
     </item>
@@ -448,7 +448,7 @@
     <item>
       <title>macOS Sonoma 14</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 96&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 96&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_14.0</guid>
       <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
     </item>
@@ -490,7 +490,7 @@
     <item>
       <title>iOS 17 and iPadOS 17</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 68&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 68&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_17.0</guid>
       <pubDate>Mon, 18 Sep 2023 00:00:00 +0000</pubDate>
     </item>
@@ -742,7 +742,7 @@
     <item>
       <title>macOS Ventura 13</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 157&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 157&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_13.0</guid>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
     </item>
@@ -770,7 +770,7 @@
     <item>
       <title>iOS 16</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 51&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 51&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">iOS_OS_16.0</guid>
       <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
     </item>
@@ -826,7 +826,7 @@
     <item>
       <title>macOS Monterey 12.2</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 15&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 0</description>
+      <description>Vulnerabilities Addressed: 15&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 1</description>
       <guid isPermaLink="false">macOS_OS_12.2</guid>
       <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
     </item>
