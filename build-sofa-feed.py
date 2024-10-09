@@ -222,7 +222,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     }
     if os_type == "macOS":
         catalog_url: str = (
-            "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
+            "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog" 
     # noqa: E501 pylint: disable=line-too-long
         )
         catalog_content = fetch_content(catalog_url)
@@ -575,38 +575,30 @@ def format_iso_date(date_str: str) -> str:
 
 def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> list:
     """Fetch security releases for the given OS type and version, sourced from multiple Apple Support pages."""
-
-    # Updated URLs to include multiple sources
+    
     urls = [
         "https://support.apple.com/en-ca/100100",  # Current info
         "https://support.apple.com/en-ca/121012",  # 2022 to 2023
-        #"https://support.apple.com/en-ca/120989",  # 2020 to 2021
-        #"https://support.apple.com/en-ca/103179",  # 2018 to 2019
     ]
-
+    
     security_releases = []
     release_dates = []
 
-    # Loop through each URL to gather security release data
     for url in urls:
         print(f"Fetching data from {url}")
         response = requests.get(url)
 
-        if (
-            response.ok
-        ):  # TODO: any validation we want on the rest of this page we're parsing?
+        if response.ok:
             html_content = response.text
             soup = BeautifulSoup(html_content, "lxml")
             rows = soup.find_all("tr")
-
-            release_dates = []
+            
             for row in rows:
                 cells = row.find_all("td")
                 if cells:
-                    name_info = cells[0].get_text(strip=True)  # TODO: example of this value?
+                    name_info = cells[0].get_text(strip=True)
                     os_version_info = process_os_version(os_type, os_version, name_info)
-                    # Ensure os_version_info non-empty/matches the targeted version before proceeding
-                    if os_version_info and os_version in os_version_info:  # Filter based on the targeted OS version
+                    if os_version_info and os_version in os_version_info:
                         link = cells[0].find("a", href=True)
                         if link:
                             link_info = urljoin("https://support.apple.com", link["href"])
@@ -614,26 +606,21 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                         else:
                             link_info = None
                             cves_exploitation_status = {}
-                        # extract ProductVersion from the name_info, any digit(s), dot, any digit(s)
                         version_match = re.search(r"\d+(\.\d+)*", name_info)
                         product_version = version_match.group() if version_match else "Unknown"
-                        # Ensure that product_version includes the minor version or add .0 see GH issue #174
                         if '.' not in product_version:
                             product_version += '.0'
                         print(f"Processing security release {product_version}, source {name_info}")
-                        # Handling the case when the page indicates no published CVE entries
                         if link_info and "no published CVE entries" in fetch_content(link_info).lower():
                             cves_exploitation_status = {}
                         date = cells[-1].get_text(strip=True)
                         release_dates.append(date)
-                        # Extract actively exploited CVEs if any
                         actively_exploited_cves = [
                             cve for cve, exploited in cves_exploitation_status.items() if exploited
                         ]
                         os_info = fetch_latest_os_version_info(os_type, product_version, gdmf_data)
                         if not os_info:
                             os_info = {}
-                        # Handle RSR releases by grabbing letter in ()
                         rsr_release = None
                         if "Rapid Security Response" in os_version_info:
                             rsr_vers = re.search(r"\((\w)\)", os_version_info)
@@ -668,8 +655,8 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                     release["DaysSincePreviousRelease"] = 0
         else:
             print(f"Failed to retrieve data from {url}")
-            continue  # Skip to the next URL if the current one fails
-
+            continue
+    
     return security_releases if security_releases else print("Failed to retrieve security releases.") or []
 
 
@@ -737,15 +724,28 @@ def fetch_cves(url: str) -> dict:
 def calculate_days_since_previous_release(release_dates: list) -> dict:
     """Calculate the days between each release date and the previous sequentially"""
     days_between_releases = {}
-    for i in range(len(release_dates) - 1):
-        try:
-            next_release_date = parse_flexible_date(release_dates[i])
-            current_release_date = parse_flexible_date(release_dates[i + 1])
-            days_difference = abs((next_release_date - current_release_date).days)
+    try:
+        date_objects = [parse_flexible_date(date) for date in release_dates]
+        date_objects.sort(reverse=True)
+        for i in range(len(date_objects) - 1):
+            days_difference = (date_objects[i] - date_objects[i + 1]).days
             days_between_releases[release_dates[i]] = days_difference
-        except ValueError as e:
-            print(f"Error parsing date: {e}")
+        # Handle the last element which will always have 0 days since previous release
+        if release_dates:
+            days_between_releases[release_dates[-1]] = 0
+    except ValueError as e:
+        print(f"Error parsing date: {e}")
     return days_between_releases
+
+def parse_flexible_date(date_str: str) -> datetime:
+    """Parse a date string with flexible formats to sanitize data scraped from the webpage"""
+    formats = ["%Y-%m-%d", "%d %b %Y", "%B %d, %Y"]
+    for fmt in formats:
+        try:
+            return datetime.strptime(date_str, fmt)
+        except ValueError:
+            continue
+    raise ValueError(f"Date format not recognized: {date_str}")
 
 
 def parse_flexible_date(date_str: str) -> datetime:
@@ -784,13 +784,12 @@ def add_compatible_machines(current_macos_full_version: str) -> list:
 
 
 def write_data_to_json(feed_structure: dict, filename: str):
-    """Writes the fully populated feed structure to JSON filename"""
     latest_versions = {}
-
+    
     for os_version in feed_structure["OSVersions"]:
         if "Latest" in os_version:
             latest_dict = os_version["Latest"]
-
+            
             # Ensure all required keys are present with default values
             latest_dict["ProductVersion"] = latest_dict.get("ProductVersion", "")
             latest_dict["ReleaseDate"] = latest_dict.get("ReleaseDate", "")
@@ -801,44 +800,30 @@ def write_data_to_json(feed_structure: dict, filename: str):
             latest_dict["ActivelyExploitedCVEs"] = latest_dict.get("ActivelyExploitedCVEs", [])
             latest_dict["CVEs"] = latest_dict.get("CVEs", {})
             latest_dict["SupportedDevices"] = latest_dict.get("SupportedDevices", [])
-
+            
             # Convert dates to ISO format
             latest_dict["ReleaseDate"] = format_iso_date(latest_dict.get("ReleaseDate", ""))
             latest_dict["ExpirationDate"] = format_iso_date(latest_dict.get("ExpirationDate", ""))
-
+            
             product_version = latest_dict["ProductVersion"]
-
-            # Store the latest version info for comparison if not already present
-            if product_version not in latest_versions:
-                latest_versions[product_version] = {
-                    "latest_date": latest_dict["ReleaseDate"],
-                    "os_version_dict": os_version
-                }
-
+            
+            # Store the latest version info for comparison
+            latest_versions[product_version] = {
+                "latest_date": latest_dict["ReleaseDate"],
+                "os_version_dict": os_version
+            }
+        
         # Handle SecurityReleases similarly if present
         if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
             for release in os_version["SecurityReleases"]:
                 release["ProductVersion"] = release.get("ProductVersion", "")
+                release["ReleaseDate"] = release.get("ReleaseDate", "")
                 release["ReleaseDate"] = format_iso_date(release.get("ReleaseDate", ""))
-
-                # Avoid setting DaysSincePreviousRelease to 0 unless it's truly the first release
-                if "DaysSincePreviousRelease" in release and release["DaysSincePreviousRelease"] == 0:
-                    release_date = release["ReleaseDate"]
-                    product_version = release["ProductVersion"]
-
-                    # Ensure the product_version exists in latest_versions before accessing
-                    if product_version in latest_versions:
-                        latest_date = latest_versions[product_version]["latest_date"]
-                        if release_date and release_date != latest_date:
-                            release["DaysSincePreviousRelease"] = max(1, release.get("DaysSincePreviousRelease", 1))
-                    else:
-                        print(f"Warning: '{product_version}' not found in latest_versions.")
-                        release["DaysSincePreviousRelease"] = 1  # Default for untracked versions
-
-                # Update latest_versions with security date if relevant
+                
+                product_version = release["ProductVersion"]
                 if product_version in latest_versions:
                     latest_versions[product_version]["security_date"] = release["ReleaseDate"]
-
+    
     # Update all relevant Latest entries with their respective security dates
     for product_version, version_info in latest_versions.items():
         if "security_date" in version_info:
@@ -847,13 +832,10 @@ def write_data_to_json(feed_structure: dict, filename: str):
             new_date = version_info["security_date"]
             latest_dict["ReleaseDate"] = new_date
             print(f"Updated {product_version} ReleaseDate from {original_date} to {new_date}")
-
+    
     # Write the updated feed structure back to a file
     with open(filename, "w", encoding="utf-8") as json_file:
-        json.dump(
-            feed_structure, json_file, indent=4, ensure_ascii=False
-        )
-
+        json.dump(feed_structure, json_file, indent=4, ensure_ascii=False)
 
 def create_rss_json_data(feed_structure: dict) -> list:
     """Pull all data parsed/processed on this run as per os_type(s)"""
