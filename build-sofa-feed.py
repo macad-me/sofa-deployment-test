@@ -222,7 +222,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     }
     if os_type == "macOS":
         catalog_url: str = (
-            "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog" 
+            "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
     # noqa: E501 pylint: disable=line-too-long
         )
         catalog_content = fetch_content(catalog_url)
@@ -575,7 +575,7 @@ def format_iso_date(date_str: str) -> str:
 
 def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> list:
     """Fetch security releases for the given OS type and version, sourced from multiple Apple Support pages."""
-    
+
     # Updated URLs to include multiple sources
     urls = [
         "https://support.apple.com/en-ca/100100",  # Current info
@@ -583,7 +583,7 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
         #"https://support.apple.com/en-ca/120989",  # 2020 to 2021
         #"https://support.apple.com/en-ca/103179",  # 2018 to 2019
     ]
-    
+
     security_releases = []
     release_dates = []
 
@@ -598,7 +598,7 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
             html_content = response.text
             soup = BeautifulSoup(html_content, "lxml")
             rows = soup.find_all("tr")
-            
+
             release_dates = []
             for row in rows:
                 cells = row.find_all("td")
@@ -665,11 +665,11 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                 if release_date in days_since_previous_release:
                     release["DaysSincePreviousRelease"] = days_since_previous_release[release_date]
                 else:
-                    release["DaysSincePreviousRelease"] = 'N/A'
+                    release["DaysSincePreviousRelease"] = 0
         else:
             print(f"Failed to retrieve data from {url}")
             continue  # Skip to the next URL if the current one fails
-    
+
     return security_releases if security_releases else print("Failed to retrieve security releases.") or []
 
 
@@ -737,34 +737,15 @@ def fetch_cves(url: str) -> dict:
 def calculate_days_since_previous_release(release_dates: list) -> dict:
     """Calculate the days between each release date and the previous sequentially"""
     days_between_releases = {}
-
-    # Ensure release dates are sorted chronologically
-    release_dates.sort(key=lambda date: parse_flexible_date(date))
-    
     for i in range(len(release_dates) - 1):
         try:
-            # Parse both current and next release dates
             next_release_date = parse_flexible_date(release_dates[i])
             current_release_date = parse_flexible_date(release_dates[i + 1])
-            
-            # Calculate the difference in days between releases
             days_difference = abs((next_release_date - current_release_date).days)
-            
-            # Only assign a value if there's a difference, otherwise set to 'N/A'
-            if days_difference > 0:
-                days_between_releases[release_dates[i]] = days_difference
-            else:
-                days_between_releases[release_dates[i]] = 'N/A'  # Fallback for no valid difference
+            days_between_releases[release_dates[i]] = days_difference
         except ValueError as e:
-            # Handle invalid or unrecognized date formats
             print(f"Error parsing date: {e}")
-            days_between_releases[release_dates[i]] = 'N/A'
-    
-    # Ensure the first release gets a 'N/A' since there's no previous release to compare with
-    days_between_releases[release_dates[-1]] = 'N/A'
-
     return days_between_releases
-
 
 
 def parse_flexible_date(date_str: str) -> datetime:
@@ -805,11 +786,11 @@ def add_compatible_machines(current_macos_full_version: str) -> list:
 def write_data_to_json(feed_structure: dict, filename: str):
     """Writes the fully populated feed structure to JSON filename"""
     latest_versions = {}
-    
+
     for os_version in feed_structure["OSVersions"]:
         if "Latest" in os_version:
             latest_dict = os_version["Latest"]
-            
+
             # Ensure all required keys are present with default values
             latest_dict["ProductVersion"] = latest_dict.get("ProductVersion", "")
             latest_dict["ReleaseDate"] = latest_dict.get("ReleaseDate", "")
@@ -820,29 +801,42 @@ def write_data_to_json(feed_structure: dict, filename: str):
             latest_dict["ActivelyExploitedCVEs"] = latest_dict.get("ActivelyExploitedCVEs", [])
             latest_dict["CVEs"] = latest_dict.get("CVEs", {})
             latest_dict["SupportedDevices"] = latest_dict.get("SupportedDevices", [])
-            
+
             # Convert dates to ISO format
             latest_dict["ReleaseDate"] = format_iso_date(latest_dict.get("ReleaseDate", ""))
             latest_dict["ExpirationDate"] = format_iso_date(latest_dict.get("ExpirationDate", ""))
-            
+
             product_version = latest_dict["ProductVersion"]
 
-            # Store the latest version info for comparison
-            latest_versions[product_version] = {
-                "latest_date": latest_dict["ReleaseDate"],
-                "os_version_dict": os_version
-            }
-        
+            # Store the latest version info for comparison if not already present
+            if product_version not in latest_versions:
+                latest_versions[product_version] = {
+                    "latest_date": latest_dict["ReleaseDate"],
+                    "os_version_dict": os_version
+                }
+
         # Handle SecurityReleases similarly if present
         if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
             for release in os_version["SecurityReleases"]:
                 release["ProductVersion"] = release.get("ProductVersion", "")
-                release["ReleaseDate"] = release.get("ReleaseDate", "")
                 release["ReleaseDate"] = format_iso_date(release.get("ReleaseDate", ""))
 
-                product_version = release["ProductVersion"]
+                # Avoid setting DaysSincePreviousRelease to 0 unless it's truly the first release
+                if "DaysSincePreviousRelease" in release and release["DaysSincePreviousRelease"] == 0:
+                    release_date = release["ReleaseDate"]
+                    product_version = release["ProductVersion"]
+
+                    # Ensure the product_version exists in latest_versions before accessing
+                    if product_version in latest_versions:
+                        latest_date = latest_versions[product_version]["latest_date"]
+                        if release_date and release_date != latest_date:
+                            release["DaysSincePreviousRelease"] = max(1, release.get("DaysSincePreviousRelease", 1))
+                    else:
+                        print(f"Warning: '{product_version}' not found in latest_versions.")
+                        release["DaysSincePreviousRelease"] = 1  # Default for untracked versions
+
+                # Update latest_versions with security date if relevant
                 if product_version in latest_versions:
-                    # Update security date if the product version matches
                     latest_versions[product_version]["security_date"] = release["ReleaseDate"]
 
     # Update all relevant Latest entries with their respective security dates
@@ -853,12 +847,12 @@ def write_data_to_json(feed_structure: dict, filename: str):
             new_date = version_info["security_date"]
             latest_dict["ReleaseDate"] = new_date
             print(f"Updated {product_version} ReleaseDate from {original_date} to {new_date}")
-    
+
     # Write the updated feed structure back to a file
     with open(filename, "w", encoding="utf-8") as json_file:
         json.dump(
             feed_structure, json_file, indent=4, ensure_ascii=False
-        )  # TODO: ascii false because we might have utf8 in it?
+        )
 
 
 def create_rss_json_data(feed_structure: dict) -> list:
