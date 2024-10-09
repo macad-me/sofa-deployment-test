@@ -576,14 +576,18 @@ def format_iso_date(date_str: str) -> str:
 def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> list:
     """Fetch security releases for the given OS type and version, sourced from multiple Apple Support pages."""
     
+    # Updated URLs to include multiple sources
     urls = [
         "https://support.apple.com/en-ca/100100",  # Current info
         "https://support.apple.com/en-ca/121012",  # 2022 to 2023
+        #"https://support.apple.com/en-ca/120989",  # 2020 to 2021
+        #"https://support.apple.com/en-ca/103179",  # 2018 to 2019
     ]
     
     security_releases = []
     release_dates = []
 
+    # Loop through each URL to gather security release data
     for url in urls:
         print(f"Fetching data from {url}")
         response = requests.get(url)
@@ -598,7 +602,8 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                 if cells:
                     name_info = cells[0].get_text(strip=True)
                     os_version_info = process_os_version(os_type, os_version, name_info)
-                    if os_version_info and os_version in os_version_info:
+                    # Ensure os_version_info non-empty/matches the targeted version before proceeding
+                    if os_version_info and os_version in os_version_info:  # Filter based on the targeted OS version
                         link = cells[0].find("a", href=True)
                         if link:
                             link_info = urljoin("https://support.apple.com", link["href"])
@@ -606,21 +611,26 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                         else:
                             link_info = None
                             cves_exploitation_status = {}
+                        # extract ProductVersion from the name_info, any digit(s), dot, any digit(s)
                         version_match = re.search(r"\d+(\.\d+)*", name_info)
                         product_version = version_match.group() if version_match else "Unknown"
+                        # Ensure that product_version includes the minor version or add .0 see GH issue #174
                         if '.' not in product_version:
                             product_version += '.0'
                         print(f"Processing security release {product_version}, source {name_info}")
+                        # Handling the case when the page indicates no published CVE entries
                         if link_info and "no published CVE entries" in fetch_content(link_info).lower():
                             cves_exploitation_status = {}
                         date = cells[-1].get_text(strip=True)
                         release_dates.append(date)
+                        # Extract actively exploited CVEs if any
                         actively_exploited_cves = [
                             cve for cve, exploited in cves_exploitation_status.items() if exploited
                         ]
                         os_info = fetch_latest_os_version_info(os_type, product_version, gdmf_data)
                         if not os_info:
                             os_info = {}
+                        # Handle RSR releases by grabbing letter in ()
                         rsr_release = None
                         if "Rapid Security Response" in os_version_info:
                             rsr_vers = re.search(r"\((\w)\)", os_version_info)
@@ -655,7 +665,7 @@ def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> l
                     release["DaysSincePreviousRelease"] = 0
         else:
             print(f"Failed to retrieve data from {url}")
-            continue
+            continue  # Skip to the next URL if the current one fails
     
     return security_releases if security_releases else print("Failed to retrieve security releases.") or []
 
@@ -747,18 +757,6 @@ def parse_flexible_date(date_str: str) -> datetime:
             continue
     raise ValueError(f"Date format not recognized: {date_str}")
 
-
-def parse_flexible_date(date_str: str) -> datetime:
-    """Parse a date string with flexible formats to sanitize data scraped from the webpage"""
-    formats = ["%Y-%m-%d", "%d %b %Y"]
-    for fmt in formats:
-        try:
-            return datetime.strptime(date_str, fmt)
-        except ValueError:
-            continue
-    raise ValueError(f"Date format not recognized: {date_str}")
-
-
 def add_compatible_machines(current_macos_full_version: str) -> list:
     """Add compatible machines for the given macOS version, only processed for macOS"""
     # Extract lowercase OS 'name' to find file of compatible machines
@@ -784,6 +782,7 @@ def add_compatible_machines(current_macos_full_version: str) -> list:
 
 
 def write_data_to_json(feed_structure: dict, filename: str):
+    """Writes the fully populated feed structure to JSON filename"""
     latest_versions = {}
     
     for os_version in feed_structure["OSVersions"]:
@@ -822,6 +821,7 @@ def write_data_to_json(feed_structure: dict, filename: str):
                 
                 product_version = release["ProductVersion"]
                 if product_version in latest_versions:
+                    # Update security date if the product version matches
                     latest_versions[product_version]["security_date"] = release["ReleaseDate"]
     
     # Update all relevant Latest entries with their respective security dates
@@ -835,7 +835,10 @@ def write_data_to_json(feed_structure: dict, filename: str):
     
     # Write the updated feed structure back to a file
     with open(filename, "w", encoding="utf-8") as json_file:
-        json.dump(feed_structure, json_file, indent=4, ensure_ascii=False)
+        json.dump(
+            feed_structure, json_file, indent=4, ensure_ascii=False
+        )  # TODO: ascii false because we might have utf8 in it?
+
 
 def create_rss_json_data(feed_structure: dict) -> list:
     """Pull all data parsed/processed on this run as per os_type(s)"""
