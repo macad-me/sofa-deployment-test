@@ -97,6 +97,9 @@ export default {
           if (!this.osData.Latest.ReleaseDate || this.osData.Latest.ReleaseDate === '') {
             this.osData.Latest.ReleaseDate = 'Unknown'; // Set ReleaseDate to 'Unknown' if it's missing
           }
+          if (this.osData && this.osData.Latest.ReleaseDate) {
+            this.$emit('release-date', this.osData.Latest.ReleaseDate); // Emit release date to the parent component
+            }
 
           if (this.osData.OSVersion === 'Sequoia 15') {
             this.installationApps = data.InstallationApps;
