@@ -14,6 +14,8 @@ This is the latest version of macOS that receives the most up-to-date security p
 <script setup>
 import LatestFeatures from './components/LatestFeatures.vue';
 import SecurityInfo from './components/SecurityInfo.vue';
+import ForceDelayedSoftwareUpdatesCounter from './components/ForceDelayedSoftwareUpdatesCounter.vue'; 
+import LinksComponent from './components/LinksComponent.vue';
 
 const frontmatter = {
   title: 'Sequoia 15',
