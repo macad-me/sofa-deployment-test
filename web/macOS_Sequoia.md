@@ -25,6 +25,9 @@ const frontmatter = {
 ## Latest Release Info
 <LatestFeatures :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
+## Delayed Software Update Indicator
+<ForceDelayedSoftwareUpdatesCounter :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
+
 ## Essential Apple Resources
 <LinksComponent :title="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
