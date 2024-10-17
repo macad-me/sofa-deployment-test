@@ -41,25 +41,31 @@
       this.loadOsData();
     },
     methods: {
-      loadOsData() {
+        loadOsData() {
         try {
-          const data = this.platform === 'macOS' ? macOSData : iOSData;
-          console.log("Data loaded:", data);
-          const osData = data.OSVersions.find((os) => os.OSVersion.includes(this.osVersion));
-          console.log("osData found:", osData);
-  
-          if (osData && osData.Latest && osData.Latest.ReleaseDate) {
+            const data = this.platform === 'macOS' ? macOSData : iOSData;
+            
+            console.log("Data loaded:", data);
+            console.log("Available OSVersions:", data.OSVersions); // Log the array of OS versions to inspect
+
+            // Let's log what this.osVersion is:
+            console.log("Searching for osVersion:", this.osVersion);
+
+            // Adjust the search to match exactly or ignore case
+            const osData = data.OSVersions.find((os) => os.OSVersion.toLowerCase() === this.osVersion.toLowerCase());
+
+            console.log("osData found:", osData); // Check if osData is found
+
+            if (osData && osData.Latest && osData.Latest.ReleaseDate) {
             this.releaseDate = osData.Latest.ReleaseDate;
-          } else {
-            this.releaseDate = 'Unknown';
-          }
+            } else {
+            this.releaseDate = 'Unknown'; // Set to 'Unknown' if release date is missing
+            }
         } catch (error) {
-          console.error('Error loading OS data:', error);
-          this.releaseDate = 'Unknown';
-        } finally {
-          this.loading = false; // Set loading to false after fetching
+            console.error('Error loading OS data:', error);
+            this.releaseDate = 'Unknown';
         }
-      },
+        },
       formatDate(dateString) {
         if (dateString === 'Unknown') {
           return 'Unknown';
