@@ -13,7 +13,8 @@
           <p><strong>Build:</strong> {{ osData.Latest.Build }}</p>
           <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
           <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
-          
+          <p><strong>Update Delay:</strong> {{ delayedDays(osData.Latest.ReleaseDate) }}</p>
+
           <!-- Display installer info for Sequoia 15 -->
           <div v-if="osData.OSVersion === 'Sequoia 15'">
             <p v-if="installationApps?.LatestUMA?.url">
@@ -77,6 +78,7 @@ export default {
       installationApps: null,
       xProtectData: null,
       osImage: '',
+      forceDelayedSoftwareUpdates: 90, // Delay period in days
     };
   },
   mounted() {
@@ -174,6 +176,23 @@ export default {
       const hours = Math.floor((timeDiff % (1000 * 3600 * 24)) / (1000 * 3600));
 
       return `${days} days, ${hours} hours`;
+    },
+    delayedDays(dateString) {
+      if (dateString === 'Unknown') {
+        return 'Unknown';
+      }
+      const releaseDate = new Date(dateString);
+      const delayedDate = new Date(releaseDate);
+      delayedDate.setDate(releaseDate.getDate() + this.forceDelayedSoftwareUpdates);
+
+      const currentDate = new Date();
+      const timeDiff = delayedDate - currentDate;
+
+      if (timeDiff <= 0) {
+        return 'No delay, update is available';
+      }
+      const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      return `${daysLeft} days remaining until the delayed update is available.`;
     },
   },
 };
