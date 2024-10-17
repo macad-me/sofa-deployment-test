@@ -1,7 +1,10 @@
 <template>
     <div>
       <h3>Force Delayed Software Updates</h3>
-      <div v-if="releaseDate !== 'Unknown'">
+      <div v-if="loading">
+        Loading...
+      </div>
+      <div v-else-if="releaseDate !== 'Unknown'">
         <p><strong>Release Date:</strong> {{ formatDate(releaseDate) }}</p>
         <p><strong>90-Day Delay:</strong> {{ delayedDays(90) }}</p>
         <p><strong>60-Day Delay:</strong> {{ delayedDays(60) }}</p>
@@ -14,23 +17,24 @@
   </template>
   
   <script>
-  import macOSData from '@v1/macos_data_feed.json'; // JSON data for macOS
-  import iOSData from '@v1/ios_data_feed.json'; // JSON data for iOS
+  import macOSData from '@v1/macos_data_feed.json';
+  import iOSData from '@v1/ios_data_feed.json';
   
   export default {
     props: {
       platform: {
         type: String,
-        required: true, // Pass the platform, e.g., 'macOS' or 'iOS'
+        required: true,
       },
       osVersion: {
         type: String,
-        required: true, // Pass the OS version, e.g., 'Sequoia 15' or 'iOS 17'
+        required: true,
       },
     },
     data() {
       return {
-        releaseDate: 'Unknown', // Default value
+        releaseDate: 'Unknown',
+        loading: true, // Add loading state
       };
     },
     mounted() {
@@ -40,16 +44,20 @@
       loadOsData() {
         try {
           const data = this.platform === 'macOS' ? macOSData : iOSData;
+          console.log("Data loaded:", data);
           const osData = data.OSVersions.find((os) => os.OSVersion.includes(this.osVersion));
-          
+          console.log("osData found:", osData);
+  
           if (osData && osData.Latest && osData.Latest.ReleaseDate) {
             this.releaseDate = osData.Latest.ReleaseDate;
           } else {
-            this.releaseDate = 'Unknown'; // Set to 'Unknown' if release date is missing
+            this.releaseDate = 'Unknown';
           }
         } catch (error) {
           console.error('Error loading OS data:', error);
           this.releaseDate = 'Unknown';
+        } finally {
+          this.loading = false; // Set loading to false after fetching
         }
       },
       formatDate(dateString) {
@@ -80,12 +88,12 @@
   };
   </script>
   
-<style scoped>
-div {
-  margin-bottom: 10px;
-}
-p {
-  margin: 5px 0;
-}
-</style>
+  <style scoped>
+  div {
+    margin-bottom: 10px;
+  }
+  p {
+    margin: 5px 0;
+  }
+  </style>
   
