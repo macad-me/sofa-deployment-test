@@ -7,5 +7,8 @@
     "docs:dev": "DEBUG=true vitepress dev web",
     "docs:build": "DEBUG=true vitepress build web",
     "docs:preview": "DEBUG=true vitepress preview web"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.5"
   }
 }
