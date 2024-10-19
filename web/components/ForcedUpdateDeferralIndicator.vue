@@ -1,17 +1,33 @@
 <template>
-  <div class="enforced-software-update-scheduler">
+  <div class="update-deferral-scheduler">
+    <!-- Flex container for Button Group and Product Version -->
     <div class="os-version-container">
+      <!-- Button Group for Current and Previous Versions -->
       <div class="button-group">
-        <button :class="{ active: isCurrent }" @click="selectCurrentVersion">Current</button>
-        <button :class="{ active: !isCurrent }" @click="selectPreviousVersion" :disabled="!secondMostRecentVersion">Previous</button>
+        <button 
+          :class="{ active: isCurrent }" 
+          @click="selectCurrentVersion">
+          Current
+        </button>
+        <button 
+          :class="{ active: !isCurrent }" 
+          @click="selectPreviousVersion" 
+          :disabled="!secondMostRecentVersion">
+          Previous
+        </button>
       </div>
 
+      <!-- Product Version next to the Button Group -->
       <div class="os-version" v-if="selectedVersionDetails">
-        <p><strong>Product Version:</strong> {{ selectedVersionDetails.UpdateName || selectedVersionDetails.ProductVersion || 'Unknown' }}</p>
+        <p>
+          <strong>Product Version:</strong> 
+          {{ selectedVersionDetails.UpdateName || selectedVersionDetails.ProductVersion || 'Not Available' }}
+        </p>
       </div>
     </div>
 
-    <table>
+    <!-- Table Structure for Software Update Deferrals -->
+    <table v-if="selectedVersionDetails">
       <thead>
         <tr>
           <th>Software Update Deferral</th>
@@ -19,28 +35,21 @@
           <th>Date When Available</th>
         </tr>
       </thead>
-      <tbody v-if="!loading && selectedVersionDetails">
-        <tr>
-          <td>90-Day Deferral</td>
-          <td>{{ getDeferralStatus(90) }}</td>
-          <td>{{ calculateDelayedDate(90) }}</td>
-        </tr>
-        <tr>
-          <td>60-Day Deferral</td>
-          <td>{{ getDeferralStatus(60) }}</td>
-          <td>{{ calculateDelayedDate(60) }}</td>
-        </tr>
-        <tr>
-          <td>30-Day Deferral</td>
-          <td>{{ getDeferralStatus(30) }}</td>
-          <td>{{ calculateDelayedDate(30) }}</td>
+      <tbody>
+        <tr v-for="days in [90, 60, 30]" :key="days">
+          <td>{{ days }}-Day Deferral</td>
+          <td>{{ getDeferralStatus(days) }}</td>
+          <td>{{ calculateDelayedDate(days) }}</td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Graceful fallback for unknown or loading states -->
+    <p v-if="!selectedVersionDetails && !loading">No version details available</p>
+    <p v-if="loading">Loading...</p>
     <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
 </template>
-
 
 <script>
 import macOSData from '@v1/macos_data_feed.json';
@@ -74,13 +83,11 @@ export default {
     loadOsData() {
       try {
         const data = this.platform.toLowerCase() === 'macos' ? macOSData : iOSData;
-
-        // If iOS, strip the version down to only numeric, if macOS, leave it as is
         const strippedVersion = this.platform.toLowerCase() === 'ios'
           ? this.osVersion.replace(/[^0-9]/g, '')
           : this.osVersion;
 
-        // Find the correct OSVersion based on stripped prop for iOS or full prop for macOS
+        // Find the correct OSVersion based on the stripped prop for iOS or full prop for macOS
         const osData = data.OSVersions.find(
           os => os.OSVersion.toLowerCase() === strippedVersion.toLowerCase()
         );
@@ -143,11 +150,11 @@ export default {
 
       if (timeDiff < 0) {
         const daysAgo = Math.floor(Math.abs(timeDiff / (1000 * 3600 * 24)));
-        return `Update available since ${daysAgo} days ago`;
+        return `Available since ${daysAgo} days ago`;
       }
 
       const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      return `${daysLeft} days remaining until available`;
+      return `${daysLeft} days remaining`;
     },
     calculateDelayedDate(days) {
       if (!this.selectedVersionDetails?.ReleaseDate || isNaN(new Date(this.selectedVersionDetails.ReleaseDate))) {
@@ -161,7 +168,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 /* Flex container to place button group and OS Version inline */

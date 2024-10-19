@@ -1,10 +1,14 @@
 <template>
   <div>
+    <!-- Beta Stage Message -->
     <div v-if="(!osData || osData.Latest.ReleaseDate === 'Unknown') && stage === 'beta'">
       <p>Feature information will be available when no longer in beta.</p>
     </div>
+
+    <!-- Loaded Data View -->
     <div v-else-if="osData">
       <div class="row-container">
+        <!-- OS Version and Installer Info Column -->
         <div class="feature-column">
           <img :src="osImage" alt="OS Image" class="os-image" />
           <h3>Latest {{ platform }} {{ title }}</h3>
@@ -13,7 +17,7 @@
           <p><strong>Build:</strong> {{ osData.Latest.Build }}</p>
           <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
           <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
-          
+
           <!-- Display installer info for Sequoia 15 -->
           <div v-if="osData.OSVersion === 'Sequoia 15'">
             <p v-if="installationApps?.LatestUMA?.url">
@@ -25,13 +29,14 @@
               <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
             </p>
           </div>
-          <!-- Or we show link to UMA when not Sequoia 15 -->
+          <!-- General installer info link for non-Sequoia versions -->
           <div v-else>
             <strong>Installer Package (UMA): </strong>
             <a href="/macos_installer_info.html#release-information-table">Download links</a>
           </div>
         </div>
 
+        <!-- XProtect Data Column (for macOS only) -->
         <div v-if="platform === 'macOS'" class="feature-column">
           <img :src="getAssetPath('images/SWUpdate.png')" alt="XProtect Image" class="os-image" />
           <h3>Latest XProtect</h3>
@@ -46,6 +51,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Loading Data State -->
     <div v-else>
       Loading data...
     </div>
@@ -71,13 +78,22 @@ export default {
       default: 'release', // Default to 'release'
     },
   },
+  provide() {
+    return {
+      osVersion: this.osVersion,
+      releaseDate: this.releaseDate,
+      platform: this.platform,
+      osData: this.osData,
+    };
+  },
   data() {
     return {
       osData: null,
       installationApps: null,
       xProtectData: null,
       osImage: '',
-      forceDelayedSoftwareUpdates: 90, // Delay period in days
+      osVersion: '', // Provided to children
+      releaseDate: '', // Provided to children
     };
   },
   mounted() {
@@ -87,18 +103,19 @@ export default {
     loadData() {
       try {
         const data = this.platform === 'macOS' ? macOSData : iOSData;
-        const osVersion = this.title.split(' ')[1];
-        this.osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersion));
+        const osVersionFromTitle = this.title.split(' ')[1];
+        this.osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersionFromTitle));
 
         if (this.osData) {
-          console.log('Loaded OS Data:', this.osData); // Log the data for debugging
+          console.log('Loaded OS Data:', this.osData);
+
+          // Setting osVersion and releaseDate for child components
+          this.osVersion = this.osData.OSVersion;
+          this.releaseDate = this.osData.Latest.ReleaseDate || 'Unknown';
 
           if (!this.osData.Latest.ReleaseDate || this.osData.Latest.ReleaseDate === '') {
-            this.osData.Latest.ReleaseDate = 'Unknown'; // Set ReleaseDate to 'Unknown' if it's missing
+            this.osData.Latest.ReleaseDate = 'Unknown';
           }
-          if (this.osData && this.osData.Latest.ReleaseDate) {
-            this.$emit('release-date', this.osData.Latest.ReleaseDate); // Emit release date to the parent component
-            }
 
           if (this.osData.OSVersion === 'Sequoia 15') {
             this.installationApps = data.InstallationApps;
@@ -115,7 +132,7 @@ export default {
               ConfigData: data.XProtectPlistConfigData['com.apple.XProtect'],
               PlistReleaseDate: data.XProtectPlistConfigData.ReleaseDate,
             };
-            console.log('Loaded XProtect Data:', this.xProtectData); // Log the data for debugging
+            console.log('Loaded XProtect Data:', this.xProtectData);
           }
         } else {
           console.error('No data found for the specified OS version.');
@@ -124,7 +141,6 @@ export default {
         console.error('Error loading data:', error);
       }
     },
-
     getOsImage(platform, title) {
       if (platform === 'macOS') {
         if (title.includes('Sonoma')) {
@@ -145,21 +161,21 @@ export default {
           return this.getAssetPath('images/ios_16.png');
         }
       }
-      return this.getAssetPath('images/default.png'); // Fallback image
+      return this.getAssetPath('images/default.png');
     },
     getAssetPath(relativePath) {
       return new URL(`/${relativePath}`, import.meta.url).href;
     },
     formatDate(dateString) {
       if (dateString === 'Unknown') {
-        return 'Unknown'; // Handle the case for unknown date
+        return 'Unknown';
       }
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
     daysSinceRelease(dateString) {
       if (dateString === 'Unknown') {
-        return 'Unknown'; // Handle the case for unknown date
+        return 'Unknown';
       }
       const releaseDate = new Date(dateString);
       const currentDate = new Date();
@@ -178,23 +194,6 @@ export default {
       const hours = Math.floor((timeDiff % (1000 * 3600 * 24)) / (1000 * 3600));
 
       return `${days} days, ${hours} hours`;
-    },
-    delayedDays(dateString) {
-      if (dateString === 'Unknown') {
-        return 'Unknown';
-      }
-      const releaseDate = new Date(dateString);
-      const delayedDate = new Date(releaseDate);
-      delayedDate.setDate(releaseDate.getDate() + this.forceDelayedSoftwareUpdates);
-
-      const currentDate = new Date();
-      const timeDiff = delayedDate - currentDate;
-
-      if (timeDiff <= 0) {
-        return 'No delay, update is available';
-      }
-      const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      return `${daysLeft} days remaining until the delayed update is available.`;
     },
   },
 };
