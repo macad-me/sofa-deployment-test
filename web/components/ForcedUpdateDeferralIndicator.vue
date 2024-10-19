@@ -52,8 +52,7 @@
 </template>
 
 <script>
-import macOSData from '@v1/macos_data_feed.json';
-import iOSData from '@v1/ios_data_feed.json';
+import { useOsDataStore } from './../store/useOsDataStore';
 
 export default {
   props: {
@@ -76,18 +75,25 @@ export default {
       errorMessage: '', // Store error message for user feedback
     };
   },
+  computed: {
+    // Use Pinia store to get the data
+    osDataStore() {
+      return useOsDataStore();
+    },
+  },
   mounted() {
     this.loadOsData();
   },
   methods: {
-    loadOsData() {
+    async loadOsData() {
       try {
-        const data = this.platform.toLowerCase() === 'macos' ? macOSData : iOSData;
+        await this.osDataStore.loadOsData(); // Ensure data is loaded
+        const data = this.platform === 'macOS' ? this.osDataStore.macOSData : this.osDataStore.iOSData;
+
         const strippedVersion = this.platform.toLowerCase() === 'ios'
           ? this.osVersion.replace(/[^0-9]/g, '')
           : this.osVersion;
 
-        // Find the correct OSVersion based on the stripped prop for iOS or full prop for macOS
         const osData = data.OSVersions.find(
           os => os.OSVersion.toLowerCase() === strippedVersion.toLowerCase()
         );
@@ -109,7 +115,6 @@ export default {
       }
     },
     setupVersions(securityReleases) {
-      // Helper method to set latest and second latest versions
       if (securityReleases.length >= 2) {
         this.latestOSVersion = securityReleases[0];
         this.secondMostRecentVersion = securityReleases[1];

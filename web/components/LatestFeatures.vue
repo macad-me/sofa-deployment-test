@@ -29,6 +29,7 @@
               <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
             </p>
           </div>
+
           <!-- General installer info link for non-Sequoia versions -->
           <div v-else>
             <strong>Installer Package (UMA): </strong>
@@ -60,8 +61,8 @@
 </template>
 
 <script>
-import macOSData from '@v1/macos_data_feed.json';
-import iOSData from '@v1/ios_data_feed.json';
+import { useOsDataStore } from './../store/useOsDataStore';
+import { computed, onMounted } from 'vue';
 
 export default {
   props: {
@@ -78,44 +79,39 @@ export default {
       default: 'release', // Default to 'release'
     },
   },
-  provide() {
-    return {
-      osVersion: this.osVersion,
-      releaseDate: this.releaseDate,
-      platform: this.platform,
-      osData: this.osData,
-    };
-  },
   data() {
     return {
       osData: null,
       installationApps: null,
       xProtectData: null,
       osImage: '',
-      osVersion: '', // Provided to children
-      releaseDate: '', // Provided to children
     };
+  },
+  computed: {
+    // Use Pinia store for centralized data
+    osDataStore() {
+      return useOsDataStore();
+    },
+  },
+  watch: {
+    platform: 'loadData',
+    title: 'loadData',
   },
   mounted() {
     this.loadData();
   },
   methods: {
-    loadData() {
+    async loadData() {
       try {
-        const data = this.platform === 'macOS' ? macOSData : iOSData;
+        await this.osDataStore.loadOsData(); // Ensure data is loaded
+
         const osVersionFromTitle = this.title.split(' ')[1];
+        const data = this.platform === 'macOS' ? this.osDataStore.macOSData : this.osDataStore.iOSData;
+
         this.osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersionFromTitle));
 
         if (this.osData) {
           console.log('Loaded OS Data:', this.osData);
-
-          // Setting osVersion and releaseDate for child components
-          this.osVersion = this.osData.OSVersion;
-          this.releaseDate = this.osData.Latest.ReleaseDate || 'Unknown';
-
-          if (!this.osData.Latest.ReleaseDate || this.osData.Latest.ReleaseDate === '') {
-            this.osData.Latest.ReleaseDate = 'Unknown';
-          }
 
           if (this.osData.OSVersion === 'Sequoia 15') {
             this.installationApps = data.InstallationApps;

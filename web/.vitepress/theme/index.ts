@@ -1,5 +1,6 @@
 import { h } from 'vue';
 import DefaultTheme from 'vitepress/theme';
+import { createPinia } from 'pinia'; // Import Pinia
 import type { Theme } from 'vitepress';
 import './style.css';
 import './assets/custom.css';
@@ -16,10 +17,16 @@ export default {
     });
   },
   enhanceApp({ app, router, siteData }) {
+    // Initialize Pinia
+    const pinia = createPinia(); 
+    app.use(pinia); // Register Pinia with the app
+
+    // Register your components
     app.component('LatestFeatures', LatestFeatures);
     app.component('SecurityInfo', SecurityInfo);
     app.component('LinksComponent', LinksComponent);
     app.component('ModelIdentifierTable', ModelIdentifierTable);
+
     // No need to add routes here
   },
 } satisfies Theme;
