@@ -13,7 +13,6 @@ This version of macOS may not contain the newest security features contained in 
 <script setup>
 import LatestFeatures from './components/LatestFeatures.vue';
 import SecurityInfo from './components/SecurityInfo.vue';
-import ForcedUpdateDeferralIndicator from './components/ForcedUpdateDeferralIndicator.vue'; 
 import LinksComponent from './components/LinksComponent.vue';
 
 const frontmatter = {
@@ -24,9 +23,6 @@ const frontmatter = {
 
 ## Latest Release Info
 <LatestFeatures :title="frontmatter.title" :platform="frontmatter.platform" />
-
-## Update Deferral Indicator
-<ForcedUpdateDeferralIndicator :osVersion="frontmatter.title" :platform="frontmatter.platform" :stage="frontmatter.stage" />
 
 ## Essential Apple Resources
 <LinksComponent :title="frontmatter.title" :platform="frontmatter.platform" />

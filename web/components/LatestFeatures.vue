@@ -29,7 +29,6 @@
               <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
             </p>
           </div>
-
           <!-- General installer info link for non-Sequoia versions -->
           <div v-else>
             <strong>Installer Package (UMA): </strong>
@@ -51,6 +50,41 @@
           <p v-if="xProtectData?.PlistReleaseDate"><strong>Time Since Plist Release:</strong> {{ timeSinceRelease(xProtectData.PlistReleaseDate) }}</p>
         </div>
       </div>
+
+      <!-- Button Group for Current and Previous Version -->
+      <h3>Update Deferral Indicator</h3>
+      <div class="os-version-container">
+       
+        <div class="button-group">
+          <button :class="{ active: isCurrent }" @click="selectCurrentVersion">Current</button>
+          <button :class="{ active: !isCurrent }" @click="selectPreviousVersion" :disabled="!secondMostRecentVersion">Previous</button>
+        </div>
+
+        <div class="os-version">
+          <p>
+            <strong>Product Version:</strong>
+            {{ selectedVersionDetails.UpdateName || selectedVersionDetails.ProductVersion || 'Not Available' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Deferral Indicator Table -->
+      <table v-if="selectedVersionDetails">
+        <thead>
+          <tr>
+            <th>Software Update Deferral</th>
+            <th>Status</th>
+            <th>Date When Available</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="days in [90, 60, 30]" :key="days">
+            <td>{{ days }}-Day Deferral</td>
+            <td>{{ getDeferralStatus(days) }}</td>
+            <td>{{ calculateDelayedDate(days) }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- Loading Data State -->
@@ -61,8 +95,8 @@
 </template>
 
 <script>
-import { useOsDataStore } from './../store/useOsDataStore';
-import { computed, onMounted } from 'vue';
+import macOSData from '@v1/macos_data_feed.json';
+import iOSData from '@v1/ios_data_feed.json';
 
 export default {
   props: {
@@ -85,33 +119,27 @@ export default {
       installationApps: null,
       xProtectData: null,
       osImage: '',
+      osVersion: '',
+      releaseDate: '',
+      latestOSVersion: {},
+      secondMostRecentVersion: null,
+      isCurrent: true,
+      selectedVersionDetails: {},
     };
-  },
-  computed: {
-    // Use Pinia store for centralized data
-    osDataStore() {
-      return useOsDataStore();
-    },
-  },
-  watch: {
-    platform: 'loadData',
-    title: 'loadData',
   },
   mounted() {
     this.loadData();
   },
   methods: {
-    async loadData() {
+    loadData() {
       try {
-        await this.osDataStore.loadOsData(); // Ensure data is loaded
-
+        const data = this.platform === 'macOS' ? macOSData : iOSData;
         const osVersionFromTitle = this.title.split(' ')[1];
-        const data = this.platform === 'macOS' ? this.osDataStore.macOSData : this.osDataStore.iOSData;
-
         this.osData = data.OSVersions.find((os) => os.OSVersion.includes(osVersionFromTitle));
 
         if (this.osData) {
-          console.log('Loaded OS Data:', this.osData);
+          this.osVersion = this.osData.OSVersion;
+          this.releaseDate = this.osData.Latest.ReleaseDate || 'Unknown';
 
           if (this.osData.OSVersion === 'Sequoia 15') {
             this.installationApps = data.InstallationApps;
@@ -128,8 +156,9 @@ export default {
               ConfigData: data.XProtectPlistConfigData['com.apple.XProtect'],
               PlistReleaseDate: data.XProtectPlistConfigData.ReleaseDate,
             };
-            console.log('Loaded XProtect Data:', this.xProtectData);
           }
+
+          this.setupVersions(this.osData.SecurityReleases);
         } else {
           console.error('No data found for the specified OS version.');
         }
@@ -137,40 +166,35 @@ export default {
         console.error('Error loading data:', error);
       }
     },
-    getOsImage(platform, title) {
-      if (platform === 'macOS') {
-        if (title.includes('Sonoma')) {
-          return this.getAssetPath('images/Sonoma.png');
-        } else if (title.includes('Sequoia')) {
-          return this.getAssetPath('images/Sequoia.png');
-        } else if (title.includes('Ventura')) {
-          return this.getAssetPath('images/Ventura.png');
-        } else if (title.includes('Monterey')) {
-          return this.getAssetPath('images/Monterey.png');
-        }
-      } else if (platform === 'iOS') {
-        if (title.includes('iOS 18')) {
-          return this.getAssetPath('images/ios_18.png');
-        } else if (title.includes('iOS 17')) {
-          return this.getAssetPath('images/ios_17.png');
-        } else if (title.includes('iOS 16')) {
-          return this.getAssetPath('images/ios_16.png');
-        }
+    setupVersions(securityReleases) {
+      if (securityReleases.length >= 2) {
+        this.latestOSVersion = securityReleases[0];
+        this.secondMostRecentVersion = securityReleases[1];
+      } else {
+        this.latestOSVersion = securityReleases[0];
+        this.secondMostRecentVersion = null;
       }
-      return this.getAssetPath('images/default.png');
+      this.selectedVersionDetails = this.latestOSVersion;
     },
-    getAssetPath(relativePath) {
-      return new URL(`/${relativePath}`, import.meta.url).href;
+    selectCurrentVersion() {
+      this.isCurrent = true;
+      this.selectedVersionDetails = this.latestOSVersion;
+    },
+    selectPreviousVersion() {
+      if (this.secondMostRecentVersion) {
+        this.isCurrent = false;
+        this.selectedVersionDetails = this.secondMostRecentVersion;
+      }
     },
     formatDate(dateString) {
-      if (dateString === 'Unknown') {
-        return 'Unknown';
+      if (!dateString || isNaN(new Date(dateString))) {
+        return 'Invalid Date';
       }
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
     daysSinceRelease(dateString) {
-      if (dateString === 'Unknown') {
+      if (!dateString || dateString === 'Unknown') {
         return 'Unknown';
       }
       const releaseDate = new Date(dateString);
@@ -179,17 +203,66 @@ export default {
       return Math.floor(timeDiff / (1000 * 3600 * 24));
     },
     timeSinceRelease(dateString) {
-      if (dateString === 'Unknown') {
+      if (!dateString || dateString === 'Unknown') {
         return 'Unknown';
       }
       const releaseDate = new Date(dateString);
       const currentDate = new Date();
       const timeDiff = currentDate - releaseDate;
-
       const days = Math.floor(timeDiff / (1000 * 3600 * 24));
       const hours = Math.floor((timeDiff % (1000 * 3600 * 24)) / (1000 * 3600));
-
       return `${days} days, ${hours} hours`;
+    },
+    getDeferralStatus(days) {
+      if (!this.selectedVersionDetails?.ReleaseDate || isNaN(new Date(this.selectedVersionDetails.ReleaseDate))) {
+        return 'Unknown';
+      }
+
+      const releaseDate = new Date(this.selectedVersionDetails.ReleaseDate);
+      const delayedDate = new Date(releaseDate);
+      delayedDate.setDate(releaseDate.getDate() + days);
+
+      const currentDate = new Date();
+      const timeDiff = delayedDate - currentDate;
+
+      if (timeDiff < 0) {
+        const daysAgo = Math.floor(Math.abs(timeDiff / (1000 * 3600 * 24)));
+        return `Available since ${daysAgo} days`;
+      }
+
+      const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      return `${daysLeft} days remaining`;
+    },
+    calculateDelayedDate(days) {
+      if (!this.selectedVersionDetails?.ReleaseDate || isNaN(new Date(this.selectedVersionDetails.ReleaseDate))) {
+        return 'Invalid Date';
+      }
+
+      const releaseDate = new Date(this.selectedVersionDetails.ReleaseDate);
+      releaseDate.setDate(releaseDate.getDate() + days);
+      return this.formatDate(releaseDate.toISOString());
+    },
+    getOsImage(platform, title) {
+      const images = {
+        'Sonoma': 'Sonoma.png',
+        'Sequoia': 'Sequoia.png',
+        'Ventura': 'Ventura.png',
+        'Monterey': 'Monterey.png',
+        'iOS 18': 'ios_18.png',
+        'iOS 17': 'ios_17.png',
+        'iOS 16': 'ios_16.png',
+        'default': 'default.png',
+      };
+
+      for (const key in images) {
+        if (title.includes(key)) {
+          return this.getAssetPath(`images/${images[key]}`);
+        }
+      }
+      return this.getAssetPath('images/default.png');
+    },
+    getAssetPath(relativePath) {
+      return new URL(`/${relativePath}`, import.meta.url).href;
     },
   },
 };
@@ -216,5 +289,51 @@ export default {
   width: 100px;
   height: auto;
   margin-bottom: 10px;
+}
+.os-version-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.button-group {
+  display: inline-flex;
+  border: 1px solid var(--vp-c-default-3);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 15px;
+}
+.button-group button {
+  flex: 1;
+  padding: 4px 10px;
+  background-color: var(--vp-c-default-soft);
+  color: var(--vp-c-text-1);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 12px;
+  font-weight: bold;
+}
+.button-group button:hover {
+  background-color: var(--vp-c-default-2);
+}
+.button-group button.active {
+  background-color: var(--vp-c-brand-3);
+  color: white;
+}
+.button-group button:disabled {
+  background-color: #f5f5f5;
+  color: #bbb;
+  cursor: not-allowed;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+th, td {
+  border: 1px solid var(--vp-c-default-3);
+  padding: 8px;
+  text-align: left;
+  color: var(--vp-c-text-1);
 }
 </style>
