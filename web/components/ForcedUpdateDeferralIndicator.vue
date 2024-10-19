@@ -1,20 +1,16 @@
 <template>
   <div class="enforced-software-update-scheduler">
-    <!-- Flex container for Button Group and OS Version -->
     <div class="os-version-container">
-      <!-- Button Group for Current and Previous Versions -->
       <div class="button-group">
         <button :class="{ active: isCurrent }" @click="selectCurrentVersion">Current</button>
         <button :class="{ active: !isCurrent }" @click="selectPreviousVersion" :disabled="!secondMostRecentVersion">Previous</button>
       </div>
 
-      <!-- OS Version next to the Button Group -->
       <div class="os-version" v-if="selectedVersionDetails">
         <p><strong>Product Version:</strong> {{ selectedVersionDetails.UpdateName || selectedVersionDetails.ProductVersion || 'Unknown' }}</p>
       </div>
     </div>
 
-    <!-- Table Structure for Deferrals -->
     <table>
       <thead>
         <tr>
@@ -41,8 +37,10 @@
         </tr>
       </tbody>
     </table>
+    <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
 </template>
+
 
 <script>
 import macOSData from '@v1/macos_data_feed.json';
@@ -66,6 +64,7 @@ export default {
       isCurrent: true,
       selectedVersionDetails: {},
       loading: true,
+      errorMessage: '', // Store error message for user feedback
     };
   },
   mounted() {
@@ -73,70 +72,57 @@ export default {
   },
   methods: {
     loadOsData() {
-  try {
-    console.log("Starting to load data for platform:", this.platform);
-    const data = this.platform.toLowerCase() === 'macos' ? macOSData : iOSData;
+      try {
+        const data = this.platform.toLowerCase() === 'macos' ? macOSData : iOSData;
 
-    console.log("Data loaded from JSON file:", data);
-    console.log("OS Version passed as prop:", this.osVersion);
+        // If iOS, strip the version down to only numeric, if macOS, leave it as is
+        const strippedVersion = this.platform.toLowerCase() === 'ios'
+          ? this.osVersion.replace(/[^0-9]/g, '')
+          : this.osVersion;
 
-    // If iOS, strip the version down to only numeric, if macOS, leave it as is
-    const strippedVersion = this.platform.toLowerCase() === 'ios' ? this.osVersion.replace(/[^0-9]/g, '') : this.osVersion;
+        // Find the correct OSVersion based on stripped prop for iOS or full prop for macOS
+        const osData = data.OSVersions.find(
+          os => os.OSVersion.toLowerCase() === strippedVersion.toLowerCase()
+        );
 
-    console.log("Stripped/Original OS Version for matching:", strippedVersion);
+        if (!osData) {
+          throw new Error('OSVersion not found in data');
+        }
 
-    // Find the correct OSVersion based on the stripped prop for iOS or full prop for macOS
-    const osData = data.OSVersions.find(
-      os => os.OSVersion.toLowerCase() === strippedVersion.toLowerCase()
-    );
-
-    console.log("Found OSVersion data:", osData);
-
-    if (osData && osData.SecurityReleases) {
-      console.log("Security Releases found:", osData.SecurityReleases);
-
-      // Handle cases where there are fewer than 2 security releases
-      if (osData.SecurityReleases.length >= 2) {
-        const securityReleases = osData.SecurityReleases.slice(0, 2);
+        if (osData.SecurityReleases && osData.SecurityReleases.length > 0) {
+          this.setupVersions(osData.SecurityReleases);
+        } else {
+          throw new Error('No Security Releases found for this OSVersion');
+        }
+      } catch (error) {
+        this.errorMessage = `Failed to load data: ${error.message}`;
+        console.error('Error loading OS data:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    setupVersions(securityReleases) {
+      // Helper method to set latest and second latest versions
+      if (securityReleases.length >= 2) {
         this.latestOSVersion = securityReleases[0];
         this.secondMostRecentVersion = securityReleases[1];
-        this.selectedVersionDetails = { ...this.latestOSVersion };
-
-        console.log("Latest OS Version set:", this.latestOSVersion);
-        console.log("Second most recent version set:", this.secondMostRecentVersion);
-      } else if (osData.SecurityReleases.length === 1) {
-        this.latestOSVersion = osData.SecurityReleases[0];
-        this.selectedVersionDetails = { ...this.latestOSVersion };
-        this.secondMostRecentVersion = null; // No second most recent version
-
-        console.log("Only one security release found:", this.latestOSVersion);
       } else {
-        console.error('No SecurityReleases found');
+        this.latestOSVersion = securityReleases[0];
+        this.secondMostRecentVersion = null;
       }
-    } else {
-      console.error('OSVersion or SecurityReleases not found');
-    }
-  } catch (error) {
-    console.error('Error loading OS data:', error);
-  } finally {
-    this.loading = false;
-  }
-},
-
+      this.selectedVersionDetails = this.latestOSVersion;
+    },
     selectCurrentVersion() {
       this.isCurrent = true;
-      this.selectedVersionDetails = { ...this.latestOSVersion };
-      console.log("Selected Current Version:", this.selectedVersionDetails);
+      this.selectedVersionDetails = this.latestOSVersion;
     },
     selectPreviousVersion() {
       if (this.secondMostRecentVersion) {
         this.isCurrent = false;
-        this.selectedVersionDetails = { ...this.secondMostRecentVersion };
-        console.log("Selected Previous Version:", this.selectedVersionDetails);
+        this.selectedVersionDetails = this.secondMostRecentVersion;
       }
     },
     formatDate(dateString) {
-      // Ensure the date is valid before formatting
       if (!dateString || isNaN(new Date(dateString))) {
         return 'Invalid Date';
       }
@@ -144,7 +130,7 @@ export default {
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
     getDeferralStatus(days) {
-      if (!this.selectedVersionDetails || !this.selectedVersionDetails.ReleaseDate || isNaN(new Date(this.selectedVersionDetails.ReleaseDate))) {
+      if (!this.selectedVersionDetails?.ReleaseDate || isNaN(new Date(this.selectedVersionDetails.ReleaseDate))) {
         return 'Unknown';
       }
 
@@ -156,15 +142,15 @@ export default {
       const timeDiff = delayedDate - currentDate;
 
       if (timeDiff < 0) {
-        const daysAgo = Math.floor(Math.abs(timeDiff / (1000 * 3600 * 24))); // Exact days difference
+        const daysAgo = Math.floor(Math.abs(timeDiff / (1000 * 3600 * 24)));
         return `Update available since ${daysAgo} days ago`;
       }
 
-      const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Ensure rounding up for remaining time
+      const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
       return `${daysLeft} days remaining until available`;
     },
     calculateDelayedDate(days) {
-      if (!this.selectedVersionDetails || !this.selectedVersionDetails.ReleaseDate || isNaN(new Date(this.selectedVersionDetails.ReleaseDate))) {
+      if (!this.selectedVersionDetails?.ReleaseDate || isNaN(new Date(this.selectedVersionDetails.ReleaseDate))) {
         return 'Invalid Date';
       }
 
@@ -175,6 +161,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 /* Flex container to place button group and OS Version inline */
