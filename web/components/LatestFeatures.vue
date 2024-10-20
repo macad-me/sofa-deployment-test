@@ -51,13 +51,13 @@
         </div>
       </div>
 
-      <!-- Button Group for Current and Previous Version -->
-      <h3>Update Deferral Indicator</h3>
+      <!-- Button Group for Latest and Previous Version -->
+      <h3>Update Deferral Table</h3>
       <div class="os-version-container">
        
         <div class="button-group">
-          <button :class="{ active: isCurrent }" @click="selectCurrentVersion">Current</button>
-          <button :class="{ active: !isCurrent }" @click="selectPreviousVersion" :disabled="!secondMostRecentVersion">Previous</button>
+          <button :class="{ active: isLatest }" @click="selectCurrentVersion">Latest</button>
+          <button :class="{ active: !isLatest }" @click="selectPreviousVersion" :disabled="!secondMostRecentVersion">Previous</button>
         </div>
 
         <div class="os-version">
@@ -123,7 +123,7 @@ export default {
       releaseDate: '',
       latestOSVersion: {},
       secondMostRecentVersion: null,
-      isCurrent: true,
+      isLatest: true,
       selectedVersionDetails: {},
     };
   },
@@ -177,12 +177,12 @@ export default {
       this.selectedVersionDetails = this.latestOSVersion;
     },
     selectCurrentVersion() {
-      this.isCurrent = true;
+      this.isLatest = true;
       this.selectedVersionDetails = this.latestOSVersion;
     },
     selectPreviousVersion() {
       if (this.secondMostRecentVersion) {
-        this.isCurrent = false;
+        this.isLatest = false;
         this.selectedVersionDetails = this.secondMostRecentVersion;
       }
     },
