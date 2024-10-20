@@ -52,7 +52,7 @@
       </div>
 
       <!-- Button Group for Latest and Previous Version -->
-      <h3>Update Deferral Table</h3>
+      <h3>Deferral Thresholds</h3>
       <div class="os-version-container">
        
         <div class="button-group">
@@ -62,7 +62,7 @@
 
         <div class="os-version">
           <p>
-            <strong>Product Version:</strong>
+            <strong>Version:</strong>
             {{ selectedVersionDetails.UpdateName || selectedVersionDetails.ProductVersion || 'Not Available' }}
           </p>
         </div>
