@@ -54,7 +54,7 @@ export default defineConfig({
       {
         text: 'Deployment planning',
         items: [
-          { text: 'macOS Deferrals', link: '/release_deferrals' }
+          { text: 'OS Deferrals', link: '/release_deferrals' }
         ],
       },
       {

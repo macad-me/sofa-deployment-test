@@ -1,6 +1,5 @@
 ---
-title: macOS Deferrals
-platform: macOS
+title: OS Deferrals
 layout: doc
 ---
 
@@ -21,7 +20,7 @@ const frontmatter = {
 
 ## Deferral Periods Overview
 
-The following table shows macOS release deferral periods based on different delay thresholds. The table updates based on data provided in the Apple Software Lookup Service (GDMF).
+The following table shows macOS and iOS / iPadOS release deferral periods based on different delay thresholds. The table updates based on data provided in the Apple Software Lookup Service (GDMF).
 
 <ReleaseDeferralTable />
 
