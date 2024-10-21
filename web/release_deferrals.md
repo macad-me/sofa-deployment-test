@@ -3,10 +3,10 @@ title: OS Deferrals
 layout: doc
 ---
 
-# macOS Deferrals <Badge type="info" text="Deferral Overview" />
+# OS Deferrals <Badge type="info" text="Deferral Overview" />
 
 ::: info Time-based Deferral Overview
-This page provides an overview of the deferral periods for different macOS releases based on set delay periods (30, 60, 90 days).
+This page provides an overview of the deferral periods for different macOS releases based on set delay periods (14, 30, 60, 90 days).
 :::
 
 <script setup>
@@ -20,7 +20,7 @@ const frontmatter = {
 
 ## Deferral Periods Overview
 
-The following table shows macOS and iOS / iPadOS release deferral periods based on different delay thresholds. The table updates based on data provided in the Apple Software Lookup Service (GDMF).
+The following tables shows the macOS and iOS / iPadOS release deferral periods based on different thresholds. The table is updated based on data provided by the Apple Software Lookup Service (GDMF) .
 
 <ReleaseDeferralTable />
 

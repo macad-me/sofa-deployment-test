@@ -18,8 +18,8 @@
           <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
           <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
 
-          <!-- Display installer info for Sequoia 15 -->
-          <div v-if="osData.OSVersion === 'Sequoia 15'">
+          <!-- Display installer info for Sequoia 15 (macOS only) -->
+          <div v-if="platform === 'macOS' && osData.OSVersion === 'Sequoia 15'">
             <p v-if="installationApps?.LatestUMA?.url">
               <strong>Installer Package: </strong>
               <a :href="installationApps.LatestUMA.url" target="_blank">Download</a>
@@ -29,8 +29,8 @@
               <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
             </p>
           </div>
-          <!-- General installer info link for non-Sequoia versions -->
-          <div v-else>
+          <!-- General installer info link for macOS (not displayed on iOS) -->
+          <div v-if="platform === 'macOS' && osData.OSVersion !== 'Sequoia 15'">
             <strong>Installer Package (UMA): </strong>
             <a href="/macos_installer_info.html#release-information-table">Download links</a>
           </div>
@@ -74,7 +74,7 @@
           <tr>
             <th>Software Update Deferral</th>
             <th>Status</th>
-            <th>Date When Available</th>
+            <th>Date When Visible</th>
           </tr>
         </thead>
         <tbody>
@@ -227,7 +227,7 @@ export default {
 
       if (timeDiff < 0) {
         const daysAgo = Math.floor(Math.abs(timeDiff / (1000 * 3600 * 24)));
-        return `Available since ${daysAgo} days`;
+        return `Visible since ${daysAgo} days`;
       }
 
       const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
