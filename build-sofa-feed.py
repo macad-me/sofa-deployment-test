@@ -1123,7 +1123,12 @@ if __name__ == "__main__":
         "osTypes",
         nargs="+",
         type=str,
-        help="The types of OS to process (e.g., macOS iOS)",
+        help="The types of OS to process (e.g., macOS iOS)"
+    )
+    parser.add_argument(
+        "--pinned_build",
+        type=str,
+        help="Optional build number to pin a specific macOS version"
     )
     args = parser.parse_args()
-    main(args.osTypes)
+    main(args.osTypes, args.pinned_build)
