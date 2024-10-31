@@ -468,18 +468,30 @@ def extract_xprotect_versions_and_post_date(catalog_content: str, pkm_url: str) 
 
 
 def get_pinned_version_data(gdmf_data: dict, pinned_build: str) -> dict:
-    """Fetch data for a pinned macOS version using its build number."""
-    found_version = None
-    for version in gdmf_data.get("PublicAssetSets", {}).get("macOS", []):
-        print(f"Checking version with Build: {version.get('Build')} against pinned_build: {pinned_build}")
+    """Fetch data for a pinned macOS version when multiple instances of the same ProductVersion are present."""
+    macos_versions = gdmf_data.get("PublicAssetSets", {}).get("macOS", [])
+
+    # Check if there are multiple entries with "ProductVersion" of "15.1"
+    version_matches = [version for version in macos_versions if version.get("ProductVersion") == "15.1"]
+
+    if len(version_matches) > 1:
+        print(f"Multiple entries for ProductVersion '15.1' found. Searching for Build '{pinned_build}'.")
+        for version in version_matches:
+            if version.get("Build") == pinned_build:
+                print(f"Found pinned build {pinned_build} for ProductVersion '15.1'.")
+                return version
+    else:
+        print("Single or no entry for '15.1'; no need for pinning.")
+
+    # Fallback to standard approach if duplicates aren't found
+    for version in macos_versions:
         if version.get("Build") == pinned_build:
-            found_version = version
             print(f"Found pinned build {pinned_build} in GDMF data.")
-            break
-    if not found_version:
-        print(f"Pinned build {pinned_build} not found in GDMF data.")
-    return found_version if found_version else {}
-    
+            return version
+
+    print(f"Pinned build {pinned_build} not found in GDMF data.")
+    return {}
+
 
 def load_and_tag_model_data(filenames: list) -> dict:
     """Load model data from tuple of JSON files and corresponding OS versions string,
