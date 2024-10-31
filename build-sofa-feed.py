@@ -26,8 +26,7 @@ sys.path.insert(0, current_dir)
 import process_ipsw  # noqa: E402
 import process_uma  # noqa: E402
 
-
-def main(os_types: list):
+def main(os_types: list, pinned_build: str = None):
     """The main function to process OS version information based on the provided OS types"""
     feed_results: list = []  # instantiate end result
     # config.json mostly instructs what OS versions to parse, text elements/color for GUI
@@ -37,8 +36,18 @@ def main(os_types: list):
     if not gdmf_data:
         print("Failed to fetch GDMF data and no valid cached data available.")
         return
+    
+    # Attempt to fetch pinned version data if specified
+    if pinned_build:
+        pinned_version_data = get_pinned_version_data(gdmf_data, pinned_build)
+        if pinned_version_data:
+            print(f"Using pinned version data: {pinned_version_data}")
+            gdmf_data = {"PublicAssetSets": {"macOS": [pinned_version_data]}}  # Restrict to pinned data
+        else:
+            print(f"No data found for pinned build {pinned_build}. Continuing with full GDMF data.")
+
     rss_cache = load_rss_data_cache()
-    for os_type in os_types:  # TODO: handle macOS separately to remove weight
+    for os_type in os_types:
         result = process_os_type(os_type, config, gdmf_data)
         feed_results.extend(result)
     rss_data = diff_rss_data(feed_results, rss_cache)
@@ -48,7 +57,7 @@ def main(os_types: list):
     supported_devices_data = load_supported_devices_data()
     macos_data_feed = load_macos_data_feed()
 
-    # Update macos data feed with supported devices data if necessary
+    # Update macOS data feed with supported devices data if necessary
     update_supported_devices_in_feed(macos_data_feed, supported_devices_data)
 
     # Save the updated macOS data feed
