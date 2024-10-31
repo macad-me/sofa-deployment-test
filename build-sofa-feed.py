@@ -466,30 +466,31 @@ def extract_xprotect_versions_and_post_date(catalog_content: str, pkm_url: str) 
             )  # Assumes format_iso_date is implemented
     return version_info
 
-
-def get_pinned_version_data(gdmf_data: dict, pinned_build: str) -> dict:
-    """Fetch data for a pinned macOS version when multiple instances of the same ProductVersion are present."""
+def get_pinned_version_data(gdmf_data: dict, pinned_version: str, pinned_build: str) -> dict:
+    """Fetch data for a pinned macOS version using its build number when multiple instances of the same ProductVersion are present."""
     macos_versions = gdmf_data.get("PublicAssetSets", {}).get("macOS", [])
 
-    # Check if there are multiple entries with "ProductVersion" of "15.1"
-    version_matches = [version for version in macos_versions if version.get("ProductVersion") == "15.1"]
+    # Filter for entries with the specified ProductVersion
+    version_matches = [version for version in macos_versions if version.get("ProductVersion") == pinned_version]
 
-    if len(version_matches) > 1:
-        print(f"Multiple entries for ProductVersion '15.1' found. Searching for Build '{pinned_build}'.")
-        for version in version_matches:
-            if version.get("Build") == pinned_build:
-                print(f"Found pinned build {pinned_build} for ProductVersion '15.1'.")
-                return version
-    else:
-        print("Single or no entry for '15.1'; no need for pinning.")
+    if version_matches:
+        if len(version_matches) > 1:
+            print(f"Multiple entries for ProductVersion '{pinned_version}' found. Searching for Build '{pinned_build}'.")
+            # Search for the specific pinned build among multiple entries of the specified version
+            for version in version_matches:
+                if version.get("Build") == pinned_build:
+                    print(f"Found pinned build {pinned_build} for ProductVersion '{pinned_version}'.")
+                    return version
+            print(f"Pinned build '{pinned_build}' not found among '{pinned_version}' entries.")
+        else:
+            # Only one entry for the specified version, return it directly if it matches the pinned build
+            if version_matches[0].get("Build") == pinned_build:
+                print(f"Found single entry with pinned build {pinned_build} for '{pinned_version}'.")
+                return version_matches[0]
+            else:
+                print(f"Single '{pinned_version}' entry found, but build does not match '{pinned_build}'.")
 
-    # Fallback to standard approach if duplicates aren't found
-    for version in macos_versions:
-        if version.get("Build") == pinned_build:
-            print(f"Found pinned build {pinned_build} in GDMF data.")
-            return version
-
-    print(f"Pinned build {pinned_build} not found in GDMF data.")
+    print(f"No data found for pinned version '{pinned_version}' and build '{pinned_build}'.")
     return {}
 
 
@@ -1145,7 +1146,6 @@ def write_data_to_rss(sorted_feed: list, filename: str):
     except Exception as rss_write_err:
         print(f"Error writing RSS feed: {rss_write_err}")
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process OS version information.")
     parser.add_argument(
@@ -1155,9 +1155,15 @@ if __name__ == "__main__":
         help="The types of OS to process (e.g., macOS iOS)"
     )
     parser.add_argument(
+        "--pinned_version",
+        type=str,
+        help="Optional macOS version to pin a specific version (e.g., 15.1)"
+    )
+    parser.add_argument(
         "--pinned_build",
         type=str,
         help="Optional build number to pin a specific macOS version"
     )
     args = parser.parse_args()
-    main(args.osTypes, args.pinned_build)
+    main(args.osTypes, args.pinned_version, args.pinned_build)
+
