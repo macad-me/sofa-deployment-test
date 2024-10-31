@@ -455,6 +455,15 @@ def extract_xprotect_versions_and_post_date(catalog_content: str, pkm_url: str) 
     return version_info
 
 
+def get_pinned_version_data(gdmf_data: dict, pinned_build: str) -> dict:
+    """Fetch data for a pinned macOS version using its build number."""
+    for version in gdmf_data.get("PublicAssetSets", {}).get("macOS", []):
+        if version.get("Build") == pinned_build:
+            print(f"Pinned build {pinned_build} found in GDMF data.")
+            return version
+    print(f"Pinned build {pinned_build} not found in GDMF data.")
+    return {}
+
 def load_and_tag_model_data(filenames: list) -> dict:
     """Load model data from tuple of JSON files and corresponding OS versions string,
     merge into a dict mapping each model to its details including supported OS versions
