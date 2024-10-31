@@ -8,6 +8,10 @@ on:
     # On every day every 4 hours
     - cron: '30 */4 * * *'
   workflow_dispatch:
+     pinned_build:
+        description: 'Optional pinned macOS build number'
+        required: false
+        default: ''
 
 jobs:
   build-and-run:
