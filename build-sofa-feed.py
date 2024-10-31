@@ -31,6 +31,8 @@ def main(os_types: list, pinned_build: str = None):
     feed_results: list = []  # instantiate end result
     with open("config.json", "r", encoding="utf-8") as config_file:
         config = json.load(config_file)
+    
+    print("Fetching GDMF data...")
     gdmf_data = fetch_gdmf_data()
     if not gdmf_data:
         print("Failed to fetch GDMF data and no valid cached data available.")
@@ -38,20 +40,22 @@ def main(os_types: list, pinned_build: str = None):
     
     # Attempt to fetch pinned version data if specified
     if pinned_build:
+        print(f"Looking for pinned build: {pinned_build}")
         pinned_version_data = get_pinned_version_data(gdmf_data, pinned_build)
         if pinned_version_data:
             print(f"Using pinned version data: {pinned_version_data}")
-            gdmf_data = {"PublicAssetSets": {"macOS": [pinned_version_data]}}
+            gdmf_data = {"PublicAssetSets": {"macOS": [pinned_version_data]}}  # Restrict to pinned data
         else:
             print(f"No data found for pinned build {pinned_build}. Continuing with full GDMF data.")
-
+    
     rss_cache = load_rss_data_cache()
     for os_type in os_types:
+        print(f"Processing OS type: {os_type}")
         result = process_os_type(os_type, config, gdmf_data)
         feed_results.extend(result)
     rss_data = diff_rss_data(feed_results, rss_cache)
     write_data_to_rss(rss_data, "rss_feed.xml")
-
+    
     # Load supported devices and macOS data feed
     supported_devices_data = load_supported_devices_data()
     macos_data_feed = load_macos_data_feed()
@@ -465,13 +469,16 @@ def extract_xprotect_versions_and_post_date(catalog_content: str, pkm_url: str) 
 
 def get_pinned_version_data(gdmf_data: dict, pinned_build: str) -> dict:
     """Fetch data for a pinned macOS version using its build number."""
+    found_version = None
     for version in gdmf_data.get("PublicAssetSets", {}).get("macOS", []):
-        # Strictly match the pinned build number
+        print(f"Checking version with Build: {version.get('Build')} against pinned_build: {pinned_build}")
         if version.get("Build") == pinned_build:
-            print(f"Pinned build {pinned_build} found in GDMF data.")
-            return version
-    print(f"Pinned build {pinned_build} not found in GDMF data.")
-    return {}
+            found_version = version
+            print(f"Found pinned build {pinned_build} in GDMF data.")
+            break
+    if not found_version:
+        print(f"Pinned build {pinned_build} not found in GDMF data.")
+    return found_version if found_version else {}
     
 
 def load_and_tag_model_data(filenames: list) -> dict:
