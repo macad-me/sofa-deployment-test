@@ -8,7 +8,8 @@ on:
     # On every day every 4 hours
     - cron: '30 */4 * * *'
   workflow_dispatch:
-     pinned_build:
+    inputs:
+      pinned_build:
         description: 'Optional pinned macOS build number'
         required: false
         default: ''
@@ -23,12 +24,12 @@ jobs:
     - name: Build Docker image
       run: docker build . -t sofa_scan
 
-
     - name: Run Docker container with macOS and iOS arguments
       run: |
         docker run --name sofa_scan_container \
           -e TIMESTAMP_FILE_PATH=/app/v1/timestamp.json \
-          -v $(pwd)/v1:/app/v1 sofa_scan macOS iOS
+          -v $(pwd)/v1:/app/v1 \
+          sofa_scan macOS iOS ${{ github.event.inputs.pinned_build && "--pinned_build " + github.event.inputs.pinned_build || "" }}
 
     - name: Copy resulting JSON files from container to host
       run: |
@@ -38,7 +39,6 @@ jobs:
         docker cp sofa_scan_container:/app/rss_feed.xml v1/. || true
         docker cp sofa_scan_container:/app/cache . || echo "Failed to copy cache files"
         docker cp sofa_scan_container:/app/time-series.csv .
-
 
     - name: List contents of v1
       run: ls -la v1/
