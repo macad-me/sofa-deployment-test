@@ -9,6 +9,10 @@ on:
     - cron: '30 */4 * * *'
   workflow_dispatch:
     inputs:
+      pinned_version:
+        description: 'Optional pinned macOS version'
+        required: false
+        default: ''
       pinned_build:
         description: 'Optional pinned macOS build number'
         required: false
@@ -26,7 +30,12 @@ jobs:
 
     - name: Run Docker container with macOS and iOS arguments
       run: |
-        if [ -n "${{ github.event.inputs.pinned_build }}" ]; then
+        if [ -n "${{ github.event.inputs.pinned_version }}" ] && [ -n "${{ github.event.inputs.pinned_build }}" ]; then
+          docker run --name sofa_scan_container \
+            -e TIMESTAMP_FILE_PATH=/app/v1/timestamp.json \
+            -v $(pwd)/v1:/app/v1 \
+            sofa_scan macOS iOS --pinned_version ${{ github.event.inputs.pinned_version }} --pinned_build ${{ github.event.inputs.pinned_build }}
+        elif [ -n "${{ github.event.inputs.pinned_build }}" ]; then
           docker run --name sofa_scan_container \
             -e TIMESTAMP_FILE_PATH=/app/v1/timestamp.json \
             -v $(pwd)/v1:/app/v1 \
