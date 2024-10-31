@@ -29,7 +29,6 @@ import process_uma  # noqa: E402
 def main(os_types: list, pinned_build: str = None):
     """The main function to process OS version information based on the provided OS types"""
     feed_results: list = []  # instantiate end result
-    # config.json mostly instructs what OS versions to parse, text elements/color for GUI
     with open("config.json", "r", encoding="utf-8") as config_file:
         config = json.load(config_file)
     gdmf_data = fetch_gdmf_data()
@@ -42,7 +41,7 @@ def main(os_types: list, pinned_build: str = None):
         pinned_version_data = get_pinned_version_data(gdmf_data, pinned_build)
         if pinned_version_data:
             print(f"Using pinned version data: {pinned_version_data}")
-            gdmf_data = {"PublicAssetSets": {"macOS": [pinned_version_data]}}  # Restrict to pinned data
+            gdmf_data = {"PublicAssetSets": {"macOS": [pinned_version_data]}}
         else:
             print(f"No data found for pinned build {pinned_build}. Continuing with full GDMF data.")
 
@@ -467,11 +466,13 @@ def extract_xprotect_versions_and_post_date(catalog_content: str, pkm_url: str) 
 def get_pinned_version_data(gdmf_data: dict, pinned_build: str) -> dict:
     """Fetch data for a pinned macOS version using its build number."""
     for version in gdmf_data.get("PublicAssetSets", {}).get("macOS", []):
+        # Strictly match the pinned build number
         if version.get("Build") == pinned_build:
             print(f"Pinned build {pinned_build} found in GDMF data.")
             return version
     print(f"Pinned build {pinned_build} not found in GDMF data.")
     return {}
+    
 
 def load_and_tag_model_data(filenames: list) -> dict:
     """Load model data from tuple of JSON files and corresponding OS versions string,
