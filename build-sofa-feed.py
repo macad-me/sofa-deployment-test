@@ -26,8 +26,7 @@ sys.path.insert(0, current_dir)
 import process_ipsw  # noqa: E402
 import process_uma  # noqa: E402
 
-
-def main(os_types: list):
+def main(os_types: list, build: str = None):
     """The main function to process OS version information based on the provided OS types"""
     feed_results: list = []  # instantiate end result
     # config.json mostly instructs what OS versions to parse, text elements/color for GUI
@@ -39,7 +38,8 @@ def main(os_types: list):
         return
     rss_cache = load_rss_data_cache()
     for os_type in os_types:  # TODO: handle macOS separately to remove weight
-        result = process_os_type(os_type, config, gdmf_data)
+        # Pass the build argument to process_os_type for optional build-pinning
+        result = process_os_type(os_type, config, gdmf_data, build)
         feed_results.extend(result)
     rss_data = diff_rss_data(feed_results, rss_cache)
     write_data_to_rss(rss_data, "rss_feed.xml")
@@ -206,9 +206,8 @@ def load_rss_data_cache() -> list:
             print(f"Error reading cache file - {cache_file}: {rss_cache_err}")
     return combined_data
 
-
-def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
-    """Process the given OS type (macOS, iOS) and update the feed structure"""
+def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = None) -> list:
+    """Process the given OS type (macOS, iOS) and update the feed structure, optionally filtering by a specific build."""
     software_releases = [
         release
         for release in config["softwareReleases"]
@@ -216,7 +215,19 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     ]
     print(
         f"Software releases for {os_type}: {software_releases}"
-    )  # TODO: as per below, this is weird, revisit  noqa: E501 pylint: disable=line-too-long
+    )  # TODO: as per below, this is weird, revisit
+
+    # Handle the optional build parameter for deterministic selection
+    if build:
+        filtered_releases = [
+            release for release in software_releases if release.get("Build") == build
+        ]
+        if filtered_releases:
+            software_releases = filtered_releases
+            print(f"Filtered releases for build {build}: {software_releases}")
+        else:
+            print(f"No matching release found for build {build}. Continuing with default selection.")
+
     feed_structure: dict = {
         "OSVersions": [],
     }
@@ -541,23 +552,22 @@ def save_updated_macos_data_feed(macos_data_feed):
 
 
 def fetch_latest_os_version_info(
-    os_type: str, os_version_name: str, gdmf_data: dict
+    os_type: str, os_version_name: str, gdmf_data: dict, build: str = None
 ) -> dict:
-    """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
-    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
+    """Fetch the latest version information for the given OS type & version name, with optional build specificity."""
     print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = (
-        "macOS" if os_type == "macOS" else "iOS"
-    )  # TODO: why is this just not using os_type?
-    filtered_versions = [  # TODO: add example expected data to explain filtering
+    os_versions_key = "macOS" if os_type == "macOS" else "iOS"
+    filtered_versions = [
         version
         for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
         if version.get("ProductVersion", "").startswith(
             os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
         )
     ]
+    
+    # Additional filtering for iOS if necessary
     if os_type == "iOS":
-        filtered_versions = [  # TODO: add example expected data to explain filtering
+        filtered_versions = [
             iversion
             for iversion in filtered_versions
             if "SupportedDevices" in iversion
@@ -566,6 +576,25 @@ def fetch_latest_os_version_info(
                 for device in iversion["SupportedDevices"]
             )
         ]
+    
+    # If build is specified, attempt to match it first
+    if build:
+        build_specific_version = next(
+            (version for version in filtered_versions if version.get("Build") == build), None
+        )
+        if build_specific_version:
+            print(f"Selected version with build {build}.")
+            return {
+                "ProductVersion": build_specific_version.get("ProductVersion"),
+                "Build": build_specific_version.get("Build"),
+                "ReleaseDate": build_specific_version.get("PostingDate"),
+                "ExpirationDate": build_specific_version.get("ExpirationDate", ""),
+                "SupportedDevices": build_specific_version.get("SupportedDevices", []),
+            }
+        else:
+            print(f"No version found for build {build}. Proceeding with default selection.")
+
+    # Default to latest version by PostingDate if build not found or not specified
     if filtered_versions:
         latest_version = max(
             filtered_versions,
@@ -578,6 +607,7 @@ def fetch_latest_os_version_info(
             "ExpirationDate": latest_version.get("ExpirationDate", ""),
             "SupportedDevices": latest_version.get("SupportedDevices", []),
         }
+    
     print(f"No versions matched the criteria for {os_type} {os_version_name}.")
     return {}
 
@@ -1107,14 +1137,20 @@ def write_data_to_rss(sorted_feed: list, filename: str):
     except Exception as rss_write_err:
         print(f"Error writing RSS feed: {rss_write_err}")
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process OS version information.")
     parser.add_argument(
         "osTypes",
         nargs="+",
         type=str,
-        help="The types of OS to process (e.g., macOS iOS)",
+        help="The types of OS to process (e.g., macOS, iOS)",
+    )
+    parser.add_argument(
+        "--build",
+        type=str,
+        help="Specify a build number to pin",
+        required=False,
     )
     args = parser.parse_args()
-    main(args.osTypes)
+    main(args.osTypes, args.build)
+
