@@ -207,7 +207,7 @@ def load_rss_data_cache() -> list:
     return combined_data
 
 def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = None) -> list:
-    """Process the given OS type (macOS, iOS) and update the feed structure, optionally filtering by a specific build."""
+    """Process the given OS type (macOS, iOS) and update the feed structure, strictly filtering by build if provided."""
     software_releases = [
         release
         for release in config["softwareReleases"]
@@ -217,7 +217,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = No
         f"Software releases for {os_type}: {software_releases}"
     )  # TODO: as per below, this is weird, revisit
 
-    # Handle the optional build parameter for deterministic selection
+    # Handle the optional build parameter for strict selection
     if build:
         filtered_releases = [
             release for release in software_releases if release.get("Build") == build
@@ -226,7 +226,8 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = No
             software_releases = filtered_releases
             print(f"Filtered releases for build {build}: {software_releases}")
         else:
-            print(f"No matching release found for build {build}. Continuing with default selection.")
+            print(f"No matching release found for build {build}.")
+            return []  # Return empty list if no match is found to avoid default selection
 
     feed_structure: dict = {
         "OSVersions": [],
@@ -550,8 +551,53 @@ def save_updated_macos_data_feed(macos_data_feed):
     with open(macos_data_feed_file, 'w', encoding='utf-8') as f:
         json.dump(macos_data_feed, f, indent=4)
 
+def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: dict, build: str = None) -> dict:
+    """Fetch the latest version info for the given OS type, strictly by build if provided."""
+    print(f"Fetching latest: {os_type} {os_version_name} with build: {build}")
+    os_versions_key = "macOS" if os_type == "macOS" else "iOS"
+    filtered_versions = [
+        version for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
+        if version.get("ProductVersion", "").startswith(
+            os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
+        )
+    ]
 
-def fetch_latest_os_version_info(
+    # Filter strictly by build if provided
+    if build:
+        build_specific_version = next(
+            (version for version in filtered_versions if version.get("Build") == build), None
+        )
+        if build_specific_version:
+            print(f"Selected version with build {build}.")
+            return {
+                "ProductVersion": build_specific_version.get("ProductVersion"),
+                "Build": build_specific_version.get("Build"),
+                "ReleaseDate": build_specific_version.get("PostingDate"),
+                "ExpirationDate": build_specific_version.get("ExpirationDate", ""),
+                "SupportedDevices": build_specific_version.get("SupportedDevices", []),
+            }
+        else:
+            print(f"No version found for build {build}.")
+            return {}  # Return empty dict if no build match found
+
+    # Default to latest version by PostingDate if no build is specified and filtered_versions exist
+    if filtered_versions and not build:
+        latest_version = max(
+            filtered_versions,
+            key=lambda os_vers: datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d"),
+        )
+        return {
+            "ProductVersion": latest_version.get("ProductVersion"),
+            "Build": latest_version.get("Build"),
+            "ReleaseDate": latest_version.get("PostingDate"),
+            "ExpirationDate": latest_version.get("ExpirationDate", ""),
+            "SupportedDevices": latest_version.get("SupportedDevices", []),
+        }
+
+    print(f"No versions matched the criteria for {os_type} {os_version_name}.")
+    return {}
+
+def REMOVE_fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict, build: str = None
 ) -> dict:
     """Fetch the latest version information for the given OS type & version name, with optional build specificity."""
