@@ -1,5 +1,5 @@
 {
-    "etag": "15c966c001033b30a54c64a07d53aaa87860236055fa9ad967826e7cb5c24fee",
+    "etag": "8648cb30c78594cda32a30b867ce895c6d0bdc6b2a9a590a30acdeab99a0897d",
     "data": {
         "PublicAssetSets": {
             "iOS": [
@@ -804,11 +804,31 @@
                     ]
                 }
             ],
+            "visionOS": [
+                {
+                    "ProductVersion": "2.1",
+                    "Build": "22N581",
+                    "PostingDate": "2024-10-28",
+                    "ExpirationDate": "2025-01-30",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.1",
+                    "Build": "22N6581",
+                    "PostingDate": "2024-10-28",
+                    "ExpirationDate": "2025-01-30",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                }
+            ],
             "macOS": [
                 {
                     "ProductVersion": "15.1",
                     "Build": "24B2083",
-                    "PostingDate": "2024-10-30",
+                    "PostingDate": "2024-11-01",
                     "ExpirationDate": "2025-01-30",
                     "SupportedDevices": [
                         "J604AP",
@@ -826,7 +846,7 @@
                 {
                     "ProductVersion": "13.7.1",
                     "Build": "22H221",
-                    "PostingDate": "2024-10-30",
+                    "PostingDate": "2024-11-01",
                     "ExpirationDate": "2025-01-30",
                     "SupportedDevices": [
                         "J132AP",
@@ -889,7 +909,7 @@
                 {
                     "ProductVersion": "15.1",
                     "Build": "24B83",
-                    "PostingDate": "2024-10-30",
+                    "PostingDate": "2024-11-01",
                     "ExpirationDate": "2025-01-30",
                     "SupportedDevices": [
                         "J132AP",
@@ -951,7 +971,7 @@
                 {
                     "ProductVersion": "14.7.1",
                     "Build": "23H222",
-                    "PostingDate": "2024-10-30",
+                    "PostingDate": "2024-11-01",
                     "ExpirationDate": "2025-01-30",
                     "SupportedDevices": [
                         "J132AP",
@@ -1015,7 +1035,7 @@
                 {
                     "ProductVersion": "12.7.6",
                     "Build": "21H1320",
-                    "PostingDate": "2024-10-30",
+                    "PostingDate": "2024-11-01",
                     "ExpirationDate": "2025-01-30",
                     "SupportedDevices": [
                         "J132AP",
@@ -1081,7 +1101,7 @@
                 {
                     "ProductVersion": "11.7.10",
                     "Build": "20G1427",
-                    "PostingDate": "2024-10-30",
+                    "PostingDate": "2024-11-01",
                     "ExpirationDate": "2025-01-30",
                     "SupportedDevices": [
                         "J132AP",
@@ -1172,26 +1192,6 @@
                         "X589AMLUAP",
                         "X589ICLYAP",
                         "X86LEGACYAP"
-                    ]
-                }
-            ],
-            "visionOS": [
-                {
-                    "ProductVersion": "2.1",
-                    "Build": "22N581",
-                    "PostingDate": "2024-10-28",
-                    "ExpirationDate": "2025-01-30",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.1",
-                    "Build": "22N6581",
-                    "PostingDate": "2024-10-28",
-                    "ExpirationDate": "2025-01-30",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
                     ]
                 }
             ]
@@ -3576,62 +3576,6 @@
                     ]
                 }
             ],
-            "visionOS": [
-                {
-                    "ProductVersion": "2.0.1",
-                    "Build": "22N342",
-                    "PostingDate": "2024-10-03",
-                    "ExpirationDate": "2025-01-26",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.1",
-                    "Build": "22N581",
-                    "PostingDate": "2024-10-28",
-                    "ExpirationDate": "2025-01-30",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.0.1",
-                    "Build": "22N6342",
-                    "PostingDate": "2024-10-03",
-                    "ExpirationDate": "2025-01-26",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.1",
-                    "Build": "22N6581",
-                    "PostingDate": "2024-10-28",
-                    "ExpirationDate": "2025-01-30",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.0",
-                    "Build": "22N320",
-                    "PostingDate": "2024-09-16",
-                    "ExpirationDate": "2025-01-01",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.0",
-                    "Build": "22N6320",
-                    "PostingDate": "2024-09-16",
-                    "ExpirationDate": "2025-01-01",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                }
-            ],
             "macOS": [
                 {
                     "ProductVersion": "15.1",
@@ -4505,6 +4449,62 @@
                         "Mac-AA95B1DDAB278B95",
                         "VMA2MACOSAP",
                         "VMM-x86_64"
+                    ]
+                }
+            ],
+            "visionOS": [
+                {
+                    "ProductVersion": "2.0.1",
+                    "Build": "22N342",
+                    "PostingDate": "2024-10-03",
+                    "ExpirationDate": "2025-01-26",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.1",
+                    "Build": "22N581",
+                    "PostingDate": "2024-10-28",
+                    "ExpirationDate": "2025-01-30",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.0.1",
+                    "Build": "22N6342",
+                    "PostingDate": "2024-10-03",
+                    "ExpirationDate": "2025-01-26",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.1",
+                    "Build": "22N6581",
+                    "PostingDate": "2024-10-28",
+                    "ExpirationDate": "2025-01-30",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.0",
+                    "Build": "22N320",
+                    "PostingDate": "2024-09-16",
+                    "ExpirationDate": "2025-01-01",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.0",
+                    "Build": "22N6320",
+                    "PostingDate": "2024-09-16",
+                    "ExpirationDate": "2025-01-01",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
                     ]
                 }
             ]
