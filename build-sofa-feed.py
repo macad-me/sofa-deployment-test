@@ -26,41 +26,29 @@ sys.path.insert(0, current_dir)
 import process_ipsw  # noqa: E402
 import process_uma  # noqa: E402
 
-def main(os_types: list, pinned_build: str = None):
+
+def main(os_types: list):
     """The main function to process OS version information based on the provided OS types"""
     feed_results: list = []  # instantiate end result
+    # config.json mostly instructs what OS versions to parse, text elements/color for GUI
     with open("config.json", "r", encoding="utf-8") as config_file:
         config = json.load(config_file)
-    
-    print("Fetching GDMF data...")
     gdmf_data = fetch_gdmf_data()
     if not gdmf_data:
         print("Failed to fetch GDMF data and no valid cached data available.")
         return
-    
-    # Attempt to fetch pinned version data if specified
-    if pinned_build:
-        print(f"Looking for pinned build: {pinned_build}")
-        pinned_version_data = get_pinned_version_data(gdmf_data, pinned_build)
-        if pinned_version_data:
-            print(f"Using pinned version data: {pinned_version_data}")
-            gdmf_data = {"PublicAssetSets": {"macOS": [pinned_version_data]}}  # Restrict to pinned data
-        else:
-            print(f"No data found for pinned build {pinned_build}. Continuing with full GDMF data.")
-    
     rss_cache = load_rss_data_cache()
-    for os_type in os_types:
-        print(f"Processing OS type: {os_type}")
+    for os_type in os_types:  # TODO: handle macOS separately to remove weight
         result = process_os_type(os_type, config, gdmf_data)
         feed_results.extend(result)
     rss_data = diff_rss_data(feed_results, rss_cache)
     write_data_to_rss(rss_data, "rss_feed.xml")
-    
+
     # Load supported devices and macOS data feed
     supported_devices_data = load_supported_devices_data()
     macos_data_feed = load_macos_data_feed()
 
-    # Update macOS data feed with supported devices data if necessary
+    # Update macos data feed with supported devices data if necessary
     update_supported_devices_in_feed(macos_data_feed, supported_devices_data)
 
     # Save the updated macOS data feed
@@ -465,33 +453,6 @@ def extract_xprotect_versions_and_post_date(catalog_content: str, pkm_url: str) 
                 release_date
             )  # Assumes format_iso_date is implemented
     return version_info
-
-def get_pinned_version_data(gdmf_data: dict, pinned_version: str, pinned_build: str) -> dict:
-    """Fetch data for a pinned macOS version using its build number when multiple instances of the same ProductVersion are present."""
-    macos_versions = gdmf_data.get("PublicAssetSets", {}).get("macOS", [])
-
-    # Filter for entries with the specified ProductVersion
-    version_matches = [version for version in macos_versions if version.get("ProductVersion") == pinned_version]
-
-    if version_matches:
-        if len(version_matches) > 1:
-            print(f"Multiple entries for ProductVersion '{pinned_version}' found. Searching for Build '{pinned_build}'.")
-            # Search for the specific pinned build among multiple entries of the specified version
-            for version in version_matches:
-                if version.get("Build") == pinned_build:
-                    print(f"Found pinned build {pinned_build} for ProductVersion '{pinned_version}'.")
-                    return version
-            print(f"Pinned build '{pinned_build}' not found among '{pinned_version}' entries.")
-        else:
-            # Only one entry for the specified version, return it directly if it matches the pinned build
-            if version_matches[0].get("Build") == pinned_build:
-                print(f"Found single entry with pinned build {pinned_build} for '{pinned_version}'.")
-                return version_matches[0]
-            else:
-                print(f"Single '{pinned_version}' entry found, but build does not match '{pinned_build}'.")
-
-    print(f"No data found for pinned version '{pinned_version}' and build '{pinned_build}'.")
-    return {}
 
 
 def load_and_tag_model_data(filenames: list) -> dict:
@@ -1146,24 +1107,14 @@ def write_data_to_rss(sorted_feed: list, filename: str):
     except Exception as rss_write_err:
         print(f"Error writing RSS feed: {rss_write_err}")
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process OS version information.")
     parser.add_argument(
         "osTypes",
         nargs="+",
         type=str,
-        help="The types of OS to process (e.g., macOS iOS)"
-    )
-    parser.add_argument(
-        "--pinned_version",
-        type=str,
-        help="Optional macOS version to pin a specific version (e.g., 15.1)"
-    )
-    parser.add_argument(
-        "--pinned_build",
-        type=str,
-        help="Optional build number to pin a specific macOS version"
+        help="The types of OS to process (e.g., macOS iOS)",
     )
     args = parser.parse_args()
-    main(args.osTypes, args.pinned_version, args.pinned_build)
-
+    main(args.osTypes)
