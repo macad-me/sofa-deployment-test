@@ -833,7 +833,91 @@ def format_iso_date(date_str: str) -> str:
             pass
     return date_str
 
+
 def fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> list:
+    """Fetch security releases for the given OS type and version, sourced from multiple Apple Support pages."""
+
+    # URLs for security release pages
+    urls = [
+        "https://support.apple.com/en-ca/100100",  # Current info
+        "https://support.apple.com/en-ca/121012",  # 2022 to 2023
+        # "https://support.apple.com/en-ca/120989",  # 2020 to 2021
+        # "https://support.apple.com/en-ca/103179",  # 2018 to 2019
+    ]
+
+    security_releases = []
+    release_dates = []
+
+    # Loop through each URL to gather security release data
+    for url in urls:
+        print(f"Fetching data from {url}")
+        response = requests.get(url)
+
+        if response.ok:
+            html_content = response.text
+            soup = BeautifulSoup(html_content, "lxml")
+            rows = soup.find_all("tr")
+
+            for row in rows:
+                cells = row.find_all("td")
+                if cells:
+                    name_info = cells[0].get_text(strip=True)
+                    os_version_info = process_os_version(os_type, os_version, name_info)
+
+                    if os_version_info and os_version in os_version_info:
+                        link = cells[0].find("a", href=True)
+                        link_info = urljoin("https://support.apple.com", link["href"]) if link else None
+                        cves_exploitation_status = fetch_cves(link_info) if link_info else {}
+
+                        version_match = re.search(r"\d+(\.\d+)*", name_info)
+                        product_version = version_match.group() if version_match else "Unknown"
+                        if '.' not in product_version:
+                            product_version += '.0'
+                        print(f"Processing security release {product_version}, source {name_info}")
+
+                        if link_info and "no published CVE entries" in fetch_content(link_info).lower():
+                            cves_exploitation_status = {}
+
+                        date = cells[-1].get_text(strip=True)
+                        release_dates.append(date)
+                        actively_exploited_cves = [
+                            cve for cve, exploited in cves_exploitation_status.items() if exploited
+                        ]
+                        os_info = fetch_latest_os_version_info(os_type, product_version, gdmf_data) or {}
+
+                        rsr_release = None
+                        if "Rapid Security Response" in os_version_info:
+                            rsr_vers = re.search(r"\((\w)\)", os_version_info)
+                            if rsr_vers:
+                                rsr_release = rsr_vers.group(1)
+
+                        # Append each security release with default values if fields are missing
+                        security_releases.append({
+                            "UpdateName": os_version_info,
+                            "ProductName": os_type,
+                            "ProductVersion": product_version,
+                            "ReleaseDate": date,
+                            "ReleaseType": f"RSR_{rsr_release}" if rsr_release else "OS",
+                            "SecurityInfo": link_info or "This update has no published CVE entries.",
+                            "SupportedDevices": os_info.get("SupportedDevices", []),
+                            "CVEs": cves_exploitation_status,
+                            "ActivelyExploitedCVEs": actively_exploited_cves,
+                            "UniqueCVEsCount": len(cves_exploitation_status),
+                        })
+                        print(f"Appended security release: {security_releases[-1]}")  # Debug logging
+
+            days_since_previous_release = calculate_days_since_previous_release(release_dates)
+            for release in security_releases:
+                release_date = release["ReleaseDate"]
+                release["DaysSincePreviousRelease"] = days_since_previous_release.get(release_date, 0)
+        else:
+            print(f"Failed to retrieve data from {url}")
+            continue
+
+    return security_releases if security_releases else print("Failed to retrieve security releases.") or []
+
+
+def DELETE_fetch_security_releases(os_type: str, os_version: str, gdmf_data: dict) -> list:
     """Fetch security releases for the given OS type and version, sourced from multiple Apple Support pages."""
 
     # Updated URLs to include multiple sources
