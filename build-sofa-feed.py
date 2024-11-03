@@ -873,58 +873,47 @@ def write_data_to_json(feed_structure: dict, filename: str):
     latest_versions = {}
 
     for os_version in feed_structure["OSVersions"]:
-        # Initialize latest and forked latest correctly without double nesting
-        os_version["Latest"] = {}
-        if "ForkedLatest" in os_version:
-            os_version["ForkedLatest"] = {}
+        # Initialize or retrieve the "Latest" dictionary for each OSVersion
+        os_version["Latest"] = os_version.get("Latest", {})
 
-        # Handle "Latest" and "ForkedLatest" entries consistently
-        for key in ["Latest", "ForkedLatest"]:
-            if key in os_version and os_version[key]:
-                version_dict = os_version[key]
+        # Ensure all required fields in "Latest" are populated with either defaults or actual data
+        latest_data = os_version["Latest"]
+        latest_data["ProductVersion"] = latest_data.get("ProductVersion", "")
+        latest_data["Build"] = latest_data.get("Build", "")
+        latest_data["SecurityInfo"] = latest_data.get("SecurityInfo", "")
+        latest_data["UniqueCVEsCount"] = latest_data.get("UniqueCVEsCount", 0)
+        latest_data["ActivelyExploitedCVEs"] = latest_data.get("ActivelyExploitedCVEs", [])
+        latest_data["CVEs"] = latest_data.get("CVEs", {})
+        latest_data["SupportedDevices"] = latest_data.get("SupportedDevices", [])
 
-                # Populate all required fields with default values and actual values if available
-                version_dict["ProductVersion"] = version_dict.get("ProductVersion", "")
-                version_dict["Build"] = version_dict.get("Build", "")
-                version_dict["SecurityInfo"] = version_dict.get("SecurityInfo", "")
-                version_dict["UniqueCVEsCount"] = version_dict.get("UniqueCVEsCount", 0)
-                version_dict["ActivelyExploitedCVEs"] = version_dict.get("ActivelyExploitedCVEs", [])
-                version_dict["CVEs"] = version_dict.get("CVEs", {})
-                version_dict["SupportedDevices"] = version_dict.get("SupportedDevices", [])
+        # Convert dates to ISO format or set to "Unknown" if missing
+        latest_data["ReleaseDate"] = format_iso_date(latest_data.get("ReleaseDate", "Unknown"))
+        latest_data["ExpirationDate"] = format_iso_date(latest_data.get("ExpirationDate", "Unknown"))
 
-                # Convert dates to ISO format, fallback to "Unknown" only if needed
-                version_dict["ReleaseDate"] = format_iso_date(version_dict.get("ReleaseDate", "Unknown"))
-                version_dict["ExpirationDate"] = format_iso_date(version_dict.get("ExpirationDate", "Unknown"))
+        # Populate latest_versions for later handling of SecurityReleases dates
+        product_version = latest_data["ProductVersion"]
+        if product_version:
+            latest_versions[product_version] = {
+                "latest_date": latest_data["ReleaseDate"],
+                "os_version_dict": os_version
+            }
 
-                # Add to latest_versions for handling SecurityReleases updates
-                product_version = version_dict["ProductVersion"]
-                if product_version:
-                    latest_versions[product_version] = {
-                        "latest_date": version_dict["ReleaseDate"],
-                        "os_version_dict": os_version,
-                        "entry_key": key
-                    }
-
-        # Handle "SecurityReleases" if present
+        # Process SecurityReleases if present
         if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
             for release in os_version["SecurityReleases"]:
                 release["ProductVersion"] = release.get("ProductVersion", "")
                 release["ReleaseDate"] = format_iso_date(release.get("ReleaseDate", "Unknown"))
 
-                # Update release date if matching product version is found in latest_versions
+                # Update ReleaseDate if this version matches a latest version date
                 product_version = release["ProductVersion"]
                 if product_version in latest_versions:
                     latest_versions[product_version]["security_date"] = release["ReleaseDate"]
 
-    # Update all relevant "Latest" or "ForkedLatest" entries with respective security dates
+    # Apply the security date updates to each relevant latest entry
     for product_version, version_info in latest_versions.items():
         if "security_date" in version_info:
-            entry_key = version_info["entry_key"]
-            latest_dict = version_info["os_version_dict"][entry_key]
-            original_date = latest_dict.get("ReleaseDate", "")
-            new_date = version_info["security_date"]
-            latest_dict["ReleaseDate"] = new_date
-            print(f"Updated {product_version} {entry_key} ReleaseDate from {original_date} to {new_date}")
+            latest_dict = version_info["os_version_dict"]["Latest"]
+            latest_dict["ReleaseDate"] = version_info["security_date"]
 
     # Write the updated feed structure back to a file
     with open(filename, "w", encoding="utf-8") as json_file:
