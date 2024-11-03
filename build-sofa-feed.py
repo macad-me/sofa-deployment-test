@@ -547,15 +547,16 @@ def fetch_latest_os_version_info(
     # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
     print(f"Fetching latest: {os_type} {os_version_name}")
 
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
-    filtered_versions = [
+    os_versions_key = (
+        "macOS" if os_type == "macOS" else "iOS"
+    )  # TODO: why is this just not using os_type?
+    filtered_versions = [  # TODO: add example expected data to explain filtering
         version
         for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
         if version.get("ProductVersion", "").startswith(
             os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
         )
     ]
-
     if os_type == "iOS":
         filtered_versions = [
             iversion
