@@ -873,12 +873,17 @@ def write_data_to_json(feed_structure: dict, filename: str):
     latest_versions = {}
 
     for os_version in feed_structure["OSVersions"]:
+        # Initialize latest and forked latest correctly without double nesting
+        os_version["Latest"] = {}
+        if "ForkedLatest" in os_version:
+            os_version["ForkedLatest"] = {}
+
         # Handle "Latest" and "ForkedLatest" entries consistently
         for key in ["Latest", "ForkedLatest"]:
             if key in os_version and os_version[key]:
                 version_dict = os_version[key]
 
-                # Ensure all required keys are present with default values
+                # Populate all required fields with default values and actual values if available
                 version_dict["ProductVersion"] = version_dict.get("ProductVersion", "")
                 version_dict["Build"] = version_dict.get("Build", "")
                 version_dict["SecurityInfo"] = version_dict.get("SecurityInfo", "")
@@ -887,17 +892,18 @@ def write_data_to_json(feed_structure: dict, filename: str):
                 version_dict["CVEs"] = version_dict.get("CVEs", {})
                 version_dict["SupportedDevices"] = version_dict.get("SupportedDevices", [])
 
-                # Convert dates to ISO format, with "Unknown" fallback
+                # Convert dates to ISO format, fallback to "Unknown" only if needed
                 version_dict["ReleaseDate"] = format_iso_date(version_dict.get("ReleaseDate", "Unknown"))
                 version_dict["ExpirationDate"] = format_iso_date(version_dict.get("ExpirationDate", "Unknown"))
 
-                # Store the latest version info for comparison in `SecurityReleases` handling
+                # Add to latest_versions for handling SecurityReleases updates
                 product_version = version_dict["ProductVersion"]
-                latest_versions[product_version] = {
-                    "latest_date": version_dict["ReleaseDate"],
-                    "os_version_dict": os_version,
-                    "entry_key": key
-                }
+                if product_version:
+                    latest_versions[product_version] = {
+                        "latest_date": version_dict["ReleaseDate"],
+                        "os_version_dict": os_version,
+                        "entry_key": key
+                    }
 
         # Handle "SecurityReleases" if present
         if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
@@ -905,7 +911,7 @@ def write_data_to_json(feed_structure: dict, filename: str):
                 release["ProductVersion"] = release.get("ProductVersion", "")
                 release["ReleaseDate"] = format_iso_date(release.get("ReleaseDate", "Unknown"))
 
-                # Update the release date if the product version matches
+                # Update release date if matching product version is found in latest_versions
                 product_version = release["ProductVersion"]
                 if product_version in latest_versions:
                     latest_versions[product_version]["security_date"] = release["ReleaseDate"]
@@ -922,7 +928,7 @@ def write_data_to_json(feed_structure: dict, filename: str):
 
     # Write the updated feed structure back to a file
     with open(filename, "w", encoding="utf-8") as json_file:
-        json.dump(feed_structure, json_file, indent=4, ensure_ascii=False)  # TODO: ascii false because we might have utf8 in it?
+        json.dump(feed_structure, json_file, indent=4, ensure_ascii=False)
 
 
 def DELETE_write_data_to_json(feed_structure: dict, filename: str):
