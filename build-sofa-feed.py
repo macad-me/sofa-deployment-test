@@ -217,10 +217,11 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     ]
     print(f"Software releases for {os_type}: {software_releases}")
 
-    feed_structure: dict = {"OSVersions": []}
+    feed_structure = {"OSVersions": []}
 
     # Handle macOS separately due to unique catalog and update processing requirements
     if os_type == "macOS":
+        # macOS specific catalog and update processing
         catalog_url = (
             "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
         )
@@ -308,58 +309,49 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
             "macos_ipsw_apple_slug": apple_slug,
         }
 
-    elif os_type == "iOS":
-        # Initialize os_versions dynamically for iOS
-        os_versions = [("iOS", release["name"], None) for release in software_releases]
-        print(f"OS versions for {os_type}: {os_versions}")
-        print(f"Skipping fetching XProtect and 'Models' data for {os_type}.")
-
-    else:
-        print("Invalid OS type specified.")
-
-    # Fetch latest OS version information and organize by mainline and forked builds
     for release in software_releases:
         os_version_name = release["name"]
-        latest_version_info = fetch_latest_os_version_info(os_type, os_version_name, gdmf_data)
+        version_info = fetch_latest_os_version_info(os_type, os_version_name, gdmf_data)
 
-        if latest_version_info:
-            # Organize the structure for mainline and forked builds
-            os_entry = {
-                "OSVersion": os_version_name,
-                "SecurityReleases": fetch_security_releases(os_type, os_version_name, gdmf_data),
-                "SupportedModels": add_compatible_machines(os_version_name) if os_type == "macOS" else []
+        os_entry = {
+            "OSVersion": os_version_name,
+            "SupportedModels": add_compatible_machines(os_version_name) if os_type == "macOS" else []
+        }
+
+        # Add mainline and forked versions to the feed
+        if "Latest" in version_info and version_info["Latest"]:
+            os_entry["Latest"] = {
+                "ProductVersion": version_info["Latest"].get("ProductVersion", ""),
+                "Build": version_info["Latest"].get("Build", ""),
+                "ReleaseDate": format_iso_date(version_info["Latest"].get("ReleaseDate", "")),
+                "ExpirationDate": format_iso_date(version_info["Latest"].get("ExpirationDate", "")),
+                "SupportedDevices": version_info["Latest"].get("SupportedDevices", []),
+                "SecurityInfo": version_info["Latest"].get("SecurityInfo", ""),
+                "CVEs": version_info["Latest"].get("CVEs", {}),
+                "ActivelyExploitedCVEs": version_info["Latest"].get("ActivelyExploitedCVEs", []),
+                "UniqueCVEsCount": version_info["Latest"].get("UniqueCVEsCount", 0)
             }
 
-            # Mainline build data
-            if "Latest" in latest_version_info:
-                mainline_info = latest_version_info["Latest"]
-                os_entry["Latest"] = {
-                    "ProductVersion": mainline_info.get("ProductVersion", ""),
-                    "Build": mainline_info.get("Build", ""),
-                    "ReleaseDate": format_iso_date(mainline_info.get("ReleaseDate", "Unknown")),
-                    "ExpirationDate": format_iso_date(mainline_info.get("ExpirationDate", "")),
-                    "SupportedDevices": mainline_info.get("SupportedDevices", [])
-                }
+        if "ForkedLatest" in version_info and version_info["ForkedLatest"]:
+            os_entry["ForkedLatest"] = {
+                "ProductVersion": version_info["ForkedLatest"].get("ProductVersion", ""),
+                "Build": version_info["ForkedLatest"].get("Build", ""),
+                "ReleaseDate": format_iso_date(version_info["ForkedLatest"].get("ReleaseDate", "")),
+                "ExpirationDate": format_iso_date(version_info["ForkedLatest"].get("ExpirationDate", "")),
+                "SupportedDevices": version_info["ForkedLatest"].get("SupportedDevices", []),
+                "SecurityInfo": version_info["ForkedLatest"].get("SecurityInfo", ""),
+                "CVEs": version_info["ForkedLatest"].get("CVEs", {}),
+                "ActivelyExploitedCVEs": version_info["ForkedLatest"].get("ActivelyExploitedCVEs", []),
+                "UniqueCVEsCount": version_info["ForkedLatest"].get("UniqueCVEsCount", 0)
+            }
 
-            # Forked build data if available
-            if "ForkedLatest" in latest_version_info:
-                forked_info = latest_version_info["ForkedLatest"]
-                os_entry["ForkedLatest"] = {
-                    "ProductVersion": forked_info.get("ProductVersion", ""),
-                    "Build": forked_info.get("Build", ""),
-                    "ReleaseDate": format_iso_date(forked_info.get("ReleaseDate", "Unknown")),
-                    "ExpirationDate": format_iso_date(forked_info.get("ExpirationDate", "")),
-                    "SupportedDevices": forked_info.get("SupportedDevices", [])
-                }
+        # Add any SecurityReleases found
+        os_entry["SecurityReleases"] = fetch_security_releases(os_type, os_version_name, gdmf_data)
+        feed_structure["OSVersions"].append(os_entry)
 
-            feed_structure["OSVersions"].append(os_entry)
-
-    # Compute hash and update feed structure
+    # Compute hash and update the feed structure
     hash_value = compute_hash(feed_structure)
-    feed_structure = {
-        "UpdateHash": hash_value,
-        **feed_structure,
-    }
+    feed_structure = {"UpdateHash": hash_value, **feed_structure}
 
     data_feed_filename = f"{os_type.lower()}_data_feed.json"
     write_data_to_json(feed_structure, data_feed_filename)
@@ -703,28 +695,27 @@ def save_updated_macos_data_feed(macos_data_feed):
         json.dump(macos_data_feed, f, indent=4)
 
 
-def fetch_latest_os_version_info(
-    os_type: str, os_version_name: str, gdmf_data: dict
-) -> dict:
+def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: dict) -> dict:
     """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
     # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
     print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = (
-        "macOS" if os_type == "macOS" else "iOS"
-    )  # TODO: why is this just not using os_type?
-    filtered_versions = [  # TODO: add example expected data to explain filtering
+    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
+
+    # Filter versions based on the target OS and version name
+    filtered_versions = [
         version
         for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
         if version.get("ProductVersion", "").startswith(
             os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
         )
     ]
+
+    # Handle iOS-specific device filtering if needed
     if os_type == "iOS":
-        filtered_versions = [  # TODO: add example expected data to explain filtering
+        filtered_versions = [
             iversion
             for iversion in filtered_versions
-            if "SupportedDevices" in iversion
-            and any(
+            if "SupportedDevices" in iversion and any(
                 device.startswith("iPad") or device.startswith("iPhone")
                 for device in iversion["SupportedDevices"]
             )
@@ -762,14 +753,22 @@ def fetch_latest_os_version_info(
             "Build": mainline_build.get("Build", "") if mainline_build else "",
             "ReleaseDate": mainline_build.get("PostingDate", "") if mainline_build else "",
             "ExpirationDate": mainline_build.get("ExpirationDate", "") if mainline_build else "",
-            "SupportedDevices": mainline_build.get("SupportedDevices", []) if mainline_build else []
+            "SupportedDevices": mainline_build.get("SupportedDevices", []) if mainline_build else [],
+            "SecurityInfo": mainline_build.get("SecurityInfo", "") if mainline_build else "",
+            "CVEs": mainline_build.get("CVEs", {}) if mainline_build else {},
+            "ActivelyExploitedCVEs": mainline_build.get("ActivelyExploitedCVEs", []) if mainline_build else [],
+            "UniqueCVEsCount": mainline_build.get("UniqueCVEsCount", 0) if mainline_build else 0
         } if mainline_build else {},
         "ForkedLatest": {
             "ProductVersion": forked_build.get("ProductVersion", "") if forked_build else "",
             "Build": forked_build.get("Build", "") if forked_build else "",
             "ReleaseDate": forked_build.get("PostingDate", "") if forked_build else "",
             "ExpirationDate": forked_build.get("ExpirationDate", "") if forked_build else "",
-            "SupportedDevices": forked_build.get("SupportedDevices", []) if forked_build else []
+            "SupportedDevices": forked_build.get("SupportedDevices", []) if forked_build else [],
+            "SecurityInfo": forked_build.get("SecurityInfo", "") if forked_build else "",
+            "CVEs": forked_build.get("CVEs", {}) if forked_build else {},
+            "ActivelyExploitedCVEs": forked_build.get("ActivelyExploitedCVEs", []) if forked_build else [],
+            "UniqueCVEsCount": forked_build.get("UniqueCVEsCount", 0) if forked_build else 0
         } if forked_build else {}
     }
 
