@@ -540,6 +540,109 @@ def save_updated_macos_data_feed(macos_data_feed):
         json.dump(macos_data_feed, f, indent=4)
 
 
+def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: dict) -> dict:
+    """Fetch the latest version information for the given OS type & version name using provided GDMF data."""
+    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
+    print(f"Fetching latest: {os_type} {os_version_name}")
+
+    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
+    filtered_versions = [
+        version
+        for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
+        if version.get("ProductVersion", "").startswith(
+            os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
+        )
+    ]
+
+    if os_type == "iOS":
+        filtered_versions = [
+            iversion
+            for iversion in filtered_versions
+            if "SupportedDevices" in iversion
+               and any(
+                device.startswith("iPad") or device.startswith("iPhone")
+                for device in iversion["SupportedDevices"]
+            )
+        ]
+
+    if filtered_versions:
+        # Sort by device count (descending) and then by PostingDate (latest first)
+        latest_version = max(
+            filtered_versions,
+            key=lambda version: (
+                len(version.get("SupportedDevices", [])),  # Prioritize larger device counts
+                datetime.strptime(version["PostingDate"], "%Y-%m-%d")  # Then by latest date
+            )
+        )
+        return {
+            "ProductVersion": latest_version.get("ProductVersion"),
+            "Build": latest_version.get("Build"),
+            "ReleaseDate": latest_version.get("PostingDate"),
+            "ExpirationDate": latest_version.get("ExpirationDate", ""),
+            "SupportedDevices": latest_version.get("SupportedDevices", []),
+        }
+
+    print(f"No versions matched the criteria for {os_type} {os_version_name}.")
+    return {}
+
+
+def DELETE_fetch_latest_os_version_info(
+        os_type: str, os_version_name: str, gdmf_data: dict, pinned_build=None
+) -> dict:
+    """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
+    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
+    print(f"Fetching latest: {os_type} {os_version_name}")
+
+    os_versions_key = (
+        "macOS" if os_type == "macOS" else "iOS"
+    )  # TODO: why is this just not using os_type?
+
+    filtered_versions = [  # TODO: add example expected data to explain filtering
+        version
+        for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
+        if version.get("ProductVersion", "").startswith(
+            os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
+        )
+    ]
+
+    if os_type == "iOS":
+        filtered_versions = [  # TODO: add example expected data to explain filtering
+            iversion
+            for iversion in filtered_versions
+            if "SupportedDevices" in iversion
+               and any(
+                device.startswith("iPad") or device.startswith("iPhone")
+                for device in iversion["SupportedDevices"]
+            )
+        ]
+
+    # If there's a pinned build, prioritize it
+    if pinned_build:
+        filtered_versions = [
+            version for version in filtered_versions if version.get("Build") == pinned_build
+        ]
+
+    if filtered_versions:
+        # If multiple versions remain, select the one with the most SupportedDevices
+        latest_version = max(
+            filtered_versions,
+            key=lambda os_vers: (
+                len(os_vers.get("SupportedDevices", [])),
+                datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d")
+            )
+        )
+        return {
+            "ProductVersion": latest_version.get("ProductVersion"),
+            "Build": latest_version.get("Build"),
+            "ReleaseDate": latest_version.get("PostingDate"),
+            "ExpirationDate": latest_version.get("ExpirationDate", ""),
+            "SupportedDevices": latest_version.get("SupportedDevices", []),
+        }
+
+    print(f"No versions matched the criteria for {os_type} {os_version_name}.")
+    return {}
+
+
 def fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
 ) -> dict:
