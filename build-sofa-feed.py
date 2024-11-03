@@ -27,7 +27,7 @@ import process_ipsw  # noqa: E402
 import process_uma  # noqa: E402
 
 
-def main(os_types: list):
+def main(os_types: list, build: str = None):
     """The main function to process OS version information based on the provided OS types"""
     feed_results: list = []  # instantiate end result
     # config.json mostly instructs what OS versions to parse, text elements/color for GUI
@@ -38,8 +38,8 @@ def main(os_types: list):
         print("Failed to fetch GDMF data and no valid cached data available.")
         return
     rss_cache = load_rss_data_cache()
-    for os_type in os_types:  # TODO: handle macOS separately to remove weight
-        result = process_os_type(os_type, config, gdmf_data)
+    for os_type in os_types: # TODO: handle macOS separately to remove weight
+        result = process_os_type(os_type, config, gdmf_data, build=build)
         feed_results.extend(result)
     rss_data = diff_rss_data(feed_results, rss_cache)
     write_data_to_rss(rss_data, "rss_feed.xml")
@@ -206,8 +206,20 @@ def load_rss_data_cache() -> list:
             print(f"Error reading cache file - {cache_file}: {rss_cache_err}")
     return combined_data
 
+def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = None) -> list:
+    """Process the given OS type (macOS, iOS) and update the feed structure"""
+    # ... (existing code)
+    latest_versions: dict = {}
+    latest_version_info: dict = {}
+    for release in software_releases:
+        os_version_name = release["name"]
+        latest_version_info = fetch_latest_os_version_info(
+            os_type, os_version_name, gdmf_data, build=build
+        )
+        if latest_version_info:
+            latest_versions[os_version_name] = latest_version_info
 
-def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
+def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = None) -> list:
     """Process the given OS type (macOS, iOS) and update the feed structure"""
     software_releases = [
         release
@@ -334,15 +346,17 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         print(
             "Invalid OS type specified."
         )  # TODO: should probably raise/exit if this happens
+
     latest_versions: dict = {}
     latest_version_info: dict = {}
     for release in software_releases:
         os_version_name = release["name"]
         latest_version_info = fetch_latest_os_version_info(
-            os_type, os_version_name, gdmf_data
+            os_type, os_version_name, gdmf_data, build=build
         )
         if latest_version_info:
             latest_versions[os_version_name] = latest_version_info
+
     print("Fetching OS version information...")
     for release in software_releases:
         os_version_name = release["name"]
@@ -541,17 +555,19 @@ def save_updated_macos_data_feed(macos_data_feed):
 
 
 def fetch_latest_os_version_info(
-    os_type: str, os_version_name: str, gdmf_data: dict
+    os_type: str, os_version_name: str, gdmf_data: dict, build: str = None
 ) -> dict:
-    """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
+    """Fetch the latest version information for the given OS type & version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
     # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
     print(f"Fetching latest: {os_type} {os_version_name}")
     os_versions_key = (
         "macOS" if os_type == "macOS" else "iOS"
     )  # TODO: why is this just not using os_type?
+    versions = gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
+    # Filter versions by OS version
     filtered_versions = [  # TODO: add example expected data to explain filtering
         version
-        for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
+        for version in versions
         if version.get("ProductVersion", "").startswith(
             os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
         )
@@ -566,20 +582,48 @@ def fetch_latest_os_version_info(
                 for device in iversion["SupportedDevices"]
             )
         ]
-    if filtered_versions:
-        latest_version = max(
-            filtered_versions,
-            key=lambda os_vers: datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d"),
-        )
-        return {
-            "ProductVersion": latest_version.get("ProductVersion"),
-            "Build": latest_version.get("Build"),
-            "ReleaseDate": latest_version.get("PostingDate"),
-            "ExpirationDate": latest_version.get("ExpirationDate", ""),
-            "SupportedDevices": latest_version.get("SupportedDevices", []),
-        }
-    print(f"No versions matched the criteria for {os_type} {os_version_name}.")
-    return {}
+    # If build is provided, filter by build number
+    if build:
+        filtered_versions = [
+            version for version in filtered_versions if version.get("Build") == build
+        ]
+        if not filtered_versions:
+            print(f"No versions matched the build number {build} for {os_type} {os_version_name}.")
+            return {}
+        else:
+            # If multiple versions match, select the one with the most SupportedDevices
+            selected_version = max(
+                filtered_versions, key=lambda v: len(v.get("SupportedDevices", []))
+            )
+            return {
+                "ProductVersion": selected_version.get("ProductVersion"),
+                "Build": selected_version.get("Build"),
+                "ReleaseDate": selected_version.get("PostingDate"),
+                "ExpirationDate": selected_version.get("ExpirationDate", ""),
+                "SupportedDevices": selected_version.get("SupportedDevices", []),
+            }
+    else:
+        # Existing code to select the latest version
+        if filtered_versions:
+            # Select the latest version that supports the most devices
+            filtered_versions.sort(
+                key=lambda v: (
+                    datetime.strptime(v["PostingDate"], "%Y-%m-%d"),
+                    len(v.get("SupportedDevices", []))
+                ),
+                reverse=True
+            )
+            selected_version = filtered_versions[0]
+            return {
+                "ProductVersion": selected_version.get("ProductVersion"),
+                "Build": selected_version.get("Build"),
+                "ReleaseDate": selected_version.get("PostingDate"),
+                "ExpirationDate": selected_version.get("ExpirationDate", ""),
+                "SupportedDevices": selected_version.get("SupportedDevices", []),
+            }
+        print(f"No versions matched the criteria for {os_type} {os_version_name}.")
+        return {}
+
 
 
 def format_iso_date(date_str: str) -> str:
@@ -1109,12 +1153,17 @@ def write_data_to_rss(sorted_feed: list, filename: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process OS version information.")
     parser.add_argument(
         "osTypes",
         nargs="+",
         type=str,
         help="The types of OS to process (e.g., macOS iOS)",
     )
+    parser.add_argument(
+        '--build',
+        type=str,
+        default=None,
+        help='Specific build number to filter by',
+    )
     args = parser.parse_args()
-    main(args.osTypes)
+    main(args.osTypes, build=args.build)
