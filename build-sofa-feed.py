@@ -540,69 +540,7 @@ def save_updated_macos_data_feed(macos_data_feed):
         json.dump(macos_data_feed, f, indent=4)
 
 
-def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: dict) -> dict:
-    """Fetch the latest version information for the given OS type & version name using provided GDMF data."""
-    print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"
-
-    # Filter versions based on the target OS and version name
-    filtered_versions = [
-        version for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
-        if version.get("ProductVersion", "").startswith(
-            os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
-        )
-    ]
-
-    # Separate mainline and forked builds by device list or custom logic
-    mainline_build = None
-    forked_build = None
-    for version in filtered_versions:
-        supported_devices = version.get("SupportedDevices", [])
-        if any(device.startswith("M4") for device in supported_devices):  # Example forked device
-            forked_build = version
-        else:
-            mainline_build = version
-
-    # Find the latest version by date
-    mainline_build = max(
-        (ver for ver in filtered_versions if ver == mainline_build),
-        key=lambda os_vers: datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d"),
-        default=None
-    )
-    forked_build = max(
-        (ver for ver in filtered_versions if ver == forked_build),
-        key=lambda os_vers: datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d"),
-        default=None
-    )
-
-    # Return the structured result with Latest and ForkedLatest as separate top-level keys
-    return {
-        "Latest": {
-            "ProductVersion": mainline_build.get("ProductVersion", "") if mainline_build else "",
-            "Build": mainline_build.get("Build", "") if mainline_build else "",
-            "ReleaseDate": mainline_build.get("PostingDate", "") if mainline_build else "",
-            "ExpirationDate": mainline_build.get("ExpirationDate", "") if mainline_build else "",
-            "SupportedDevices": mainline_build.get("SupportedDevices", []) if mainline_build else [],
-            "SecurityInfo": mainline_build.get("SecurityInfo", "") if mainline_build else "",
-            "CVEs": mainline_build.get("CVEs", {}) if mainline_build else {},
-            "ActivelyExploitedCVEs": mainline_build.get("ActivelyExploitedCVEs", []) if mainline_build else [],
-            "UniqueCVEsCount": mainline_build.get("UniqueCVEsCount", 0) if mainline_build else 0
-        },
-        "ForkedLatest": {
-            "ProductVersion": forked_build.get("ProductVersion", "") if forked_build else "",
-            "Build": forked_build.get("Build", "") if forked_build else "",
-            "ReleaseDate": forked_build.get("PostingDate", "") if forked_build else "",
-            "ExpirationDate": forked_build.get("ExpirationDate", "") if forked_build else "",
-            "SupportedDevices": forked_build.get("SupportedDevices", []) if forked_build else [],
-            "SecurityInfo": forked_build.get("SecurityInfo", "") if forked_build else "",
-            "CVEs": forked_build.get("CVEs", {}) if forked_build else {},
-            "ActivelyExploitedCVEs": forked_build.get("ActivelyExploitedCVEs", []) if forked_build else [],
-            "UniqueCVEsCount": forked_build.get("UniqueCVEsCount", 0) if forked_build else 0
-        }
-    }
-
-
-def DELETE_fetch_latest_os_version_info(
+def fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
 ) -> dict:
     """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
@@ -868,59 +806,8 @@ def add_compatible_machines(current_macos_full_version: str) -> list:
         )
     return compatible_machines
 
+
 def write_data_to_json(feed_structure: dict, filename: str):
-    """Writes the fully populated feed structure to JSON filename"""
-    latest_versions = {}
-
-    for os_version in feed_structure["OSVersions"]:
-        # Initialize or retrieve the "Latest" dictionary for each OSVersion
-        os_version["Latest"] = os_version.get("Latest", {})
-
-        # Ensure all required fields in "Latest" are populated with either defaults or actual data
-        latest_data = os_version["Latest"]
-        latest_data["ProductVersion"] = latest_data.get("ProductVersion", "")
-        latest_data["Build"] = latest_data.get("Build", "")
-        latest_data["SecurityInfo"] = latest_data.get("SecurityInfo", "")
-        latest_data["UniqueCVEsCount"] = latest_data.get("UniqueCVEsCount", 0)
-        latest_data["ActivelyExploitedCVEs"] = latest_data.get("ActivelyExploitedCVEs", [])
-        latest_data["CVEs"] = latest_data.get("CVEs", {})
-        latest_data["SupportedDevices"] = latest_data.get("SupportedDevices", [])
-
-        # Convert dates to ISO format or set to "Unknown" if missing
-        latest_data["ReleaseDate"] = format_iso_date(latest_data.get("ReleaseDate", "Unknown"))
-        latest_data["ExpirationDate"] = format_iso_date(latest_data.get("ExpirationDate", "Unknown"))
-
-        # Populate latest_versions for later handling of SecurityReleases dates
-        product_version = latest_data["ProductVersion"]
-        if product_version:
-            latest_versions[product_version] = {
-                "latest_date": latest_data["ReleaseDate"],
-                "os_version_dict": os_version
-            }
-
-        # Process SecurityReleases if present
-        if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
-            for release in os_version["SecurityReleases"]:
-                release["ProductVersion"] = release.get("ProductVersion", "")
-                release["ReleaseDate"] = format_iso_date(release.get("ReleaseDate", "Unknown"))
-
-                # Update ReleaseDate if this version matches a latest version date
-                product_version = release["ProductVersion"]
-                if product_version in latest_versions:
-                    latest_versions[product_version]["security_date"] = release["ReleaseDate"]
-
-    # Apply the security date updates to each relevant latest entry
-    for product_version, version_info in latest_versions.items():
-        if "security_date" in version_info:
-            latest_dict = version_info["os_version_dict"]["Latest"]
-            latest_dict["ReleaseDate"] = version_info["security_date"]
-
-    # Write the updated feed structure back to a file
-    with open(filename, "w", encoding="utf-8") as json_file:
-        json.dump(feed_structure, json_file, indent=4, ensure_ascii=False)
-
-
-def DELETE_write_data_to_json(feed_structure: dict, filename: str):
     """Writes the fully populated feed structure to JSON filename"""
     latest_versions = {}
 
@@ -945,11 +832,27 @@ def DELETE_write_data_to_json(feed_structure: dict, filename: str):
 
             product_version = latest_dict["ProductVersion"]
 
-            # Store the latest version info for comparison
-            latest_versions[product_version] = {
-                "latest_date": latest_dict["ReleaseDate"],
-                "os_version_dict": os_version
-            }
+            # Check for forked build and store accordingly
+            if product_version in latest_versions:
+                # Forked build if the Build or SupportedDevices differs
+                if (
+                    latest_dict["Build"] != latest_versions[product_version]["Build"]
+                    or set(latest_dict["SupportedDevices"]) != set(latest_versions[product_version]["SupportedDevices"])
+                ):
+                    # Add a forked entry if a difference is found
+                    os_version["Latest"]["ForkedLatest"] = {
+                        "ProductVersion": product_version,
+                        "Build": latest_dict["Build"],
+                        "ReleaseDate": latest_dict["ReleaseDate"],
+                        "ExpirationDate": latest_dict["ExpirationDate"],
+                        "SupportedDevices": latest_dict["SupportedDevices"],
+                        "SecurityInfo": latest_dict["SecurityInfo"],
+                        "CVEs": latest_dict["CVEs"],
+                        "ActivelyExploitedCVEs": latest_dict["ActivelyExploitedCVEs"],
+                        "UniqueCVEsCount": latest_dict["UniqueCVEsCount"]
+                    }
+            else:
+                latest_versions[product_version] = latest_dict  # Store latest if no fork detected
 
         # Handle SecurityReleases similarly if present
         if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
@@ -976,7 +879,7 @@ def DELETE_write_data_to_json(feed_structure: dict, filename: str):
     with open(filename, "w", encoding="utf-8") as json_file:
         json.dump(
             feed_structure, json_file, indent=4, ensure_ascii=False
-        )  # TODO: ascii false because we might have utf8 in it?
+        )
 
 
 def create_rss_json_data(feed_structure: dict) -> list:
@@ -1152,15 +1055,18 @@ def write_os_data_to_cache(product_name: str, data: list):
 
 
 def remove_dict_duplicates(data: list) -> list:
-    """Remove duplicate dictionaries based on ProductName, ProductVersion, and ReleaseType."""
-    seen = set()
+    """Remove duplicate dictionaries (or lists) from a list"""
+    new_set = set()
     unique_list = []
     for item in data:
-        unique_id = (item.get("ProductName"), item.get("ProductVersion"), item.get("ReleaseType"))
-        if unique_id not in seen:
-            seen.add(unique_id)
+        item_tuple = item
+        if isinstance(item, (list, dict)):
+            item_tuple = json.dumps(item, sort_keys=True)
+        if item_tuple not in new_set:
+            new_set.add(item_tuple)
             unique_list.append(item)
     return unique_list
+
 
 def sort_data(data: list, sort_by: str) -> list:
     """Sort data based on sort_by key"""
