@@ -701,59 +701,57 @@ def save_updated_macos_data_feed(macos_data_feed):
 
 
 def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: dict, build: str = None) -> dict:
-    """Fetch the latest version info for the given OS type, filtering by build if provided or by max SupportedDevices otherwise."""
-    print(f"Fetching latest for: {os_type} {os_version_name} with build: {build}")
+    """Fetch the latest version info for the given OS type, strictly by build if provided."""
+    print(f"Fetching latest: {os_type} {os_version_name} with build: {build}")
     os_versions_key = "macOS" if os_type == "macOS" else "iOS"
-
-
     filtered_versions = [
         version for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
         if version.get("ProductVersion", "").startswith(
             os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
         )
     ]
-    print(f"Filtered versions by OS name '{os_version_name}':")
-    for version in filtered_versions:
-        print(
-            f" - ProductVersion: {version.get('ProductVersion')}, Build: {version.get('Build')}, SupportedDevices: {len(version.get('SupportedDevices', []))}")
 
-
+    # Filter strictly by build if provided
     if build:
-        exact_build_version = next(
+        build_specific_version = next(
             (version for version in filtered_versions if version.get("Build") == build), None
         )
-        if exact_build_version:
-            print(f"Exact build match found for build '{build}':")
-            print(
-                f" - ProductVersion: {exact_build_version.get('ProductVersion')}, Build: {exact_build_version.get('Build')}, SupportedDevices: {len(exact_build_version.get('SupportedDevices', []))}")
+        if build_specific_version:
+            print(f"Selected version with build {build}.")
             return {
-                "ProductVersion": exact_build_version.get("ProductVersion"),
-                "Build": exact_build_version.get("Build"),
-                "ReleaseDate": exact_build_version.get("PostingDate"),
-                "ExpirationDate": exact_build_version.get("ExpirationDate", ""),
-                "SupportedDevices": exact_build_version.get("SupportedDevices", []),
+                "ProductVersion": build_specific_version.get("ProductVersion"),
+                "Build": build_specific_version.get("Build"),
+                "ReleaseDate": build_specific_version.get("PostingDate"),
+                "ExpirationDate": build_specific_version.get("ExpirationDate", ""),
+                "SupportedDevices": build_specific_version.get("SupportedDevices", []),
+                "SecurityInfo": build_specific_version.get("SecurityInfo", ""),
+                "UniqueCVEsCount": build_specific_version.get("UniqueCVEsCount", 0),
+                "ActivelyExploitedCVEs": build_specific_version.get("ActivelyExploitedCVEs", []),
+                "CVEs": build_specific_version.get("CVEs", {}),
             }
         else:
-            print(f"No exact build match found for '{build}'. Proceeding to fallback by device count.")
+            print(f"No version found for build {build}.")
+            return {}  # Return empty dict if no build match found
 
-
-    if filtered_versions:
-        version_with_most_devices = max(
+    # Default to latest version by PostingDate if no build is specified and filtered_versions exist
+    if filtered_versions and not build:
+        latest_version = max(
             filtered_versions,
-            key=lambda v: len(v.get("SupportedDevices", []))
+            key=lambda os_vers: datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d"),
         )
-        print("Fallback: Selected version with most supported devices.")
-        print(
-            f" - ProductVersion: {version_with_most_devices.get('ProductVersion')}, Build: {version_with_most_devices.get('Build')}, SupportedDevices: {len(version_with_most_devices.get('SupportedDevices', []))}")
         return {
-            "ProductVersion": version_with_most_devices.get("ProductVersion"),
-            "Build": version_with_most_devices.get("Build"),
-            "ReleaseDate": version_with_most_devices.get("PostingDate"),
-            "ExpirationDate": version_with_most_devices.get("ExpirationDate", ""),
-            "SupportedDevices": version_with_most_devices.get("SupportedDevices", []),
+            "ProductVersion": latest_version.get("ProductVersion"),
+            "Build": latest_version.get("Build"),
+            "ReleaseDate": latest_version.get("PostingDate"),
+            "ExpirationDate": latest_version.get("ExpirationDate", ""),
+            "SupportedDevices": latest_version.get("SupportedDevices", []),
+            "SecurityInfo": latest_version.get("SecurityInfo", ""),
+            "UniqueCVEsCount": latest_version.get("UniqueCVEsCount", 0),
+            "ActivelyExploitedCVEs": latest_version.get("ActivelyExploitedCVEs", []),
+            "CVEs": latest_version.get("CVEs", {}),
         }
 
-    print(f"No versions matched the criteria for {os_type} {os_version_name}. Returning empty result.")
+    print(f"No versions matched the criteria for {os_type} {os_version_name}.")
     return {}
 
 
