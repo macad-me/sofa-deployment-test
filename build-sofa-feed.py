@@ -869,7 +869,7 @@ def write_data_to_json(feed_structure: dict, filename: str):
     # Update all relevant Latest entries with their respective security dates
     for product_version, version_info in latest_versions.items():
         if "security_date" in version_info:
-            latest_dict = version_info["os_version_dict"]["Latest"]
+            latest_dict = version_info.get("os_version_dict", {}).get("Latest", {})
             original_date = latest_dict.get("ReleaseDate", "")
             new_date = version_info["security_date"]
             latest_dict["ReleaseDate"] = new_date
