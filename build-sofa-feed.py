@@ -497,10 +497,11 @@ def fetch_latest_os_version_info(
     print(f"Fetching latest: {os_type} {os_version_name}")
 
     # Determine the correct key for accessing version data in gdmf_data
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
+    os_versions_key = os_type  # Use os_type directly for flexibility with other OS types
 
     # Filter versions based on the starting segment of the version number
     # TODO: add example expected data to explain filtering
+    # Example: for "Sequoia 15", os_version_name.split(" ")[-1] gives "15", so it matches any "ProductVersion" starting with "15"
     filtered_versions = [
         version
         for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
@@ -508,6 +509,7 @@ def fetch_latest_os_version_info(
             os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
         )
     ]
+    print(f"Filtered versions based on ProductVersion for {os_version_name}: {filtered_versions}")
 
     # Apply additional filtering for iOS to focus on devices like iPhone and iPad
     if os_type == "iOS":
@@ -520,6 +522,7 @@ def fetch_latest_os_version_info(
                 for device in iversion["SupportedDevices"]
             )
         ]
+        print(f"Further filtered iOS versions for iPhone and iPad devices: {filtered_versions}")
 
     # Filter by build if specified
     if build:
@@ -535,9 +538,9 @@ def fetch_latest_os_version_info(
             key=lambda os_vers: datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d"),
         )
         return {
-            "ProductVersion": latest_version.get("ProductVersion"),
-            "Build": latest_version.get("Build"),
-            "ReleaseDate": latest_version.get("PostingDate"),
+            "ProductVersion": latest_version.get("ProductVersion", ""),
+            "Build": latest_version.get("Build", ""),
+            "ReleaseDate": latest_version.get("PostingDate", ""),
             "ExpirationDate": latest_version.get("ExpirationDate", ""),
             "SupportedDevices": latest_version.get("SupportedDevices", []),
         }
