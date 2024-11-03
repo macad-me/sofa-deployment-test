@@ -540,7 +540,9 @@ def save_updated_macos_data_feed(macos_data_feed):
         json.dump(macos_data_feed, f, indent=4)
 
 
-def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: dict) -> dict:
+def fetch_latest_os_version_info(
+        os_type: str, os_version_name: str, gdmf_data: dict
+) -> dict:
     """Fetch the latest version information for the given OS type & version name using provided GDMF data."""
     # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
     print(f"Fetching latest: {os_type} {os_version_name}")
@@ -584,106 +586,6 @@ def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: 
 
     print(f"No versions matched the criteria for {os_type} {os_version_name}.")
     return {}
-
-
-def DELETE_fetch_latest_os_version_info(
-        os_type: str, os_version_name: str, gdmf_data: dict, pinned_build=None
-) -> dict:
-    """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
-    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
-    print(f"Fetching latest: {os_type} {os_version_name}")
-
-    os_versions_key = (
-        "macOS" if os_type == "macOS" else "iOS"
-    )  # TODO: why is this just not using os_type?
-
-    filtered_versions = [  # TODO: add example expected data to explain filtering
-        version
-        for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
-        if version.get("ProductVersion", "").startswith(
-            os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
-        )
-    ]
-
-    if os_type == "iOS":
-        filtered_versions = [  # TODO: add example expected data to explain filtering
-            iversion
-            for iversion in filtered_versions
-            if "SupportedDevices" in iversion
-               and any(
-                device.startswith("iPad") or device.startswith("iPhone")
-                for device in iversion["SupportedDevices"]
-            )
-        ]
-
-    # If there's a pinned build, prioritize it
-    if pinned_build:
-        filtered_versions = [
-            version for version in filtered_versions if version.get("Build") == pinned_build
-        ]
-
-    if filtered_versions:
-        # If multiple versions remain, select the one with the most SupportedDevices
-        latest_version = max(
-            filtered_versions,
-            key=lambda os_vers: (
-                len(os_vers.get("SupportedDevices", [])),
-                datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d")
-            )
-        )
-        return {
-            "ProductVersion": latest_version.get("ProductVersion"),
-            "Build": latest_version.get("Build"),
-            "ReleaseDate": latest_version.get("PostingDate"),
-            "ExpirationDate": latest_version.get("ExpirationDate", ""),
-            "SupportedDevices": latest_version.get("SupportedDevices", []),
-        }
-
-    print(f"No versions matched the criteria for {os_type} {os_version_name}.")
-    return {}
-
-
-def fetch_latest_os_version_info(
-    os_type: str, os_version_name: str, gdmf_data: dict
-) -> dict:
-    """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
-    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
-    print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = (
-        "macOS" if os_type == "macOS" else "iOS"
-    )  # TODO: why is this just not using os_type?
-    filtered_versions = [  # TODO: add example expected data to explain filtering
-        version
-        for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
-        if version.get("ProductVersion", "").startswith(
-            os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
-        )
-    ]
-    if os_type == "iOS":
-        filtered_versions = [  # TODO: add example expected data to explain filtering
-            iversion
-            for iversion in filtered_versions
-            if "SupportedDevices" in iversion
-            and any(
-                device.startswith("iPad") or device.startswith("iPhone")
-                for device in iversion["SupportedDevices"]
-            )
-        ]
-    if filtered_versions:
-        latest_version = max(
-            filtered_versions,
-            key=lambda os_vers: datetime.strptime(os_vers["PostingDate"], "%Y-%m-%d"),
-        )
-        return {
-            "ProductVersion": latest_version.get("ProductVersion"),
-            "Build": latest_version.get("Build"),
-            "ReleaseDate": latest_version.get("PostingDate"),
-            "ExpirationDate": latest_version.get("ExpirationDate", ""),
-            "SupportedDevices": latest_version.get("SupportedDevices", []),
-        }
-    print(f"No versions matched the criteria for {os_type} {os_version_name}.")
-    return {}
-
 
 def format_iso_date(date_str: str) -> str:
     """Format the date string to ISO 8601 format
@@ -935,27 +837,11 @@ def write_data_to_json(feed_structure: dict, filename: str):
 
             product_version = latest_dict["ProductVersion"]
 
-            # Check for forked build and store accordingly
-            if product_version in latest_versions:
-                # Forked build if the Build or SupportedDevices differs
-                if (
-                    latest_dict["Build"] != latest_versions[product_version]["Build"]
-                    or set(latest_dict["SupportedDevices"]) != set(latest_versions[product_version]["SupportedDevices"])
-                ):
-                    # Add a forked entry if a difference is found
-                    os_version["Latest"]["ForkedLatest"] = {
-                        "ProductVersion": product_version,
-                        "Build": latest_dict["Build"],
-                        "ReleaseDate": latest_dict["ReleaseDate"],
-                        "ExpirationDate": latest_dict["ExpirationDate"],
-                        "SupportedDevices": latest_dict["SupportedDevices"],
-                        "SecurityInfo": latest_dict["SecurityInfo"],
-                        "CVEs": latest_dict["CVEs"],
-                        "ActivelyExploitedCVEs": latest_dict["ActivelyExploitedCVEs"],
-                        "UniqueCVEsCount": latest_dict["UniqueCVEsCount"]
-                    }
-            else:
-                latest_versions[product_version] = latest_dict  # Store latest if no fork detected
+            # Store the latest version info for comparison
+            latest_versions[product_version] = {
+                "latest_date": latest_dict["ReleaseDate"],
+                "os_version_dict": os_version
+            }
 
         # Handle SecurityReleases similarly if present
         if "SecurityReleases" in os_version and isinstance(os_version["SecurityReleases"], list):
@@ -972,7 +858,7 @@ def write_data_to_json(feed_structure: dict, filename: str):
     # Update all relevant Latest entries with their respective security dates
     for product_version, version_info in latest_versions.items():
         if "security_date" in version_info:
-            latest_dict = version_info.get("os_version_dict", {}).get("Latest", {})
+            latest_dict = version_info["os_version_dict"]["Latest"]
             original_date = latest_dict.get("ReleaseDate", "")
             new_date = version_info["security_date"]
             latest_dict["ReleaseDate"] = new_date
@@ -982,7 +868,7 @@ def write_data_to_json(feed_structure: dict, filename: str):
     with open(filename, "w", encoding="utf-8") as json_file:
         json.dump(
             feed_structure, json_file, indent=4, ensure_ascii=False
-        )
+        )  # TODO: ascii false because we might have utf8 in it?
 
 
 def create_rss_json_data(feed_structure: dict) -> list:
