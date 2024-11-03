@@ -330,7 +330,13 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = No
             latest_version_info["ReleaseDate"] = format_iso_date(latest_version_info.get("ReleaseDate", ""))
             latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info.get("ExpirationDate", ""))
 
-            security_info = fetch_security_releases(os_type, latest_version_info["ProductVersion"], gdmf_data)
+            # Check if 'ProductVersion' exists before fetching security releases
+            if "ProductVersion" in latest_version_info:
+                security_info = fetch_security_releases(os_type, latest_version_info["ProductVersion"], gdmf_data)
+            else:
+                print(f"Warning: 'ProductVersion' missing for {os_version_name}")
+                security_info = []
+
             compatible_machines = add_compatible_machines(os_version_name) if os_type == "macOS" else []
 
             feed_structure["OSVersions"].append({
@@ -339,6 +345,8 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict, build: str = No
                 "SecurityReleases": security_info,
                 "SupportedModels": compatible_machines,
             })
+        else:
+            print(f"No version information found for {os_version_name}. Skipping.")
 
     # Finalize feed structure with hashing, saving, and validation
     hash_value = compute_hash(feed_structure)
