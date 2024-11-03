@@ -94,8 +94,7 @@
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
-                "CVEs": {},
-                "security_date": "2024-10-28T00:00:00Z"
+                "CVEs": {}
             },
             "SecurityReleases": [
                 {
@@ -390,8 +389,7 @@
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
-                "CVEs": {},
-                "security_date": "2024-10-28T00:00:00Z"
+                "CVEs": {}
             },
             "SecurityReleases": [
                 {
@@ -1168,7 +1166,7 @@
             "Latest": {
                 "ProductVersion": "16.7.10",
                 "Build": "20H6350",
-                "ReleaseDate": "2024-10-28T00:00:00Z",
+                "ReleaseDate": "2024-08-07T00:00:00Z",
                 "ExpirationDate": "2025-02-01T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
@@ -1187,8 +1185,7 @@
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
-                "CVEs": {},
-                "security_date": "2024-08-07T00:00:00Z"
+                "CVEs": {}
             },
             "SecurityReleases": [
                 {
