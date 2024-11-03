@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "63ce032332911a819cb213c96b22c19859e366780fe5049ec6ad13e6e5be8e2c",
+    "UpdateHash": "9c6063b19611f882ff005908aedc4f91a337495cd3e6f6f1cb4496f0aa586151",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -7,7 +7,7 @@
                 "ProductVersion": "18.1",
                 "Build": "22J580",
                 "ReleaseDate": "2024-10-28T00:00:00Z",
-                "ExpirationDate": "2025-01-31T00:00:00Z",
+                "ExpirationDate": "2025-02-01T00:00:00Z",
                 "SupportedDevices": [
                     "AppleTV11,1",
                     "AppleTV14,1",
@@ -154,7 +154,7 @@
                 "ProductVersion": "17.7.1",
                 "Build": "21H216",
                 "ReleaseDate": "2024-10-28T00:00:00Z",
-                "ExpirationDate": "2025-01-31T00:00:00Z",
+                "ExpirationDate": "2025-02-01T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -1019,7 +1019,7 @@
                 "ProductVersion": "16.7.10",
                 "Build": "20H6350",
                 "ReleaseDate": "2024-08-07T00:00:00Z",
-                "ExpirationDate": "2025-01-31T00:00:00Z",
+                "ExpirationDate": "2025-02-01T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
                     "iPad6,12",
