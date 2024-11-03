@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "b80748d7d9c1e23505079a35d8808313a6a1a309812d801fdcec94a2f3f8299a",
+    "UpdateHash": "9963f518a0d47c55f82c84f608f64151d16fd1f860f78c1974130e913ba0d38c",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -70,16 +70,26 @@
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 0
                 },
-                "ForkedLatest": {},
+                "ForkedLatest": {
+                    "ProductVersion": "",
+                    "Build": "",
+                    "ReleaseDate": "",
+                    "ExpirationDate": "",
+                    "SupportedDevices": [],
+                    "SecurityInfo": "",
+                    "CVEs": {},
+                    "ActivelyExploitedCVEs": [],
+                    "UniqueCVEsCount": 0
+                },
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
-                "ExpirationDate": "",
                 "Build": "",
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
                 "CVEs": {},
-                "SupportedDevices": []
+                "SupportedDevices": [],
+                "ExpirationDate": "Unknown"
             },
             "SecurityReleases": [
                 {
@@ -603,16 +613,26 @@
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 0
                 },
-                "ForkedLatest": {},
+                "ForkedLatest": {
+                    "ProductVersion": "",
+                    "Build": "",
+                    "ReleaseDate": "",
+                    "ExpirationDate": "",
+                    "SupportedDevices": [],
+                    "SecurityInfo": "",
+                    "CVEs": {},
+                    "ActivelyExploitedCVEs": [],
+                    "UniqueCVEsCount": 0
+                },
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
-                "ExpirationDate": "",
                 "Build": "",
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
                 "CVEs": {},
-                "SupportedDevices": []
+                "SupportedDevices": [],
+                "ExpirationDate": "Unknown"
             },
             "SecurityReleases": [
                 {
@@ -2385,16 +2405,26 @@
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 0
                 },
-                "ForkedLatest": {},
+                "ForkedLatest": {
+                    "ProductVersion": "",
+                    "Build": "",
+                    "ReleaseDate": "",
+                    "ExpirationDate": "",
+                    "SupportedDevices": [],
+                    "SecurityInfo": "",
+                    "CVEs": {},
+                    "ActivelyExploitedCVEs": [],
+                    "UniqueCVEsCount": 0
+                },
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
-                "ExpirationDate": "",
                 "Build": "",
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
                 "CVEs": {},
-                "SupportedDevices": []
+                "SupportedDevices": [],
+                "ExpirationDate": "Unknown"
             },
             "SecurityReleases": [
                 {
@@ -5064,16 +5094,26 @@
                     "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 0
                 },
-                "ForkedLatest": {},
+                "ForkedLatest": {
+                    "ProductVersion": "",
+                    "Build": "",
+                    "ReleaseDate": "",
+                    "ExpirationDate": "",
+                    "SupportedDevices": [],
+                    "SecurityInfo": "",
+                    "CVEs": {},
+                    "ActivelyExploitedCVEs": [],
+                    "UniqueCVEsCount": 0
+                },
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
-                "ExpirationDate": "",
                 "Build": "",
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
                 "CVEs": {},
-                "SupportedDevices": []
+                "SupportedDevices": [],
+                "ExpirationDate": "Unknown"
             },
             "SecurityReleases": [
                 {
