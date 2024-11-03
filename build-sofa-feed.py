@@ -209,26 +209,27 @@ def load_rss_data_cache() -> list:
 
 def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     """Process the given OS type (macOS, iOS) and update the feed structure"""
-    # Filter software releases for the specified OS type
     software_releases = [
         release
         for release in config["softwareReleases"]
         if release["osType"] == os_type
     ]
-    print(f"Software releases for {os_type}: {software_releases}")
-
-    feed_structure = {"OSVersions": []}
-
-    # Handle macOS separately due to unique catalog and update processing requirements
+    print(
+        f"Software releases for {os_type}: {software_releases}"
+    )  # TODO: as per below, this is weird, revisit  noqa: E501 pylint: disable=line-too-long
+    feed_structure: dict = {
+        "OSVersions": [],
+    }
     if os_type == "macOS":
-        # macOS specific catalog and update processing
-        catalog_url = (
+        catalog_url: str = (
             "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
         )
         catalog_content = fetch_content(catalog_url)
 
-        # XProtectPlistConfigData extraction
-        config_matches = re.findall(r"https.*XProtectPlistConfigData.*?\.pkm", catalog_content)
+        # Find all URLs for XProtectPlistConfigData
+        config_matches = re.findall(
+            r"https.*XProtectPlistConfigData.*?\.pkm", catalog_content
+        )
         plist_info = None
         if config_matches:
             plist_versions = [
@@ -238,8 +239,10 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
             plist_versions.sort(key=lambda x: x["ReleaseDate"], reverse=True)
             plist_info = plist_versions[0]  # Latest version info
 
-        # XProtectPayloads extraction
-        payload_matches = re.findall(r"https.*XProtectPayloads.*?\.pkm", catalog_content)
+        # Find all URLs for XProtectPayloads
+        payload_matches = re.findall(
+            r"https.*XProtectPayloads.*?\.pkm", catalog_content
+        )
         payloads_info = None
         if payload_matches:
             payload_versions = [
@@ -263,16 +266,16 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         models_info = load_and_tag_model_data(model_files)
         feed_structure["Models"] = models_info
 
-        # UMA parsing for potential packages
+        # UMA parsing
         unrefined_products = process_uma.initial_uma_parse(catalog_content.encode())
         print(f"Extracted {len(unrefined_products)} potential UMA packages")
         ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
         ctx.load_verify_locations(cafile=certifi.where())
         filtered_dict = {}
-
-        # Retrieve metadata for each UMA package
         for slug, prod_dict in unrefined_products.items():
-            title, build, version = process_uma.get_metadata(ctx, prod_dict.get("dist_url"))
+            title, build, version = process_uma.get_metadata(
+                ctx, prod_dict.get("dist_url")
+            )
             if title:
                 filtered_dict[slug] = {
                     "title": title,
@@ -281,73 +284,96 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                     "apple_slug": slug,
                     "url": prod_dict.get("URL"),
                 }
-
         latest, rest = process_uma.sort_installers(filtered_dict)
         uma_list = {
             "LatestUMA": latest,
             "AllPreviousUMA": rest,
-        }
+        }  # TODO: flatten all this down into the one call and subsequent assignment  # noqa: E501 pylint: disable=line-too-long
         feed_structure["InstallationApps"] = uma_list
 
-        # IPSW parsing from mesu catalog
-        mesu_url = "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"
+        # IPSW parsing
+        mesu_url: str = (
+            "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"
+        )
         try:
             with urlopen(mesu_url, context=ctx) as response:
                 mesu_cat = response.read()
-        except (Exception, OSError) as error:
+        except (Exception, OSError) as error:  # pylint: disable=broad-exception-caught
             print(f"Error fetching mesu assets, {error}")
             raise
-        mesu_catalog = plistlib.loads(mesu_cat)
+        mesu_catalog: dict = plistlib.loads(mesu_cat)
         restore_datas = process_ipsw.extract_ipsw_raw(mesu_catalog)
-        prevalent_url, prevalent_build, prevalent_version = process_ipsw.process_ipsw_data(restore_datas)
+        prevalent_url, prevalent_build, prevalent_version = (
+            process_ipsw.process_ipsw_data(restore_datas)
+        )
         apple_slug = process_ipsw.process_slug(prevalent_url)
         print(f"Extracted IPSW\n{prevalent_url}")
-        feed_structure["InstallationApps"]["LatestMacIPSW"] = {
-            "macos_ipsw_url": prevalent_url,
-            "macos_ipsw_build": prevalent_build,
-            "macos_ipsw_version": prevalent_version,
-            "macos_ipsw_apple_slug": apple_slug,
-        }
+        feed_structure["InstallationApps"]["LatestMacIPSW"] = (
+            {
+                "macos_ipsw_url": prevalent_url,
+                "macos_ipsw_build": prevalent_build,
+                "macos_ipsw_version": prevalent_version,
+                "macos_ipsw_apple_slug": apple_slug,
+            }
+        )
 
+    elif os_type == "iOS":
+        os_versions = [
+            ("iOS", release["name"], None) for release in software_releases
+        ]
+        print(f"OS versions for {os_type}: {os_versions}")
+        print(f"Skipping fetching XProtect and 'Models' data for {os_type}.")
+    else:
+        print("Invalid OS type specified.")  # TODO: should probably raise/exit if this happens
+
+    latest_versions: dict = {}
     for release in software_releases:
         os_version_name = release["name"]
-        version_info = fetch_latest_os_version_info(os_type, os_version_name, gdmf_data)
+        latest_version_info = fetch_latest_os_version_info(
+            os_type, os_version_name, gdmf_data
+        )
+        if latest_version_info:
+            latest_versions[os_version_name] = latest_version_info
 
-        os_entry = {
-            "OSVersion": os_version_name,
-            "SupportedModels": add_compatible_machines(os_version_name) if os_type == "macOS" else []
-        }
+    print("Fetching OS version information...")
+    for release in software_releases:
+        os_version_name = release["name"]
+        latest_version_info = latest_versions.get(os_version_name, {})
 
-        # Add mainline and forked versions to the feed
-        if "Latest" in version_info and version_info["Latest"]:
-            os_entry["Latest"] = {
-                "ProductVersion": version_info["Latest"].get("ProductVersion", ""),
-                "Build": version_info["Latest"].get("Build", ""),
-                "ReleaseDate": format_iso_date(version_info["Latest"].get("ReleaseDate", "")),
-                "ExpirationDate": format_iso_date(version_info["Latest"].get("ExpirationDate", "")),
-                "SupportedDevices": version_info["Latest"].get("SupportedDevices", []),
-                "SecurityInfo": version_info["Latest"].get("SecurityInfo", ""),
-                "CVEs": version_info["Latest"].get("CVEs", {}),
-                "ActivelyExploitedCVEs": version_info["Latest"].get("ActivelyExploitedCVEs", []),
-                "UniqueCVEsCount": version_info["Latest"].get("UniqueCVEsCount", 0)
+        if latest_version_info is not None:
+            # Format dates, handle missing 'ReleaseDate'
+            if "ReleaseDate" in latest_version_info:
+                latest_version_info["ReleaseDate"] = format_iso_date(latest_version_info["ReleaseDate"])
+            else:
+                print(f"Warning: 'ReleaseDate' missing for {os_version_name}")
+                latest_version_info["ReleaseDate"] = "Unknown"
+
+            if "ExpirationDate" in latest_version_info:
+                latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info["ExpirationDate"])
+
+            # Handle missing 'ProductVersion'
+            if "ProductVersion" not in latest_version_info:
+                print(f"Warning: 'ProductVersion' missing for {os_version_name}")
+                latest_version_info["ProductVersion"] = "Unknown"
+
+            # Prepare entry with Latest, ForkedLatest, SecurityReleases, and SupportedModels
+            os_entry = {
+                "OSVersion": os_version_name,
+                "Latest": latest_version_info,
             }
 
-        if "ForkedLatest" in version_info and version_info["ForkedLatest"]:
-            os_entry["ForkedLatest"] = {
-                "ProductVersion": version_info["ForkedLatest"].get("ProductVersion", ""),
-                "Build": version_info["ForkedLatest"].get("Build", ""),
-                "ReleaseDate": format_iso_date(version_info["ForkedLatest"].get("ReleaseDate", "")),
-                "ExpirationDate": format_iso_date(version_info["ForkedLatest"].get("ExpirationDate", "")),
-                "SupportedDevices": version_info["ForkedLatest"].get("SupportedDevices", []),
-                "SecurityInfo": version_info["ForkedLatest"].get("SecurityInfo", ""),
-                "CVEs": version_info["ForkedLatest"].get("CVEs", {}),
-                "ActivelyExploitedCVEs": version_info["ForkedLatest"].get("ActivelyExploitedCVEs", []),
-                "UniqueCVEsCount": version_info["ForkedLatest"].get("UniqueCVEsCount", 0)
-            }
+            # Add ForkedLatest if it exists
+            if "ForkedLatest" in latest_version_info and latest_version_info["ForkedLatest"]:
+                os_entry["ForkedLatest"] = latest_version_info["ForkedLatest"]
 
-        # Add any SecurityReleases found
-        os_entry["SecurityReleases"] = fetch_security_releases(os_type, os_version_name, gdmf_data)
-        feed_structure["OSVersions"].append(os_entry)
+            # Add SecurityReleases
+            os_entry["SecurityReleases"] = fetch_security_releases(os_type, os_version_name, gdmf_data)
+
+            # Add SupportedModels for macOS
+            if os_type == "macOS":
+                os_entry["SupportedModels"] = add_compatible_machines(os_version_name)
+
+            feed_structure["OSVersions"].append(os_entry)
 
     # Compute hash and update the feed structure
     hash_value = compute_hash(feed_structure)
@@ -358,7 +384,6 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     data_feed = create_rss_json_data(feed_structure)
     write_timestamp_and_hash(os_type, hash_value)
     read_and_validate_json(data_feed_filename)
-
     return data_feed
 
 
