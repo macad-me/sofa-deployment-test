@@ -28,6 +28,7 @@ import process_uma  # noqa: E402
 
 def main(os_types: list, build: str = None):
     """The main function to process OS version information based on the provided OS types"""
+    print(f"Main function received build: {build}")
     feed_results: list = []  # instantiate end result
     # config.json mostly instructs what OS versions to parse, text elements/color for GUI
     with open("config.json", "r", encoding="utf-8") as config_file:
@@ -39,7 +40,8 @@ def main(os_types: list, build: str = None):
     rss_cache = load_rss_data_cache()
     for os_type in os_types:  # TODO: handle macOS separately to remove weight
         # Pass the build argument to process_os_type for optional build-pinning
-        result = process_os_type(os_type, config, gdmf_data, build)
+        result = process_os_type(os_type, config, gdmf_data, build=build)
+        print(f"process_os_type called with build: {build}")
         feed_results.extend(result)
     rss_data = diff_rss_data(feed_results, rss_cache)
     write_data_to_rss(rss_data, "rss_feed.xml")
@@ -703,7 +705,7 @@ def fetch_latest_os_version_info(os_type: str, os_version_name: str, gdmf_data: 
     print(f"Fetching latest for: {os_type} {os_version_name} with build: {build}")
     os_versions_key = "macOS" if os_type == "macOS" else "iOS"
 
-    
+
     filtered_versions = [
         version for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
         if version.get("ProductVersion", "").startswith(
