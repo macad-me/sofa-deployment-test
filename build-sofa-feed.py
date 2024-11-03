@@ -329,42 +329,38 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     latest_versions: dict = {}
     for release in software_releases:
         os_version_name = release["name"]
-        latest_version_info = fetch_latest_os_version_info(
+        version_info = fetch_latest_os_version_info(
             os_type, os_version_name, gdmf_data
         )
-        if latest_version_info:
-            latest_versions[os_version_name] = latest_version_info
+
+        if version_info:
+            latest_versions[os_version_name] = version_info
 
     print("Fetching OS version information...")
     for release in software_releases:
         os_version_name = release["name"]
-        latest_version_info = latest_versions.get(os_version_name, {})
+        version_info = latest_versions.get(os_version_name, {})
 
-        if latest_version_info is not None:
+        if version_info is not None:
             # Format dates, handle missing 'ReleaseDate'
-            if "ReleaseDate" in latest_version_info:
-                latest_version_info["ReleaseDate"] = format_iso_date(latest_version_info["ReleaseDate"])
+            if "ReleaseDate" in version_info["Latest"]:
+                version_info["Latest"]["ReleaseDate"] = format_iso_date(version_info["Latest"]["ReleaseDate"])
             else:
                 print(f"Warning: 'ReleaseDate' missing for {os_version_name}")
-                latest_version_info["ReleaseDate"] = "Unknown"
+                version_info["Latest"]["ReleaseDate"] = "Unknown"
 
-            if "ExpirationDate" in latest_version_info:
-                latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info["ExpirationDate"])
+            if "ExpirationDate" in version_info["Latest"]:
+                version_info["Latest"]["ExpirationDate"] = format_iso_date(version_info["Latest"]["ExpirationDate"])
 
-            # Handle missing 'ProductVersion'
-            if "ProductVersion" not in latest_version_info:
-                print(f"Warning: 'ProductVersion' missing for {os_version_name}")
-                latest_version_info["ProductVersion"] = "Unknown"
-
-            # Prepare entry with Latest, ForkedLatest, SecurityReleases, and SupportedModels
+            # Prepare entry with Latest, ForkedLatest (if available), SecurityReleases, and SupportedModels
             os_entry = {
                 "OSVersion": os_version_name,
-                "Latest": latest_version_info,
+                "Latest": version_info["Latest"],
             }
 
             # Add ForkedLatest if it exists
-            if "ForkedLatest" in latest_version_info and latest_version_info["ForkedLatest"]:
-                os_entry["ForkedLatest"] = latest_version_info["ForkedLatest"]
+            if "ForkedLatest" in version_info and version_info["ForkedLatest"]:
+                os_entry["ForkedLatest"] = version_info["ForkedLatest"]
 
             # Add SecurityReleases
             os_entry["SecurityReleases"] = fetch_security_releases(os_type, os_version_name, gdmf_data)
