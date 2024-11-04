@@ -8,37 +8,40 @@
     <!-- Loaded Data View -->
     <div v-else-if="osData">
       <div class="row-container">
-        <!-- OS Version and Installer Info Column -->
+        <!-- OS Version and Details Column -->
         <div class="feature-column">
           <img :src="osImage" alt="OS Image" class="os-image" />
           <h3>Latest {{ platform }} {{ title }}</h3>
-          <p><strong>OS Version:</strong> {{ osData.OSVersion }}</p>
+
+          <!-- Latest Version Information -->
           <p><strong>Product Version:</strong> {{ osData.Latest.ProductVersion }}</p>
           <p><strong>Build:</strong> {{ osData.Latest.Build }}</p>
           <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
           <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
 
-          <!-- Forked Latest Information (Simplified) -->
-          <div v-if="osData.Latest.ForkedLatest">
+          <!-- Forked Latest Information -->
+          <div v-if="osData.Latest.ForkedLatest" style="margin-top: 15px;">
             <h3>Forked Latest Version</h3>
+            <p><strong>Product Version:</strong> {{ osData.Latest.ForkedLatest.ProductVersion }}</p>
             <p><strong>Build:</strong> {{ osData.Latest.ForkedLatest.Build }}</p>
             <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ForkedLatest.ReleaseDate) }}</p>
           </div>
 
-          <!-- Display installer info for Sequoia 15 (macOS only) -->
-          <div v-if="platform === 'macOS' && osData.OSVersion === 'Sequoia 15'">
+          <!-- Installer Links (Sequoia 15 macOS only) -->
+          <div v-if="platform === 'macOS' && osData.OSVersion === 'Sequoia 15'" style="margin-top: 15px;">
             <p v-if="installationApps?.LatestUMA?.url">
-              <strong>Installer Package: </strong>
+              <strong>Installer Package:</strong>
               <a :href="installationApps.LatestUMA.url" target="_blank">Download</a>
             </p>
             <p v-if="installationApps?.LatestMacIPSW?.macos_ipsw_url">
-              <strong>Current IPSW file: </strong>
+              <strong>Current IPSW file:</strong>
               <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
             </p>
           </div>
-          <!-- General installer info link for macOS (not displayed on iOS) -->
-          <div v-if="platform === 'macOS' && osData.OSVersion !== 'Sequoia 15'">
-            <strong>Installer Package (UMA): </strong>
+
+          <!-- General Installer Info Link for macOS (not displayed on iOS) -->
+          <div v-if="platform === 'macOS' && osData.OSVersion !== 'Sequoia 15'" style="margin-top: 15px;">
+            <strong>Installer Package (UMA):</strong>
             <a href="/macos_installer_info.html#release-information-table">Download links</a>
           </div>
         </div>
@@ -51,10 +54,6 @@
           <p><strong>Plugin Service:</strong> {{ xProtectData?.PluginService || 'N/A' }}</p>
           <p><strong>Release Date:</strong> {{ xProtectData ? formatDate(xProtectData.ReleaseDate) : 'N/A' }}</p>
           <p><strong>Time Since Release:</strong> {{ xProtectData ? timeSinceRelease(xProtectData.ReleaseDate) : 'N/A' }}</p>
-          <p v-if="xProtectData?.Remediator"><strong>XProtect Remediator:</strong> {{ xProtectData.Remediator }}</p>
-          <p v-if="xProtectData?.ConfigData"><strong>XProtect Config Data:</strong> {{ xProtectData.ConfigData }}</p>
-          <p v-if="xProtectData?.PlistReleaseDate"><strong>Plist Release Date:</strong> {{ formatDate(xProtectData.PlistReleaseDate) }}</p>
-          <p v-if="xProtectData?.PlistReleaseDate"><strong>Time Since Plist Release:</strong> {{ timeSinceRelease(xProtectData.PlistReleaseDate) }}</p>
         </div>
       </div>
 
@@ -100,6 +99,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import macOSData from '@v1/macos_data_feed.json';
