@@ -18,6 +18,13 @@
           <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
           <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
 
+          <!-- Forked Latest Information (Simplified) -->
+          <div v-if="osData.Latest.ForkedLatest">
+            <h3>Forked Latest Version</h3>
+            <p><strong>Build:</strong> {{ osData.Latest.ForkedLatest.Build }}</p>
+            <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ForkedLatest.ReleaseDate) }}</p>
+          </div>
+
           <!-- Display installer info for Sequoia 15 (macOS only) -->
           <div v-if="platform === 'macOS' && osData.OSVersion === 'Sequoia 15'">
             <p v-if="installationApps?.LatestUMA?.url">
@@ -54,7 +61,7 @@
       <!-- Button Group for Latest and Previous Version -->
       <h3>Deferral Thresholds</h3>
       <div class="os-version-container">
-       
+
         <div class="button-group">
           <button :class="{ active: isLatest }" @click="selectCurrentVersion">Latest</button>
           <button :class="{ active: !isLatest }" @click="selectPreviousVersion" :disabled="!secondMostRecentVersion">Previous</button>
