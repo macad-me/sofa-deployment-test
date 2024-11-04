@@ -541,12 +541,11 @@ def save_updated_macos_data_feed(macos_data_feed):
 
 
 def fetch_latest_os_version_info(
-        os_type: str, os_version_name: str, gdmf_data: dict
+    os_type: str, os_version_name: str, gdmf_data: dict
 ) -> dict:
-    """Fetch the latest version information for the given OS type & version name using provided GDMF data."""
+    """Fetch the latest version information for the given OS type&version name using provided GDMF data"""  # noqa: E501 pylint: disable=line-too-long
     # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
     print(f"Fetching latest: {os_type} {os_version_name}")
-
     os_versions_key = (
         "macOS" if os_type == "macOS" else "iOS"
     )  # TODO: why is this just not using os_type?
@@ -558,16 +557,15 @@ def fetch_latest_os_version_info(
         )
     ]
     if os_type == "iOS":
-        filtered_versions = [
+        filtered_versions = [  # TODO: add example expected data to explain filtering
             iversion
             for iversion in filtered_versions
             if "SupportedDevices" in iversion
-               and any(
+            and any(
                 device.startswith("iPad") or device.startswith("iPhone")
                 for device in iversion["SupportedDevices"]
             )
         ]
-
     if filtered_versions:
         # Sort by device count (descending) and then by PostingDate (latest first)
         latest_version = max(
@@ -584,9 +582,9 @@ def fetch_latest_os_version_info(
             "ExpirationDate": latest_version.get("ExpirationDate", ""),
             "SupportedDevices": latest_version.get("SupportedDevices", []),
         }
-
     print(f"No versions matched the criteria for {os_type} {os_version_name}.")
     return {}
+
 
 def format_iso_date(date_str: str) -> str:
     """Format the date string to ISO 8601 format
