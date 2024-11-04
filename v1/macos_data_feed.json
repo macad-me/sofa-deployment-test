@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "bc521b61197eea7dabf91ff6487f745b65429585256a7342063dc2cf8d4bc55d",
+    "UpdateHash": "bf33dda59fd38ed19f3faa1159c6171b6f06a9de20f48cccfbc2cd3821093820",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -67,7 +67,7 @@
                 "ForkedLatest": {
                     "ProductVersion": "15.1",
                     "Build": "24B2083",
-                    "ReleaseDate": "2024-11-01",
+                    "ReleaseDate": "2024-11-04",
                     "ExpirationDate": "2025-02-02",
                     "SupportedDevices": [
                         "J604AP",
