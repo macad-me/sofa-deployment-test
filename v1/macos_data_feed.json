@@ -1,11 +1,11 @@
 {
-    "UpdateHash": "12749900374eaaff551ae49a7231b971cd1e59afb3edaa17997903230420a",
+    "UpdateHash": "12398749900374eaaff551ae49a7231b971cd1e59afb3edaa17997903230420a",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
             "Latest": {
                 "ProductVersion": "15.1",
-                "Build": "24B81",
+                "Build": "24B83",
                 "ReleaseDate": "2024-10-28T00:00:00Z",
                 "ExpirationDate": "2025-02-02T00:00:00Z",
                 "SupportedDevices": [
