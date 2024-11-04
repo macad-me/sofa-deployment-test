@@ -25,6 +25,7 @@
             <p><strong>Product Version:</strong> {{ osData.Latest.ForkedLatest.ProductVersion }}</p>
             <p><strong>Build:</strong> {{ osData.Latest.ForkedLatest.Build }}</p>
             <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ForkedLatest.ReleaseDate) }}</p>
+            <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ForkedLatest.ReleaseDate) }}</p>
           </div>
 
           <!-- Installer Links (Sequoia 15 macOS only) -->
