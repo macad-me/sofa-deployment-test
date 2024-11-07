@@ -549,7 +549,7 @@ def fetch_latest_os_version_info(
 
     print(f"Fetching latest: {os_type} {os_version_name}")
 
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
+    os_versions_key = "macOS" if os_type == "macOS" else "iOS"
 
     # Filter versions based on the provided OS version name
     filtered_versions = [
@@ -578,8 +578,8 @@ def fetch_latest_os_version_info(
     sorted_versions = sorted(
         filtered_versions,
         key=lambda version: (
-            len(version.get("SupportedDevices", [])), # Prioritize larger device counts
-            datetime.strptime(version["PostingDate"], "%Y-%m-%d").timestamp() # Latest PostingDate for forks
+            len(version.get("SupportedDevices", [])),
+            datetime.strptime(version["PostingDate"], "%Y-%m-%d").timestamp()
         ),
         reverse=True
     )
@@ -612,7 +612,7 @@ def fetch_latest_os_version_info(
             forked_latest_info = {k: v for k, v in forked_latest_info.items() if v}
             break
 
-    # Add 'ForkedLatest' only if it exists
+    # Construct the main entry with conditional inclusion of 'ForkedLatest'
     os_version_entry = {
         "OSVersion": os_version_name,
         "Latest": latest_version_info
@@ -620,6 +620,7 @@ def fetch_latest_os_version_info(
     if forked_latest_info:
         os_version_entry["ForkedLatest"] = forked_latest_info
 
+    # Return the constructed OS version entry
     return os_version_entry
 
 def DELETE_fetch_latest_os_version_info(
