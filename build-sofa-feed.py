@@ -546,8 +546,6 @@ def fetch_latest_os_version_info(
     Designates the build with the most device support as 'Latest' and, if a secondary build exists with a
     different device count, designates it as 'ForkedLatest'."""
 
-    print(f"Fetching latest: {os_type} {os_version_name}")
-
     os_versions_key = "macOS" if os_type == "macOS" else "iOS"
 
     # Filter versions based on the provided OS version name
@@ -559,18 +557,7 @@ def fetch_latest_os_version_info(
         )
     ]
 
-    # Further filter for iOS to only include iPad and iPhone devices
-    if os_type == "iOS":
-        filtered_versions = [
-            version for version in filtered_versions
-            if "SupportedDevices" in version and any(
-                device.startswith("iPad") or device.startswith("iPhone")
-                for device in version["SupportedDevices"]
-            )
-        ]
-
     if not filtered_versions:
-        print(f"No versions matched the criteria for {os_type} {os_version_name}.")
         return {}
 
     # Sort by SupportedDevices count (descending), then by PostingDate (latest date first for forks)
@@ -611,16 +598,12 @@ def fetch_latest_os_version_info(
             forked_latest_info = {k: v for k, v in forked_latest_info.items() if v}
             break
 
-    # Construct the main entry with conditional inclusion of 'ForkedLatest'
     os_version_entry = {
         "OSVersion": os_version_name,
         "Latest": latest_version_info
     }
     if forked_latest_info:
         os_version_entry["ForkedLatest"] = forked_latest_info
-
-    # Final cleanup to avoid unnecessary nesting or empty entries
-    os_version_entry = {k: v for k, v in os_version_entry.items() if v}
 
     return os_version_entry
 
