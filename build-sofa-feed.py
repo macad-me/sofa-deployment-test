@@ -591,7 +591,7 @@ def fetch_latest_os_version_info(
         "Build": latest_version.get("Build"),
         "ReleaseDate": latest_version.get("PostingDate"),
         "ExpirationDate": latest_version.get("ExpirationDate", ""),
-        "SupportedDevices": latest_version.get("SupportedDevices", []),
+        "SupportedDevices": latest_version.get("SupportedDevices", [])
     }
 
     # Check for a secondary build with a different device count and designate it as 'ForkedLatest'
@@ -607,8 +607,9 @@ def fetch_latest_os_version_info(
             }
             break
 
-    # Return both 'Latest' and 'ForkedLatest' as separate top-level entries
+    # Return both 'Latest' and 'ForkedLatest' as top-level keys within the OS version entry
     return {
+        "OSVersion": os_version_name,
         "Latest": latest_version_info,
         "ForkedLatest": forked_latest_info
     }
