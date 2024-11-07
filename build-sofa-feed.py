@@ -581,7 +581,7 @@ def fetch_latest_os_version_info(
     }
 
     # Remove empty fields from `latest_version_info`
-    latest_version_info = {k: v for k, v in latest_version_info.items() if v}
+    latest_version_info = {k: v for k, v in latest_version_info.items() if v or k == "SupportedDevices"}
 
     # Check for a secondary build with a different device count and designate it as 'ForkedLatest'
     forked_latest_info = None
@@ -595,9 +595,10 @@ def fetch_latest_os_version_info(
                 "SupportedDevices": version.get("SupportedDevices", [])
             }
             # Remove empty fields from `forked_latest_info`
-            forked_latest_info = {k: v for k, v in forked_latest_info.items() if v}
+            forked_latest_info = {k: v for k, v in forked_latest_info.items() if v or k == "SupportedDevices"}
             break
 
+    # Construct the final OS version entry
     os_version_entry = {
         "OSVersion": os_version_name,
         "Latest": latest_version_info
@@ -605,7 +606,11 @@ def fetch_latest_os_version_info(
     if forked_latest_info:
         os_version_entry["ForkedLatest"] = forked_latest_info
 
+    # Clean up the entire entry to remove empty sub-fields
+    os_version_entry = {k: v for k, v in os_version_entry.items() if v}
+
     return os_version_entry
+
 
 def DELETE_fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
