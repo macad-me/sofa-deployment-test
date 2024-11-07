@@ -539,7 +539,6 @@ def save_updated_macos_data_feed(macos_data_feed):
     with open(macos_data_feed_file, 'w', encoding='utf-8') as f:
         json.dump(macos_data_feed, f, indent=4)
 
-
 def fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
 ) -> dict:
@@ -620,7 +619,9 @@ def fetch_latest_os_version_info(
     if forked_latest_info:
         os_version_entry["ForkedLatest"] = forked_latest_info
 
-    # Return the constructed OS version entry
+    # Final cleanup to avoid unnecessary nesting or empty entries
+    os_version_entry = {k: v for k, v in os_version_entry.items() if v}
+
     return os_version_entry
 
 def DELETE_fetch_latest_os_version_info(
