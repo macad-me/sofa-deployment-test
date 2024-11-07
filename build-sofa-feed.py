@@ -539,6 +539,7 @@ def save_updated_macos_data_feed(macos_data_feed):
     with open(macos_data_feed_file, 'w', encoding='utf-8') as f:
         json.dump(macos_data_feed, f, indent=4)
 
+
 def fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
 ) -> dict:
@@ -577,8 +578,8 @@ def fetch_latest_os_version_info(
     sorted_versions = sorted(
         filtered_versions,
         key=lambda version: (
-            len(version.get("SupportedDevices", [])),  # Prioritize larger device counts
-            datetime.strptime(version["PostingDate"], "%Y-%m-%d").timestamp()  # Latest PostingDate for forks
+            len(version.get("SupportedDevices", [])), # Prioritize larger device counts
+            datetime.strptime(version["PostingDate"], "%Y-%m-%d").timestamp() # Latest PostingDate for forks
         ),
         reverse=True
     )
@@ -611,13 +612,15 @@ def fetch_latest_os_version_info(
             forked_latest_info = {k: v for k, v in forked_latest_info.items() if v}
             break
 
-    # Return both 'Latest' and 'ForkedLatest' as top-level keys within the OS version entry
-    return {
+    # Add 'ForkedLatest' only if it exists
+    os_version_entry = {
         "OSVersion": os_version_name,
-        "Latest": latest_version_info,
-        "ForkedLatest": forked_latest_info
+        "Latest": latest_version_info
     }
+    if forked_latest_info:
+        os_version_entry["ForkedLatest"] = forked_latest_info
 
+    return os_version_entry
 
 def DELETE_fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
