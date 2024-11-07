@@ -1,9 +1,10 @@
 {
-    "UpdateHash": "7f62a939f424f594cc64a04683dbe47a2fb5c88abca7a9f8807550e633a144e5",
+    "UpdateHash": "dc035c8dee25baa777b9219a1d46dbce690f668d8732e4b764efe2a17c7d33c0",
     "OSVersions": [
         {
             "OSVersion": "18",
             "Latest": {
+                "OSVersion": "18",
                 "Latest": {
                     "ProductVersion": "18.1",
                     "Build": "22B83",
@@ -225,6 +226,7 @@
         {
             "OSVersion": "17",
             "Latest": {
+                "OSVersion": "17",
                 "Latest": {
                     "ProductVersion": "17.7.1",
                     "Build": "21H216",
@@ -941,6 +943,7 @@
         {
             "OSVersion": "16",
             "Latest": {
+                "OSVersion": "16",
                 "Latest": {
                     "ProductVersion": "16.7.10",
                     "Build": "20H6350",

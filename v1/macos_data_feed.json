@@ -1,9 +1,10 @@
 {
-    "UpdateHash": "b3859d212496c938416944404989577ed05b2ee4378b12710c815c5db0817810",
+    "UpdateHash": "0b5ea31736dc919b4194f06bd06af3d22b6f117aba805fa29bf2846c7fba8dd4",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
             "Latest": {
+                "OSVersion": "Sequoia 15",
                 "Latest": {
                     "ProductVersion": "15.1",
                     "Build": "24B83",
@@ -548,6 +549,7 @@
         {
             "OSVersion": "Sonoma 14",
             "Latest": {
+                "OSVersion": "Sonoma 14",
                 "Latest": {
                     "ProductVersion": "14.7.1",
                     "Build": "23H222",
@@ -2327,6 +2329,7 @@
         {
             "OSVersion": "Ventura 13",
             "Latest": {
+                "OSVersion": "Ventura 13",
                 "Latest": {
                     "ProductVersion": "13.7.1",
                     "Build": "22H221",
@@ -4999,6 +5002,7 @@
         {
             "OSVersion": "Monterey 12",
             "Latest": {
+                "OSVersion": "Monterey 12",
                 "Latest": {
                     "ProductVersion": "12.7.6",
                     "Build": "21H1320",
