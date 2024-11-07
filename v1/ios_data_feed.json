@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "fdfbb0ebe6dd6ac03477195d731ca5513d2827c4a0606956025a2db4c7960610",
+    "UpdateHash": "dc035c8dee25baa777b9219a1d46dbce690f668d8732e4b764efe2a17c7d33c0",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -94,6 +94,7 @@
                         "iPhone17,4"
                     ]
                 },
+                "ForkedLatest": null,
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
                 "ExpirationDate": "",
@@ -963,6 +964,7 @@
                         "iPhone10,6"
                     ]
                 },
+                "ForkedLatest": null,
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
                 "ExpirationDate": "",

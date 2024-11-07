@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "6c006cf74187bce3f500a58573ba0fcd0b6f1c1dee0362e1febebc5583c823c1",
+    "UpdateHash": "0b5ea31736dc919b4194f06bd06af3d22b6f117aba805fa29bf2846c7fba8dd4",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -614,6 +614,7 @@
                         "VMM-x86_64"
                     ]
                 },
+                "ForkedLatest": null,
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
                 "ExpirationDate": "",
@@ -2392,6 +2393,7 @@
                         "VMM-x86_64"
                     ]
                 },
+                "ForkedLatest": null,
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
                 "ExpirationDate": "",
@@ -5067,6 +5069,7 @@
                         "VMM-x86_64"
                     ]
                 },
+                "ForkedLatest": null,
                 "ReleaseDate": "Unknown",
                 "ProductVersion": "",
                 "ExpirationDate": "",
