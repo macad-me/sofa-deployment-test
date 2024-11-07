@@ -547,7 +547,8 @@ def fetch_latest_os_version_info(
     different device count, designates it as 'ForkedLatest'."""
 
     print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"
+
+    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
 
     # Filter versions based on the provided OS version name
     filtered_versions = [
@@ -585,40 +586,37 @@ def fetch_latest_os_version_info(
     # Select the build with the most devices as 'Latest'
     latest_version = sorted_versions[0]
     latest_version_info = {
-        k: v for k, v in {
-            "ProductVersion": latest_version.get("ProductVersion"),
-            "Build": latest_version.get("Build"),
-            "ReleaseDate": latest_version.get("PostingDate"),
-            "ExpirationDate": latest_version.get("ExpirationDate"),
-            "SupportedDevices": latest_version.get("SupportedDevices")
-        }.items() if v
+        "ProductVersion": latest_version.get("ProductVersion"),
+        "Build": latest_version.get("Build"),
+        "ReleaseDate": latest_version.get("PostingDate"),
+        "ExpirationDate": latest_version.get("ExpirationDate", ""),
+        "SupportedDevices": latest_version.get("SupportedDevices", [])
     }
+
+    # Remove empty fields from `latest_version_info`
+    latest_version_info = {k: v for k, v in latest_version_info.items() if v}
 
     # Check for a secondary build with a different device count and designate it as 'ForkedLatest'
     forked_latest_info = None
     for version in sorted_versions[1:]:
         if len(version["SupportedDevices"]) != len(latest_version["SupportedDevices"]):
             forked_latest_info = {
-                k: v for k, v in {
-                    "ProductVersion": version.get("ProductVersion"),
-                    "Build": version.get("Build"),
-                    "ReleaseDate": version.get("PostingDate"),
-                    "ExpirationDate": version.get("ExpirationDate"),
-                    "SupportedDevices": version.get("SupportedDevices")
-                }.items() if v
+                "ProductVersion": version.get("ProductVersion"),
+                "Build": version.get("Build"),
+                "ReleaseDate": version.get("PostingDate"),
+                "ExpirationDate": version.get("ExpirationDate", ""),
+                "SupportedDevices": version.get("SupportedDevices", [])
             }
+            # Remove empty fields from `forked_latest_info`
+            forked_latest_info = {k: v for k, v in forked_latest_info.items() if v}
             break
 
-    # Construct the final output structure
-    result = {
+    # Return both 'Latest' and 'ForkedLatest' as top-level keys within the OS version entry
+    return {
         "OSVersion": os_version_name,
-        "Latest": latest_version_info
+        "Latest": latest_version_info,
+        "ForkedLatest": forked_latest_info
     }
-
-    if forked_latest_info:
-        result["ForkedLatest"] = forked_latest_info
-
-    return result
 
 
 def DELETE_fetch_latest_os_version_info(
