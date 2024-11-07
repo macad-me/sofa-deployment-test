@@ -539,7 +539,6 @@ def save_updated_macos_data_feed(macos_data_feed):
     with open(macos_data_feed_file, 'w', encoding='utf-8') as f:
         json.dump(macos_data_feed, f, indent=4)
 
-
 def fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
 ) -> dict:
@@ -547,7 +546,6 @@ def fetch_latest_os_version_info(
     Designates the build with the most device support as 'Latest' and, if a secondary build exists with a
     different device count, designates it as 'ForkedLatest'."""
 
-    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
     print(f"Fetching latest: {os_type} {os_version_name}")
     os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
 
@@ -594,6 +592,9 @@ def fetch_latest_os_version_info(
         "SupportedDevices": latest_version.get("SupportedDevices", [])
     }
 
+    # Remove empty fields from `latest_version_info`
+    latest_version_info = {k: v for k, v in latest_version_info.items() if v}
+
     # Check for a secondary build with a different device count and designate it as 'ForkedLatest'
     forked_latest_info = None
     for version in sorted_versions[1:]:
@@ -605,6 +606,8 @@ def fetch_latest_os_version_info(
                 "ExpirationDate": version.get("ExpirationDate", ""),
                 "SupportedDevices": version.get("SupportedDevices", [])
             }
+            # Remove empty fields from `forked_latest_info`
+            forked_latest_info = {k: v for k, v in forked_latest_info.items() if v}
             break
 
     # Return both 'Latest' and 'ForkedLatest' as top-level keys within the OS version entry
