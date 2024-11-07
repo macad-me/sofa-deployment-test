@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "fdfbb0ebe6dd6ac03477195d731ca5513d2827c4a0606956025a2db4c7960610",
+    "UpdateHash": "6ccb50e822585ed738dfbdf007941b8aa8c53c0459ff1e240d05ce3226b5677a",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -92,6 +92,21 @@
                         "iPhone17,2",
                         "iPhone17,3",
                         "iPhone17,4"
+                    ]
+                },
+                "ForkedLatest": {
+                    "ProductVersion": "18.1",
+                    "Build": "22J580",
+                    "ReleaseDate": "2024-11-04",
+                    "ExpirationDate": "2025-02-05",
+                    "SupportedDevices": [
+                        "AppleTV11,1",
+                        "AppleTV14,1",
+                        "AppleTV5,3",
+                        "AppleTV6,2",
+                        "AudioAccessory1,1",
+                        "AudioAccessory5,1",
+                        "AudioAccessory6,1"
                     ]
                 },
                 "ReleaseDate": "Unknown",
