@@ -214,24 +214,50 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         for release in config["softwareReleases"]
         if release["osType"] == os_type
     ]
-    print(f"Software releases for {os_type}: {software_releases}")
-
+    print(
+        f"Software releases for {os_type}: {software_releases}"
+    )  # TODO: as per below, this is weird, revisit  noqa: E501 pylint: disable=line-too-long
     feed_structure: dict = {
         "OSVersions": [],
-        "ForkedLatest": []  # Initialize ForkedLatest
     }
-
     if os_type == "macOS":
-        # Fetch catalog content and extract XProtect information
         catalog_url: str = (
             "https://swscan.apple.com/content/catalogs/others/index-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
+            # noqa: E501 pylint: disable=line-too-long
         )
         catalog_content = fetch_content(catalog_url)
 
-        # Extract XProtectPlistConfigData and XProtectPayloads
-        plist_info, payloads_info = extract_xprotect_info(catalog_content)
-        feed_structure["XProtectPlistConfigData"] = plist_info
+        # Find all URLs for XProtectPlistConfigData
+        config_matches = re.findall(
+            r"https.*XProtectPlistConfigData.*?\.pkm", catalog_content
+        )
+        plist_info = None
+
+        if config_matches:
+            plist_versions = [
+                extract_xprotect_versions_and_post_date(catalog_content, url)
+                for url in config_matches
+            ]
+            plist_versions.sort(key=lambda x: x["ReleaseDate"], reverse=True)
+            plist_info = plist_versions[0] if plist_versions else None
+
+        # Find all URLs for XProtectPayloads
+        payload_matches = re.findall(
+            r"https.*XProtectPayloads.*?\.pkm", catalog_content
+        )
+        payloads_info = None
+
+        if payload_matches:
+            payload_versions = [
+                extract_xprotect_versions_and_post_date(catalog_content, url)
+                for url in payload_matches
+            ]
+            payload_versions.sort(key=lambda x: x["ReleaseDate"], reverse=True)
+            payloads_info = payload_versions[0] if payload_versions else None
+
+        # Update the feed structure with XProtect information
         feed_structure["XProtectPayloads"] = payloads_info
+        feed_structure["XProtectPlistConfigData"] = plist_info
 
         # Load and tag model data
         model_files = [
@@ -244,46 +270,106 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
         feed_structure["Models"] = models_info
 
         # UMA parsing
-        parse_and_update_uma(catalog_content, feed_structure)
+        unrefined_products = process_uma.initial_uma_parse(catalog_content.encode())
+        print(f"Extracted {len(unrefined_products)} potential UMA packages")
+        ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+        ctx.load_verify_locations(cafile=certifi.where())
+        filtered_dict = {}
+        for slug, prod_dict in unrefined_products.items():
+            title, build, version = process_uma.get_metadata(
+                ctx, prod_dict.get("dist_url")
+            )
+            if title:
+                filtered_dict[slug] = {
+                    "title": title,
+                    "version": version,
+                    "build": build,
+                    "apple_slug": slug,
+                    "url": prod_dict.get("URL"),
+                }
+        latest, rest = process_uma.sort_installers(filtered_dict)
+        uma_list = {
+            "LatestUMA": latest,
+            "AllPreviousUMA": rest,
+        }
+        feed_structure["InstallationApps"] = uma_list
 
-        # IPSW parsing
-        extract_and_add_ipsw_info(feed_structure)
+        # ForkedLatest addition
+        if latest:
+            forked_latest_info = {
+                "title": f"Forked {latest['title']}",
+                "version": latest["version"],
+                "build": latest["build"],
+                "apple_slug": latest["apple_slug"],
+                "url": latest["url"],
+            }
+            feed_structure["ForkedLatest"] = forked_latest_info
 
-        # Extract ForkedLatest for macOS
-        forked_versions = extract_forked_latest(os_type, gdmf_data)
-        feed_structure["ForkedLatest"].extend(forked_versions)
-
+        # ipsw parsing
+        mesu_url: str = (
+            "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"  # noqa: E501 pylint: disable=line-too-long
+        )
+        try:
+            with urlopen(mesu_url, context=ctx) as response:
+                mesu_cat = response.read()
+        except (Exception, OSError) as error:  # pylint: disable=broad-exception-caught
+            print(f"Error fetching mesu assets, {error}")
+            raise
+        mesu_catalog: dict = plistlib.loads(mesu_cat)
+        restore_datas = process_ipsw.extract_ipsw_raw(mesu_catalog)
+        prevalent_url, prevalent_build, prevalent_version = (
+            process_ipsw.process_ipsw_data(restore_datas)
+        )
+        apple_slug = process_ipsw.process_slug(prevalent_url)
+        print(f"Extracted IPSW\n{prevalent_url}")
+        feed_structure["InstallationApps"]["LatestMacIPSW"] = {
+            "macos_ipsw_url": prevalent_url,
+            "macos_ipsw_build": prevalent_build,
+            "macos_ipsw_version": prevalent_version,
+            "macos_ipsw_apple_slug": apple_slug,
+        }
     elif os_type == "iOS":
-        # Initialize OS versions for iOS and log the information
-        os_versions = [("iOS", release["name"], None) for release in software_releases]
+        # Initialize os_versions dynamically for iOS
+        os_versions = [
+            ("iOS", release["name"], None) for release in software_releases
+        ]
         print(f"OS versions for {os_type}: {os_versions}")
         print(f"Skipping fetching XProtect and 'Models' data for {os_type}.")
-
-        # Extract ForkedLatest for iOS
-        forked_versions = extract_forked_latest(os_type, gdmf_data)
-        feed_structure["ForkedLatest"].extend(forked_versions)
-
     else:
         print("Invalid OS type specified.")
-
-    # Extract and format version information
-    latest_versions = {}
+    
+    latest_versions: dict = {}
     for release in software_releases:
         os_version_name = release["name"]
-        latest_version_info = fetch_latest_os_version_info(os_type, os_version_name, gdmf_data)
+        latest_version_info = fetch_latest_os_version_info(
+            os_type, os_version_name, gdmf_data
+        )
         if latest_version_info:
             latest_versions[os_version_name] = latest_version_info
 
+    print("Fetching OS version information...")
     for release in software_releases:
         os_version_name = release["name"]
         latest_version_info = latest_versions.get(os_version_name, {})
         if latest_version_info:
+            # Format and handle date and version information
+            latest_version_info["ReleaseDate"] = format_iso_date(latest_version_info.get("ReleaseDate", "Unknown"))
+            latest_version_info["ExpirationDate"] = format_iso_date(latest_version_info.get("ExpirationDate", ""))
+
+            # Set a default value for ProductVersion if missing
+            product_version = latest_version_info.get("ProductVersion", "Unknown")
+
             if os_type == "macOS":
+                latest_security_info = fetch_security_releases(
+                    os_type, product_version, gdmf_data
+                )
+                if latest_security_info:
+                    latest_version_info.update(latest_security_info[0])
                 compatible_machines = add_compatible_machines(os_version_name)
                 feed_structure["OSVersions"].append({
                     "OSVersion": os_version_name,
                     "Latest": latest_version_info,
-                    "SecurityReleases": fetch_security_releases(os_type, os_version_name, gdmf_data),
+                    "SecurityReleases": latest_security_info,
                     "SupportedModels": compatible_machines,
                 })
             elif os_type == "iOS":
@@ -293,11 +379,6 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                     "SecurityReleases": fetch_security_releases(os_type, os_version_name, gdmf_data),
                 })
 
-    # Write ForkedLatest details if none are present
-    if not feed_structure["ForkedLatest"]:
-        print(f"No 'ForkedLatest' data found for {os_type}")
-
-    # Finalize and write data to JSON
     hash_value = compute_hash(feed_structure)
     feed_structure = {
         "UpdateHash": hash_value,
@@ -308,95 +389,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
     data_feed = create_rss_json_data(feed_structure)
     write_timestamp_and_hash(os_type, hash_value)
     read_and_validate_json(data_feed_filename)
-
     return data_feed
-
-
-def extract_xprotect_info(catalog_content: str) -> tuple:
-    """Extract XProtectPlistConfigData and XProtectPayloads from catalog content."""
-    config_matches = re.findall(r"https.*XProtectPlistConfigData.*?\.pkm", catalog_content)
-    plist_info = None
-    if config_matches:
-        plist_versions = [extract_xprotect_versions_and_post_date(catalog_content, url) for url in config_matches]
-        plist_versions.sort(key=lambda x: x["ReleaseDate"], reverse=True)
-        plist_info = plist_versions[0] if plist_versions else None
-
-    payload_matches = re.findall(r"https.*XProtectPayloads.*?\.pkm", catalog_content)
-    payloads_info = None
-    if payload_matches:
-        payload_versions = [extract_xprotect_versions_and_post_date(catalog_content, url) for url in payload_matches]
-        payload_versions.sort(key=lambda x: x["ReleaseDate"], reverse=True)
-        payloads_info = payload_versions[0] if payload_versions else None
-
-    return plist_info, payloads_info
-
-
-def parse_and_update_uma(catalog_content: str, feed_structure: dict):
-    """Parse UMA data and update the feed structure."""
-    unrefined_products = process_uma.initial_uma_parse(catalog_content.encode())
-    print(f"Extracted {len(unrefined_products)} potential UMA packages")
-    ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-    ctx.load_verify_locations(cafile=certifi.where())
-    filtered_dict = {}
-    for slug, prod_dict in unrefined_products.items():
-        title, build, version = process_uma.get_metadata(ctx, prod_dict.get("dist_url"))
-        if title:
-            filtered_dict[slug] = {
-                "title": title,
-                "version": version,
-                "build": build,
-                "apple_slug": slug,
-                "url": prod_dict.get("URL"),
-            }
-    latest, rest = process_uma.sort_installers(filtered_dict)
-    feed_structure["InstallationApps"] = {
-        "LatestUMA": latest,
-        "AllPreviousUMA": rest,
-    }
-
-
-def extract_and_add_ipsw_info(feed_structure: dict):
-    """Extract and add IPSW information to the feed structure."""
-    mesu_url = "https://mesu.apple.com/assets/macos/com_apple_macOSIPSW/com_apple_macOSIPSW.xml"
-    ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-    ctx.load_verify_locations(cafile=certifi.where())
-    try:
-        with urlopen(mesu_url, context=ctx) as response:
-            mesu_cat = response.read()
-    except (Exception, OSError) as error:
-        print(f"Error fetching mesu assets, {error}")
-        raise
-    mesu_catalog = plistlib.loads(mesu_cat)
-    restore_datas = process_ipsw.extract_ipsw_raw(mesu_catalog)
-    prevalent_url, prevalent_build, prevalent_version = process_ipsw.process_ipsw_data(restore_datas)
-    apple_slug = process_ipsw.process_slug(prevalent_url)
-    print(f"Extracted IPSW\n{prevalent_url}")
-    feed_structure["InstallationApps"]["LatestMacIPSW"] = {
-        "macos_ipsw_url": prevalent_url,
-        "macos_ipsw_build": prevalent_build,
-        "macos_ipsw_version": prevalent_version,
-        "macos_ipsw_apple_slug": apple_slug,
-    }
-
-
-def extract_forked_latest(os_type: str, gdmf_data: dict) -> list:
-    """Extract 'ForkedLatest' data for the given OS type from GDMF data."""
-    forked_versions = []
-    os_key = "macOS" if os_type == "macOS" else "iOS"
-    versions = gdmf_data.get("PublicAssetSets", {}).get(os_key, [])
-
-    for version in versions:
-        if version.get("ForkedBuild"):  # Check for ForkedBuild indicator
-            forked_versions.append({
-                "ProductVersion": version.get("ProductVersion", "Unknown"),
-                "Build": version.get("Build", "Unknown"),
-                "ForkedBuild": version.get("ForkedBuild"),
-                "PostingDate": version.get("PostingDate", "Unknown"),
-                "ExpirationDate": version.get("ExpirationDate", "Unknown"),
-                "SupportedDevices": version.get("SupportedDevices", [])
-            })
-
-    return forked_versions
 
 
 def OLD_process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
@@ -1186,26 +1179,6 @@ def write_timestamp_and_hash(os_type: str, hash_value: str, filename=None):
 
 
 def read_and_validate_json(filename: str):
-    """Read and validate the JSON file. Print verbose output"""
-    try:
-        with open(filename, "r", encoding="utf-8") as file:
-            data = json.load(file)
-            required_keys = ["OSVersions", "ForkedLatest"]
-            missing_keys = [key for key in required_keys if key not in data]
-            if missing_keys:
-                print(f"Validation error: Missing keys {missing_keys} in {filename}")
-            else:
-                print(f"Validation passed for {filename}.")
-                print(json.dumps(data, indent=4))
-    except FileNotFoundError:
-        print(f"File not found: {filename}")
-    except json.JSONDecodeError:
-        print(f"Error decoding JSON from the file: {filename}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-
-def OLD_read_and_validate_json(filename: str):
     """Read and validate the JSON file. Print verbose output"""
     try:
         with open(filename, "r", encoding="utf-8") as file:  # TODO: leverage jsonschema
