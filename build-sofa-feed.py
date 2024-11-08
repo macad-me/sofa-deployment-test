@@ -547,14 +547,10 @@ def fetch_latest_os_version_info(
     Designates the build with the most device support as 'Latest' and, if a secondary build exists with a
     different device count, designates it as 'ForkedLatest'."""
 
-    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
-    print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"
-
     # Filter versions based on the provided OS version name
     filtered_versions = [
         version
-        for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
+        for version in gdmf_data.get("PublicAssetSets", {}).get(os_type, [])
         if version.get("ProductVersion", "").startswith(
             os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
         )
@@ -574,7 +570,7 @@ def fetch_latest_os_version_info(
         print(f"No versions matched the criteria for {os_type} {os_version_name}.")
         return {}
 
-    # Sort by SupportedDevices count (descending), then by PostingDate (latest date first for forks)
+    # Sort by SupportedDevices count and PostingDate
     sorted_versions = sorted(
         filtered_versions,
         key=lambda version: (
@@ -584,7 +580,7 @@ def fetch_latest_os_version_info(
         reverse=True
     )
 
-    # Select the build with the most devices as 'Latest'
+    # Create the 'Latest' dictionary
     latest_version = sorted_versions[0]
     latest_version_info = {
         "ProductVersion": latest_version.get("ProductVersion"),
@@ -594,7 +590,7 @@ def fetch_latest_os_version_info(
         "SupportedDevices": latest_version.get("SupportedDevices", [])
     }
 
-    # Check for a secondary build with a different device count and designate it as 'ForkedLatest'
+    # Look for a 'ForkedLatest'
     forked_latest_info = None
     for version in sorted_versions[1:]:
         if len(version["SupportedDevices"]) != len(latest_version["SupportedDevices"]):
@@ -607,15 +603,15 @@ def fetch_latest_os_version_info(
             }
             break
 
-    # Construct the final OS version entry
-    os_version_entry = {
+    # Construct the final output
+    result = {
         "OSVersion": os_version_name,
         "Latest": latest_version_info
     }
     if forked_latest_info:
-        os_version_entry["ForkedLatest"] = forked_latest_info
+        result["ForkedLatest"] = forked_latest_info
 
-    return os_version_entry
+    return result
 
 
 
