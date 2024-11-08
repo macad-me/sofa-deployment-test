@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "6c006cf74187bce3f500a58573ba0fcd0b6f1c1dee0362e1febebc5583c823c1",
+    "UpdateHash": "021e2c1982a6ee92728e8791743b4b2bb204bebda47f921e7e369e38c50085e2",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -9,7 +9,7 @@
                     "ProductVersion": "15.1",
                     "Build": "24B83",
                     "ReleaseDate": "2024-11-04",
-                    "ExpirationDate": "2025-02-05",
+                    "ExpirationDate": "2025-02-06",
                     "SupportedDevices": [
                         "J132AP",
                         "J137AP",
@@ -71,7 +71,7 @@
                     "ProductVersion": "15.1",
                     "Build": "24B2083",
                     "ReleaseDate": "2024-11-04",
-                    "ExpirationDate": "2025-02-05",
+                    "ExpirationDate": "2025-02-06",
                     "SupportedDevices": [
                         "J604AP",
                         "J614cAP",
@@ -554,7 +554,7 @@
                     "ProductVersion": "14.7.1",
                     "Build": "23H222",
                     "ReleaseDate": "2024-11-04",
-                    "ExpirationDate": "2025-02-05",
+                    "ExpirationDate": "2025-02-06",
                     "SupportedDevices": [
                         "J132AP",
                         "J137AP",
@@ -2333,7 +2333,7 @@
                     "ProductVersion": "13.7.1",
                     "Build": "22H221",
                     "ReleaseDate": "2024-11-04",
-                    "ExpirationDate": "2025-02-05",
+                    "ExpirationDate": "2025-02-06",
                     "SupportedDevices": [
                         "J132AP",
                         "J137AP",
@@ -5005,7 +5005,7 @@
                     "ProductVersion": "12.7.6",
                     "Build": "21H1320",
                     "ReleaseDate": "2024-11-04",
-                    "ExpirationDate": "2025-02-05",
+                    "ExpirationDate": "2025-02-06",
                     "SupportedDevices": [
                         "J132AP",
                         "J137AP",
