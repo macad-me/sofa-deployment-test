@@ -549,7 +549,7 @@ def fetch_latest_os_version_info(
 
     # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
     print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
+    os_versions_key = "macOS" if os_type == "macOS" else "iOS"
 
     # Filter versions based on the provided OS version name
     filtered_versions = [
@@ -578,8 +578,8 @@ def fetch_latest_os_version_info(
     sorted_versions = sorted(
         filtered_versions,
         key=lambda version: (
-            len(version.get("SupportedDevices", [])),  # Prioritize larger device counts
-            datetime.strptime(version["PostingDate"], "%Y-%m-%d").timestamp()  # Latest PostingDate for forks
+            len(version.get("SupportedDevices", [])),
+            datetime.strptime(version["PostingDate"], "%Y-%m-%d").timestamp()
         ),
         reverse=True
     )
@@ -591,16 +591,11 @@ def fetch_latest_os_version_info(
         "Build": latest_version.get("Build"),
         "ReleaseDate": latest_version.get("PostingDate"),
         "ExpirationDate": latest_version.get("ExpirationDate", ""),
-        "SupportedDevices": latest_version.get("SupportedDevices", []),
+        "SupportedDevices": latest_version.get("SupportedDevices", [])
     }
 
-    # Create the main result structure with 'Latest' at the correct level
-    os_version_entry = {
-        "OSVersion": os_version_name,
-        "Latest": latest_version_info
-    }
-
-    # Check for a secondary build with a different device count and add it as 'ForkedLatest'
+    # Check for a secondary build with a different device count and designate it as 'ForkedLatest'
+    forked_latest_info = None
     for version in sorted_versions[1:]:
         if len(version["SupportedDevices"]) != len(latest_version["SupportedDevices"]):
             forked_latest_info = {
@@ -608,10 +603,17 @@ def fetch_latest_os_version_info(
                 "Build": version.get("Build"),
                 "ReleaseDate": version.get("PostingDate"),
                 "ExpirationDate": version.get("ExpirationDate", ""),
-                "SupportedDevices": version.get("SupportedDevices", []),
+                "SupportedDevices": version.get("SupportedDevices", [])
             }
-            os_version_entry["ForkedLatest"] = forked_latest_info
             break
+
+    # Construct the final OS version entry
+    os_version_entry = {
+        "OSVersion": os_version_name,
+        "Latest": latest_version_info
+    }
+    if forked_latest_info:
+        os_version_entry["ForkedLatest"] = forked_latest_info
 
     return os_version_entry
 
