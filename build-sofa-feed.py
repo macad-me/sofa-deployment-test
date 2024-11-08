@@ -539,79 +539,8 @@ def save_updated_macos_data_feed(macos_data_feed):
     with open(macos_data_feed_file, 'w', encoding='utf-8') as f:
         json.dump(macos_data_feed, f, indent=4)
 
+
 def fetch_latest_os_version_info(
-    os_type: str, os_version_name: str, gdmf_data: dict
-) -> dict:
-    """Fetch the latest version information for the given OS type & version name using provided GDMF data.
-    Designates the build with the most device support as 'Latest' and, if a secondary build exists with a
-    different device count, designates it as 'ForkedLatest'."""
-
-    # TODO: split this as indicated above in main() to process alongside a forked process_os_type()
-    print(f"Fetching latest: {os_type} {os_version_name}")
-    os_versions_key = "macOS" if os_type == "macOS" else "iOS"  # TODO: why is this just not using os_type?
-
-    # Filter versions based on the provided OS version name
-    filtered_versions = [
-        version
-        for version in gdmf_data.get("PublicAssetSets", {}).get(os_versions_key, [])
-        if version.get("ProductVersion", "").startswith(
-            os_version_name.split(" ")[-1] if os_type == "macOS" else os_version_name
-        )
-    ]
-
-    if not filtered_versions:
-        return {}
-
-    # Sort by SupportedDevices count (descending), then by PostingDate (latest date first for forks)
-    sorted_versions = sorted(
-        filtered_versions,
-        key=lambda version: (
-            len(version.get("SupportedDevices", [])), # Prioritize larger device counts
-            datetime.strptime(version["PostingDate"], "%Y-%m-%d").timestamp() # Latest PostingDate for forks
-        ),
-        reverse=True
-    )
-
-    # Select the build with the most devices as 'Latest'
-    latest_version = sorted_versions[0]
-    latest_version_info = {
-        "ProductVersion": latest_version.get("ProductVersion"),
-        "Build": latest_version.get("Build"),
-        "ReleaseDate": latest_version.get("PostingDate"),
-        "ExpirationDate": latest_version.get("ExpirationDate", ""),
-        "SupportedDevices": latest_version.get("SupportedDevices", [])
-    }
-
-    # Remove empty fields from `latest_version_info`
-    latest_version_info = {k: v for k, v in latest_version_info.items() if v or k == "SupportedDevices"}
-
-    # Check for a secondary build with a different device count and designate it as 'ForkedLatest'
-    forked_latest_info = None
-    for version in sorted_versions[1:]:
-        if len(version["SupportedDevices"]) != len(latest_version["SupportedDevices"]):
-            forked_latest_info = {
-                "ProductVersion": version.get("ProductVersion"),
-                "Build": version.get("Build"),
-                "ReleaseDate": version.get("PostingDate"),
-                "ExpirationDate": version.get("ExpirationDate", ""),
-                "SupportedDevices": version.get("SupportedDevices", [])
-            }
-            # Remove empty fields from `forked_latest_info`
-            forked_latest_info = {k: v for k, v in forked_latest_info.items() if v or k == "SupportedDevices"}
-            break
-
-    # Construct the final OS version entry
-    os_version_entry = {
-        "OSVersion": os_version_name,
-        "Latest": latest_version_info
-    }
-    if forked_latest_info:
-        os_version_entry["ForkedLatest"] = forked_latest_info
-
-    return os_version_entry
-
-
-def DELETE_fetch_latest_os_version_info(
     os_type: str, os_version_name: str, gdmf_data: dict
 ) -> dict:
     """Fetch the latest version information for the given OS type & version name using provided GDMF data.
