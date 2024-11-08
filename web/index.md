@@ -44,10 +44,17 @@ features:
   <a class="github-button" href="https://github.com/macadmins/sofa" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star macadmins/sofa on GitHub">Star</a>
 </div>
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
 <script setup>
 import FeedInfo from './components/FeedInfo.vue';
+
+// Load GitHub buttons script asynchronously
+if (typeof window !== 'undefined') {
+  const script = document.createElement('script');
+  script.src = 'https://buttons.github.io/buttons.js';
+  script.async = true;
+  script.defer = true;
+  document.body.appendChild(script);
+}
 </script>
 
 <FeedInfo />
