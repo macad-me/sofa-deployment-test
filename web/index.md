@@ -31,8 +31,6 @@ hero:
       text: iOS 16
       link: /iOS_16
 
-
-
 features:
 #  - title: Feature A
 #    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -41,6 +39,12 @@ features:
 #  - title: Feature C
 #    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
+
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+  <a class="github-button" href="https://github.com/yourusername/yourrepository" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star yourusername/yourrepository on GitHub">Star</a>
+</div>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <script setup>
 import FeedInfo from './components/FeedInfo.vue';
