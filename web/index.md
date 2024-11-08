@@ -41,7 +41,7 @@ features:
 ---
 
 <div style="display: flex; justify-content: center; margin-top: 20px;">
-  <a class="github-button" href="https://github.com/yourusername/yourrepository" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star yourusername/yourrepository on GitHub">Star</a>
+  <a class="github-button" href="https://github.com/macadmins/sofa" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star macadmins/sofa on GitHub">Star</a>
 </div>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
