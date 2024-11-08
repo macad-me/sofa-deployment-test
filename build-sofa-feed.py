@@ -384,7 +384,7 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                 feed_structure["OSVersions"].append(
                     {
                         "OSVersion": os_version_name,
-                        "Latest": latest_version_info,
+                        **latest_version_info,  # Unpack Latest and ForkedLatest at the same level
                         "SecurityReleases": fetch_security_releases(  # TODO: second instance of fetching HT201222 # noqa: E501 pylint: disable=line-too-long
                             os_type, os_version_name, gdmf_data
                         ),
@@ -396,12 +396,16 @@ def process_os_type(os_type: str, config: dict, gdmf_data: dict) -> list:
                 feed_structure["OSVersions"].append(
                     {
                         "OSVersion": os_version_name,
-                        "Latest": latest_version_info,
+                        **latest_version_info,  # Unpack Latest and ForkedLatest at the same level
                         "SecurityReleases": fetch_security_releases(  # TODO: potentially 3rd instance of fetching HT201222 # noqa: E501 pylint: disable=line-too-long
                             os_type, os_version_name, gdmf_data
                         ),  # Note: 'SupportedModels' is not included for iOS
                     }
                 )
+            # Final check: print the latest structure for verification
+            print(f"Final structure for {os_version_name}:")
+            print(json.dumps(feed_structure["OSVersions"][-1], indent=4))
+
     hash_value = compute_hash(feed_structure)
     feed_structure = {
         "UpdateHash": hash_value,  # Insert hash first
@@ -586,19 +590,20 @@ def fetch_latest_os_version_info(
 
     # Select the build with the most devices as 'Latest'
     latest_version = sorted_versions[0]
-    latest_version_info = {
-        "ProductVersion": latest_version.get("ProductVersion"),
-        "Build": latest_version.get("Build"),
-        "ReleaseDate": latest_version.get("PostingDate"),
-        "ExpirationDate": latest_version.get("ExpirationDate", ""),
-        "SupportedDevices": latest_version.get("SupportedDevices", []),
+    result = {
+        "Latest": {
+            "ProductVersion": latest_version.get("ProductVersion"),
+            "Build": latest_version.get("Build"),
+            "ReleaseDate": latest_version.get("PostingDate"),
+            "ExpirationDate": latest_version.get("ExpirationDate", ""),
+            "SupportedDevices": latest_version.get("SupportedDevices", []),
+        }
     }
 
     # Check for a secondary build with a different device count for 'ForkedLatest'
-    forked_version_info = {}
     for version in sorted_versions[1:]:
         if len(version["SupportedDevices"]) != len(latest_version["SupportedDevices"]):
-            forked_version_info = {
+            result["ForkedLatest"] = {
                 "ProductVersion": version.get("ProductVersion"),
                 "Build": version.get("Build"),
                 "ReleaseDate": version.get("PostingDate"),
@@ -606,13 +611,6 @@ def fetch_latest_os_version_info(
                 "SupportedDevices": version.get("SupportedDevices", []),
             }
             break
-
-    # Return both 'Latest' and 'ForkedLatest' at the top level
-    result = {
-        "Latest": latest_version_info,
-    }
-    if forked_version_info:
-        result["ForkedLatest"] = forked_version_info
 
     return result
 
