@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "aacbeb15e20c2c654a615a1502258ce9688109b35a3f7abec82be8ccbd82975e",
+    "UpdateHash": "afa4589faeaaae595b78ee999b446d7b61f4dcd83d7f3cbea3501d80daec3763",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -64,6 +64,24 @@
                     "VMA2MACOSAP",
                     "VMM-x86_64"
                 ],
+                "ForkedLatest": {
+                    "ProductVersion": "15.1",
+                    "Build": "24B2083",
+                    "ReleaseDate": "2024-11-04",
+                    "ExpirationDate": "2025-02-07",
+                    "SupportedDevices": [
+                        "J604AP",
+                        "J614cAP",
+                        "J614sAP",
+                        "J616cAP",
+                        "J616sAP",
+                        "J623AP",
+                        "J624AP",
+                        "J773gAP",
+                        "J773sAP",
+                        "VMA2MACOSAP"
+                    ]
+                },
                 "SecurityInfo": "https://support.apple.com/en-ca/121564",
                 "CVEs": {
                     "CVE-2024-39573": false,

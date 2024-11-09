@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "61181f0f226afe278f3d3a7a8e8abc6ebec5b0fbcf3633b6a68e8919aab2f43b",
+    "UpdateHash": "f976ec79b03ae04a8c0bb17721e45e95b0d0ae6f9ba9eaa3d0d7f1e007439a18",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -380,6 +380,20 @@
                     "iPhone16,1",
                     "iPhone16,2"
                 ],
+                "ForkedLatest": {
+                    "ProductVersion": "17.7.1",
+                    "Build": "21H216",
+                    "ReleaseDate": "2024-11-04",
+                    "ExpirationDate": "2025-02-07",
+                    "SupportedDevices": [
+                        "iPad7,1",
+                        "iPad7,2",
+                        "iPad7,3",
+                        "iPad7,4",
+                        "iPad7,5",
+                        "iPad7,6"
+                    ]
+                },
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
