@@ -19,6 +19,18 @@
           <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ReleaseDate) }}</p>
           <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ReleaseDate) }}</p>
 
+          <!-- Installer Links (Sequoia 15 macOS only) -->
+          <div v-if="platform === 'macOS' && osData.OSVersion === 'Sequoia 15'" style="margin-top: 15px;">
+            <p v-if="installationApps?.LatestUMA?.url">
+              <strong>Installer Package: </strong>
+              <a :href="installationApps.LatestUMA.url" target="_blank">Download</a>
+            </p>
+            <p v-if="installationApps?.LatestMacIPSW?.macos_ipsw_url">
+              <strong>Current IPSW file: </strong>
+              <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
+            </p>
+          </div>
+
           <!-- Forked Latest Information -->
           <div v-if="osData.Latest.ForkedLatest" style="margin-top: 15px;">
             <h3>Forked Latest Version</h3>
@@ -26,18 +38,6 @@
             <p><strong>Build:</strong> {{ osData.Latest.ForkedLatest.Build }}</p>
             <p><strong>Release Date:</strong> {{ formatDate(osData.Latest.ForkedLatest.ReleaseDate) }}</p>
             <p><strong>Days Since Release:</strong> {{ daysSinceRelease(osData.Latest.ForkedLatest.ReleaseDate) }}</p>
-          </div>
-
-          <!-- Installer Links (Sequoia 15 macOS only) -->
-          <div v-if="platform === 'macOS' && osData.OSVersion === 'Sequoia 15'" style="margin-top: 15px;">
-            <p v-if="installationApps?.LatestUMA?.url">
-              <strong>Installer Package:</strong>
-              <a :href="installationApps.LatestUMA.url" target="_blank">Download</a>
-            </p>
-            <p v-if="installationApps?.LatestMacIPSW?.macos_ipsw_url">
-              <strong>Current IPSW file:</strong>
-              <a :href="installationApps.LatestMacIPSW.macos_ipsw_url" target="_blank">Download</a>
-            </p>
           </div>
 
           <!-- General Installer Info Link for macOS (not displayed on iOS) -->
