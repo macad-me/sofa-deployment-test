@@ -37,12 +37,15 @@ features:
 #    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
-<div style="margin-top: 20px; text-align: left;">
-  <p style="font-size: 1.2em; font-weight: bold;">Do you like this project? - Please star us on GitHub:</p>
+<div style="margin-top: 20px; padding: 15px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #f9f9f9;">
+  <p style="font-size: 1.2em; font-weight: bold; display: flex; align-items: center;">
+    <span style="margin-right: 8px;">⭐</span> Do you like this project? - Please star us on GitHub:
+  </p>
   <div style="display: flex; justify-content: left; margin-top: 10px;">
     <a class="github-button" href="https://github.com/macadmins/sofa" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star macadmins/sofa on GitHub">Star</a>
   </div>
 </div>
+
 
 <script setup>
 import FeedInfo from './components/FeedInfo.vue';
