@@ -19,9 +19,6 @@ hero:
       text: Ventura 13
       link: /macOS_Ventura
     - theme: brand
-      text: Ventura 12
-      link: /macOS_Monterey
-    - theme: brand
       text: iOS 18
       link: /iOS_18
     - theme: brand
@@ -40,8 +37,11 @@ features:
 #    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
-<div style="display: flex; justify-content: center; margin-top: 20px;">
-  <a class="github-button" href="https://github.com/macadmins/sofa" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star macadmins/sofa on GitHub">Star</a>
+<div style="margin-top: 20px; text-align: left;">
+  <p style="font-size: 1.2em; font-weight: bold;">Do you like this project? - Please star us on GitHub:</p>
+  <div style="display: flex; justify-content: left; margin-top: 10px;">
+    <a class="github-button" href="https://github.com/macadmins/sofa" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star macadmins/sofa on GitHub">Star</a>
+  </div>
 </div>
 
 <script setup>
