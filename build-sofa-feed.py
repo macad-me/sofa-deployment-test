@@ -48,11 +48,17 @@ def main(os_types: list):
     supported_devices_data = load_supported_devices_data()
     macos_data_feed = load_macos_data_feed()
 
-    # Update macos data feed with supported devices data if necessary
+    # Update macOS data feed with supported devices data if necessary
     update_supported_devices_in_feed(macos_data_feed, supported_devices_data)
+
+    # Generate and add the model-to-version dictionary under each 'Latest' section
+    macos_data_feed = get_latest_versions_by_model(macos_data_feed)
 
     # Save the updated macOS data feed
     save_updated_macos_data_feed(macos_data_feed)
+
+    # Write the data feed to JSON including the updated 'Latest' section
+    #write_data_to_json(macos_data_feed, "updated_data_feed.json")
 
 
 def fetch_gdmf_data() -> dict:
@@ -827,6 +833,39 @@ def add_compatible_machines(current_macos_full_version: str) -> list:
         )
     return compatible_machines
 
+def get_latest_versions_by_model(feed_structure):
+    """Create a dictionary mapping each device model to the latest available OS version and attach it under the 'Latest' section."""
+    for os_version_info in feed_structure.get("OSVersions", []):
+        os_version = os_version_info.get("OSVersion", "")
+        latest_info = os_version_info.get("Latest", {})
+        forked_latest_info = latest_info.get("ForkedLatest", {})
+
+        # Initialize a combined model-version map
+        model_version_map = {}
+
+        # Add models from Latest
+        for model in latest_info.get("SupportedDevices", []):
+            model_version_map[model] = {
+                "OSVersion": os_version,
+                "ProductVersion": latest_info.get("ProductVersion"),
+                "Build": latest_info.get("Build"),
+                "ReleaseDate": latest_info.get("ReleaseDate"),
+            }
+
+        # Add models from ForkedLatest, ensuring they're included even if already present
+        for model in forked_latest_info.get("SupportedDevices", []):
+            model_version_map[model] = {
+                "OSVersion": os_version,
+                "ProductVersion": forked_latest_info.get("ProductVersion"),
+                "Build": forked_latest_info.get("Build"),
+                "ReleaseDate": forked_latest_info.get("ReleaseDate"),
+            }
+
+        # Attach the combined model-version map under 'Latest'
+        if latest_info:
+            os_version_info["Latest"]["ModelVersionMap"] = model_version_map
+
+    return feed_structure
 
 def write_data_to_json(feed_structure: dict, filename: str):
     """Writes the fully populated feed structure to JSON filename"""
