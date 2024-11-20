@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Nov 2024 04:36:16 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Nov 2024 08:37:07 +0000</lastBuildDate>
     <item>
       <title>XProtect Plist Config 5283</title>
       <link>https://sofa.macadmins.io/</link>
@@ -868,7 +868,7 @@
     <item>
       <title>macOS Monterey 12.3</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 32</description>
+      <description>Vulnerabilities Addressed: 69&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 32</description>
       <guid isPermaLink="false">macOS_OS_12.3</guid>
       <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
     </item>
