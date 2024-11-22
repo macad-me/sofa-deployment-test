@@ -2,6 +2,12 @@
   <div>
     <!-- macOS Release Deferral Table -->
     <h3>macOS Release Deferral Overview (as of {{ formattedDate }})</h3>
+
+    <!-- Display a dot and "Due in less than 7 days" message if any deferrals are due soon -->
+    <div v-if="hasDueSoon" class="due-soon-indicator">
+      <span class="dot"></span> Due in less than 7 days
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -16,19 +22,27 @@
       </thead>
       <tbody>
         <tr v-for="release in macOSDeferralData" :key="release.version">
-          <td>{{ release.version }}</td>
-          <td>{{ release.build }}</td>
+          <td>
+            <a :href="getOSLink(release.version, 'macOS')" class="os-link">{{ release.version }}</a>
+          </td>
+          <td>{{ release.build || '-' }}</td>
           <td>{{ release.releaseDate }}</td>
-          <td>{{ release.deferred14 }}</td>
-          <td>{{ release.deferred30 }}</td>
-          <td>{{ release.deferred60 }}</td>
-          <td>{{ release.deferred90 }}</td>
+          <td :class="highlightDue(release.deferred14)">{{ release.deferred14 }}</td>
+          <td :class="highlightDue(release.deferred30)">{{ release.deferred30 }}</td>
+          <td :class="highlightDue(release.deferred60)">{{ release.deferred60 }}</td>
+          <td :class="highlightDue(release.deferred90)">{{ release.deferred90 }}</td>
         </tr>
       </tbody>
     </table>
 
     <!-- iOS Release Deferral Table -->
     <h3>iOS Release Deferral Overview (as of {{ formattedDate }})</h3>
+
+    <!-- Display a dot and "Due in less than 7 days" message if any deferrals are due soon -->
+    <div v-if="hasDueSoon" class="due-soon-indicator">
+      <span class="dot"></span> Due in less than 7 days
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -43,13 +57,15 @@
       </thead>
       <tbody>
         <tr v-for="release in iOSDeferralData" :key="release.version">
-          <td>{{ release.version }}</td>
-          <td>{{ release.build }}</td>
+          <td>
+            <a :href="getOSLink(release.version, 'iOS')" class="os-link">{{ release.version }}</a>
+          </td>
+          <td>{{ release.build || '-' }}</td>
           <td>{{ release.releaseDate }}</td>
-          <td>{{ release.deferred14 }}</td>
-          <td>{{ release.deferred30 }}</td>
-          <td>{{ release.deferred60 }}</td>
-          <td>{{ release.deferred90 }}</td>
+          <td :class="highlightDue(release.deferred14)">{{ release.deferred14 }}</td>
+          <td :class="highlightDue(release.deferred30)">{{ release.deferred30 }}</td>
+          <td :class="highlightDue(release.deferred60)">{{ release.deferred60 }}</td>
+          <td :class="highlightDue(release.deferred90)">{{ release.deferred90 }}</td>
         </tr>
       </tbody>
     </table>
@@ -72,13 +88,13 @@ export default {
     return {
       baseDate: new Date(),
       macOSDeferralData: [],
-      iOSDeferralData: []
+      iOSDeferralData: [],
+      hasDueSoon: false
     };
   },
   computed: {
     formattedDate() {
-      // Display the current date in the user's locale
-      return this.baseDate.toLocaleDateString();
+      return this.baseDate.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
     }
   },
   methods: {
@@ -94,36 +110,122 @@ export default {
     addDays(date, days) {
       const result = new Date(date);
       result.setDate(result.getDate() + days);
-      // Ensure the date is displayed in the user's locale
-      return result.toLocaleDateString();
+      return result.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
     },
     processMacOSData() {
-      this.macOSDeferralData = macOSData.OSVersions.map(version => {
+      this.macOSDeferralData = macOSData.OSVersions.flatMap(version => {
         const deferralDates = this.calculateDeferralDates(version.Latest.ReleaseDate);
-        return {
+
+        const latestVersion = {
           version: version.Latest.ProductVersion,
-          build: version.Latest.Build,
-          releaseDate: new Date(version.Latest.ReleaseDate).toLocaleDateString(),
+          build: version.Latest.Build || '-',
+          releaseDate: new Date(version.Latest.ReleaseDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }),
           deferred14: deferralDates.deferred14,
           deferred30: deferralDates.deferred30,
           deferred60: deferralDates.deferred60,
           deferred90: deferralDates.deferred90
         };
+
+        const securityReleases = version.SecurityReleases?.filter(security => security.ProductVersion !== version.Latest.ProductVersion)
+          .slice(0, 4) // Grab only the next for most recent versions
+          .map(security => {
+            const securityDeferralDates = this.calculateDeferralDates(security.ReleaseDate);
+            return {
+              version: security.ProductVersion,
+              build: security.Build || '-',
+              releaseDate: new Date(security.ReleaseDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }),
+              deferred14: securityDeferralDates.deferred14,
+              deferred30: securityDeferralDates.deferred30,
+              deferred60: securityDeferralDates.deferred60,
+              deferred90: securityDeferralDates.deferred90
+            };
+          }) || [];
+
+        return [latestVersion, ...securityReleases];
       });
+
+      this.checkDueSoon(this.macOSDeferralData);
     },
     processiOSData() {
-      this.iOSDeferralData = iOSData.OSVersions.map(version => {
+      this.iOSDeferralData = iOSData.OSVersions.flatMap(version => {
         const deferralDates = this.calculateDeferralDates(version.Latest.ReleaseDate);
-        return {
+
+        const latestVersion = {
           version: version.Latest.ProductVersion,
-          build: version.Latest.Build,
-          releaseDate: new Date(version.Latest.ReleaseDate).toLocaleDateString(),
+          build: version.Latest.Build || '-',
+          releaseDate: new Date(version.Latest.ReleaseDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }),
           deferred14: deferralDates.deferred14,
           deferred30: deferralDates.deferred30,
           deferred60: deferralDates.deferred60,
           deferred90: deferralDates.deferred90
         };
+
+        const securityReleases = version.SecurityReleases?.filter(security => security.ProductVersion !== version.Latest.ProductVersion)
+          .slice(0, 2)
+          .map(security => {
+            const securityDeferralDates = this.calculateDeferralDates(security.ReleaseDate);
+            return {
+              version: security.ProductVersion,
+              build: security.Build || '-',
+              releaseDate: new Date(security.ReleaseDate).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }),
+              deferred14: securityDeferralDates.deferred14,
+              deferred30: securityDeferralDates.deferred30,
+              deferred60: securityDeferralDates.deferred60,
+              deferred90: securityDeferralDates.deferred90
+            };
+          }) || [];
+
+        return [latestVersion, ...securityReleases];
       });
+
+      this.checkDueSoon(this.iOSDeferralData);
+    },
+    highlightDue(dateString) {
+      const deferralDate = new Date(dateString);
+      const currentDate = new Date();
+      const timeDiff = deferralDate - currentDate;
+      const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+      if (daysRemaining > 0 && daysRemaining <= 7) {
+        return 'highlight-due';
+      }
+
+      return '';
+    },
+    checkDueSoon(data) {
+      const currentDate = new Date();
+      data.forEach(release => {
+        if (
+          this.isDueSoon(release.deferred14, currentDate) ||
+          this.isDueSoon(release.deferred30, currentDate) ||
+          this.isDueSoon(release.deferred60, currentDate) ||
+          this.isDueSoon(release.deferred90, currentDate)
+        ) {
+          this.hasDueSoon = true;
+        }
+      });
+    },
+    isDueSoon(dateString, currentDate) {
+      const deferralDate = new Date(dateString);
+      const timeDiff = deferralDate - currentDate;
+      const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+      return daysRemaining > 0 && daysRemaining <= 7;
+    },
+    getOSLink(version, platform) {
+      const links = {
+        'macOS 15': '/macOS_Sequoia',
+        'macOS 14': '/macOS_Sonoma',
+        'macOS 13': '/macOS_Ventura',
+        'macOS 12': '/macOS_Monterey',
+        'iOS 18': '/iOS_18',
+        'iOS 17': '/iOS_17',
+        'iOS 16': '/iOS_16'
+      };
+
+      // Determine the main version from the string (e.g., "macOS 15.0" becomes "macOS 15")
+      const mainVersion = version.split('.')[0];
+      return links[`${platform} ${mainVersion}`] || '#';
     }
   },
   created() {
@@ -151,5 +253,28 @@ th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+}
+.highlight-due {
+  background-color: rgba(234, 179, 8, 0.16);
+}
+.due-soon-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: rgba(234, 178, 8, 0.496);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+.os-link {
+  color: var(--vp-c-brand-2);
+  text-decoration: none;
+}
+.os-link:hover {
+  text-decoration: underline;
 }
 </style>
