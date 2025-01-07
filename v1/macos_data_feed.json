@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "d0ccaf66ea140640e481e7336a299ab131dfc76953211f1ff984379988ab1bc9",
+    "UpdateHash": "361c14751815d1fbad4c694ff127cd61aca84e9dbfed6ccedc562d33fd1a8fef",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -7,7 +7,7 @@
                 "ProductVersion": "15.2",
                 "Build": "24C101",
                 "ReleaseDate": "2024-12-11T00:00:00Z",
-                "ExpirationDate": "2025-04-06T00:00:00Z",
+                "ExpirationDate": "2025-04-07T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -1169,7 +1169,7 @@
                 "ProductVersion": "14.7.2",
                 "Build": "23H311",
                 "ReleaseDate": "2024-12-11T00:00:00Z",
-                "ExpirationDate": "2025-04-06T00:00:00Z",
+                "ExpirationDate": "2025-04-07T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -3406,7 +3406,7 @@
                 "ProductVersion": "13.7.2",
                 "Build": "22H313",
                 "ReleaseDate": "2024-12-11T00:00:00Z",
-                "ExpirationDate": "2025-04-06T00:00:00Z",
+                "ExpirationDate": "2025-04-07T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -6521,7 +6521,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-07-29T00:00:00Z",
-                "ExpirationDate": "2025-04-06T00:00:00Z",
+                "ExpirationDate": "2025-04-07T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -10493,13 +10493,6 @@
             },
             {
                 "title": "macOS Sonoma",
-                "version": "14.7",
-                "build": "23H124",
-                "apple_slug": "062-78824",
-                "url": "https://swcdn.apple.com/content/downloads/42/57/062-78824-A_60MNDAK5UB/dov1trqs34ol9r0b3zt3swgw04ndf7ctwm/InstallAssistant.pkg"
-            },
-            {
-                "title": "macOS Sonoma",
                 "version": "14.4.1",
                 "build": "23E224",
                 "apple_slug": "052-77516",
@@ -10518,13 +10511,6 @@
                 "build": "22H221",
                 "apple_slug": "072-09024",
                 "url": "https://swcdn.apple.com/content/downloads/29/47/072-09024-A_8G5EY3SPX2/l6ecgngkrhhbc6q4mae5cwe42pxp49co7w/InstallAssistant.pkg"
-            },
-            {
-                "title": "macOS Ventura",
-                "version": "13.7",
-                "build": "22H123",
-                "apple_slug": "062-78643",
-                "url": "https://swcdn.apple.com/content/downloads/05/02/062-78643-A_T7YK72IEUB/f6jf452yv3xah9gljv28yxjs5x5bm7p1fr/InstallAssistant.pkg"
             },
             {
                 "title": "macOS Ventura",
