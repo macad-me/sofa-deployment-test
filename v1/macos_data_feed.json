@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "a712cbe8c0bd88d318b5704df8fee48aff364b23a6cbf0c8b55e84086c710882",
+    "UpdateHash": "986f01b81fa50d034802090099c0b9ff8661c35d19a450b8c19f2f1cd2bd5a08",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -107,7 +107,6 @@
                     "CVE-2025-24115": false,
                     "CVE-2025-24116": false,
                     "CVE-2025-24117": false,
-                    "CVE-2025-24166": false,
                     "CVE-2025-24136": false,
                     "CVE-2025-24101": false,
                     "CVE-2025-24096": false,
@@ -139,7 +138,7 @@
                 "ActivelyExploitedCVEs": [
                     "CVE-2025-24085"
                 ],
-                "UniqueCVEsCount": 60,
+                "UniqueCVEsCount": 59,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sequoia 15",
@@ -627,7 +626,6 @@
                         "CVE-2025-24115": false,
                         "CVE-2025-24116": false,
                         "CVE-2025-24117": false,
-                        "CVE-2025-24166": false,
                         "CVE-2025-24136": false,
                         "CVE-2025-24101": false,
                         "CVE-2025-24096": false,
@@ -659,7 +657,7 @@
                     "ActivelyExploitedCVEs": [
                         "CVE-2025-24085"
                     ],
-                    "UniqueCVEsCount": 60,
+                    "UniqueCVEsCount": 59,
                     "DaysSincePreviousRelease": 47
                 },
                 {
@@ -1436,7 +1434,6 @@
                     "CVE-2025-24094": false,
                     "CVE-2025-24115": false,
                     "CVE-2025-24116": false,
-                    "CVE-2025-24166": false,
                     "CVE-2025-24136": false,
                     "CVE-2025-24130": false,
                     "CVE-2025-24146": false,
@@ -1455,7 +1452,7 @@
                     "CVE-2025-24156": false
                 },
                 "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 41,
+                "UniqueCVEsCount": 40,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sonoma 14",
@@ -1886,7 +1883,6 @@
                         "CVE-2025-24094": false,
                         "CVE-2025-24115": false,
                         "CVE-2025-24116": false,
-                        "CVE-2025-24166": false,
                         "CVE-2025-24136": false,
                         "CVE-2025-24130": false,
                         "CVE-2025-24146": false,
@@ -1905,7 +1901,7 @@
                         "CVE-2025-24156": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 41,
+                    "UniqueCVEsCount": 40,
                     "DaysSincePreviousRelease": 47
                 },
                 {
@@ -3808,7 +3804,6 @@
                     "CVE-2025-24094": false,
                     "CVE-2025-24115": false,
                     "CVE-2025-24116": false,
-                    "CVE-2025-24166": false,
                     "CVE-2025-24136": false,
                     "CVE-2025-24130": false,
                     "CVE-2025-24146": false,
@@ -3825,7 +3820,7 @@
                     "CVE-2025-24156": false
                 },
                 "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 31,
+                "UniqueCVEsCount": 30,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Ventura 13",
@@ -4241,7 +4236,6 @@
                         "CVE-2025-24094": false,
                         "CVE-2025-24115": false,
                         "CVE-2025-24116": false,
-                        "CVE-2025-24166": false,
                         "CVE-2025-24136": false,
                         "CVE-2025-24130": false,
                         "CVE-2025-24146": false,
@@ -4258,7 +4252,7 @@
                         "CVE-2025-24156": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 31,
+                    "UniqueCVEsCount": 30,
                     "DaysSincePreviousRelease": 47
                 },
                 {
