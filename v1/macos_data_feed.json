@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "279e1d120b39f72ab424b2ebe74911638beea3956dd944c917a549a85ad740ce",
+    "UpdateHash": "b72e19f954102500f69513f86c29744f19cd2f3ea6742773d4eee56650a08223",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -7,7 +7,7 @@
                 "ProductVersion": "15.3",
                 "Build": "24D60",
                 "ReleaseDate": "2025-01-27T00:00:00Z",
-                "ExpirationDate": "2025-04-29T00:00:00Z",
+                "ExpirationDate": "2025-04-30T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -110,6 +110,7 @@
                     "CVE-2025-24136": false,
                     "CVE-2025-24101": false,
                     "CVE-2025-24096": false,
+                    "CVE-2025-24099": false,
                     "CVE-2025-24130": false,
                     "CVE-2025-24169": false,
                     "CVE-2025-24146": false,
@@ -138,7 +139,7 @@
                 "ActivelyExploitedCVEs": [
                     "CVE-2025-24085"
                 ],
-                "UniqueCVEsCount": 59,
+                "UniqueCVEsCount": 60,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sequoia 15",
@@ -629,6 +630,7 @@
                         "CVE-2025-24136": false,
                         "CVE-2025-24101": false,
                         "CVE-2025-24096": false,
+                        "CVE-2025-24099": false,
                         "CVE-2025-24130": false,
                         "CVE-2025-24169": false,
                         "CVE-2025-24146": false,
@@ -657,7 +659,7 @@
                     "ActivelyExploitedCVEs": [
                         "CVE-2025-24085"
                     ],
-                    "UniqueCVEsCount": 59,
+                    "UniqueCVEsCount": 60,
                     "DaysSincePreviousRelease": 47
                 },
                 {
@@ -1349,7 +1351,7 @@
                 "ProductVersion": "14.7.3",
                 "Build": "23H417",
                 "ReleaseDate": "2025-01-27T00:00:00Z",
-                "ExpirationDate": "2025-04-29T00:00:00Z",
+                "ExpirationDate": "2025-04-30T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -1435,6 +1437,7 @@
                     "CVE-2025-24115": false,
                     "CVE-2025-24116": false,
                     "CVE-2025-24136": false,
+                    "CVE-2025-24099": false,
                     "CVE-2025-24130": false,
                     "CVE-2025-24146": false,
                     "CVE-2024-54497": false,
@@ -1452,7 +1455,7 @@
                     "CVE-2025-24156": false
                 },
                 "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 40,
+                "UniqueCVEsCount": 41,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sonoma 14",
@@ -1884,6 +1887,7 @@
                         "CVE-2025-24115": false,
                         "CVE-2025-24116": false,
                         "CVE-2025-24136": false,
+                        "CVE-2025-24099": false,
                         "CVE-2025-24130": false,
                         "CVE-2025-24146": false,
                         "CVE-2024-54497": false,
@@ -1901,7 +1905,7 @@
                         "CVE-2025-24156": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 40,
+                    "UniqueCVEsCount": 41,
                     "DaysSincePreviousRelease": 47
                 },
                 {
@@ -3728,7 +3732,7 @@
                 "ProductVersion": "13.7.3",
                 "Build": "22H417",
                 "ReleaseDate": "2025-01-27T00:00:00Z",
-                "ExpirationDate": "2025-04-29T00:00:00Z",
+                "ExpirationDate": "2025-04-30T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -3805,6 +3809,7 @@
                     "CVE-2025-24115": false,
                     "CVE-2025-24116": false,
                     "CVE-2025-24136": false,
+                    "CVE-2025-24099": false,
                     "CVE-2025-24130": false,
                     "CVE-2025-24146": false,
                     "CVE-2024-54497": false,
@@ -3820,7 +3825,7 @@
                     "CVE-2025-24156": false
                 },
                 "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 30,
+                "UniqueCVEsCount": 31,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Ventura 13",
@@ -4237,6 +4242,7 @@
                         "CVE-2025-24115": false,
                         "CVE-2025-24116": false,
                         "CVE-2025-24136": false,
+                        "CVE-2025-24099": false,
                         "CVE-2025-24130": false,
                         "CVE-2025-24146": false,
                         "CVE-2024-54497": false,
@@ -4252,7 +4258,7 @@
                         "CVE-2025-24156": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 30,
+                    "UniqueCVEsCount": 31,
                     "DaysSincePreviousRelease": 47
                 },
                 {
@@ -6962,7 +6968,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-07-29T00:00:00Z",
-                "ExpirationDate": "2025-04-29T00:00:00Z",
+                "ExpirationDate": "2025-04-30T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -9934,8 +9940,8 @@
         "ReleaseDate": "2024-12-17T18:03:20Z"
     },
     "XProtectPlistConfigData": {
-        "com.apple.XProtect": "5285",
-        "ReleaseDate": "2025-01-14T17:53:45Z"
+        "com.apple.XProtect": "5286",
+        "ReleaseDate": "2025-01-29T22:36:18Z"
     },
     "Models": {
         "Mac15,13": {
