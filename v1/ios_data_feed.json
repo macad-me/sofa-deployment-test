@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "f969da5c403c069efaced1055bb7378d3eab34b026bf80a65d6cca2dec9a6a4d",
+    "UpdateHash": "ac8641627b3caf9a6c57dbc3a467e5da1438e190f60d3f171e4240109a14f62e",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -91,6 +91,15 @@
                     "iPhone17,3",
                     "iPhone17,4"
                 ],
+                "ForkedLatest": {
+                    "ProductVersion": "18.3.1",
+                    "Build": "22D8075",
+                    "ReleaseDate": "2025-02-19",
+                    "ExpirationDate": "2025-05-20",
+                    "SupportedDevices": [
+                        "iPhone17,5"
+                    ]
+                },
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
@@ -621,7 +630,7 @@
                 "ForkedLatest": {
                     "ProductVersion": "17.7.5",
                     "Build": "21H6420",
-                    "ReleaseDate": "2025-02-17",
+                    "ReleaseDate": "2025-02-19",
                     "ExpirationDate": "2025-05-20",
                     "SupportedDevices": [
                         "iPad7,1",
