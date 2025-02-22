@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "3cb1a980302fc619ce91d8b16cff15060b3123e8748f609e06f2e2acde0c024e",
+    "UpdateHash": "cdf8e40e0c599a9beecac487fe3801d344789616e14ea3752ce0e443a15ba9de",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -7,7 +7,7 @@
                 "ProductVersion": "18.3.1",
                 "Build": "22D72",
                 "ReleaseDate": "2025-02-10T00:00:00Z",
-                "ExpirationDate": "2025-05-22T00:00:00Z",
+                "ExpirationDate": "2025-05-23T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -95,7 +95,7 @@
                     "ProductVersion": "18.3.1",
                     "Build": "22D8075",
                     "ReleaseDate": "2025-02-19",
-                    "ExpirationDate": "2025-05-22",
+                    "ExpirationDate": "2025-05-23",
                     "SupportedDevices": [
                         "iPhone17,5"
                     ]
@@ -549,7 +549,7 @@
                 "ProductVersion": "17.7.2",
                 "Build": "21H6221",
                 "ReleaseDate": "2024-11-19T00:00:00Z",
-                "ExpirationDate": "2025-05-22T00:00:00Z",
+                "ExpirationDate": "2025-05-23T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -631,7 +631,7 @@
                     "ProductVersion": "17.7.5",
                     "Build": "21H6420",
                     "ReleaseDate": "2025-02-19",
-                    "ExpirationDate": "2025-05-22",
+                    "ExpirationDate": "2025-05-23",
                     "SupportedDevices": [
                         "iPad7,1",
                         "iPad7,2",
@@ -1522,7 +1522,7 @@
                 "ProductVersion": "16.7.10",
                 "Build": "20H6350",
                 "ReleaseDate": "2024-08-07T00:00:00Z",
-                "ExpirationDate": "2025-05-22T00:00:00Z",
+                "ExpirationDate": "2025-05-23T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
                     "iPad6,12",
