@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "91eb483d0a3819761d8b638a8a7a4578b952accb635b7efa9ac7ad636f5a93f1",
+    "UpdateHash": "1acc1b2be375354791571631fa34d182d73e866434af82c28c0dd3810a46c7bb",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -11089,12 +11089,26 @@
     "InstallationApps": {
         "LatestUMA": {
             "title": "macOS Sequoia",
-            "version": "15.3.1",
-            "build": "24D70",
-            "apple_slug": "072-70706",
-            "url": "https://swcdn.apple.com/content/downloads/39/51/072-70706-A_Q2E9RWYCSD/oddej58reimcphudve8mgtxmcjjp0t3cve/InstallAssistant.pkg"
+            "version": "15.3.2",
+            "build": "24D81",
+            "apple_slug": "082-01336",
+            "url": "https://swcdn.apple.com/content/downloads/62/63/082-01336-A_QFPSTWIJMM/yjbdoqrcvwy4hwiwxiu1aiwouljw5o2ayx/InstallAssistant.pkg"
         },
         "AllPreviousUMA": [
+            {
+                "title": "macOS Sequoia",
+                "version": "15.3.2",
+                "build": "24D2082",
+                "apple_slug": "082-04099",
+                "url": "https://swcdn.apple.com/content/downloads/01/51/082-04099-A_5FSIOBKFKK/xjz2e7x52ajvp10tytehv9364baqaanrim/InstallAssistant.pkg"
+            },
+            {
+                "title": "macOS Sequoia",
+                "version": "15.3.1",
+                "build": "24D70",
+                "apple_slug": "072-70706",
+                "url": "https://swcdn.apple.com/content/downloads/39/51/072-70706-A_Q2E9RWYCSD/oddej58reimcphudve8mgtxmcjjp0t3cve/InstallAssistant.pkg"
+            },
             {
                 "title": "macOS Sequoia",
                 "version": "15.3",
