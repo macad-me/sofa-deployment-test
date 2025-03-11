@@ -1,12 +1,12 @@
 {
-    "UpdateHash": "bffb70ea9bebc9b460cf987a6f2f5ea0e88d06e557fe54155fb1b5124beafbbf",
+    "UpdateHash": "91eb483d0a3819761d8b638a8a7a4578b952accb635b7efa9ac7ad636f5a93f1",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
             "Latest": {
-                "ProductVersion": "15.3.1",
-                "Build": "24D70",
-                "ReleaseDate": "2025-02-10T00:00:00Z",
+                "ProductVersion": "15.3.2",
+                "Build": "24D81",
+                "ReleaseDate": "2025-03-11T00:00:00Z",
                 "ExpirationDate": "2025-06-09T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
@@ -73,399 +73,439 @@
                     "VMA2MACOSAP",
                     "VMM-x86_64"
                 ],
-                "SecurityInfo": "This update has no published CVE entries.",
-                "CVEs": {},
-                "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 0,
+                "ForkedLatest": {
+                    "ProductVersion": "15.3.2",
+                    "Build": "24D2082",
+                    "ReleaseDate": "2025-03-11",
+                    "ExpirationDate": "2025-06-09",
+                    "SupportedDevices": [
+                        "J575cAP",
+                        "J575dAP",
+                        "J713AP",
+                        "J715AP"
+                    ]
+                },
+                "SecurityInfo": "https://support.apple.com/en-ca/122283",
+                "CVEs": {
+                    "CVE-2025-24201": true
+                },
+                "ActivelyExploitedCVEs": [
+                    "CVE-2025-24201"
+                ],
+                "UniqueCVEsCount": 1,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J137AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J152FAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J160AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J174AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J180dAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J185AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J185FAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J213AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J214KAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J215AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J223AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J230KAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J274AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J293AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J313AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J314cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J314sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J316cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J316sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J375cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J375dAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J413AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J414cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J414sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J415AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J416cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J416sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J433AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J434AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J456AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J457AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J473AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J474sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J475cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J475dAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J493AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J504AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J514cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J514mAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J514sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J516cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J516mAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J516sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J604AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J613AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J614cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J614sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J615AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J616cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J616sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J623AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J624AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J680AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J773gAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J773sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "J780AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "Mac-1E7E29AD0135F9BC": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "Mac-63001698E7A34814": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "Mac-937A206F2EE63C01": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "Mac-AA95B1DDAB278B95": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "VMA2MACOSAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
                     },
                     "VMM-x86_64": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.3.1",
-                        "Build": "24D70",
-                        "ReleaseDate": "2025-02-10T00:00:00Z"
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D81",
+                        "ReleaseDate": "2025-03-11T00:00:00Z"
+                    },
+                    "J575cAP": {
+                        "OSVersion": "Sequoia 15",
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D2082",
+                        "ReleaseDate": "2025-03-11"
+                    },
+                    "J575dAP": {
+                        "OSVersion": "Sequoia 15",
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D2082",
+                        "ReleaseDate": "2025-03-11"
+                    },
+                    "J713AP": {
+                        "OSVersion": "Sequoia 15",
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D2082",
+                        "ReleaseDate": "2025-03-11"
+                    },
+                    "J715AP": {
+                        "OSVersion": "Sequoia 15",
+                        "ProductVersion": "15.3.2",
+                        "Build": "24D2082",
+                        "ReleaseDate": "2025-03-11"
                     }
                 }
             },
             "SecurityReleases": [
                 {
-                    "UpdateName": "macOS Sequoia 15.3.1",
+                    "UpdateName": "macOS Sequoia 15.3.2",
                     "ProductName": "macOS",
-                    "ProductVersion": "15.3.1",
-                    "ReleaseDate": "2025-02-10T00:00:00Z",
+                    "ProductVersion": "15.3.2",
+                    "ReleaseDate": "2025-03-11T00:00:00Z",
                     "ReleaseType": "OS",
-                    "SecurityInfo": "This update has no published CVE entries.",
+                    "SecurityInfo": "https://support.apple.com/en-ca/122283",
                     "SupportedDevices": [
                         "J132AP",
                         "J137AP",
@@ -523,6 +563,78 @@
                         "J680AP",
                         "J773gAP",
                         "J773sAP",
+                        "J780AP",
+                        "Mac-1E7E29AD0135F9BC",
+                        "Mac-63001698E7A34814",
+                        "Mac-937A206F2EE63C01",
+                        "Mac-AA95B1DDAB278B95",
+                        "VMA2MACOSAP",
+                        "VMM-x86_64"
+                    ],
+                    "CVEs": {
+                        "CVE-2025-24201": true
+                    },
+                    "ActivelyExploitedCVEs": [
+                        "CVE-2025-24201"
+                    ],
+                    "UniqueCVEsCount": 1,
+                    "DaysSincePreviousRelease": 29
+                },
+                {
+                    "UpdateName": "macOS Sequoia 15.3.1",
+                    "ProductName": "macOS",
+                    "ProductVersion": "15.3.1",
+                    "ReleaseDate": "2025-02-10T00:00:00Z",
+                    "ReleaseType": "OS",
+                    "SecurityInfo": "This update has no published CVE entries.",
+                    "SupportedDevices": [
+                        "J132AP",
+                        "J137AP",
+                        "J140AAP",
+                        "J140KAP",
+                        "J152FAP",
+                        "J160AP",
+                        "J174AP",
+                        "J180dAP",
+                        "J185AP",
+                        "J185FAP",
+                        "J213AP",
+                        "J214KAP",
+                        "J215AP",
+                        "J223AP",
+                        "J230KAP",
+                        "J274AP",
+                        "J293AP",
+                        "J314cAP",
+                        "J314sAP",
+                        "J316cAP",
+                        "J316sAP",
+                        "J375cAP",
+                        "J375dAP",
+                        "J414cAP",
+                        "J414sAP",
+                        "J415AP",
+                        "J416cAP",
+                        "J416sAP",
+                        "J433AP",
+                        "J434AP",
+                        "J456AP",
+                        "J457AP",
+                        "J473AP",
+                        "J474sAP",
+                        "J475cAP",
+                        "J475dAP",
+                        "J493AP",
+                        "J504AP",
+                        "J514cAP",
+                        "J514mAP",
+                        "J514sAP",
+                        "J516cAP",
+                        "J516mAP",
+                        "J516sAP",
+                        "J613AP",
+                        "J615AP",
+                        "J680AP",
                         "J780AP",
                         "Mac-1E7E29AD0135F9BC",
                         "Mac-63001698E7A34814",
@@ -10033,8 +10145,8 @@
         "ReleaseDate": "2025-03-04T19:20:40Z"
     },
     "XProtectPlistConfigData": {
-        "com.apple.XProtect": "5289",
-        "ReleaseDate": "2025-03-04T19:19:05Z"
+        "com.apple.XProtect": "5290",
+        "ReleaseDate": "2025-03-11T17:00:41Z"
     },
     "Models": {
         "Mac15,13": {
@@ -10998,20 +11110,6 @@
                 "url": "https://swcdn.apple.com/content/downloads/52/42/072-44286-A_45NJHEFEDY/nxk2stn9edtjgfr3dqsh046dx4ti2h7w2s/InstallAssistant.pkg"
             },
             {
-                "title": "macOS Sequoia",
-                "version": "15.1.1",
-                "build": "24B91",
-                "apple_slug": "072-30111",
-                "url": "https://swcdn.apple.com/content/downloads/21/19/072-30111-A_4V7Y0VVH1Q/ie1hmy1uaj094z769s4zqmdaojp2vk4dkj/InstallAssistant.pkg"
-            },
-            {
-                "title": "macOS Sequoia",
-                "version": "15.1.1",
-                "build": "24B2091",
-                "apple_slug": "072-29965",
-                "url": "https://swcdn.apple.com/content/downloads/14/63/072-29965-A_JR3Q5P9LW7/qtu6yl2s14vidrhfnunfi1t7wid5dzxajm/InstallAssistant.pkg"
-            },
-            {
                 "title": "macOS Sonoma",
                 "version": "14.7.4",
                 "build": "23H420",
@@ -11069,10 +11167,10 @@
             }
         ],
         "LatestMacIPSW": {
-            "macos_ipsw_url": "https://updates.cdn-apple.com/2025WinterFCS/fullrestores/072-70618/42F1A8CC-7E07-4329-958A-757FF600C303/UniversalMac_15.3.1_24D70_Restore.ipsw",
-            "macos_ipsw_build": "24D70",
-            "macos_ipsw_version": "15.3.1",
-            "macos_ipsw_apple_slug": "072-70618"
+            "macos_ipsw_url": "https://updates.cdn-apple.com/2025WinterFCS/fullrestores/082-01504/828B8EF9-8134-49D5-B24A-0BA504FC5ECC/UniversalMac_15.3.2_24D81_Restore.ipsw",
+            "macos_ipsw_build": "24D81",
+            "macos_ipsw_version": "15.3.2",
+            "macos_ipsw_apple_slug": "082-01504"
         }
     }
 }
