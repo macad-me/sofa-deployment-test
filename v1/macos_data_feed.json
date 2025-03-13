@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "f6b234b36def0138154ef84c9bd44a82f1f8b25b9537ad22d2bdc28acb4b982b",
+    "UpdateHash": "66bd1a0abe2dd5952be69882c636df8a0de611045486e1f86bea0572629a715f",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -7,7 +7,7 @@
                 "ProductVersion": "15.3.2",
                 "Build": "24D81",
                 "ReleaseDate": "2025-03-11T00:00:00Z",
-                "ExpirationDate": "2025-06-10T00:00:00Z",
+                "ExpirationDate": "2025-06-11T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -76,8 +76,8 @@
                 "ForkedLatest": {
                     "ProductVersion": "15.3.2",
                     "Build": "24D2082",
-                    "ReleaseDate": "2025-03-11",
-                    "ExpirationDate": "2025-06-10",
+                    "ReleaseDate": "2025-03-12",
+                    "ExpirationDate": "2025-06-11",
                     "SupportedDevices": [
                         "J575cAP",
                         "J575dAP",
@@ -476,25 +476,25 @@
                         "OSVersion": "Sequoia 15",
                         "ProductVersion": "15.3.2",
                         "Build": "24D2082",
-                        "ReleaseDate": "2025-03-11"
+                        "ReleaseDate": "2025-03-12"
                     },
                     "J575dAP": {
                         "OSVersion": "Sequoia 15",
                         "ProductVersion": "15.3.2",
                         "Build": "24D2082",
-                        "ReleaseDate": "2025-03-11"
+                        "ReleaseDate": "2025-03-12"
                     },
                     "J713AP": {
                         "OSVersion": "Sequoia 15",
                         "ProductVersion": "15.3.2",
                         "Build": "24D2082",
-                        "ReleaseDate": "2025-03-11"
+                        "ReleaseDate": "2025-03-12"
                     },
                     "J715AP": {
                         "OSVersion": "Sequoia 15",
                         "ProductVersion": "15.3.2",
                         "Build": "24D2082",
-                        "ReleaseDate": "2025-03-11"
+                        "ReleaseDate": "2025-03-12"
                     }
                 }
             },
@@ -1487,7 +1487,7 @@
                 "ProductVersion": "14.7.4",
                 "Build": "23H420",
                 "ReleaseDate": "2025-02-10T00:00:00Z",
-                "ExpirationDate": "2025-06-10T00:00:00Z",
+                "ExpirationDate": "2025-06-11T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -3899,7 +3899,7 @@
                 "ProductVersion": "13.7.4",
                 "Build": "22H420",
                 "ReleaseDate": "2025-02-10T00:00:00Z",
-                "ExpirationDate": "2025-06-10T00:00:00Z",
+                "ExpirationDate": "2025-06-11T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -7173,7 +7173,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-07-29T00:00:00Z",
-                "ExpirationDate": "2025-06-10T00:00:00Z",
+                "ExpirationDate": "2025-06-11T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
