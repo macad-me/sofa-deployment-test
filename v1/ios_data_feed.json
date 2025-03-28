@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "205aec67d94d2809e6a436c8d8d0f90d3abaaed91bda7b0df67e8eff033d6dd9",
+    "UpdateHash": "9fb7506d25041d104d90f33ab426575bf2d2e55bb490f2daf3dfa887ad14240b",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -7,7 +7,7 @@
                 "ProductVersion": "18.3.2",
                 "Build": "22D6082",
                 "ReleaseDate": "2025-03-11T00:00:00Z",
-                "ExpirationDate": "2025-06-25T00:00:00Z",
+                "ExpirationDate": "2025-06-26T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -95,7 +95,7 @@
                     "ProductVersion": "18.3.2",
                     "Build": "22D2082",
                     "ReleaseDate": "2025-03-20",
-                    "ExpirationDate": "2025-06-25",
+                    "ExpirationDate": "2025-06-26",
                     "SupportedDevices": [
                         "iPad15,3",
                         "iPad15,4",
@@ -581,7 +581,7 @@
                 "ProductVersion": "17.7.2",
                 "Build": "21H6221",
                 "ReleaseDate": "2024-11-19T00:00:00Z",
-                "ExpirationDate": "2025-06-25T00:00:00Z",
+                "ExpirationDate": "2025-06-26T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -663,7 +663,7 @@
                     "ProductVersion": "17.7.5",
                     "Build": "21H6420",
                     "ReleaseDate": "2025-03-20",
-                    "ExpirationDate": "2025-06-25",
+                    "ExpirationDate": "2025-06-26",
                     "SupportedDevices": [
                         "iPad7,1",
                         "iPad7,2",
@@ -1557,7 +1557,7 @@
                 "ProductVersion": "16.7.10",
                 "Build": "20H6350",
                 "ReleaseDate": "2024-08-07T00:00:00Z",
-                "ExpirationDate": "2025-06-25T00:00:00Z",
+                "ExpirationDate": "2025-06-26T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
                     "iPad6,12",
