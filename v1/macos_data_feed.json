@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "7b38a01304c6f81241aa525ac0224ce007b0435735d1e3ed3a17108c08ae4ae9",
+    "UpdateHash": "5d67d46931dcaca8d485180f84a3b12b4817168615f04d33887b8a9bf09f425f",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -9735,15 +9735,9 @@
                         "VMA2MACOSAP",
                         "VMM-x86_64"
                     ],
-                    "CVEs": {
-                        "CVE-2022-22675": true,
-                        "CVE-2022-22674": true
-                    },
-                    "ActivelyExploitedCVEs": [
-                        "CVE-2022-22675",
-                        "CVE-2022-22674"
-                    ],
-                    "UniqueCVEsCount": 2,
+                    "CVEs": {},
+                    "ActivelyExploitedCVEs": [],
+                    "UniqueCVEsCount": 0,
                     "DaysSincePreviousRelease": 17
                 },
                 {
