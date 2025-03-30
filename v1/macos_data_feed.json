@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "5d67d46931dcaca8d485180f84a3b12b4817168615f04d33887b8a9bf09f425f",
+    "UpdateHash": "f5f9c8a969779b834c01d02a1a3167f3479442b13676e60843895a49a7bacc3e",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -7,7 +7,7 @@
                 "ProductVersion": "15.3.2",
                 "Build": "24D81",
                 "ReleaseDate": "2025-03-11T00:00:00Z",
-                "ExpirationDate": "2025-06-27T00:00:00Z",
+                "ExpirationDate": "2025-06-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -77,7 +77,7 @@
                     "ProductVersion": "15.3.2",
                     "Build": "24D2082",
                     "ReleaseDate": "2025-03-20",
-                    "ExpirationDate": "2025-06-27",
+                    "ExpirationDate": "2025-06-28",
                     "SupportedDevices": [
                         "J575cAP",
                         "J575dAP",
@@ -1491,7 +1491,7 @@
                 "ProductVersion": "14.7.4",
                 "Build": "23H420",
                 "ReleaseDate": "2025-02-10T00:00:00Z",
-                "ExpirationDate": "2025-06-27T00:00:00Z",
+                "ExpirationDate": "2025-06-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -3908,7 +3908,7 @@
                 "ProductVersion": "13.7.4",
                 "Build": "22H420",
                 "ReleaseDate": "2025-02-10T00:00:00Z",
-                "ExpirationDate": "2025-06-27T00:00:00Z",
+                "ExpirationDate": "2025-06-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -7184,7 +7184,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-07-29T00:00:00Z",
-                "ExpirationDate": "2025-06-27T00:00:00Z",
+                "ExpirationDate": "2025-06-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -9735,9 +9735,15 @@
                         "VMA2MACOSAP",
                         "VMM-x86_64"
                     ],
-                    "CVEs": {},
-                    "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 0,
+                    "CVEs": {
+                        "CVE-2022-22675": true,
+                        "CVE-2022-22674": true
+                    },
+                    "ActivelyExploitedCVEs": [
+                        "CVE-2022-22675",
+                        "CVE-2022-22674"
+                    ],
+                    "UniqueCVEsCount": 2,
                     "DaysSincePreviousRelease": 17
                 },
                 {
