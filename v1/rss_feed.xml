@@ -13,7 +13,13 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Apr 2025 17:06:02 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Apr 2025 18:07:20 +0000</lastBuildDate>
+    <item>
+      <title>XProtect Plist Config 5292</title>
+      <link>https://sofa.macadmins.io/</link>
+      <guid isPermaLink="false">XProtect_Config_5292</guid>
+      <pubDate>Tue, 01 Apr 2025 17:03:41 +0000</pubDate>
+    </item>
     <item>
       <title>macOS Ventura 13.7.5</title>
       <link>https://sofa.macadmins.io/</link>
@@ -55,12 +61,6 @@
       <description>Vulnerabilities Addressed: 62&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 20</description>
       <guid isPermaLink="false">iOS_OS_18.4</guid>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>XProtect Plist Config 5291</title>
-      <link>https://sofa.macadmins.io/</link>
-      <guid isPermaLink="false">XProtect_Config_5291</guid>
-      <pubDate>Tue, 25 Mar 2025 17:29:08 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sequoia 15.3.2</title>
