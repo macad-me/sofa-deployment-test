@@ -1476,7 +1476,6 @@
             "VMM-x86_64"
         ],
         "CVEs": {
-            "CVE-2023-42969": false,
             "CVE-2023-40412": false,
             "CVE-2023-40409": false,
             "CVE-2023-40410": false,
@@ -1486,7 +1485,6 @@
             "CVE-2023-40420": false,
             "CVE-2023-41968": false,
             "CVE-2023-40395": false,
-            "CVE-2023-42961": false,
             "CVE-2023-41984": false,
             "CVE-2023-41992": true,
             "CVE-2023-41073": false,
@@ -1498,7 +1496,7 @@
         "ActivelyExploitedCVEs": [
             "CVE-2023-41992"
         ],
-        "UniqueCVEsCount": 18,
+        "UniqueCVEsCount": 16,
         "DaysSincePreviousRelease": 10
     },
     {
