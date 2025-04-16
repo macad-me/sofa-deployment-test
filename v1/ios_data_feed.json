@@ -1,12 +1,12 @@
 {
-    "UpdateHash": "3a812f8acf28c149dd378daa232b749b82d49339aeb8a961bd997e3b6ea7469d",
+    "UpdateHash": "c57889c4184d231689abb37a31ad93d14e50490649c14cbe463539df0db56118",
     "OSVersions": [
         {
             "OSVersion": "18",
             "Latest": {
-                "ProductVersion": "18.4",
-                "Build": "22E6240",
-                "ReleaseDate": "2025-03-31T00:00:00Z",
+                "ProductVersion": "18.4.1",
+                "Build": "22E252",
+                "ReleaseDate": "2025-04-16T00:00:00Z",
                 "ExpirationDate": "2025-07-15T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
@@ -657,7 +657,7 @@
                 "ForkedLatest": {
                     "ProductVersion": "17.7.6",
                     "Build": "21H423",
-                    "ReleaseDate": "2025-03-31",
+                    "ReleaseDate": "2025-04-16",
                     "ExpirationDate": "2025-07-15",
                     "SupportedDevices": [
                         "iPad7,1",
