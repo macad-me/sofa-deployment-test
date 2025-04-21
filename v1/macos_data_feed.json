@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "bdaa91f5059e3096a654ac1c92a8d0b7440e9d18863204599dfa50e9c5a84a22",
+    "UpdateHash": "ab81d0fa52b5a31bdede33b864f7d8d61317996d8a8fcda686f3ae703c7a6ee0",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -7,7 +7,7 @@
                 "ProductVersion": "15.4.1",
                 "Build": "24E263",
                 "ReleaseDate": "2025-04-16T00:00:00Z",
-                "ExpirationDate": "2025-07-19T00:00:00Z",
+                "ExpirationDate": "2025-07-20T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -1769,7 +1769,7 @@
                 "ProductVersion": "14.7.5",
                 "Build": "23H527",
                 "ReleaseDate": "2025-03-31T00:00:00Z",
-                "ExpirationDate": "2025-07-19T00:00:00Z",
+                "ExpirationDate": "2025-07-20T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -4456,7 +4456,7 @@
                 "ProductVersion": "13.7.5",
                 "Build": "22H527",
                 "ReleaseDate": "2025-03-31T00:00:00Z",
-                "ExpirationDate": "2025-07-19T00:00:00Z",
+                "ExpirationDate": "2025-07-20T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -7979,7 +7979,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-07-29T00:00:00Z",
-                "ExpirationDate": "2025-07-19T00:00:00Z",
+                "ExpirationDate": "2025-07-20T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
