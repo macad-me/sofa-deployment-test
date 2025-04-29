@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "6d304c79ca5fe8f811dc995fac99617b4078ae3eb698b1de02834dc1cde3e1b4",
+    "UpdateHash": "a8a4cc99bae148e8fd67fccf4e9d63268d656a4a40dd946d06826dbfa2ad57b8",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -7,7 +7,7 @@
                 "ProductVersion": "15.4.1",
                 "Build": "24E263",
                 "ReleaseDate": "2025-04-16T00:00:00Z",
-                "ExpirationDate": "2025-07-27T00:00:00Z",
+                "ExpirationDate": "2025-07-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -660,6 +660,14 @@
                         "CVE-2025-24202": false,
                         "CVE-2025-24234": false,
                         "CVE-2025-24097": false,
+                        "CVE-2025-31202": false,
+                        "CVE-2025-30445": false,
+                        "CVE-2025-24270": false,
+                        "CVE-2025-24206": false,
+                        "CVE-2025-24252": false,
+                        "CVE-2025-24271": false,
+                        "CVE-2025-24251": false,
+                        "CVE-2025-31197": false,
                         "CVE-2025-24276": false,
                         "CVE-2025-24272": false,
                         "CVE-2025-24239": false,
@@ -683,6 +691,7 @@
                         "CVE-2025-30454": false,
                         "CVE-2025-31191": false,
                         "CVE-2025-24182": false,
+                        "CVE-2025-31203": false,
                         "CVE-2025-24277": false,
                         "CVE-2024-9681": false,
                         "CVE-2025-24255": false,
@@ -790,7 +799,7 @@
                         "CVE-2025-24157": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 131,
+                    "UniqueCVEsCount": 140,
                     "DaysSincePreviousRelease": 20
                 },
                 {
@@ -1001,6 +1010,7 @@
                         "CVE-2025-24129": false,
                         "CVE-2025-24131": false,
                         "CVE-2025-24177": false,
+                        "CVE-2025-24179": false,
                         "CVE-2025-24137": false,
                         "CVE-2025-24087": false,
                         "CVE-2025-24112": false,
@@ -1062,7 +1072,7 @@
                     "ActivelyExploitedCVEs": [
                         "CVE-2025-24085"
                     ],
-                    "UniqueCVEsCount": 61,
+                    "UniqueCVEsCount": 62,
                     "DaysSincePreviousRelease": 47
                 },
                 {
@@ -1769,7 +1779,7 @@
                 "ProductVersion": "14.7.5",
                 "Build": "23H527",
                 "ReleaseDate": "2025-03-31T00:00:00Z",
-                "ExpirationDate": "2025-07-27T00:00:00Z",
+                "ExpirationDate": "2025-07-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -1832,6 +1842,18 @@
                 "CVEs": {
                     "CVE-2025-24234": false,
                     "CVE-2025-24097": false,
+                    "CVE-2025-24177": false,
+                    "CVE-2025-24179": false,
+                    "CVE-2025-24251": false,
+                    "CVE-2025-31197": false,
+                    "CVE-2025-24206": false,
+                    "CVE-2025-24126": false,
+                    "CVE-2025-24271": false,
+                    "CVE-2025-24270": false,
+                    "CVE-2025-24131": false,
+                    "CVE-2025-24129": false,
+                    "CVE-2025-30445": false,
+                    "CVE-2025-24252": false,
                     "CVE-2025-24276": false,
                     "CVE-2024-40864": false,
                     "CVE-2025-24272": false,
@@ -1853,6 +1875,7 @@
                     "CVE-2025-30454": false,
                     "CVE-2025-31191": false,
                     "CVE-2025-24170": false,
+                    "CVE-2025-31203": false,
                     "CVE-2025-24277": false,
                     "CVE-2024-9681": false,
                     "CVE-2025-24255": false,
@@ -1925,7 +1948,7 @@
                 "ActivelyExploitedCVEs": [
                     "CVE-2025-24085"
                 ],
-                "UniqueCVEsCount": 91,
+                "UniqueCVEsCount": 104,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sonoma 14",
@@ -2334,6 +2357,18 @@
                     "CVEs": {
                         "CVE-2025-24234": false,
                         "CVE-2025-24097": false,
+                        "CVE-2025-24177": false,
+                        "CVE-2025-24179": false,
+                        "CVE-2025-24251": false,
+                        "CVE-2025-31197": false,
+                        "CVE-2025-24206": false,
+                        "CVE-2025-24126": false,
+                        "CVE-2025-24271": false,
+                        "CVE-2025-24270": false,
+                        "CVE-2025-24131": false,
+                        "CVE-2025-24129": false,
+                        "CVE-2025-30445": false,
+                        "CVE-2025-24252": false,
                         "CVE-2025-24276": false,
                         "CVE-2024-40864": false,
                         "CVE-2025-24272": false,
@@ -2355,6 +2390,7 @@
                         "CVE-2025-30454": false,
                         "CVE-2025-31191": false,
                         "CVE-2025-24170": false,
+                        "CVE-2025-31203": false,
                         "CVE-2025-24277": false,
                         "CVE-2024-9681": false,
                         "CVE-2025-24255": false,
@@ -2427,7 +2463,7 @@
                     "ActivelyExploitedCVEs": [
                         "CVE-2025-24085"
                     ],
-                    "UniqueCVEsCount": 91,
+                    "UniqueCVEsCount": 104,
                     "DaysSincePreviousRelease": 49
                 },
                 {
@@ -4456,7 +4492,7 @@
                 "ProductVersion": "13.7.5",
                 "Build": "22H527",
                 "ReleaseDate": "2025-03-31T00:00:00Z",
-                "ExpirationDate": "2025-07-27T00:00:00Z",
+                "ExpirationDate": "2025-07-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -4517,6 +4553,18 @@
                 "SecurityInfo": "https://support.apple.com/en-ca/122375",
                 "CVEs": {
                     "CVE-2025-24234": false,
+                    "CVE-2025-24131": false,
+                    "CVE-2025-24270": false,
+                    "CVE-2025-24271": false,
+                    "CVE-2025-24177": false,
+                    "CVE-2025-24179": false,
+                    "CVE-2025-24251": false,
+                    "CVE-2025-31197": false,
+                    "CVE-2025-24252": false,
+                    "CVE-2025-30445": false,
+                    "CVE-2025-24129": false,
+                    "CVE-2025-24126": false,
+                    "CVE-2025-24206": false,
                     "CVE-2025-24276": false,
                     "CVE-2024-40864": false,
                     "CVE-2025-24272": false,
@@ -4605,7 +4653,7 @@
                 "ActivelyExploitedCVEs": [
                     "CVE-2025-24085"
                 ],
-                "UniqueCVEsCount": 85,
+                "UniqueCVEsCount": 97,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Ventura 13",
@@ -5006,6 +5054,18 @@
                     ],
                     "CVEs": {
                         "CVE-2025-24234": false,
+                        "CVE-2025-24131": false,
+                        "CVE-2025-24270": false,
+                        "CVE-2025-24271": false,
+                        "CVE-2025-24177": false,
+                        "CVE-2025-24179": false,
+                        "CVE-2025-24251": false,
+                        "CVE-2025-31197": false,
+                        "CVE-2025-24252": false,
+                        "CVE-2025-30445": false,
+                        "CVE-2025-24129": false,
+                        "CVE-2025-24126": false,
+                        "CVE-2025-24206": false,
                         "CVE-2025-24276": false,
                         "CVE-2024-40864": false,
                         "CVE-2025-24272": false,
@@ -5094,7 +5154,7 @@
                     "ActivelyExploitedCVEs": [
                         "CVE-2025-24085"
                     ],
-                    "UniqueCVEsCount": 85,
+                    "UniqueCVEsCount": 97,
                     "DaysSincePreviousRelease": 49
                 },
                 {
@@ -7979,7 +8039,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-07-29T00:00:00Z",
-                "ExpirationDate": "2025-07-27T00:00:00Z",
+                "ExpirationDate": "2025-07-28T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",

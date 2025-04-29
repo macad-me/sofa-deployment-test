@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "a300657ca2236a4fdb780c285effd04fe2d968798a15578b831493aa00325d8f",
+    "UpdateHash": "e39a87957c27e2cd48f44d54724721696106ceeb680d94a588c0f3141d6c0226",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -7,7 +7,7 @@
                 "ProductVersion": "18.4.1",
                 "Build": "22E252",
                 "ReleaseDate": "2025-04-16T00:00:00Z",
-                "ExpirationDate": "2025-07-27T00:00:00Z",
+                "ExpirationDate": "2025-07-28T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -313,6 +313,14 @@
                         "CVE-2025-24202": false,
                         "CVE-2025-24221": false,
                         "CVE-2025-24097": false,
+                        "CVE-2025-24271": false,
+                        "CVE-2025-24270": false,
+                        "CVE-2025-31202": false,
+                        "CVE-2025-24252": false,
+                        "CVE-2025-24206": false,
+                        "CVE-2025-30445": false,
+                        "CVE-2025-24251": false,
+                        "CVE-2025-31197": false,
                         "CVE-2025-24244": false,
                         "CVE-2025-24243": false,
                         "CVE-2025-30430": false,
@@ -327,6 +335,7 @@
                         "CVE-2025-30454": false,
                         "CVE-2025-31191": false,
                         "CVE-2025-24182": false,
+                        "CVE-2025-31203": false,
                         "CVE-2024-9681": false,
                         "CVE-2025-30456": false,
                         "CVE-2025-30439": false,
@@ -374,7 +383,7 @@
                         "CVE-2025-30425": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 62,
+                    "UniqueCVEsCount": 71,
                     "DaysSincePreviousRelease": 20
                 },
                 {
@@ -425,6 +434,7 @@
                         "CVE-2025-24129": false,
                         "CVE-2025-24131": false,
                         "CVE-2025-24177": false,
+                        "CVE-2025-24179": false,
                         "CVE-2025-24137": false,
                         "CVE-2025-24127": false,
                         "CVE-2025-24160": false,
@@ -437,6 +447,7 @@
                         "CVE-2025-24107": false,
                         "CVE-2025-24159": false,
                         "CVE-2025-24117": false,
+                        "CVE-2025-24166": false,
                         "CVE-2025-24104": false,
                         "CVE-2024-9956": false,
                         "CVE-2025-24128": false,
@@ -452,7 +463,7 @@
                     "ActivelyExploitedCVEs": [
                         "CVE-2025-24085"
                     ],
-                    "UniqueCVEsCount": 28,
+                    "UniqueCVEsCount": 30,
                     "DaysSincePreviousRelease": 21
                 },
                 {
@@ -684,7 +695,7 @@
                 "ProductVersion": "17.7.2",
                 "Build": "21H6221",
                 "ReleaseDate": "2024-11-19T00:00:00Z",
-                "ExpirationDate": "2025-07-27T00:00:00Z",
+                "ExpirationDate": "2025-07-28T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -766,7 +777,7 @@
                     "ProductVersion": "17.7.6",
                     "Build": "21H423",
                     "ReleaseDate": "2025-04-23",
-                    "ExpirationDate": "2025-07-27",
+                    "ExpirationDate": "2025-07-28",
                     "SupportedDevices": [
                         "iPad7,1",
                         "iPad7,2",
@@ -799,6 +810,16 @@
                     ],
                     "CVEs": {
                         "CVE-2025-24221": false,
+                        "CVE-2025-24131": false,
+                        "CVE-2025-24270": false,
+                        "CVE-2025-24271": false,
+                        "CVE-2025-24177": false,
+                        "CVE-2025-24179": false,
+                        "CVE-2025-24251": false,
+                        "CVE-2025-31197": false,
+                        "CVE-2025-24252": false,
+                        "CVE-2025-30445": false,
+                        "CVE-2025-24206": false,
                         "CVE-2025-24243": false,
                         "CVE-2025-24244": false,
                         "CVE-2025-24237": false,
@@ -809,6 +830,7 @@
                         "CVE-2025-24085": true,
                         "CVE-2025-24190": false,
                         "CVE-2025-24211": false,
+                        "CVE-2025-31203": false,
                         "CVE-2024-9681": false,
                         "CVE-2025-30447": false,
                         "CVE-2025-24210": false,
@@ -842,7 +864,7 @@
                         "CVE-2025-24085",
                         "CVE-2025-24201"
                     ],
-                    "UniqueCVEsCount": 39,
+                    "UniqueCVEsCount": 50,
                     "DaysSincePreviousRelease": 49
                 },
                 {
@@ -884,12 +906,13 @@
                         "CVE-2025-24118": false,
                         "CVE-2025-24159": false,
                         "CVE-2025-24117": false,
+                        "CVE-2025-24166": false,
                         "CVE-2025-24104": false,
                         "CVE-2024-54497": false,
                         "CVE-2025-24149": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 16,
+                    "UniqueCVEsCount": 17,
                     "DaysSincePreviousRelease": 47
                 },
                 {
@@ -1724,7 +1747,7 @@
                 "ProductVersion": "16.7.11",
                 "Build": "20H6360",
                 "ReleaseDate": "2025-03-31T00:00:00Z",
-                "ExpirationDate": "2025-07-27T00:00:00Z",
+                "ExpirationDate": "2025-07-28T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
                     "iPad6,12",
