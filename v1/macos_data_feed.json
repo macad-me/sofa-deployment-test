@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "1c7c455f3495b0e925b8162ec40d5280245a7ad6b6c8b4c81c72a1c0df4e9fc2",
+    "UpdateHash": "ea8ef96933c4083b4866c74ad86011102c9efbd0495859aeeff1190502941f74",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -12000,13 +12000,6 @@
                 "url": "https://swcdn.apple.com/content/downloads/11/60/072-08251-A_VJ2TWIZ7CM/mrkdsdl45umr07vwe27n8hfvubidmxgcbk/InstallAssistant.pkg"
             },
             {
-                "title": "macOS Sequoia",
-                "version": "15.2",
-                "build": "24C101",
-                "apple_slug": "072-44286",
-                "url": "https://swcdn.apple.com/content/downloads/52/42/072-44286-A_45NJHEFEDY/nxk2stn9edtjgfr3dqsh046dx4ti2h7w2s/InstallAssistant.pkg"
-            },
-            {
                 "title": "macOS Sonoma",
                 "version": "14.7.5",
                 "build": "23H527",
@@ -12028,13 +12021,6 @@
                 "url": "https://swcdn.apple.com/content/downloads/43/40/072-61299-A_Y6TZ03D5E8/dpzudbub2uj7lqy3cko50k4moqsu2lq5ui/InstallAssistant.pkg"
             },
             {
-                "title": "macOS Sonoma",
-                "version": "14.7.2",
-                "build": "23H311",
-                "apple_slug": "072-36705",
-                "url": "https://swcdn.apple.com/content/downloads/36/56/072-36705-A_FT40OBTKOY/qlf8amkb6ym29f9zobl2y6vuusd87visbr/InstallAssistant.pkg"
-            },
-            {
                 "title": "macOS Ventura",
                 "version": "13.7.5",
                 "build": "22H527",
@@ -12054,13 +12040,6 @@
                 "build": "22H417",
                 "apple_slug": "072-61270",
                 "url": "https://swcdn.apple.com/content/downloads/14/61/072-61270-A_NBOSNJCOJ7/by1ws0ryjhu2n9sn89pzeutirzkmx78mm5/InstallAssistant.pkg"
-            },
-            {
-                "title": "macOS Ventura",
-                "version": "13.7.2",
-                "build": "22H313",
-                "apple_slug": "072-36728",
-                "url": "https://swcdn.apple.com/content/downloads/51/51/072-36728-A_N5X8ANWQ9J/l4lowuoc3s3tj1et0c2qphkdpu9qznon7k/InstallAssistant.pkg"
             },
             {
                 "title": "macOS Monterey",
