@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "829d532321b8b72c9b4c06783f06433c5ae24435ca87cd3881d204d44b078f95",
+    "UpdateHash": "36e8f0743735b92076413b03efafa8d1f4c3bff5673d85be3521ce085e4db7b5",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -741,9 +741,9 @@
                     "iPhone16,2"
                 ],
                 "ForkedLatest": {
-                    "ProductVersion": "17.7.7",
-                    "Build": "21H6433",
-                    "ReleaseDate": "2025-05-12",
+                    "ProductVersion": "17.7.6",
+                    "Build": "21H423",
+                    "ReleaseDate": "2025-05-16",
                     "ExpirationDate": "2025-08-14",
                     "SupportedDevices": [
                         "iPad7,1",
@@ -767,14 +767,7 @@
                     "ReleaseDate": "2025-05-12T00:00:00Z",
                     "ReleaseType": "OS",
                     "SecurityInfo": "https://support.apple.com/en-ca/122405",
-                    "SupportedDevices": [
-                        "iPad7,1",
-                        "iPad7,2",
-                        "iPad7,3",
-                        "iPad7,4",
-                        "iPad7,5",
-                        "iPad7,6"
-                    ],
+                    "SupportedDevices": [],
                     "CVEs": {
                         "CVE-2025-24097": false,
                         "CVE-2025-31251": false,
@@ -817,7 +810,14 @@
                     "ReleaseDate": "2025-03-31T00:00:00Z",
                     "ReleaseType": "OS",
                     "SecurityInfo": "https://support.apple.com/en-ca/122372",
-                    "SupportedDevices": [],
+                    "SupportedDevices": [
+                        "iPad7,1",
+                        "iPad7,2",
+                        "iPad7,3",
+                        "iPad7,4",
+                        "iPad7,5",
+                        "iPad7,6"
+                    ],
                     "CVEs": {
                         "CVE-2025-24221": false,
                         "CVE-2025-24131": false,
