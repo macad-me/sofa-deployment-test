@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "fbe5429491e293aa6f549c890b239dbe7caabe492c9ab50efe90675cb977bb34",
+    "UpdateHash": "ad75e92d9e1d53bb71b31befecb6dd6360e92231fb89e73e5351674a322d9316",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -12232,13 +12232,6 @@
                 "build": "24D70",
                 "apple_slug": "072-70706",
                 "url": "https://swcdn.apple.com/content/downloads/39/51/072-70706-A_Q2E9RWYCSD/oddej58reimcphudve8mgtxmcjjp0t3cve/InstallAssistant.pkg"
-            },
-            {
-                "title": "macOS Sequoia",
-                "version": "15.3",
-                "build": "24D60",
-                "apple_slug": "072-08251",
-                "url": "https://swcdn.apple.com/content/downloads/11/60/072-08251-A_VJ2TWIZ7CM/mrkdsdl45umr07vwe27n8hfvubidmxgcbk/InstallAssistant.pkg"
             },
             {
                 "title": "macOS Sonoma",
