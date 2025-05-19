@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "89b823ef83c49342284246e3d796a013b4761a31eaf969b3f2aaf876d716a773",
+    "UpdateHash": "eeeb3bcdd887999877b4371e3db2a6856956dccbc0f18ec6e299b2a0d3a557d7",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -760,6 +760,26 @@
                 "CVEs": {}
             },
             "SecurityReleases": [
+                {
+                    "UpdateName": "iPadOS 17.7.8",
+                    "ProductName": "iOS",
+                    "ProductVersion": "17.7.8",
+                    "ReleaseDate": "2025-05-19T00:00:00Z",
+                    "ReleaseType": "OS",
+                    "SecurityInfo": "This update has no published CVE entries.",
+                    "SupportedDevices": [
+                        "iPad7,1",
+                        "iPad7,2",
+                        "iPad7,3",
+                        "iPad7,4",
+                        "iPad7,5",
+                        "iPad7,6"
+                    ],
+                    "CVEs": {},
+                    "ActivelyExploitedCVEs": [],
+                    "UniqueCVEsCount": 0,
+                    "DaysSincePreviousRelease": 7
+                },
                 {
                     "UpdateName": "iPadOS 17.7.7",
                     "ProductName": "iOS",
