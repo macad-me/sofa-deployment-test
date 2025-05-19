@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "a42557c9929ad7ddf980d841fd800907e74c746357601276ba044a05f1f10200",
+    "UpdateHash": "89b823ef83c49342284246e3d796a013b4761a31eaf969b3f2aaf876d716a773",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -741,9 +741,9 @@
                     "iPhone16,2"
                 ],
                 "ForkedLatest": {
-                    "ProductVersion": "17.7.6",
-                    "Build": "21H423",
-                    "ReleaseDate": "2025-05-16",
+                    "ProductVersion": "17.7.8",
+                    "Build": "21H440",
+                    "ReleaseDate": "2025-05-19",
                     "ExpirationDate": "2025-08-17",
                     "SupportedDevices": [
                         "iPad7,1",
@@ -810,14 +810,7 @@
                     "ReleaseDate": "2025-03-31T00:00:00Z",
                     "ReleaseType": "OS",
                     "SecurityInfo": "https://support.apple.com/en-ca/122372",
-                    "SupportedDevices": [
-                        "iPad7,1",
-                        "iPad7,2",
-                        "iPad7,3",
-                        "iPad7,4",
-                        "iPad7,5",
-                        "iPad7,6"
-                    ],
+                    "SupportedDevices": [],
                     "CVEs": {
                         "CVE-2025-24221": false,
                         "CVE-2025-24131": false,
