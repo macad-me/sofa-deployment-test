@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "2f1dcde414fcec42cc0c6658e995298e0cd7c9ff65d3a5f4a3fbf3e25425fb1f",
+    "UpdateHash": "6b1448d9f7f30afbe432be74cf766b70b877f3fdd5b141b2fa12e91c1b2b780f",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -374,12 +374,14 @@
                     "SecurityInfo": "https://support.apple.com/en-ca/122174",
                     "SupportedDevices": [],
                     "CVEs": {
-                        "CVE-2025-24200": true
+                        "CVE-2025-24200": true,
+                        "CVE-2025-43200": true
                     },
                     "ActivelyExploitedCVEs": [
-                        "CVE-2025-24200"
+                        "CVE-2025-24200",
+                        "CVE-2025-43200"
                     ],
-                    "UniqueCVEsCount": 1,
+                    "UniqueCVEsCount": 2,
                     "DaysSincePreviousRelease": 14
                 },
                 {
@@ -900,12 +902,14 @@
                     "SecurityInfo": "https://support.apple.com/en-ca/122173",
                     "SupportedDevices": [],
                     "CVEs": {
-                        "CVE-2025-24200": true
+                        "CVE-2025-24200": true,
+                        "CVE-2025-43200": true
                     },
                     "ActivelyExploitedCVEs": [
-                        "CVE-2025-24200"
+                        "CVE-2025-24200",
+                        "CVE-2025-43200"
                     ],
-                    "UniqueCVEsCount": 1,
+                    "UniqueCVEsCount": 2,
                     "DaysSincePreviousRelease": 14
                 },
                 {
@@ -1818,13 +1822,15 @@
                     ],
                     "CVEs": {
                         "CVE-2025-24200": true,
+                        "CVE-2025-43200": true,
                         "CVE-2025-24201": true
                     },
                     "ActivelyExploitedCVEs": [
                         "CVE-2025-24200",
+                        "CVE-2025-43200",
                         "CVE-2025-24201"
                     ],
-                    "UniqueCVEsCount": 2,
+                    "UniqueCVEsCount": 3,
                     "DaysSincePreviousRelease": 236
                 },
                 {
