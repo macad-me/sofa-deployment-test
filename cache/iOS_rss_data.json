@@ -480,13 +480,10 @@
         "SecurityInfo": "https://support.apple.com/kb/HT213814",
         "SupportedDevices": [],
         "CVEs": {
-            "CVE-2023-32434": true,
-            "CVE-2023-32439": true
+            "CVE-2023-32434": false,
+            "CVE-2023-32439": false
         },
-        "ActivelyExploitedCVEs": [
-            "CVE-2023-32434",
-            "CVE-2023-32439"
-        ],
+        "ActivelyExploitedCVEs": [],
         "UniqueCVEsCount": 2,
         "DaysSincePreviousRelease": 34
     },
