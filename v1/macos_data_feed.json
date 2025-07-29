@@ -1,12 +1,12 @@
 {
-    "UpdateHash": "fa054e3e9f296ab4c666ba698e25a1bce378c88f1934a9457ec91083d205ad1e",
+    "UpdateHash": "536d4450eacac7ea0818a7c81b448546cc7cd2dbbf42ac35ba0b357d3f892140",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
             "Latest": {
-                "ProductVersion": "15.5",
-                "Build": "24F74",
-                "ReleaseDate": "2025-05-12T00:00:00Z",
+                "ProductVersion": "15.6",
+                "Build": "24G84",
+                "ReleaseDate": "2025-07-29T00:00:00Z",
                 "ExpirationDate": "2025-10-27T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
@@ -77,463 +77,418 @@
                     "VMA2MACOSAP",
                     "VMM-x86_64"
                 ],
-                "SecurityInfo": "https://support.apple.com/en-ca/122716",
+                "SecurityInfo": "https://support.apple.com/kb/HT213412",
                 "CVEs": {
-                    "CVE-2025-31246": false,
-                    "CVE-2025-31240": false,
-                    "CVE-2025-31237": false,
-                    "CVE-2025-31260": false,
-                    "CVE-2025-31251": false,
-                    "CVE-2025-31235": false,
-                    "CVE-2025-24222": false,
-                    "CVE-2025-31212": false,
-                    "CVE-2025-31208": false,
-                    "CVE-2025-31209": false,
-                    "CVE-2025-31239": false,
-                    "CVE-2025-31233": false,
-                    "CVE-2025-31236": false,
-                    "CVE-2025-30443": false,
-                    "CVE-2025-31226": false,
-                    "CVE-2025-31232": false,
-                    "CVE-2025-31241": false,
-                    "CVE-2025-31219": false,
-                    "CVE-2024-8176": false,
-                    "CVE-2025-30440": false,
-                    "CVE-2025-31222": false,
-                    "CVE-2025-24274": false,
-                    "CVE-2025-31218": false,
-                    "CVE-2025-31256": false,
-                    "CVE-2025-24142": false,
-                    "CVE-2025-26465": false,
-                    "CVE-2025-26466": false,
-                    "CVE-2025-31234": false,
-                    "CVE-2025-31245": false,
-                    "CVE-2025-31244": false,
-                    "CVE-2025-31258": false,
-                    "CVE-2025-31249": false,
-                    "CVE-2025-31224": false,
-                    "CVE-2025-31221": false,
-                    "CVE-2025-31213": false,
-                    "CVE-2025-31247": false,
-                    "CVE-2025-31259": false,
-                    "CVE-2025-31242": false,
-                    "CVE-2025-31250": false,
-                    "CVE-2025-31220": false,
-                    "CVE-2025-24213": false,
-                    "CVE-2025-31223": false,
-                    "CVE-2025-31238": false,
-                    "CVE-2025-31215": false,
-                    "CVE-2025-31204": false,
-                    "CVE-2025-24223": false,
-                    "CVE-2025-31206": false,
-                    "CVE-2025-31217": false,
-                    "CVE-2025-31205": false,
-                    "CVE-2025-31257": false
+                    "CVE-2022-32894": true,
+                    "CVE-2022-32893": true
                 },
-                "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 50,
+                "ActivelyExploitedCVEs": [
+                    "CVE-2022-32894",
+                    "CVE-2022-32893"
+                ],
+                "UniqueCVEsCount": 2,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J137AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J152FAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J160AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J174AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J180dAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J185AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J185FAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J213AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J214KAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J215AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J223AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J230KAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J274AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J293AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J313AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J314cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J314sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J316cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J316sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J375cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J375dAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J413AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J414cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J414sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J415AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J416cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J416sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J433AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J434AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J456AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J457AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J473AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J474sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J475cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J475dAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J493AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J504AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J514cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J514mAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J514sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J516cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J516mAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J516sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J575cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J575dAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J604AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J613AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J614cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J614sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J615AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J616cAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J616sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J623AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J624AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J680AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J713AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J715AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J773gAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J773sAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J780AP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-1E7E29AD0135F9BC": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-63001698E7A34814": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-937A206F2EE63C01": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-AA95B1DDAB278B95": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "VMA2MACOSAP": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "VMM-x86_64": {
                         "OSVersion": "Sequoia 15",
-                        "ProductVersion": "15.5",
-                        "Build": "24F74",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "15.6",
+                        "Build": "24G84",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     }
                 }
             },
@@ -548,6 +503,8 @@
                     "SupportedDevices": [
                         "J132AP",
                         "J137AP",
+                        "J140AAP",
+                        "J140KAP",
                         "J152FAP",
                         "J160AP",
                         "J174AP",
@@ -561,14 +518,12 @@
                         "J230KAP",
                         "J274AP",
                         "J293AP",
-                        "J313AP",
                         "J314cAP",
                         "J314sAP",
                         "J316cAP",
                         "J316sAP",
                         "J375cAP",
                         "J375dAP",
-                        "J413AP",
                         "J414cAP",
                         "J414sAP",
                         "J415AP",
@@ -590,22 +545,9 @@
                         "J516cAP",
                         "J516mAP",
                         "J516sAP",
-                        "J575cAP",
-                        "J575dAP",
-                        "J604AP",
                         "J613AP",
-                        "J614cAP",
-                        "J614sAP",
                         "J615AP",
-                        "J616cAP",
-                        "J616sAP",
-                        "J623AP",
-                        "J624AP",
                         "J680AP",
-                        "J713AP",
-                        "J715AP",
-                        "J773gAP",
-                        "J773sAP",
                         "J780AP",
                         "Mac-1E7E29AD0135F9BC",
                         "Mac-63001698E7A34814",
@@ -1953,9 +1895,9 @@
         {
             "OSVersion": "Sonoma 14",
             "Latest": {
-                "ProductVersion": "14.7.6",
-                "Build": "23H626",
-                "ReleaseDate": "2025-05-12T00:00:00Z",
+                "ProductVersion": "14.7.7",
+                "Build": "23H723",
+                "ReleaseDate": "2025-07-29T00:00:00Z",
                 "ExpirationDate": "2025-10-27T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
@@ -2015,384 +1957,520 @@
                     "VMA2MACOSAP",
                     "VMM-x86_64"
                 ],
-                "SecurityInfo": "https://support.apple.com/en-ca/122717",
+                "SecurityInfo": "https://support.apple.com/en-ca/124150",
                 "CVEs": {
-                    "CVE-2025-31246": false,
-                    "CVE-2025-31240": false,
-                    "CVE-2025-31237": false,
-                    "CVE-2025-31251": false,
-                    "CVE-2025-31235": false,
-                    "CVE-2025-31208": false,
-                    "CVE-2025-31196": false,
-                    "CVE-2025-31209": false,
-                    "CVE-2025-31239": false,
-                    "CVE-2025-31233": false,
-                    "CVE-2025-30453": false,
-                    "CVE-2025-24258": false,
-                    "CVE-2025-30448": false,
-                    "CVE-2025-31232": false,
-                    "CVE-2025-24144": false,
-                    "CVE-2025-31219": false,
-                    "CVE-2025-31241": false,
-                    "CVE-2024-8176": false,
-                    "CVE-2025-30440": false,
-                    "CVE-2025-31222": false,
-                    "CVE-2025-24274": false,
-                    "CVE-2025-24142": false,
-                    "CVE-2025-26465": false,
-                    "CVE-2025-26466": false,
-                    "CVE-2025-31245": false,
-                    "CVE-2025-31224": false,
-                    "CVE-2025-31221": false,
-                    "CVE-2025-31213": false,
-                    "CVE-2025-31247": false,
-                    "CVE-2025-30442": false,
-                    "CVE-2025-31242": false,
-                    "CVE-2025-31220": false,
-                    "CVE-2025-24155": false
+                    "CVE-2025-43191": false,
+                    "CVE-2025-43186": false,
+                    "CVE-2025-43244": false,
+                    "CVE-2025-31243": false,
+                    "CVE-2025-43253": false,
+                    "CVE-2025-43249": false,
+                    "CVE-2025-43248": false,
+                    "CVE-2025-43245": false,
+                    "CVE-2025-43222": false,
+                    "CVE-2025-43223": false,
+                    "CVE-2025-43220": false,
+                    "CVE-2025-43199": false,
+                    "CVE-2025-43210": false,
+                    "CVE-2025-43195": false,
+                    "CVE-2025-43187": false,
+                    "CVE-2025-43198": false,
+                    "CVE-2025-43254": false,
+                    "CVE-2025-43261": false,
+                    "CVE-2025-31279": false,
+                    "CVE-2025-24119": false,
+                    "CVE-2025-43255": false,
+                    "CVE-2025-43209": false,
+                    "CVE-2025-43226": false,
+                    "CVE-2025-43196": false,
+                    "CVE-2025-7424": false,
+                    "CVE-2025-43192": false,
+                    "CVE-2025-43275": false,
+                    "CVE-2025-43270": false,
+                    "CVE-2025-43225": false,
+                    "CVE-2025-43266": false,
+                    "CVE-2025-43260": false,
+                    "CVE-2025-43247": false,
+                    "CVE-2025-43194": false,
+                    "CVE-2025-43232": false,
+                    "CVE-2025-43236": false,
+                    "CVE-2025-43241": false,
+                    "CVE-2025-43233": false,
+                    "CVE-2025-43193": false,
+                    "CVE-2025-43250": false,
+                    "CVE-2025-43184": false,
+                    "CVE-2025-43197": false,
+                    "CVE-2025-43239": false,
+                    "CVE-2025-43243": false,
+                    "CVE-2025-43246": false,
+                    "CVE-2025-43256": false,
+                    "CVE-2025-43206": false,
+                    "CVE-2025-43189": false,
+                    "CVE-2025-43259": false,
+                    "CVE-2025-43238": false
                 },
                 "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 33,
+                "UniqueCVEsCount": 49,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J137AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J140AAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J140KAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J152FAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J160AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J174AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J180dAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J185AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J185FAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J213AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J214KAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J215AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J223AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J230KAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J274AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J293AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J313AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J314cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J314sAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J316cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J316sAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J375cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J375dAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J413AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J414cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J414sAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J415AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J416cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J416sAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J433AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J434AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J456AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J457AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J473AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J474sAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J475cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J475dAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J493AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J504AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J514cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J514mAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J514sAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J516cAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J516mAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J516sAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J613AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J615AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J680AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J780AP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-1E7E29AD0135F9BC": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-63001698E7A34814": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-937A206F2EE63C01": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-AA95B1DDAB278B95": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "VMA2MACOSAP": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "VMM-x86_64": {
                         "OSVersion": "Sonoma 14",
-                        "ProductVersion": "14.7.6",
-                        "Build": "23H626",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "14.7.7",
+                        "Build": "23H723",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     }
                 }
             },
             "SecurityReleases": [
+                {
+                    "UpdateName": "macOS Sonoma 14.7.7",
+                    "ProductName": "macOS",
+                    "ProductVersion": "14.7.7",
+                    "ReleaseDate": "2025-07-29T00:00:00Z",
+                    "ReleaseType": "OS",
+                    "SecurityInfo": "https://support.apple.com/en-ca/124150",
+                    "SupportedDevices": [
+                        "J132AP",
+                        "J137AP",
+                        "J140AAP",
+                        "J140KAP",
+                        "J152FAP",
+                        "J160AP",
+                        "J174AP",
+                        "J180dAP",
+                        "J185AP",
+                        "J185FAP",
+                        "J213AP",
+                        "J214KAP",
+                        "J215AP",
+                        "J223AP",
+                        "J230KAP",
+                        "J274AP",
+                        "J293AP",
+                        "J313AP",
+                        "J314cAP",
+                        "J314sAP",
+                        "J316cAP",
+                        "J316sAP",
+                        "J375cAP",
+                        "J375dAP",
+                        "J413AP",
+                        "J414cAP",
+                        "J414sAP",
+                        "J415AP",
+                        "J416cAP",
+                        "J416sAP",
+                        "J433AP",
+                        "J434AP",
+                        "J456AP",
+                        "J457AP",
+                        "J473AP",
+                        "J474sAP",
+                        "J475cAP",
+                        "J475dAP",
+                        "J493AP",
+                        "J504AP",
+                        "J514cAP",
+                        "J514mAP",
+                        "J514sAP",
+                        "J516cAP",
+                        "J516mAP",
+                        "J516sAP",
+                        "J613AP",
+                        "J615AP",
+                        "J680AP",
+                        "J780AP",
+                        "Mac-1E7E29AD0135F9BC",
+                        "Mac-63001698E7A34814",
+                        "Mac-937A206F2EE63C01",
+                        "Mac-AA95B1DDAB278B95",
+                        "VMA2MACOSAP",
+                        "VMM-x86_64"
+                    ],
+                    "CVEs": {
+                        "CVE-2025-43191": false,
+                        "CVE-2025-43186": false,
+                        "CVE-2025-43244": false,
+                        "CVE-2025-31243": false,
+                        "CVE-2025-43253": false,
+                        "CVE-2025-43249": false,
+                        "CVE-2025-43248": false,
+                        "CVE-2025-43245": false,
+                        "CVE-2025-43222": false,
+                        "CVE-2025-43223": false,
+                        "CVE-2025-43220": false,
+                        "CVE-2025-43199": false,
+                        "CVE-2025-43210": false,
+                        "CVE-2025-43195": false,
+                        "CVE-2025-43187": false,
+                        "CVE-2025-43198": false,
+                        "CVE-2025-43254": false,
+                        "CVE-2025-43261": false,
+                        "CVE-2025-31279": false,
+                        "CVE-2025-24119": false,
+                        "CVE-2025-43255": false,
+                        "CVE-2025-43209": false,
+                        "CVE-2025-43226": false,
+                        "CVE-2025-43196": false,
+                        "CVE-2025-7424": false,
+                        "CVE-2025-43192": false,
+                        "CVE-2025-43275": false,
+                        "CVE-2025-43270": false,
+                        "CVE-2025-43225": false,
+                        "CVE-2025-43266": false,
+                        "CVE-2025-43260": false,
+                        "CVE-2025-43247": false,
+                        "CVE-2025-43194": false,
+                        "CVE-2025-43232": false,
+                        "CVE-2025-43236": false,
+                        "CVE-2025-43241": false,
+                        "CVE-2025-43233": false,
+                        "CVE-2025-43193": false,
+                        "CVE-2025-43250": false,
+                        "CVE-2025-43184": false,
+                        "CVE-2025-43197": false,
+                        "CVE-2025-43239": false,
+                        "CVE-2025-43243": false,
+                        "CVE-2025-43246": false,
+                        "CVE-2025-43256": false,
+                        "CVE-2025-43206": false,
+                        "CVE-2025-43189": false,
+                        "CVE-2025-43259": false,
+                        "CVE-2025-43238": false
+                    },
+                    "ActivelyExploitedCVEs": [],
+                    "UniqueCVEsCount": 49,
+                    "DaysSincePreviousRelease": 78
+                },
                 {
                     "UpdateName": "macOS Sonoma 14.7.6",
                     "ProductName": "macOS",
@@ -4709,9 +4787,9 @@
         {
             "OSVersion": "Ventura 13",
             "Latest": {
-                "ProductVersion": "13.7.6",
-                "Build": "22H625",
-                "ReleaseDate": "2025-05-12T00:00:00Z",
+                "ProductVersion": "13.7.7",
+                "Build": "22H722",
+                "ReleaseDate": "2025-07-29T00:00:00Z",
                 "ExpirationDate": "2025-10-27T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
@@ -4770,371 +4848,381 @@
                     "VMA2MACOSAP",
                     "VMM-x86_64"
                 ],
-                "SecurityInfo": "https://support.apple.com/en-ca/122718",
+                "SecurityInfo": "https://support.apple.com/en-ca/124151",
                 "CVEs": {
-                    "CVE-2025-31240": false,
-                    "CVE-2025-31237": false,
-                    "CVE-2025-31251": false,
-                    "CVE-2025-31235": false,
-                    "CVE-2025-31208": false,
-                    "CVE-2025-31196": false,
-                    "CVE-2025-31209": false,
-                    "CVE-2025-31239": false,
-                    "CVE-2025-31233": false,
-                    "CVE-2025-30453": false,
-                    "CVE-2025-24258": false,
-                    "CVE-2025-30448": false,
-                    "CVE-2025-31232": false,
-                    "CVE-2025-24144": false,
-                    "CVE-2025-31219": false,
-                    "CVE-2025-31241": false,
-                    "CVE-2024-8176": false,
-                    "CVE-2025-30440": false,
-                    "CVE-2025-31222": false,
-                    "CVE-2025-24274": false,
-                    "CVE-2025-24142": false,
-                    "CVE-2025-31245": false,
-                    "CVE-2025-31224": false,
-                    "CVE-2025-31221": false,
-                    "CVE-2025-31213": false,
-                    "CVE-2025-31247": false,
-                    "CVE-2025-30442": false,
-                    "CVE-2025-31242": false,
-                    "CVE-2025-31220": false,
-                    "CVE-2025-24155": false
+                    "CVE-2025-43191": false,
+                    "CVE-2025-43186": false,
+                    "CVE-2025-43244": false,
+                    "CVE-2025-31243": false,
+                    "CVE-2025-43249": false,
+                    "CVE-2025-43245": false,
+                    "CVE-2025-43222": false,
+                    "CVE-2025-43223": false,
+                    "CVE-2025-43220": false,
+                    "CVE-2025-43199": false,
+                    "CVE-2025-43210": false,
+                    "CVE-2025-43195": false,
+                    "CVE-2025-43187": false,
+                    "CVE-2025-43254": false,
+                    "CVE-2025-43261": false,
+                    "CVE-2025-31279": false,
+                    "CVE-2025-24119": false,
+                    "CVE-2025-43255": false,
+                    "CVE-2025-43209": false,
+                    "CVE-2025-24224": false,
+                    "CVE-2025-43196": false,
+                    "CVE-2025-43275": false,
+                    "CVE-2025-43270": false,
+                    "CVE-2025-43225": false,
+                    "CVE-2025-43266": false,
+                    "CVE-2025-43247": false,
+                    "CVE-2025-43194": false,
+                    "CVE-2025-43232": false,
+                    "CVE-2025-43236": false,
+                    "CVE-2025-43241": false,
+                    "CVE-2025-43233": false,
+                    "CVE-2025-43193": false,
+                    "CVE-2025-43250": false,
+                    "CVE-2025-43184": false,
+                    "CVE-2025-43197": false,
+                    "CVE-2025-43239": false,
+                    "CVE-2025-43243": false,
+                    "CVE-2025-43206": false,
+                    "CVE-2025-43259": false,
+                    "CVE-2025-43238": false
                 },
                 "ActivelyExploitedCVEs": [],
-                "UniqueCVEsCount": 30,
+                "UniqueCVEsCount": 40,
                 "ModelVersionMap": {
                     "J132AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J137AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J140AAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J140KAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J152FAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J160AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J174AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J180dAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J185AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J185FAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J213AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J214KAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J215AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J223AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J230KAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J274AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J293AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J313AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J314cAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J314sAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J316cAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J316sAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J375cAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J375dAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J413AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J414cAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J414sAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J415AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J416cAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J416sAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J433AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J434AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J456AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J457AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J473AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J474sAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J475cAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J475dAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J493AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J504AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J680AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "J780AP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-1E7E29AD0135F9BC": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-4B682C642B45593E": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-551B86E5744E2388": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-63001698E7A34814": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-77F17D7DA9285301": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-937A206F2EE63C01": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-AA95B1DDAB278B95": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-B4831CEBD52A0C4C": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-BE088AF8C5EB4FA2": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-CAD6701F7CEA0921": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "Mac-EE2EBD4B90B839A8": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "VMA2MACOSAP": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     },
                     "VMM-x86_64": {
                         "OSVersion": "Ventura 13",
-                        "ProductVersion": "13.7.6",
-                        "Build": "22H625",
-                        "ReleaseDate": "2025-05-12T00:00:00Z"
+                        "ProductVersion": "13.7.7",
+                        "Build": "22H722",
+                        "ReleaseDate": "2025-07-29T00:00:00Z"
                     }
                 }
             },
@@ -12221,12 +12309,19 @@
     "InstallationApps": {
         "LatestUMA": {
             "title": "macOS Sequoia",
-            "version": "15.5",
-            "build": "24F74",
-            "apple_slug": "082-44432",
-            "url": "https://swcdn.apple.com/content/downloads/51/28/082-44432-A_4NJSZXK8G5/v10fo5dlwd50fja3qbnhj7z9tp1dx41vq2/InstallAssistant.pkg"
+            "version": "15.6",
+            "build": "24G84",
+            "apple_slug": "082-08661",
+            "url": "https://swcdn.apple.com/content/downloads/05/14/082-08661-A_R3LJXRMIED/4ifxu7v20f45p4qectnt7r52qwt9vuzfw1/InstallAssistant.pkg"
         },
         "AllPreviousUMA": [
+            {
+                "title": "macOS Sequoia",
+                "version": "15.5",
+                "build": "24F74",
+                "apple_slug": "082-44432",
+                "url": "https://swcdn.apple.com/content/downloads/51/28/082-44432-A_4NJSZXK8G5/v10fo5dlwd50fja3qbnhj7z9tp1dx41vq2/InstallAssistant.pkg"
+            },
             {
                 "title": "macOS Sequoia",
                 "version": "15.4.1",
@@ -12264,6 +12359,13 @@
             },
             {
                 "title": "macOS Sonoma",
+                "version": "14.7.7",
+                "build": "23H723",
+                "apple_slug": "082-85709",
+                "url": "https://swcdn.apple.com/content/downloads/03/49/082-85709-A_OVYS4G5L94/y1wfe9zpaqu9mjnl3zjtq41n0qtb21kvcs/InstallAssistant.pkg"
+            },
+            {
+                "title": "macOS Sonoma",
                 "version": "14.7.6",
                 "build": "23H626",
                 "apple_slug": "082-42388",
@@ -12282,6 +12384,13 @@
                 "build": "23H420",
                 "apple_slug": "072-84039",
                 "url": "https://swcdn.apple.com/content/downloads/32/49/072-84039-A_JPGNVJRH1M/cazcuskjdk6y6yrviytxanoevr5ihmz9lb/InstallAssistant.pkg"
+            },
+            {
+                "title": "macOS Ventura",
+                "version": "13.7.7",
+                "build": "22H722",
+                "apple_slug": "082-87267",
+                "url": "https://swcdn.apple.com/content/downloads/12/28/082-87267-A_WGJHPIPC6Q/e982ujmntb0d6l44kjd20dc5thmk1ynorw/InstallAssistant.pkg"
             },
             {
                 "title": "macOS Ventura",
@@ -12320,10 +12429,10 @@
             }
         ],
         "LatestMacIPSW": {
-            "macos_ipsw_url": "https://updates.cdn-apple.com/2025SpringFCS/fullrestores/082-44534/CE6C1054-99A3-4F67-A823-3EE9E6510CDE/UniversalMac_15.5_24F74_Restore.ipsw",
-            "macos_ipsw_build": "24F74",
-            "macos_ipsw_version": "15.5",
-            "macos_ipsw_apple_slug": "082-44534"
+            "macos_ipsw_url": "https://updates.cdn-apple.com/2025SummerFCS/fullrestores/082-08674/51294E4D-A273-44BE-A280-A69FC347FB87/UniversalMac_15.6_24G84_Restore.ipsw",
+            "macos_ipsw_build": "24G84",
+            "macos_ipsw_version": "15.6",
+            "macos_ipsw_apple_slug": "082-08674"
         }
     }
 }
