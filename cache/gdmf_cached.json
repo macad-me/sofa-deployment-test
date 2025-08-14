@@ -2428,44 +2428,6 @@
                     ]
                 }
             ],
-            "visionOS": [
-                {
-                    "ProductVersion": "2.5",
-                    "Build": "22O6473",
-                    "PostingDate": "2025-05-12",
-                    "ExpirationDate": "2025-11-12",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.5",
-                    "Build": "22O473",
-                    "PostingDate": "2025-05-12",
-                    "ExpirationDate": "2025-11-12",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.6",
-                    "Build": "22O6785",
-                    "PostingDate": "2025-07-29",
-                    "ExpirationDate": "2025-11-12",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "2.6",
-                    "Build": "22O785",
-                    "PostingDate": "2025-07-29",
-                    "ExpirationDate": "2025-11-12",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                }
-            ],
             "macOS": [
                 {
                     "ProductVersion": "13.7.7",
@@ -3031,6 +2993,44 @@
                         "Mac-AA95B1DDAB278B95",
                         "VMA2MACOSAP",
                         "VMM-x86_64"
+                    ]
+                }
+            ],
+            "visionOS": [
+                {
+                    "ProductVersion": "2.5",
+                    "Build": "22O6473",
+                    "PostingDate": "2025-05-12",
+                    "ExpirationDate": "2025-11-12",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.5",
+                    "Build": "22O473",
+                    "PostingDate": "2025-05-12",
+                    "ExpirationDate": "2025-11-12",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.6",
+                    "Build": "22O6785",
+                    "PostingDate": "2025-07-29",
+                    "ExpirationDate": "2025-11-12",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "2.6",
+                    "Build": "22O785",
+                    "PostingDate": "2025-07-29",
+                    "ExpirationDate": "2025-11-12",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
                     ]
                 }
             ]
