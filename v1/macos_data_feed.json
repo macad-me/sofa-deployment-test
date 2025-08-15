@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "dd9cff2205e14065f0b81b80b0ed8b7d3db9df1a7fced187ccb4c2fef48b4dc4",
+    "UpdateHash": "51b62d2b7427b796c3610edb281f27adf57aa6b05c0f65b383d60ef2528a8e2f",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -10356,11 +10356,9 @@
                         "VMM-x86_64"
                     ],
                     "CVEs": {
-                        "CVE-2023-28206": true
+                        "CVE-2023-28206": false
                     },
-                    "ActivelyExploitedCVEs": [
-                        "CVE-2023-28206"
-                    ],
+                    "ActivelyExploitedCVEs": [],
                     "UniqueCVEsCount": 1,
                     "DaysSincePreviousRelease": 14
                 },
