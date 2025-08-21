@@ -2725,29 +2725,5 @@
         ],
         "UniqueCVEsCount": 1,
         "DaysSincePreviousRelease": 6
-    },
-    {
-        "UpdateName": "iPadOS 17.7.10",
-        "ProductName": "iOS",
-        "ProductVersion": "17.7.10",
-        "ReleaseDate": "2025-08-20T00:00:00Z",
-        "ReleaseType": "OS",
-        "SecurityInfo": "https://support.apple.com/en-ca/124926",
-        "SupportedDevices": [
-            "iPad7,1",
-            "iPad7,2",
-            "iPad7,3",
-            "iPad7,4",
-            "iPad7,5",
-            "iPad7,6"
-        ],
-        "CVEs": {
-            "CVE-2025-43300": true
-        },
-        "ActivelyExploitedCVEs": [
-            "CVE-2025-43300"
-        ],
-        "UniqueCVEsCount": 1,
-        "DaysSincePreviousRelease": 22
     }
 ]

@@ -13,14 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Aug 2025 08:46:02 +0000</lastBuildDate>
-    <item>
-      <title>iPadOS 17.7.10</title>
-      <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 1&lt;br&gt;Days to Prev. Release: 22</description>
-      <guid isPermaLink="false">iOS_OS_17.7.10</guid>
-      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
-    </item>
+    <lastBuildDate>Thu, 21 Aug 2025 13:06:33 +0000</lastBuildDate>
     <item>
       <title>iOS 18.6.2 and iPadOS 18.6.2</title>
       <link>https://sofa.macadmins.io/</link>

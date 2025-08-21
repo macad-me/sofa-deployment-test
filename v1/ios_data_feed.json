@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "6f1beef405b61ce87b5cab3b5c9c035a4d325f409a46e14041aa3dca826af6e6",
+    "UpdateHash": "256e9cb9d3f28871db5d2adc6f95d371ce44791332b501021e12e121fe5cba7e",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -929,30 +929,6 @@
                 "CVEs": {}
             },
             "SecurityReleases": [
-                {
-                    "UpdateName": "iPadOS 17.7.10",
-                    "ProductName": "iOS",
-                    "ProductVersion": "17.7.10",
-                    "ReleaseDate": "2025-08-20T00:00:00Z",
-                    "ReleaseType": "OS",
-                    "SecurityInfo": "https://support.apple.com/en-ca/124926",
-                    "SupportedDevices": [
-                        "iPad7,1",
-                        "iPad7,2",
-                        "iPad7,3",
-                        "iPad7,4",
-                        "iPad7,5",
-                        "iPad7,6"
-                    ],
-                    "CVEs": {
-                        "CVE-2025-43300": true
-                    },
-                    "ActivelyExploitedCVEs": [
-                        "CVE-2025-43300"
-                    ],
-                    "UniqueCVEsCount": 1,
-                    "DaysSincePreviousRelease": 22
-                },
                 {
                     "UpdateName": "iPadOS 17.7.9",
                     "ProductName": "iOS",
