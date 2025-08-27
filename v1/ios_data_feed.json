@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "d31711d2a1e642b4bda97c9326ad993bbae749471a0a1cc89c697d911aea670b",
+    "UpdateHash": "f1909ba596dcc82f868d947056bdd5a6a3abed20a9726da25aff936159bee509",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -912,7 +912,7 @@
                 "ForkedLatest": {
                     "ProductVersion": "17.7.10",
                     "Build": "21H450",
-                    "ReleaseDate": "2025-08-20",
+                    "ReleaseDate": "2025-08-27",
                     "ExpirationDate": "2025-11-25",
                     "SupportedDevices": [
                         "iPad7,1",
