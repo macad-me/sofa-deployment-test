@@ -3363,10 +3363,8 @@
             "CVE-2024-54527": false,
             "CVE-2024-54490": false,
             "CVE-2024-54509": false,
-            "CVE-2024-54568": false,
             "CVE-2024-54529": false,
             "CVE-2024-54550": false,
-            "CVE-2024-44271": false,
             "CVE-2024-54513": false,
             "CVE-2024-44300": false,
             "CVE-2024-54466": false,
@@ -3402,10 +3400,6 @@
             "CVE-2024-54476": false,
             "CVE-2024-54530": false,
             "CVE-2024-54492": false,
-            "CVE-2016-1246": false,
-            "CVE-2023-31484": false,
-            "CVE-2023-31486": false,
-            "CVE-2023-47100": false,
             "CVE-2023-32395": false,
             "CVE-2024-54497": false,
             "CVE-2024-54537": false,
@@ -3439,7 +3433,7 @@
             "CVE-2024-54565": false
         },
         "ActivelyExploitedCVEs": [],
-        "UniqueCVEsCount": 83,
+        "UniqueCVEsCount": 77,
         "DaysSincePreviousRelease": 22
     },
     {

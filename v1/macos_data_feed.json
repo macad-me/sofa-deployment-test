@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "36c96f07fb26c6a9fcca8e05771ca80a210ea43c8c3bbc217cad5b0cc83d6867",
+    "UpdateHash": "7a1887b4848dd428ddeae45b3f6b0f03c9c323091b694888568d53b63818185d",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -7,7 +7,7 @@
                 "ProductVersion": "15.6.1",
                 "Build": "24G90",
                 "ReleaseDate": "2025-08-20T00:00:00Z",
-                "ExpirationDate": "2025-11-26T00:00:00Z",
+                "ExpirationDate": "2025-11-27T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -1524,10 +1524,8 @@
                         "CVE-2024-54527": false,
                         "CVE-2024-54490": false,
                         "CVE-2024-54509": false,
-                        "CVE-2024-54568": false,
                         "CVE-2024-54529": false,
                         "CVE-2024-54550": false,
-                        "CVE-2024-44271": false,
                         "CVE-2024-54513": false,
                         "CVE-2024-44300": false,
                         "CVE-2024-54466": false,
@@ -1563,10 +1561,6 @@
                         "CVE-2024-54476": false,
                         "CVE-2024-54530": false,
                         "CVE-2024-54492": false,
-                        "CVE-2016-1246": false,
-                        "CVE-2023-31484": false,
-                        "CVE-2023-31486": false,
-                        "CVE-2023-47100": false,
                         "CVE-2023-32395": false,
                         "CVE-2024-54497": false,
                         "CVE-2024-54537": false,
@@ -1600,7 +1594,7 @@
                         "CVE-2024-54565": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 83,
+                    "UniqueCVEsCount": 77,
                     "DaysSincePreviousRelease": 22
                 },
                 {
@@ -2162,7 +2156,7 @@
                 "ProductVersion": "14.7.8",
                 "Build": "23H730",
                 "ReleaseDate": "2025-08-20T00:00:00Z",
-                "ExpirationDate": "2025-11-26T00:00:00Z",
+                "ExpirationDate": "2025-11-27T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -5084,7 +5078,7 @@
                 "ProductVersion": "13.7.8",
                 "Build": "22H730",
                 "ReleaseDate": "2025-08-20T00:00:00Z",
-                "ExpirationDate": "2025-11-26T00:00:00Z",
+                "ExpirationDate": "2025-11-27T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
@@ -8832,7 +8826,7 @@
                 "ProductVersion": "12.7.6",
                 "Build": "21H1320",
                 "ReleaseDate": "2024-07-29T00:00:00Z",
-                "ExpirationDate": "2025-11-26T00:00:00Z",
+                "ExpirationDate": "2025-11-27T00:00:00Z",
                 "SupportedDevices": [
                     "J132AP",
                     "J137AP",
