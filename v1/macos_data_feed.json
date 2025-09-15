@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "669493d66bef45eb0540c4337e00c7de6de7d7f6e8ac66121878ac951ea9262d",
+    "UpdateHash": "8befaf069a00b8be7c4f5466350c49b5f6d15ba440e9c42ee521b0e76bfd3117",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -12720,13 +12720,27 @@
     },
     "InstallationApps": {
         "LatestUMA": {
-            "title": "macOS Sequoia",
-            "version": "15.6.1",
-            "build": "24G90",
-            "apple_slug": "093-10756",
-            "url": "https://swcdn.apple.com/content/downloads/26/59/093-10756-A_RD5LVY0R3G/7a96asv0xoamt1fk0xxnqy8jffdyauooaq/InstallAssistant.pkg"
+            "title": "macOS Tahoe",
+            "version": "26.0",
+            "build": "25A354",
+            "apple_slug": "093-37779",
+            "url": "https://swcdn.apple.com/content/downloads/26/38/093-37779-A_Y4733G5GHI/adlxnkoqzyrrzfl1r5krg7ql0cod8vpl5e/InstallAssistant.pkg"
         },
         "AllPreviousUMA": [
+            {
+                "title": "macOS Sequoia",
+                "version": "15.7",
+                "build": "24G222",
+                "apple_slug": "093-34000",
+                "url": "https://swcdn.apple.com/content/downloads/17/41/093-34000-A_IVOM0TNC43/plnlr5g9hfkg3fiwr399h1eso63m8vhiqn/InstallAssistant.pkg"
+            },
+            {
+                "title": "macOS Sequoia",
+                "version": "15.6.1",
+                "build": "24G90",
+                "apple_slug": "093-10756",
+                "url": "https://swcdn.apple.com/content/downloads/26/59/093-10756-A_RD5LVY0R3G/7a96asv0xoamt1fk0xxnqy8jffdyauooaq/InstallAssistant.pkg"
+            },
             {
                 "title": "macOS Sequoia",
                 "version": "15.6",
@@ -12775,6 +12789,13 @@
                 "build": "24D70",
                 "apple_slug": "072-70706",
                 "url": "https://swcdn.apple.com/content/downloads/39/51/072-70706-A_Q2E9RWYCSD/oddej58reimcphudve8mgtxmcjjp0t3cve/InstallAssistant.pkg"
+            },
+            {
+                "title": "macOS Sonoma",
+                "version": "14.8",
+                "build": "23J21",
+                "apple_slug": "093-33776",
+                "url": "https://swcdn.apple.com/content/downloads/34/53/093-33776-A_M0RZWTX3HW/ee1446bq7ipokhkad1vx891y7ld0880o0f/InstallAssistant.pkg"
             },
             {
                 "title": "macOS Sonoma",
@@ -12862,10 +12883,10 @@
             }
         ],
         "LatestMacIPSW": {
-            "macos_ipsw_url": "https://updates.cdn-apple.com/2025SummerFCS/fullrestores/093-10809/CFD6DD38-DAF0-40DA-854F-31AAD1294C6F/UniversalMac_15.6.1_24G90_Restore.ipsw",
-            "macos_ipsw_build": "24G90",
-            "macos_ipsw_version": "15.6.1",
-            "macos_ipsw_apple_slug": "093-10809"
+            "macos_ipsw_url": "https://updates.cdn-apple.com/2025FallFCS/fullrestores/093-37622/CE01FAB2-7F26-48EE-AEE4-5E57A7F6D8BB/UniversalMac_26.0_25A354_Restore.ipsw",
+            "macos_ipsw_build": "25A354",
+            "macos_ipsw_version": "26.0",
+            "macos_ipsw_apple_slug": "093-37622"
         }
     }
 }
