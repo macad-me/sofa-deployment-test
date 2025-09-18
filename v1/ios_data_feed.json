@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "6af5f51642a6127748e23bad8fa6920ad161af88d179d2b52b8cdb1d5fe3c06f",
+    "UpdateHash": "53ce7dc292c77a823cba2028949c58bbdc7f8ecbabcc20f0ecbd5bb50096ab79",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -53,8 +53,6 @@
                     "iPad16,4",
                     "iPad16,5",
                     "iPad16,6",
-                    "iPad7,11",
-                    "iPad7,12",
                     "iPad8,1",
                     "iPad8,10",
                     "iPad8,11",
@@ -67,10 +65,6 @@
                     "iPad8,7",
                     "iPad8,8",
                     "iPad8,9",
-                    "iPhone11,2",
-                    "iPhone11,4",
-                    "iPhone11,6",
-                    "iPhone11,8",
                     "iPhone12,1",
                     "iPhone12,3",
                     "iPhone12,5",
@@ -98,6 +92,20 @@
                     "iPhone17,4",
                     "iPhone17,5"
                 ],
+                "ForkedLatest": {
+                    "ProductVersion": "18.7",
+                    "Build": "22H6020",
+                    "ReleaseDate": "2025-09-18",
+                    "ExpirationDate": "2025-12-17",
+                    "SupportedDevices": [
+                        "iPad7,11",
+                        "iPad7,12",
+                        "iPhone11,2",
+                        "iPhone11,4",
+                        "iPhone11,6",
+                        "iPhone11,8"
+                    ]
+                },
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
@@ -156,8 +164,6 @@
                         "iPad16,4",
                         "iPad16,5",
                         "iPad16,6",
-                        "iPad7,11",
-                        "iPad7,12",
                         "iPad8,1",
                         "iPad8,10",
                         "iPad8,11",
@@ -170,10 +176,6 @@
                         "iPad8,7",
                         "iPad8,8",
                         "iPad8,9",
-                        "iPhone11,2",
-                        "iPhone11,4",
-                        "iPhone11,6",
-                        "iPhone11,8",
                         "iPhone12,1",
                         "iPhone12,3",
                         "iPhone12,5",
