@@ -1,5 +1,5 @@
 {
-    "etag": "cb809695b6676c12018c5f30adbd150b7659df6b61b94bc4a6b0627f341f1244",
+    "etag": "91963a681fb086bded423ed96f996c9ece7feda623bb15cfb7a43283da231028",
     "data": {
         "PublicAssetSets": {
             "iOS": [
@@ -1690,7 +1690,7 @@
                     "ProductVersion": "18.6",
                     "Build": "22M84",
                     "PostingDate": "2025-07-29",
-                    "ExpirationDate": "2025-12-24",
+                    "ExpirationDate": "2025-12-14",
                     "SupportedDevices": [
                         "AppleTV11,1",
                         "AppleTV14,1",
@@ -3127,7 +3127,7 @@
                     "ProductVersion": "18.6",
                     "Build": "22M6084",
                     "PostingDate": "2025-07-29",
-                    "ExpirationDate": "2025-12-24",
+                    "ExpirationDate": "2025-12-14",
                     "SupportedDevices": [
                         "AppleTV11,1",
                         "AppleTV14,1",
