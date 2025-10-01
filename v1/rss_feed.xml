@@ -13,7 +13,13 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 30 Sep 2025 20:40:42 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Oct 2025 02:21:11 +0000</lastBuildDate>
+    <item>
+      <title>XProtect Plist Config 5317</title>
+      <link>https://sofa.macadmins.io/</link>
+      <guid isPermaLink="false">XProtect_Config_5317</guid>
+      <pubDate>Tue, 30 Sep 2025 21:51:37 +0000</pubDate>
+    </item>
     <item>
       <title>iOS 18.7.1 and iPadOS 18.7.1</title>
       <link>https://sofa.macadmins.io/</link>
@@ -34,12 +40,6 @@
       <description>Vulnerabilities Addressed: 1&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 14</description>
       <guid isPermaLink="false">macOS_OS_15.7.1</guid>
       <pubDate>Mon, 29 Sep 2025 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>XProtect Plist Config 5316</title>
-      <link>https://sofa.macadmins.io/</link>
-      <guid isPermaLink="false">XProtect_Config_5316</guid>
-      <pubDate>Tue, 23 Sep 2025 18:42:55 +0000</pubDate>
     </item>
     <item>
       <title>iOS 16.7.12 and iPadOS 16.7.12</title>
