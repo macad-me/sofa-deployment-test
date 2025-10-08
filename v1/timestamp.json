@@ -1,10 +1,10 @@
 {
     "macOS": {
-        "LastCheck": "2025-10-08T20:25:31+00:00Z",
+        "LastCheck": "2025-10-08T20:39:09+00:00Z",
         "UpdateHash": "ea3f4422029b0d6c6f6ee5eb556591aeed3311ef3d1d11088016094e2d9caaa0"
     },
     "iOS": {
-        "LastCheck": "2025-10-08T20:25:54+00:00Z",
+        "LastCheck": "2025-10-08T20:39:32+00:00Z",
         "UpdateHash": "6f75bd2d8a8658e7a8de08aac30d55113ecf1b4ca1dffd1ac65292e46106f657"
     },
     "24B83": {
@@ -16,7 +16,7 @@
         "UpdateHash": "242c1eab9b4f3a6bf562b4056d4b553214e3fe4aa55b93336e9d1722ff3d57f5"
     },
     "": {
-        "LastCheck": "2025-10-08T20:26:05+00:00Z",
+        "LastCheck": "2025-10-08T20:39:43+00:00Z",
         "UpdateHash": "242c1eab9b4f3a6bf562b4056d4b553214e3fe4aa55b93336e9d1722ff3d57f5"
     }
 }
