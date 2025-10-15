@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "03faf854c45445f3ff4110a5189f0c6a045747441797cb21488b0f4778f44811",
+    "UpdateHash": "dbb714d0a92dff98314b4d813cae4fbd229fa88ba1eeac577f45921138575dae",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -833,18 +833,16 @@
                         "CVE-2025-43249": false,
                         "CVE-2025-43248": false,
                         "CVE-2025-43245": false,
-                        "CVE-2025-43281": false,
                         "CVE-2025-43257": false,
                         "CVE-2025-43222": false,
                         "CVE-2025-43223": false,
                         "CVE-2025-43220": false,
+                        "CVE-2025-43199": false,
                         "CVE-2025-43277": false,
                         "CVE-2025-43273": false,
                         "CVE-2025-43210": false,
                         "CVE-2025-43230": false,
                         "CVE-2025-43195": false,
-                        "CVE-2025-43199": false,
-                        "CVE-2025-43313": false,
                         "CVE-2025-43267": false,
                         "CVE-2025-43187": false,
                         "CVE-2025-43188": false,
@@ -858,7 +856,6 @@
                         "CVE-2025-43226": false,
                         "CVE-2025-43276": false,
                         "CVE-2025-43268": false,
-                        "CVE-2025-43282": false,
                         "CVE-2025-43202": false,
                         "CVE-2025-7425": false,
                         "CVE-2025-43196": false,
@@ -875,8 +872,8 @@
                         "CVE-2025-43218": false,
                         "CVE-2025-43215": false,
                         "CVE-2025-43275": false,
-                        "CVE-2025-43225": false,
                         "CVE-2025-43270": false,
+                        "CVE-2025-43225": false,
                         "CVE-2025-43266": false,
                         "CVE-2025-43260": false,
                         "CVE-2025-43247": false,
@@ -894,7 +891,6 @@
                         "CVE-2025-43239": false,
                         "CVE-2025-43243": false,
                         "CVE-2025-43246": false,
-                        "CVE-2025-6965": false,
                         "CVE-2025-43256": false,
                         "CVE-2025-43206": false,
                         "CVE-2025-43251": false,
@@ -919,7 +915,7 @@
                         "CVE-2025-43252": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 92,
+                    "UniqueCVEsCount": 88,
                     "DaysSincePreviousRelease": 78
                 },
                 {
@@ -3076,10 +3072,9 @@
                         "CVE-2025-43222": false,
                         "CVE-2025-43223": false,
                         "CVE-2025-43220": false,
-                        "CVE-2025-43210": false,
                         "CVE-2025-43199": false,
+                        "CVE-2025-43210": false,
                         "CVE-2025-43195": false,
-                        "CVE-2025-43313": false,
                         "CVE-2025-43187": false,
                         "CVE-2025-43198": false,
                         "CVE-2025-43254": false,
@@ -3090,7 +3085,6 @@
                         "CVE-2025-43284": false,
                         "CVE-2025-43209": false,
                         "CVE-2025-43226": false,
-                        "CVE-2025-43282": false,
                         "CVE-2025-43196": false,
                         "CVE-2025-7424": false,
                         "CVE-2025-43192": false,
@@ -3119,7 +3113,7 @@
                         "CVE-2025-43238": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 52,
+                    "UniqueCVEsCount": 50,
                     "DaysSincePreviousRelease": 78
                 },
                 {
@@ -12167,8 +12161,8 @@
         "ReleaseDate": "2025-08-05T18:40:16Z"
     },
     "XProtectPlistConfigData": {
-        "com.apple.XProtect": "5318",
-        "ReleaseDate": "2025-10-08T18:36:54Z"
+        "com.apple.XProtect": "5319",
+        "ReleaseDate": "2025-10-15T19:05:05Z"
     },
     "Models": {
         "Mac15,13": {
