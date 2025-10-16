@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Thu, 16 Oct 2025 04:41:34 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Oct 2025 08:48:23 +0000</lastBuildDate>
     <item>
       <title>XProtect Plist Config 5319</title>
       <link>https://sofa.macadmins.io/</link>
@@ -126,7 +126,7 @@
     <item>
       <title>iPadOS 17.7.9</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 18&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 71</description>
+      <description>Vulnerabilities Addressed: 19&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 71</description>
       <guid isPermaLink="false">iOS_OS_17.7.9</guid>
       <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
     </item>
@@ -140,7 +140,7 @@
     <item>
       <title>macOS Ventura 13.7.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 41&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 78</description>
+      <description>Vulnerabilities Addressed: 43&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 78</description>
       <guid isPermaLink="false">macOS_OS_13.7.7</guid>
       <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
     </item>
