@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "171412c7d07c3ca07ddb25a6ea5e0663363e920b2950d53a3609c452ba9fdc31",
+    "UpdateHash": "e9e741742ae6da7a6754464bafc3301f728519a579f0568c71dd925c717ce771",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -7,7 +7,7 @@
                 "ProductVersion": "18.7.1",
                 "Build": "22H6031",
                 "ReleaseDate": "2025-09-29T00:00:00Z",
-                "ExpirationDate": "2026-01-13T00:00:00Z",
+                "ExpirationDate": "2026-01-14T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -53,8 +53,6 @@
                     "iPad16,4",
                     "iPad16,5",
                     "iPad16,6",
-                    "iPad7,11",
-                    "iPad7,12",
                     "iPad8,1",
                     "iPad8,10",
                     "iPad8,11",
@@ -67,10 +65,6 @@
                     "iPad8,7",
                     "iPad8,8",
                     "iPad8,9",
-                    "iPhone11,2",
-                    "iPhone11,4",
-                    "iPhone11,6",
-                    "iPhone11,8",
                     "iPhone12,1",
                     "iPhone12,3",
                     "iPhone12,5",
@@ -98,6 +92,20 @@
                     "iPhone17,4",
                     "iPhone17,5"
                 ],
+                "ForkedLatest": {
+                    "ProductVersion": "18.7.1",
+                    "Build": "22H6031",
+                    "ReleaseDate": "2025-10-15",
+                    "ExpirationDate": "2026-01-14",
+                    "SupportedDevices": [
+                        "iPad7,11",
+                        "iPad7,12",
+                        "iPhone11,2",
+                        "iPhone11,4",
+                        "iPhone11,6",
+                        "iPhone11,8"
+                    ]
+                },
                 "SecurityInfo": "",
                 "UniqueCVEsCount": 0,
                 "ActivelyExploitedCVEs": [],
@@ -156,8 +164,6 @@
                         "iPad16,4",
                         "iPad16,5",
                         "iPad16,6",
-                        "iPad7,11",
-                        "iPad7,12",
                         "iPad8,1",
                         "iPad8,10",
                         "iPad8,11",
@@ -170,10 +176,6 @@
                         "iPad8,7",
                         "iPad8,8",
                         "iPad8,9",
-                        "iPhone11,2",
-                        "iPhone11,4",
-                        "iPhone11,6",
-                        "iPhone11,8",
                         "iPhone12,1",
                         "iPhone12,3",
                         "iPhone12,5",
@@ -260,8 +262,6 @@
                         "iPad16,4",
                         "iPad16,5",
                         "iPad16,6",
-                        "iPad7,11",
-                        "iPad7,12",
                         "iPad8,1",
                         "iPad8,10",
                         "iPad8,11",
@@ -274,10 +274,6 @@
                         "iPad8,7",
                         "iPad8,8",
                         "iPad8,9",
-                        "iPhone11,2",
-                        "iPhone11,4",
-                        "iPhone11,6",
-                        "iPhone11,8",
                         "iPhone12,1",
                         "iPhone12,3",
                         "iPhone12,5",
@@ -875,7 +871,7 @@
                 "ProductVersion": "17.7.10",
                 "Build": "21H450",
                 "ReleaseDate": "2025-08-20T00:00:00Z",
-                "ExpirationDate": "2026-01-13T00:00:00Z",
+                "ExpirationDate": "2026-01-14T00:00:00Z",
                 "SupportedDevices": [
                     "iPad7,1",
                     "iPad7,2",
@@ -933,6 +929,7 @@
                         "CVE-2025-43209": false,
                         "CVE-2025-43226": false,
                         "CVE-2025-24224": false,
+                        "CVE-2025-43282": false,
                         "CVE-2025-7424": false,
                         "CVE-2025-31276": false,
                         "CVE-2025-43225": false,
@@ -943,7 +940,7 @@
                         "CVE-2025-6558": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 18,
+                    "UniqueCVEsCount": 19,
                     "DaysSincePreviousRelease": 71
                 },
                 {
@@ -1815,7 +1812,7 @@
                 "ProductVersion": "16.7.12",
                 "Build": "20H6364",
                 "ReleaseDate": "2025-09-15T00:00:00Z",
-                "ExpirationDate": "2026-01-13T00:00:00Z",
+                "ExpirationDate": "2026-01-14T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
                     "iPad6,12",
