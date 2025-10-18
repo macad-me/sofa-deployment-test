@@ -1,5 +1,5 @@
 {
-    "etag": "6ccedfe1e236319f3718dae8c4d490fff30f02178343b0ae1e693b103fc04018",
+    "etag": "86ef2d8267d063761aa6251a944a5b9cc74049e06a0bebaeec28fc34ed3d4ffd",
     "data": {
         "PublicAssetSets": {
             "iOS": [
@@ -997,11 +997,49 @@
                     ]
                 }
             ],
+            "visionOS": [
+                {
+                    "ProductVersion": "26.0.1",
+                    "Build": "23M341",
+                    "PostingDate": "2025-10-16",
+                    "ExpirationDate": "2026-01-16",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "26.0.1",
+                    "Build": "23M9340",
+                    "PostingDate": "2025-10-16",
+                    "ExpirationDate": "2026-01-16",
+                    "SupportedDevices": [
+                        "RealityDevice17,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "26.0.1",
+                    "Build": "23M6341",
+                    "PostingDate": "2025-10-16",
+                    "ExpirationDate": "2026-01-16",
+                    "SupportedDevices": [
+                        "RealityDevice14,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "26.0.1",
+                    "Build": "23M8340",
+                    "PostingDate": "2025-10-16",
+                    "ExpirationDate": "2026-01-16",
+                    "SupportedDevices": [
+                        "RealityDevice17,1"
+                    ]
+                }
+            ],
             "macOS": [
                 {
                     "ProductVersion": "26.0.1",
                     "Build": "25A8364",
-                    "PostingDate": "2025-10-16",
+                    "PostingDate": "2025-10-18",
                     "ExpirationDate": "2026-01-16",
                     "SupportedDevices": [
                         "J704AP"
@@ -1010,7 +1048,7 @@
                 {
                     "ProductVersion": "26.0.1",
                     "Build": "25A362",
-                    "PostingDate": "2025-10-16",
+                    "PostingDate": "2025-10-18",
                     "ExpirationDate": "2026-01-16",
                     "SupportedDevices": [
                         "J152FAP",
@@ -1073,7 +1111,7 @@
                 {
                     "ProductVersion": "14.8.1",
                     "Build": "23J30",
-                    "PostingDate": "2025-10-16",
+                    "PostingDate": "2025-10-18",
                     "ExpirationDate": "2026-01-16",
                     "SupportedDevices": [
                         "J132AP",
@@ -1137,7 +1175,7 @@
                 {
                     "ProductVersion": "12.7.6",
                     "Build": "21H1320",
-                    "PostingDate": "2025-10-16",
+                    "PostingDate": "2025-10-18",
                     "ExpirationDate": "2026-01-16",
                     "SupportedDevices": [
                         "J132AP",
@@ -1203,7 +1241,7 @@
                 {
                     "ProductVersion": "11.7.10",
                     "Build": "20G1427",
-                    "PostingDate": "2025-10-16",
+                    "PostingDate": "2025-10-18",
                     "ExpirationDate": "2026-01-16",
                     "SupportedDevices": [
                         "J132AP",
@@ -1299,7 +1337,7 @@
                 {
                     "ProductVersion": "13.7.8",
                     "Build": "22H730",
-                    "PostingDate": "2025-10-16",
+                    "PostingDate": "2025-10-18",
                     "ExpirationDate": "2026-01-16",
                     "SupportedDevices": [
                         "J132AP",
@@ -1362,7 +1400,7 @@
                 {
                     "ProductVersion": "15.7.1",
                     "Build": "24G231",
-                    "PostingDate": "2025-10-16",
+                    "PostingDate": "2025-10-18",
                     "ExpirationDate": "2026-01-16",
                     "SupportedDevices": [
                         "J132AP",
@@ -1432,44 +1470,6 @@
                         "Mac-AA95B1DDAB278B95",
                         "VMA2MACOSAP",
                         "VMM-x86_64"
-                    ]
-                }
-            ],
-            "visionOS": [
-                {
-                    "ProductVersion": "26.0.1",
-                    "Build": "23M341",
-                    "PostingDate": "2025-10-16",
-                    "ExpirationDate": "2026-01-16",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "26.0.1",
-                    "Build": "23M9340",
-                    "PostingDate": "2025-10-16",
-                    "ExpirationDate": "2026-01-16",
-                    "SupportedDevices": [
-                        "RealityDevice17,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "26.0.1",
-                    "Build": "23M6341",
-                    "PostingDate": "2025-10-16",
-                    "ExpirationDate": "2026-01-16",
-                    "SupportedDevices": [
-                        "RealityDevice14,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "26.0.1",
-                    "Build": "23M8340",
-                    "PostingDate": "2025-10-16",
-                    "ExpirationDate": "2026-01-16",
-                    "SupportedDevices": [
-                        "RealityDevice17,1"
                     ]
                 }
             ]
