@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "2a8f17cded434584c758ac59014132daad82c490fa2b4143f1d2dcf014f8a347",
+    "UpdateHash": "a49191aa13ddd84d4715f686aadf3828001221241aad5ca4aa4d98d06521270d",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -95,7 +95,7 @@
                 "ForkedLatest": {
                     "ProductVersion": "18.7.1",
                     "Build": "22H6031",
-                    "ReleaseDate": "2025-10-15",
+                    "ReleaseDate": "2025-10-21",
                     "ExpirationDate": "2026-01-19",
                     "SupportedDevices": [
                         "iPad7,11",
