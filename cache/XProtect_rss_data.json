@@ -1,23 +1,23 @@
 [
     {
-        "UpdateName": "XProtect Remediator 153",
+        "UpdateName": "XProtect Plist Config 5322",
         "ProductName": "XProtect",
-        "ProductVersion": "153",
+        "ProductVersion": "5322",
+        "ReleaseType": "Config",
+        "ReleaseDate": "2025-11-04T18:28:30Z"
+    },
+    {
+        "UpdateName": "XProtect Remediator 156",
+        "ProductName": "XProtect",
+        "ProductVersion": "156",
         "ReleaseType": "Remediator",
-        "ReleaseDate": "2025-08-05T18:40:16Z"
+        "ReleaseDate": "2025-11-04T18:31:19Z"
     },
     {
         "UpdateName": "XProtect Plug-in Service 74",
         "ProductName": "XProtect",
         "ProductVersion": "74",
         "ReleaseType": "Plug-in",
-        "ReleaseDate": "2025-08-05T18:40:16Z"
-    },
-    {
-        "UpdateName": "XProtect Plist Config 5321",
-        "ProductName": "XProtect",
-        "ProductVersion": "5321",
-        "ReleaseType": "Config",
-        "ReleaseDate": "2025-10-23T01:48:45Z"
+        "ReleaseDate": "2025-11-04T18:31:19Z"
     }
 ]

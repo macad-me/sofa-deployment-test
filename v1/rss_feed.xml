@@ -13,7 +13,25 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Nov 2025 18:35:18 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Nov 2025 19:20:14 +0000</lastBuildDate>
+    <item>
+      <title>XProtect Plug-in Service 74</title>
+      <link>https://sofa.macadmins.io/</link>
+      <guid isPermaLink="false">XProtect_Plug-in_74</guid>
+      <pubDate>Tue, 04 Nov 2025 18:31:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>XProtect Remediator 156</title>
+      <link>https://sofa.macadmins.io/</link>
+      <guid isPermaLink="false">XProtect_Remediator_156</guid>
+      <pubDate>Tue, 04 Nov 2025 18:31:19 +0000</pubDate>
+    </item>
+    <item>
+      <title>XProtect Plist Config 5322</title>
+      <link>https://sofa.macadmins.io/</link>
+      <guid isPermaLink="false">XProtect_Config_5322</guid>
+      <pubDate>Tue, 04 Nov 2025 18:28:30 +0000</pubDate>
+    </item>
     <item>
       <title>macOS Sonoma 14.8.2</title>
       <link>https://sofa.macadmins.io/</link>
@@ -27,12 +45,6 @@
       <description>Vulnerabilities Addressed: 57&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 35</description>
       <guid isPermaLink="false">macOS_OS_15.7.2</guid>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>XProtect Plist Config 5321</title>
-      <link>https://sofa.macadmins.io/</link>
-      <guid isPermaLink="false">XProtect_Config_5321</guid>
-      <pubDate>Thu, 23 Oct 2025 01:48:45 +0000</pubDate>
     </item>
     <item>
       <title>iOS 18.7.1 and iPadOS 18.7.1</title>
@@ -72,14 +84,14 @@
     <item>
       <title>macOS Sonoma 14.8</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 41&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
+      <description>Vulnerabilities Addressed: 39&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
       <guid isPermaLink="false">macOS_OS_14.8</guid>
       <pubDate>Mon, 15 Sep 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>macOS Sequoia 15.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 38&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
+      <description>Vulnerabilities Addressed: 35&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
       <guid isPermaLink="false">macOS_OS_15.7</guid>
       <pubDate>Mon, 15 Sep 2025 00:00:00 +0000</pubDate>
     </item>
@@ -124,18 +136,6 @@
       <description>Vulnerabilities Addressed: 0&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 16</description>
       <guid isPermaLink="false">iOS_OS_18.6.1</guid>
       <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>XProtect Plug-in Service 74</title>
-      <link>https://sofa.macadmins.io/</link>
-      <guid isPermaLink="false">XProtect_Plug-in_74</guid>
-      <pubDate>Tue, 05 Aug 2025 18:40:16 +0000</pubDate>
-    </item>
-    <item>
-      <title>XProtect Remediator 153</title>
-      <link>https://sofa.macadmins.io/</link>
-      <guid isPermaLink="false">XProtect_Remediator_153</guid>
-      <pubDate>Tue, 05 Aug 2025 18:40:16 +0000</pubDate>
     </item>
     <item>
       <title>iPadOS 17.7.9</title>
