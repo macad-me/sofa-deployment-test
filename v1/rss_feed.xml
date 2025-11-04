@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Nov 2025 02:17:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Nov 2025 04:43:58 +0000</lastBuildDate>
     <item>
       <title>macOS Sonoma 14.8.2</title>
       <link>https://sofa.macadmins.io/</link>
@@ -79,7 +79,7 @@
     <item>
       <title>macOS Sequoia 15.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 38&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
+      <description>Vulnerabilities Addressed: 35&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
       <guid isPermaLink="false">macOS_OS_15.7</guid>
       <pubDate>Mon, 15 Sep 2025 00:00:00 +0000</pubDate>
     </item>
