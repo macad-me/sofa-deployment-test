@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "6162846cbcc5674503cf782d7a6f8471483cf1fce8bb4de5dd9db64704004b13",
+    "UpdateHash": "680a75a4465b91f0996e9cdc45805712491b697fae12e9c3a8f811ab8c0f8eb5",
     "OSVersions": [
         {
             "OSVersion": "18",
@@ -7,7 +7,7 @@
                 "ProductVersion": "18.7.1",
                 "Build": "22H6031",
                 "ReleaseDate": "2025-09-29T00:00:00Z",
-                "ExpirationDate": "2026-02-01T00:00:00Z",
+                "ExpirationDate": "2026-02-02T00:00:00Z",
                 "SupportedDevices": [
                     "iPad11,1",
                     "iPad11,2",
@@ -95,8 +95,8 @@
                 "ForkedLatest": {
                     "ProductVersion": "18.7.1",
                     "Build": "22H6031",
-                    "ReleaseDate": "2025-10-21",
-                    "ExpirationDate": "2026-02-01",
+                    "ReleaseDate": "2025-11-03",
+                    "ExpirationDate": "2026-02-02",
                     "SupportedDevices": [
                         "iPad7,11",
                         "iPad7,12",
@@ -306,6 +306,7 @@
                         "CVE-2025-43349": false,
                         "CVE-2025-43302": false,
                         "CVE-2025-43359": false,
+                        "CVE-2025-43345": false,
                         "CVE-2025-43362": false,
                         "CVE-2025-43299": false,
                         "CVE-2025-43295": false,
@@ -316,7 +317,7 @@
                         "CVE-2025-43342": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 12,
+                    "UniqueCVEsCount": 13,
                     "DaysSincePreviousRelease": 26
                 },
                 {
@@ -871,7 +872,7 @@
                 "ProductVersion": "17.7.10",
                 "Build": "21H450",
                 "ReleaseDate": "2025-08-20T00:00:00Z",
-                "ExpirationDate": "2026-02-01T00:00:00Z",
+                "ExpirationDate": "2026-02-02T00:00:00Z",
                 "SupportedDevices": [
                     "iPad7,1",
                     "iPad7,2",
@@ -1812,7 +1813,7 @@
                 "ProductVersion": "16.7.12",
                 "Build": "20H6364",
                 "ReleaseDate": "2025-09-15T00:00:00Z",
-                "ExpirationDate": "2026-02-01T00:00:00Z",
+                "ExpirationDate": "2026-02-02T00:00:00Z",
                 "SupportedDevices": [
                     "iPad6,11",
                     "iPad6,12",
