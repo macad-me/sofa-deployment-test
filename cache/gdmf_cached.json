@@ -1,5 +1,5 @@
 {
-    "etag": "79313d2d9eccb9b339f4f2e36ebb3e262365b2de9d70dcd0c90e6b0cdd3aa22e",
+    "etag": "7ea9f3de14d2edb6a37739a1bcc72d54da27187a5d67cd07bf51ed62bd58b65f",
     "data": {
         "PublicAssetSets": {
             "iOS": [
@@ -982,6 +982,28 @@
                     ]
                 }
             ],
+            "visionOS": [
+                {
+                    "ProductVersion": "26.1",
+                    "Build": "23N6049",
+                    "PostingDate": "2025-11-11",
+                    "ExpirationDate": "2026-02-09",
+                    "SupportedDevices": [
+                        "RealityDevice14,1",
+                        "RealityDevice17,1"
+                    ]
+                },
+                {
+                    "ProductVersion": "26.1",
+                    "Build": "23N49",
+                    "PostingDate": "2025-11-11",
+                    "ExpirationDate": "2026-02-09",
+                    "SupportedDevices": [
+                        "RealityDevice14,1",
+                        "RealityDevice17,1"
+                    ]
+                }
+            ],
             "macOS": [
                 {
                     "ProductVersion": "15.7.2",
@@ -1409,28 +1431,6 @@
                         "Mac-EE2EBD4B90B839A8",
                         "VMA2MACOSAP",
                         "VMM-x86_64"
-                    ]
-                }
-            ],
-            "visionOS": [
-                {
-                    "ProductVersion": "26.1",
-                    "Build": "23N6049",
-                    "PostingDate": "2025-11-03",
-                    "ExpirationDate": "2026-02-09",
-                    "SupportedDevices": [
-                        "RealityDevice14,1",
-                        "RealityDevice17,1"
-                    ]
-                },
-                {
-                    "ProductVersion": "26.1",
-                    "Build": "23N49",
-                    "PostingDate": "2025-11-03",
-                    "ExpirationDate": "2026-02-09",
-                    "SupportedDevices": [
-                        "RealityDevice14,1",
-                        "RealityDevice17,1"
                     ]
                 }
             ]
