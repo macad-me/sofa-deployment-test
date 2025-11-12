@@ -13,12 +13,12 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 11 Nov 2025 20:40:48 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Nov 2025 02:19:46 +0000</lastBuildDate>
     <item>
-      <title>XProtect Plist Config 5322</title>
+      <title>XProtect Plist Config 5323</title>
       <link>https://sofa.macadmins.io/</link>
-      <guid isPermaLink="false">XProtect_Config_5322</guid>
-      <pubDate>Mon, 10 Nov 2025 20:24:16 +0000</pubDate>
+      <guid isPermaLink="false">XProtect_Config_5323</guid>
+      <pubDate>Tue, 11 Nov 2025 21:18:23 +0000</pubDate>
     </item>
     <item>
       <title>iOS 18.7.2 and iPadOS 18.7.2</title>
@@ -98,7 +98,7 @@
     <item>
       <title>macOS Sequoia 15.7</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 35&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
+      <description>Vulnerabilities Addressed: 38&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 26</description>
       <guid isPermaLink="false">macOS_OS_15.7</guid>
       <pubDate>Mon, 15 Sep 2025 00:00:00 +0000</pubDate>
     </item>
@@ -252,7 +252,7 @@
     <item>
       <title>iOS 18.4 and iPadOS 18.4</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 76&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 20</description>
+      <description>Vulnerabilities Addressed: 77&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 20</description>
       <guid isPermaLink="false">iOS_OS_18.4</guid>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
     </item>
@@ -966,7 +966,7 @@
     <item>
       <title>macOS Ventura 13.5</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 77&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 12</description>
+      <description>Vulnerabilities Addressed: 78&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 12</description>
       <guid isPermaLink="false">macOS_OS_13.5</guid>
       <pubDate>Mon, 24 Jul 2023 00:00:00 +0000</pubDate>
     </item>
