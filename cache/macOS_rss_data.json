@@ -3678,12 +3678,15 @@
             "CVE-2025-24151": false,
             "CVE-2025-24138": false,
             "CVE-2025-24176": false,
+            "CVE-2025-31242": false,
+            "CVE-2025-31248": false,
             "CVE-2025-24154": false,
+            "CVE-2025-43374": false,
             "CVE-2025-24120": false,
             "CVE-2025-24156": false
         },
         "ActivelyExploitedCVEs": [],
-        "UniqueCVEsCount": 35,
+        "UniqueCVEsCount": 38,
         "DaysSincePreviousRelease": 47
     },
     {
@@ -4228,6 +4231,7 @@
             "CVE-2025-31245": false,
             "CVE-2025-31244": false,
             "CVE-2025-31258": false,
+            "CVE-2025-31266": false,
             "CVE-2025-31249": false,
             "CVE-2025-31224": false,
             "CVE-2025-31221": false,
@@ -4236,6 +4240,7 @@
             "CVE-2025-31259": false,
             "CVE-2025-31242": false,
             "CVE-2025-31250": false,
+            "CVE-2025-31248": false,
             "CVE-2025-31220": false,
             "CVE-2025-24213": false,
             "CVE-2025-31223": false,
@@ -4246,10 +4251,11 @@
             "CVE-2025-31206": false,
             "CVE-2025-31217": false,
             "CVE-2025-31205": false,
-            "CVE-2025-31257": false
+            "CVE-2025-31257": false,
+            "CVE-2025-43374": false
         },
         "ActivelyExploitedCVEs": [],
-        "UniqueCVEsCount": 51,
+        "UniqueCVEsCount": 54,
         "DaysSincePreviousRelease": 26
     },
     {
