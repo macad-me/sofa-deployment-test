@@ -3678,12 +3678,15 @@
             "CVE-2025-24151": false,
             "CVE-2025-24138": false,
             "CVE-2025-24176": false,
+            "CVE-2025-31242": false,
+            "CVE-2025-31248": false,
             "CVE-2025-24154": false,
+            "CVE-2025-43374": false,
             "CVE-2025-24120": false,
             "CVE-2025-24156": false
         },
         "ActivelyExploitedCVEs": [],
-        "UniqueCVEsCount": 35,
+        "UniqueCVEsCount": 38,
         "DaysSincePreviousRelease": 47
     },
     {
