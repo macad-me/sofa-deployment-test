@@ -2217,7 +2217,6 @@
             "CVE-2025-31245": false,
             "CVE-2025-31234": false,
             "CVE-2025-31221": false,
-            "CVE-2025-31242": false,
             "CVE-2025-24213": false,
             "CVE-2025-31223": false,
             "CVE-2025-31238": false,
@@ -2227,12 +2226,10 @@
             "CVE-2025-31215": false,
             "CVE-2025-31206": false,
             "CVE-2025-31205": false,
-            "CVE-2025-31257": false,
-            "CVE-2025-31216": false,
-            "CVE-2025-43374": false
+            "CVE-2025-31257": false
         },
         "ActivelyExploitedCVEs": [],
-        "UniqueCVEsCount": 37,
+        "UniqueCVEsCount": 34,
         "DaysSincePreviousRelease": 26
     },
     {
