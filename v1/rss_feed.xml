@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Dec 2025 20:44:05 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Dec 2025 02:23:26 +0000</lastBuildDate>
     <item>
       <title>XProtect Plist Config 5323</title>
       <link>https://sofa.macadmins.io/</link>
@@ -1057,7 +1057,7 @@
     <item>
       <title>macOS Ventura 13.3.1</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 11</description>
+      <description>Vulnerabilities Addressed: 2&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 11</description>
       <guid isPermaLink="false">macOS_OS_13.3.1</guid>
       <pubDate>Fri, 07 Apr 2023 00:00:00 +0000</pubDate>
     </item>

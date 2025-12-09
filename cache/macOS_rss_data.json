@@ -936,13 +936,10 @@
         "SecurityInfo": "https://support.apple.com/kb/HT213721",
         "SupportedDevices": [],
         "CVEs": {
-            "CVE-2023-28206": true,
-            "CVE-2023-28205": true
+            "CVE-2023-28206": false,
+            "CVE-2023-28205": false
         },
-        "ActivelyExploitedCVEs": [
-            "CVE-2023-28206",
-            "CVE-2023-28205"
-        ],
+        "ActivelyExploitedCVEs": [],
         "UniqueCVEsCount": 2,
         "DaysSincePreviousRelease": 11
     },
