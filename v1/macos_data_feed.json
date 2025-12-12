@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "93b79d4dca16966ca9233b0d1839ab2bf12c5a6291be3e20c40160f30222e359",
+    "UpdateHash": "41f1f48fd154ed43062885ebb240ff9401c0b98476c065d0c991e8c4c2a66c03",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -715,17 +715,13 @@
                         "CVE-2025-43474": false,
                         "CVE-2025-43396": false,
                         "CVE-2025-43398": false,
-                        "CVE-2025-43510": false,
-                        "CVE-2025-43520": false,
                         "CVE-2025-43413": false,
                         "CVE-2025-43496": false,
-                        "CVE-2025-43494": false,
                         "CVE-2025-43383": false,
                         "CVE-2025-43385": false,
                         "CVE-2025-43384": false,
                         "CVE-2025-43377": false,
                         "CVE-2025-43389": false,
-                        "CVE-2025-43410": false,
                         "CVE-2025-43411": false,
                         "CVE-2025-43405": false,
                         "CVE-2025-43391": false,
@@ -749,7 +745,7 @@
                         "CVE-2025-43373": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 61,
+                    "UniqueCVEsCount": 57,
                     "DaysSincePreviousRelease": 35
                 },
                 {
@@ -3201,12 +3197,8 @@
                         "CVE-2025-43338": false,
                         "CVE-2025-43396": false,
                         "CVE-2025-43398": false,
-                        "CVE-2025-43510": false,
-                        "CVE-2025-43520": false,
                         "CVE-2025-43413": false,
-                        "CVE-2025-43494": false,
                         "CVE-2025-43389": false,
-                        "CVE-2025-43410": false,
                         "CVE-2025-43411": false,
                         "CVE-2025-43405": false,
                         "CVE-2025-43391": false,
@@ -3229,7 +3221,7 @@
                         "CVE-2025-43373": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 50,
+                    "UniqueCVEsCount": 46,
                     "DaysSincePreviousRelease": 35
                 },
                 {
