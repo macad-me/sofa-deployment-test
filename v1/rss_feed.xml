@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Dec 2025 08:54:37 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Dec 2025 13:14:22 +0000</lastBuildDate>
     <item>
       <title>iOS 18.7.3 and iPadOS 18.7.3</title>
       <link>https://sofa.macadmins.io/</link>
@@ -26,13 +26,6 @@
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 21&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 39</description>
       <guid isPermaLink="false">macOS_OS_14.8.3</guid>
-      <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>macOS Sequoia 15.7.3</title>
-      <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 26&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 39</description>
-      <guid isPermaLink="false">macOS_OS_15.7.3</guid>
       <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
