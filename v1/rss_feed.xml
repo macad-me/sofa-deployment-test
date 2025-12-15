@@ -13,19 +13,12 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Dec 2025 17:30:10 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Dec 2025 18:40:28 +0000</lastBuildDate>
     <item>
       <title>iOS 18.7.3 and iPadOS 18.7.3</title>
       <link>https://sofa.macadmins.io/</link>
       <description>Vulnerabilities Addressed: 21&lt;br&gt;Exploited CVE(s): 2&lt;br&gt;Days to Prev. Release: 37</description>
       <guid isPermaLink="false">iOS_OS_18.7.3</guid>
-      <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>macOS Sonoma 14.8.3</title>
-      <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 21&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 39</description>
-      <guid isPermaLink="false">macOS_OS_14.8.3</guid>
       <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
@@ -44,7 +37,7 @@
     <item>
       <title>iOS 18.7.2 and iPadOS 18.7.2</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 38&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 37</description>
+      <description>Vulnerabilities Addressed: 34&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 37</description>
       <guid isPermaLink="false">iOS_OS_18.7.2</guid>
       <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
     </item>
@@ -63,7 +56,7 @@
     <item>
       <title>macOS Sonoma 14.8.2</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 50&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 35</description>
+      <description>Vulnerabilities Addressed: 46&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 35</description>
       <guid isPermaLink="false">macOS_OS_14.8.2</guid>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
     </item>
