@@ -1,5 +1,5 @@
 {
-    "UpdateHash": "e3333b3f962be17de0f819b470c3cbc6edf4224ecab65d58796c0e7c76d567d0",
+    "UpdateHash": "b5f7368610f4c3e07a29c6dc94ebd42b27ed8b84cf98573a8af57a271d9d896d",
     "OSVersions": [
         {
             "OSVersion": "Sequoia 15",
@@ -715,17 +715,13 @@
                         "CVE-2025-43474": false,
                         "CVE-2025-43396": false,
                         "CVE-2025-43398": false,
-                        "CVE-2025-43510": false,
-                        "CVE-2025-43520": false,
                         "CVE-2025-43413": false,
                         "CVE-2025-43496": false,
-                        "CVE-2025-43494": false,
                         "CVE-2025-43383": false,
                         "CVE-2025-43385": false,
                         "CVE-2025-43384": false,
                         "CVE-2025-43377": false,
                         "CVE-2025-43389": false,
-                        "CVE-2025-43410": false,
                         "CVE-2025-43411": false,
                         "CVE-2025-43405": false,
                         "CVE-2025-43391": false,
@@ -749,7 +745,7 @@
                         "CVE-2025-43373": false
                     },
                     "ActivelyExploitedCVEs": [],
-                    "UniqueCVEsCount": 61,
+                    "UniqueCVEsCount": 57,
                     "DaysSincePreviousRelease": 35
                 },
                 {
