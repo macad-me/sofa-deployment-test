@@ -13,7 +13,7 @@
       <link>https://sofa.macadmins.io/v1/rss_feed.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Dec 2025 13:08:57 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Dec 2025 16:47:50 +0000</lastBuildDate>
     <item>
       <title>XProtect Plist Config 5325</title>
       <link>https://sofa.macadmins.io/</link>
@@ -70,7 +70,7 @@
     <item>
       <title>macOS Sequoia 15.7.2</title>
       <link>https://sofa.macadmins.io/</link>
-      <description>Vulnerabilities Addressed: 57&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 35</description>
+      <description>Vulnerabilities Addressed: 61&lt;br&gt;Exploited CVE(s): 0&lt;br&gt;Days to Prev. Release: 35</description>
       <guid isPermaLink="false">macOS_OS_15.7.2</guid>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
     </item>
